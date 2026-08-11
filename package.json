@@ -1,0 +1,47 @@
+{
+  "name": "setup-vencedor",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": ["worker"],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "worker:dev": "npm --workspace worker run dev",
+    "worker:check": "npm --workspace worker run check",
+    "worker:test": "npm --workspace worker run test"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.105.1",
+    "@tanstack/react-router": "1.170.25",
+    "clsx": "2.1.1",
+    "lucide-react": "1.31.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwind-merge": "3.6.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@testing-library/user-event": "14.6.1",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.0.5",
+    "autoprefixer": "10.4.22",
+    "eslint": "9.39.1",
+    "jsdom": "27.2.0",
+    "postcss": "8.5.6",
+    "tailwindcss": "4.1.17",
+    "typescript": "7.0.2",
+    "vite": "8.2.1",
+    "vitest": "4.1.10"
+  }
+}
