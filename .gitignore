@@ -8,4 +8,4 @@ Chaves.txt
 node_modules/
 dist/
 .wrangler/
-
+.worktrees/
