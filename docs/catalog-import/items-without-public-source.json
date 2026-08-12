@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Checklist de pré-lançamento para apps",
+    "path": "/checklist-pre-lancamento"
+  },
+  {
+    "title": "7 coisas que eu instalaria no Claude Code antes de criar qualquer projeto",
+    "path": "/7-coisas-claude-code"
+  },
+  {
+    "title": "8 prompts para revisar a segurança do seu SaaS",
+    "path": "/8-prompts-seguranca-saas"
+  },
+  {
+    "title": "10 prompts que todo usuário de IA deveria salvar",
+    "path": "/10-prompts-ia"
+  },
+  {
+    "title": "8 prompts que todo vibe coder deveria salvar",
+    "path": "/8-prompts-vibe-coder"
+  },
+  {
+    "title": "Como transformar o Claude Code em um gênio de web design",
+    "path": "/claude-code-web-design"
+  },
+  {
+    "title": "Monte uma agência de IA que prospecta e vende com o Hermes",
+    "path": "/agencia-ia-hermes"
+  },
+  {
+    "title": "IA Growth Agency",
+    "path": "/skills/ia-growth-agency"
+  },
+  {
+    "title": "AI Local Business Sales Ops",
+    "path": "/skills/ai-local-business-sales-ops"
+  },
+  {
+    "title": "AI Growth WhatsApp Outbound",
+    "path": "/skills/ai-growth-whatsapp-outbound"
+  },
+  {
+    "title": "AI Growth Agências Marketing Outbound",
+    "path": "/skills/ai-growth-agencias-marketing-outbound"
+  },
+  {
+    "title": "WhatsApp Anti-Ban Agency Outbound",
+    "path": "/skills/whatsapp-antiban-agency-outbound"
+  },
+  {
+    "title": "Como as pessoas estão ganhando dinheiro com IA.",
+    "path": "/como-ganhar-dinheiro-com-ia"
+  },
+  {
+    "title": "Vibe coding tem um problema.",
+    "path": "/regras-claude-code"
+  },
+  {
+    "title": "Kimi K3 é open source. Rodar? Não.",
+    "path": "/kimi-k3-quanto-custa"
+  },
+  {
+    "title": "Regras permanentes para agentes",
+    "path": "/tutoriais/regras-permanentes-agentes"
+  },
+  {
+    "title": "Claude Loops Pack",
+    "path": "/claude-loops-pack"
+  },
+  {
+    "title": "Claude Loops Pack",
+    "path": "/plugins/claude-loops-pack"
+  },
+  {
+    "title": "Agência de IA com Claude",
+    "path": "/agencia-ia-claude"
+  },
+  {
+    "title": "Agência de IA com Claude",
+    "path": "/skills/agencia-ia-claude"
+  }
+]

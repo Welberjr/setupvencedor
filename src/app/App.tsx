@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { FavoriteButton } from '../features/catalog/FavoriteButton'
+import { PublicSources } from '../features/catalog/PublicSources'
 import { sampleCatalog } from '../features/catalog/catalog-data'
 import type { CatalogItem } from '../features/catalog/types'
 import { LoginForm } from '../features/auth/LoginForm'
@@ -26,6 +27,7 @@ type CatalogRow = {
   categories: { name: string } | null
   catalog_item_topics: Array<{ topics: { name: string } | null }>
   catalog_item_tags: Array<{ tags: { name: string } | null }>
+  catalog_item_sources: Array<{ source_url: string }>
 }
 
 function toCatalogItem(row: CatalogRow): CatalogItem {
@@ -37,6 +39,7 @@ function toCatalogItem(row: CatalogRow): CatalogItem {
     summary: row.summary,
     ownContent: row.own_content,
     officialUrl: row.official_url,
+    sourceUrls: row.catalog_item_sources.map((source) => source.source_url),
     instructions: row.instructions,
     status: row.status,
     visibility: row.visibility,
@@ -55,7 +58,6 @@ export function App({ session = null }: { session?: Session }) {
       if (!supabase) throw new Error('supabase_not_configured')
       const { error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) throw error
-      window.location.reload()
     }} onForgotPassword={async (email) => {
       const supabase = getSupabaseClient()
       if (!supabase) throw new Error('supabase_not_configured')
@@ -78,7 +80,7 @@ export function App({ session = null }: { session?: Session }) {
     let active = true
     async function loadCatalog() {
       const [{ data: itemRows, error: itemsError }, { data: favoriteRows, error: favoritesError }] = await Promise.all([
-        client.from('catalog_items').select('id,slug,title,item_type,summary,own_content,official_url,instructions,status,visibility,categories(name),catalog_item_topics(topics(name)),catalog_item_tags(tags(name))').eq('status', 'published').order('published_at', { ascending: false }),
+        client.from('catalog_items').select('id,slug,title,item_type,summary,own_content,official_url,instructions,status,visibility,categories(name),catalog_item_topics(topics(name)),catalog_item_tags(tags(name)),catalog_item_sources(source_url)').eq('status', 'published').order('published_at', { ascending: false }),
         client.from('favorites').select('catalog_item_id').eq('user_id', signedInUserId),
       ])
       if (!active) return
@@ -124,7 +126,7 @@ export function App({ session = null }: { session?: Session }) {
     }
   }
 
-  const renderCatalog = (items: CatalogItem[]) => <div className="catalog-grid">{items.map((item) => <article className="catalog-card" key={item.id}><p className="eyebrow">{item.type} · {item.category}</p><h2>{item.title}</h2><p>{item.summary}</p><div className="tag-row">{item.tags.map((tag) => <span key={tag}>#{tag}</span>)}</div><a href={item.officialUrl} rel="noreferrer" target="_blank">Abrir fonte oficial →</a><FavoriteButton title={item.title} isFavorite={favoriteIds.has(item.id)} onToggle={() => toggleFavorite(item.id)} /></article>)}</div>
+  const renderCatalog = (items: CatalogItem[]) => <div className="catalog-grid">{items.map((item) => <article className="catalog-card" key={item.id}><p className="eyebrow">{item.type} · {item.category}</p><h2>{item.title}</h2><p>{item.summary}</p><div className="tag-row">{item.tags.map((tag) => <span key={tag}>#{tag}</span>)}</div><PublicSources officialUrl={item.officialUrl} sourceUrls={item.sourceUrls} /><FavoriteButton title={item.title} isFavorite={favoriteIds.has(item.id)} onToggle={() => toggleFavorite(item.id)} /></article>)}</div>
 
   return (
     <main className="app-shell">

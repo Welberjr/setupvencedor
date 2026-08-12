@@ -13,6 +13,7 @@ h1 { font-size: clamp(3rem, 9vw, 7rem); line-height: .9; letter-spacing: -.075em
 .search input { border: 1px solid #2b3859; background: #101622cc; color: #f4f7ff; border-radius: 14px; padding: 1rem; font: inherit; }
 .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem; max-width: 1060px; }
 .catalog-card { border: 1px solid #263251; background: linear-gradient(145deg, #121a2b99, #0d111bbb); border-radius: 18px; padding: 1.25rem; display: grid; gap: .85rem; }
+.public-sources { display: grid; gap: .55rem; }.public-sources details { color: #9bb0ff; cursor: pointer; }.public-sources details > div { display: grid; gap: .4rem; margin-top: .65rem; padding-left: .8rem; }.public-sources a { color: #88a1ff; font-weight: 700; }
 .catalog-card h2 { margin: 0; font-size: 1.35rem; }.catalog-card p { color: #bdc8e3; margin: 0; line-height: 1.5; }.catalog-card a { color: #88a1ff; font-weight: 700; }
 .tag-row { display: flex; flex-wrap: wrap; gap: .4rem; }.tag-row span { font-size: .78rem; color: #b9c7ff; background: #1d2b55; padding: .25rem .5rem; border-radius: 99px; }
 .favorite, .primary { border: 1px solid #4969f8; color: #dce4ff; border-radius: 10px; background: #15204a; padding: .65rem .85rem; width: fit-content; cursor: pointer; font: inherit; }.favorite.active, .primary { background: #315cff; color: #fff; }

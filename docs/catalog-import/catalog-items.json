@@ -1,4 +1,4394 @@
 {
   "version": 1,
-  "items": []
+  "items": [
+    {
+      "title": "17 plugins oficiais da Anthropic",
+      "slug": "17-plugins-anthropic",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 17 plugins oficiais da Anthropic a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 17 plugins oficiais da Anthropic para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/engineering",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Engenheiro",
+      "slug": "plugins-engineering",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Engenheiro a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Engenheiro para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/engineering",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Analista",
+      "slug": "plugins-data",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Analista a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Analista para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/data",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O PM",
+      "slug": "plugins-product-management",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O PM a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O PM para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Closer",
+      "slug": "plugins-sales",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Closer a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Closer para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/sales",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Marketer",
+      "slug": "plugins-marketing",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Marketer a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Marketer para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/marketing",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Suporte",
+      "slug": "plugins-customer-support",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Suporte a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Suporte para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/customer-support",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Operador",
+      "slug": "plugins-operations",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Operador a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Operador para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/operations",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Financeiro",
+      "slug": "plugins-finance",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Financeiro a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Financeiro para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/finance",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Jurídico",
+      "slug": "plugins-legal",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Jurídico a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Jurídico para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/legal",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Time de Pessoas",
+      "slug": "plugins-human-resources",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Time de Pessoas a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Time de Pessoas para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/human-resources",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Designer",
+      "slug": "plugins-design",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Designer a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Designer para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Pesquisador",
+      "slug": "plugins-bio-research",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Pesquisador a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Pesquisador para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Dono do Negócio",
+      "slug": "plugins-small-business",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Dono do Negócio a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Dono do Negócio para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/small-business",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Finder",
+      "slug": "plugins-enterprise-search",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Finder a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Finder para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/enterprise-search",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Seu Assistente",
+      "slug": "plugins-productivity",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar Seu Assistente a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Seu Assistente para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/productivity",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Gerente de Plugins",
+      "slug": "plugins-cowork-plugin-management",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Gerente de Plugins a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Gerente de Plugins para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/cowork-plugin-management",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "O Leitor",
+      "slug": "plugins-pdf-viewer",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar O Leitor a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de O Leitor para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/knowledge-work-plugins/tree/main/pdf-viewer",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "7 plugins do Claude Code que eu não entendo como ainda são grátis",
+      "slug": "7-plugins-claude-code",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 7 plugins do Claude Code que eu não entendo como ainda são grátis a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 7 plugins do Claude Code que eu não entendo como ainda são grátis para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Context7",
+      "slug": "mcps-context7",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência pública para a equipe avaliar Context7 a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Context7 para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/upstash/context7",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Integrações de IA",
+          "slug": "integracoes-ia"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Integração",
+          "slug": "integracao",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Playwright MCP",
+      "slug": "mcps-playwright-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência pública para a equipe avaliar Playwright MCP a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Playwright MCP para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/microsoft/playwright-mcp",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Integrações de IA",
+          "slug": "integracoes-ia"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Integração",
+          "slug": "integracao",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Agent Codex",
+      "slug": "plugins-codex-plugin-cc",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar Agent Codex a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Agent Codex para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/openai/codex-plugin-cc",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "DX — fonte oficial",
+      "slug": "plugins-dx-plugin",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar DX — fonte oficial a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de DX — fonte oficial para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/ykdojo/claude-code-tips",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Claude Security",
+      "slug": "plugins-security-guidance",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar Claude Security a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Claude Security para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/claude-code/tree/main/plugins/security-guidance",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Agora o Claude Code pode controlar seu iPhone",
+      "slug": "phone-harness-iphone-claude-codex",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar Agora o Claude Code pode controlar seu iPhone a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Agora o Claude Code pode controlar seu iPhone para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/ShawnPana/phone-harness",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Phone Harness",
+      "slug": "ferramentas-phone-harness",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Phone Harness a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Phone Harness para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/ShawnPana/phone-harness",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "As skills de web design que fazem o Claude parar de criar site genérico",
+      "slug": "skills-web-design-premium",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar As skills de web design que fazem o Claude parar de criar site genérico a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de As skills de web design que fazem o Claude parar de criar site genérico para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Como instalar o Muse Code, o agente de terminal da Meta",
+      "slug": "muse-code",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar Como instalar o Muse Code, o agente de terminal da Meta a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Como instalar o Muse Code, o agente de terminal da Meta para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://dev.meta.ai",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "dev.meta.ai",
+          "slug": "dev-meta-ai",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "claudedesignskills",
+      "slug": "skills-claudedesignskills",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar claudedesignskills a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de claudedesignskills para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/freshtechbro/claudedesignskills",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Web 3D Integration Patterns",
+      "slug": "skills-web3d-integration-patterns",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Web 3D Integration Patterns a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Web 3D Integration Patterns para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/freshtechbro/claudedesignskills/tree/main/.claude/skills/web3d-integration-patterns",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Three.js Game Skills",
+      "slug": "skills-three-js-game-skills",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Three.js Game Skills a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Three.js Game Skills para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/freshtechbro/claudedesignskills/tree/main/.claude/skills/three-js-game-skills",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Muse Code",
+      "slug": "ferramentas-muse-code",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Muse Code a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Muse Code para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://dev.meta.ai",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "dev.meta.ai",
+          "slug": "dev-meta-ai",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "6 skills do Claude Code tão boas que não deveriam ser grátis",
+      "slug": "6-skills-claude-code",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 6 skills do Claude Code tão boas que não deveriam ser grátis a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 6 skills do Claude Code tão boas que não deveriam ser grátis para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/amaancoderx/npxskillui",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Controle seu Claude Code pelo WhatsApp",
+      "slug": "claude-code-whatsapp",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar Controle seu Claude Code pelo WhatsApp a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Controle seu Claude Code pelo WhatsApp para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/Rich627/whatsapp-claude-plugin",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "SkillUI",
+      "slug": "skills-skillui",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar SkillUI a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de SkillUI para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/amaancoderx/npxskillui",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "RepoWise",
+      "slug": "skills-repowise",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar RepoWise a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de RepoWise para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/repowise-dev/repowise",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Reverse Skill",
+      "slug": "skills-reverse-skill",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Reverse Skill a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Reverse Skill para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/zhaoxuya520/reverse-skill",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Claude Code Settings",
+      "slug": "skills-claude-code-settings",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Claude Code Settings a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Claude Code Settings para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/feiskyer/claude-code-settings",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Skills Manage",
+      "slug": "skills-skills-manage",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Skills Manage a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Skills Manage para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/iamzhihuix/skills-manage",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "WhatsApp Claude Plugin",
+      "slug": "plugins-whatsapp-claude-plugin",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar WhatsApp Claude Plugin a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de WhatsApp Claude Plugin para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/Rich627/whatsapp-claude-plugin",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "5 skills para deixar seu SaaS vibe codado mais seguro",
+      "slug": "5-skills-seguranca-saas",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 5 skills para deixar seu SaaS vibe codado mais seguro a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 5 skills para deixar seu SaaS vibe codado mais seguro para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/Security-Phoenix-demo/security-skills-claude-code",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Open Design: o fim do Claude Design como você conhecia",
+      "slug": "open-design-claude",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar Open Design: o fim do Claude Design como você conhecia a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Open Design: o fim do Claude Design como você conhecia para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/nexu-io/open-design",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Security Skills for Claude Code",
+      "slug": "skills-security-skills-claude-code",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Security Skills for Claude Code a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Security Skills for Claude Code para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/Security-Phoenix-demo/security-skills-claude-code",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "OWASP Security",
+      "slug": "skills-owasp-security",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar OWASP Security a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de OWASP Security para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/agamm/claude-code-owasp",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Trail of Bits Security Skills",
+      "slug": "skills-trail-of-bits-security-skills",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Trail of Bits Security Skills a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Trail of Bits Security Skills para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/trailofbits/skills",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Claude Code Security Review",
+      "slug": "skills-claude-code-security-review",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Claude Code Security Review a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Claude Code Security Review para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/claude-code-security-review",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Codebase Audit",
+      "slug": "skills-codebase-audit",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Codebase Audit a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Codebase Audit para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://gist.github.com/nud3l/15468abc5c4ca7e4e0e38e5b120a7997",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "gist.github.com",
+          "slug": "gist-github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Open Design",
+      "slug": "ferramentas-open-design",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Open Design a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Open Design para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/nexu-io/open-design",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "5 ferramentas open source para Claude que quase ninguém usa",
+      "slug": "5-ferramentas-open-source-claude",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 5 ferramentas open source para Claude que quase ninguém usa a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 5 ferramentas open source para Claude que quase ninguém usa para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/oso95/scroll-world",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Scroll World",
+      "slug": "ferramentas-scroll-world",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Scroll World a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Scroll World para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/oso95/scroll-world",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Cognee",
+      "slug": "ferramentas-cognee",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Cognee a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Cognee para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/topoteretes/cognee",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "7 cursos gratuitos de IA para fortalecer seu currículo",
+      "slug": "7-cursos-gratuitos-ia-curriculo",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 7 cursos gratuitos de IA para fortalecer seu currículo a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 7 cursos gratuitos de IA para fortalecer seu currículo para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://aws.amazon.com/blogs/training-and-certification/learn-generative-ai-with-aws-cloud-quest-generative-ai-practitioner/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "aws.amazon.com",
+          "slug": "aws-amazon-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "AWS Cloud Quest: Generative AI Practitioner",
+      "slug": "cursos-aws-cloud-quest-generative-ai",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar AWS Cloud Quest: Generative AI Practitioner a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de AWS Cloud Quest: Generative AI Practitioner para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://aws.amazon.com/blogs/training-and-certification/learn-generative-ai-with-aws-cloud-quest-generative-ai-practitioner/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "aws.amazon.com",
+          "slug": "aws-amazon-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Microsoft Applied Skills: Create an AI Agent",
+      "slug": "cursos-microsoft-create-ai-agent",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar Microsoft Applied Skills: Create an AI Agent a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Microsoft Applied Skills: Create an AI Agent para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://learn.microsoft.com/en-us/credentials/applied-skills/create-an-ai-agent/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "learn.microsoft.com",
+          "slug": "learn-microsoft-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "IBM Artificial Intelligence Fundamentals",
+      "slug": "cursos-ibm-ai-fundamentals",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar IBM Artificial Intelligence Fundamentals a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de IBM Artificial Intelligence Fundamentals para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://skillsbuild.org/adult-learners/explore-learning/artificial-intelligence",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "skillsbuild.org",
+          "slug": "skillsbuild-org",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Google Machine Learning Crash Course",
+      "slug": "cursos-google-ml-crash-course",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar Google Machine Learning Crash Course a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Google Machine Learning Crash Course para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://developers.google.com/machine-learning/crash-course",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "developers.google.com",
+          "slug": "developers-google-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Cisco Introduction to Modern AI",
+      "slug": "cursos-cisco-intro-modern-ai",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar Cisco Introduction to Modern AI a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Cisco Introduction to Modern AI para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://skillsforall.com/catalog",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "skillsforall.com",
+          "slug": "skillsforall-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Google Learn AI for Web Developers",
+      "slug": "cursos-google-ai-web-developers",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar Google Learn AI for Web Developers a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Google Learn AI for Web Developers para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://developers.google.com/profile/badges/playlists/webdev/learn-ai",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "developers.google.com",
+          "slug": "developers-google-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Microsoft Develop a Generative AI Chat App",
+      "slug": "cursos-microsoft-generative-ai-chat-app",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar Microsoft Develop a Generative AI Chat App a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Microsoft Develop a Generative AI Chat App para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://learn.microsoft.com/en-us/credentials/applied-skills/build-a-generative-ai-chat-app/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "learn.microsoft.com",
+          "slug": "learn-microsoft-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Pare de pagar por software que você pode instalar de graça.",
+      "slug": "alternativas-open-source",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar Pare de pagar por software que você pode instalar de graça. a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Pare de pagar por software que você pode instalar de graça. para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://docs.postiz.com/quickstart",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "docs.postiz.com",
+          "slug": "docs-postiz-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Postiz",
+      "slug": "ferramentas-postiz-social",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Postiz a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Postiz para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://postiz.com",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "postiz.com",
+          "slug": "postiz-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Formbricks",
+      "slug": "ferramentas-formbricks",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Formbricks a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Formbricks para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://formbricks.com",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "formbricks.com",
+          "slug": "formbricks-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Documenso",
+      "slug": "ferramentas-documenso-assinatura",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Documenso a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Documenso para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://documenso.com",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "documenso.com",
+          "slug": "documenso-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Twenty",
+      "slug": "ferramentas-twenty",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Twenty a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Twenty para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://twenty.com",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "twenty.com",
+          "slug": "twenty-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Plane",
+      "slug": "ferramentas-plane",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Plane a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Plane para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://plane.so",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "plane.so",
+          "slug": "plane-so",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Listmonk",
+      "slug": "ferramentas-listmonk",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Listmonk a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Listmonk para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://listmonk.app",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "listmonk.app",
+          "slug": "listmonk-app",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Umami",
+      "slug": "ferramentas-umami",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Umami a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Umami para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://umami.is",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "umami.is",
+          "slug": "umami-is",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "OpenStatus",
+      "slug": "ferramentas-openstatus",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar OpenStatus a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de OpenStatus para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://www.openstatus.dev",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "openstatus.dev",
+          "slug": "openstatus-dev",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "12 coisas para instalar no Claude",
+      "slug": "12-coisas-para-instalar-no-claude",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 12 coisas para instalar no Claude a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 12 coisas para instalar no Claude para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/coreyhaines31/marketingskills",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Claude Code sem depender de uma só cota.",
+      "slug": "claude-code-omniroute",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar Claude Code sem depender de uma só cota. a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Claude Code sem depender de uma só cota. para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://youtu.be/razqHMAxLb4",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "youtu.be",
+          "slug": "youtu-be",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Seu agente está incompleto.",
+      "slug": "ferramentas-open-source-agentes",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar Seu agente está incompleto. a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Seu agente está incompleto. para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/rohitg00/agentmemory",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "marketing-skills",
+      "slug": "plugins-marketing-skills",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar marketing-skills a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de marketing-skills para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/coreyhaines31/marketingskills",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "social-media-skills",
+      "slug": "plugins-social-media-skills",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar social-media-skills a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de social-media-skills para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/charlie947/social-media-skills",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "gstack",
+      "slug": "plugins-gstack",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar gstack a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de gstack para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/garrytan/gstack",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "claude-skills",
+      "slug": "plugins-jeffallan-claude-skills",
+      "category": {
+        "name": "Plugins",
+        "slug": "plugins"
+      },
+      "itemType": "Plugin",
+      "summary": "Referência pública para a equipe avaliar claude-skills a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de claude-skills para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/jeffallan/claude-skills",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Agentes de código",
+          "slug": "agentes-codigo"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Plugin",
+          "slug": "plugin",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "frontend-design",
+      "slug": "skills-frontend-design-official",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar frontend-design a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de frontend-design para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "humanizer",
+      "slug": "skills-humanizer",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar humanizer a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de humanizer para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/blader/humanizer",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "ai-second-brain",
+      "slug": "skills-ai-second-brain",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar ai-second-brain a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de ai-second-brain para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/coleam00/second-brain-starter",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "hyperframes",
+      "slug": "skills-hyperframes-skill",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar hyperframes a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de hyperframes para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/heygen-com/hyperframes",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Notion MCP",
+      "slug": "mcps-notion-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência pública para a equipe avaliar Notion MCP a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Notion MCP para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Integrações de IA",
+          "slug": "integracoes-ia"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Integração",
+          "slug": "integracao",
+          "aliases": []
+        },
+        {
+          "name": "developers.notion.com",
+          "slug": "developers-notion-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Slack MCP",
+      "slug": "mcps-slack-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência pública para a equipe avaliar Slack MCP a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Slack MCP para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://docs.slack.dev/ai/slack-mcp-server/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Integrações de IA",
+          "slug": "integracoes-ia"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Integração",
+          "slug": "integracao",
+          "aliases": []
+        },
+        {
+          "name": "docs.slack.dev",
+          "slug": "docs-slack-dev",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Zapier MCP",
+      "slug": "mcps-zapier-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência pública para a equipe avaliar Zapier MCP a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Zapier MCP para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://docs.zapier.com/mcp/quickstart",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Integrações de IA",
+          "slug": "integracoes-ia"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Integração",
+          "slug": "integracao",
+          "aliases": []
+        },
+        {
+          "name": "docs.zapier.com",
+          "slug": "docs-zapier-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Higgsfield MCP",
+      "slug": "mcps-higgsfield-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência pública para a equipe avaliar Higgsfield MCP a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Higgsfield MCP para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://higgsfield.ai/mcp",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Integrações de IA",
+          "slug": "integracoes-ia"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Integração",
+          "slug": "integracao",
+          "aliases": []
+        },
+        {
+          "name": "higgsfield.ai",
+          "slug": "higgsfield-ai",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "OmniRoute",
+      "slug": "ferramentas-omniroute",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar OmniRoute a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de OmniRoute para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/diegosouzapw/OmniRoute",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Headroom",
+      "slug": "ferramentas-headroom",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Headroom a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Headroom para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/headroomlabs-ai/headroom",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "AIO Sandbox",
+      "slug": "ferramentas-aio-sandbox",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar AIO Sandbox a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de AIO Sandbox para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/agent-infra/sandbox",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Agent Scan",
+      "slug": "ferramentas-agent-scan",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Agent Scan a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Agent Scan para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/snyk/agent-scan",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Archon",
+      "slug": "ferramentas-archon",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Archon a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Archon para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/coleam00/Archon",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "AgentMemory",
+      "slug": "mcps-agentmemory",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência pública para a equipe avaliar AgentMemory a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de AgentMemory para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/rohitg00/agentmemory",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Integrações de IA",
+          "slug": "integracoes-ia"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Integração",
+          "slug": "integracao",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Serena",
+      "slug": "mcps-serena",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência pública para a equipe avaliar Serena a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Serena para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/oraios/serena",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Integrações de IA",
+          "slug": "integracoes-ia"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Integração",
+          "slug": "integracao",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "OpenChrome",
+      "slug": "mcps-openchrome",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência pública para a equipe avaliar OpenChrome a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de OpenChrome para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/shaun0927/openchrome",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Integrações de IA",
+          "slug": "integracoes-ia"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Integração",
+          "slug": "integracao",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "7 projetos que completam o Claude Code",
+      "slug": "7-projetos-claude-code",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 7 projetos que completam o Claude Code a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 7 projetos que completam o Claude Code para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/Panniantong/Agent-Reach",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Economize até R$1.000/mês com ferramentas self-hosted",
+      "slug": "selfhost",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar Economize até R$1.000/mês com ferramentas self-hosted a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Economize até R$1.000/mês com ferramentas self-hosted para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://www.zernflow.com/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "zernflow.com",
+          "slug": "zernflow-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "ZernFlow",
+      "slug": "ferramentas-zernflow",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar ZernFlow a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de ZernFlow para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://www.zernflow.com/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "zernflow.com",
+          "slug": "zernflow-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "SupoClip",
+      "slug": "ferramentas-supoclip",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar SupoClip a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de SupoClip para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/FujiwaraChoki/supoclip",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Notifuse",
+      "slug": "ferramentas-notifuse",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Notifuse a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Notifuse para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://www.notifuse.com/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "notifuse.com",
+          "slug": "notifuse-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "HeyForm",
+      "slug": "ferramentas-heyform",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar HeyForm a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de HeyForm para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://heyform.net/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "heyform.net",
+          "slug": "heyform-net",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "OpenPanel",
+      "slug": "ferramentas-openpanel",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar OpenPanel a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de OpenPanel para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://openpanel.dev/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "openpanel.dev",
+          "slug": "openpanel-dev",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Papermark",
+      "slug": "ferramentas-papermark",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Papermark a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Papermark para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://www.papermark.com/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "papermark.com",
+          "slug": "papermark-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Documenso",
+      "slug": "ferramentas-documenso",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Documenso a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Documenso para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://documenso.com/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "documenso.com",
+          "slug": "documenso-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Postiz",
+      "slug": "ferramentas-postiz",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Postiz a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Postiz para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://postiz.com/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "postiz.com",
+          "slug": "postiz-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "7 Certificados de IA que empresas realmente conhecem",
+      "slug": "7certificados",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 7 Certificados de IA que empresas realmente conhecem a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 7 Certificados de IA que empresas realmente conhecem para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://skillsbuild.org/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "skillsbuild.org",
+          "slug": "skillsbuild-org",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "IBM SkillsBuild",
+      "slug": "cursos-ibm-skillsbuild",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar IBM SkillsBuild a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de IBM SkillsBuild para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://skillsbuild.org/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "skillsbuild.org",
+          "slug": "skillsbuild-org",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "NVIDIA Deep Learning Institute",
+      "slug": "cursos-nvidia-dli",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar NVIDIA Deep Learning Institute a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de NVIDIA Deep Learning Institute para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://www.nvidia.com/en-us/training/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "nvidia.com",
+          "slug": "nvidia-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Microsoft Learn",
+      "slug": "cursos-microsoft-learn",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar Microsoft Learn a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Microsoft Learn para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://learn.microsoft.com/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "learn.microsoft.com",
+          "slug": "learn-microsoft-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Google Cloud Skills Boost",
+      "slug": "cursos-google-cloud-skills-boost",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar Google Cloud Skills Boost a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Google Cloud Skills Boost para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://www.cloudskillsboost.google/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "cloudskillsboost.google",
+          "slug": "cloudskillsboost-google",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Cisco Skills For All",
+      "slug": "cursos-cisco-skills-for-all",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar Cisco Skills For All a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Cisco Skills For All para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://skillsforall.com/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "skillsforall.com",
+          "slug": "skillsforall-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Intel AI Academy / Edge AI",
+      "slug": "cursos-intel-ai",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar Intel AI Academy / Edge AI a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Intel AI Academy / Edge AI para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/training/overview.html",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "intel.com",
+          "slug": "intel-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "AWS Educate / AWS Skill Builder",
+      "slug": "cursos-aws-educate-skill-builder",
+      "category": {
+        "name": "Cursos",
+        "slug": "cursos"
+      },
+      "itemType": "Curso",
+      "summary": "Referência pública para a equipe avaliar AWS Educate / AWS Skill Builder a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de AWS Educate / AWS Skill Builder para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://aws.amazon.com/education/awseducate/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Formação",
+          "slug": "formacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Aprendizado",
+          "slug": "aprendizado",
+          "aliases": []
+        },
+        {
+          "name": "aws.amazon.com",
+          "slug": "aws-amazon-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Como instalar Microsoft Clarity com IA",
+      "slug": "microsoft-clarity-ia",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar Como instalar Microsoft Clarity com IA a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Como instalar Microsoft Clarity com IA para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://clarity.microsoft.com/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "clarity.microsoft.com",
+          "slug": "clarity-microsoft-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "9 ferramentas de IA gratuitas que você nunca ouviu falar",
+      "slug": "9-ferramentas-ia",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 9 ferramentas de IA gratuitas que você nunca ouviu falar a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 9 ferramentas de IA gratuitas que você nunca ouviu falar para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/msitarzewski/agency-agents",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "5 Skills de Design para Claude Code",
+      "slug": "skills-design-claude-code",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar 5 Skills de Design para Claude Code a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de 5 Skills de Design para Claude Code para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://claude.com/plugins/frontend-design",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "claude.com",
+          "slug": "claude-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "As melhores skills do Claude Code para animação",
+      "slug": "skills-animacao-claude-code",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-referencias"
+      },
+      "itemType": "Referência",
+      "summary": "Referência pública para a equipe avaliar As melhores skills do Claude Code para animação a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de As melhores skills do Claude Code para animação para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/CloudAI-X/threejs-skills",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Referência",
+          "slug": "referencia",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Frontend Design",
+      "slug": "skills-frontend-design",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Frontend Design a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Frontend Design para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://claude.com/plugins/frontend-design",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "claude.com",
+          "slug": "claude-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Impeccable",
+      "slug": "skills-impeccable",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Impeccable a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Impeccable para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/pbakaus/impeccable",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "UI UX Pro Max",
+      "slug": "skills-ui-ux-pro-max",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar UI UX Pro Max a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de UI UX Pro Max para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://ui-ux-pro-max-skill.nextlevelbuilder.io/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "ui-ux-pro-max-skill.nextlevelbuilder.io",
+          "slug": "ui-ux-pro-max-skill-nextlevelbuilder-io",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Web Design Guidelines",
+      "slug": "skills-web-design-guidelines",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Web Design Guidelines a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Web Design Guidelines para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Astryx",
+      "slug": "skills-astryx",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Astryx a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Astryx para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/facebook/astryx",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Three.js Skills",
+      "slug": "skills-threejs-skills",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Three.js Skills a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Three.js Skills para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/CloudAI-X/threejs-skills",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "GSAP Skills",
+      "slug": "skills-gsap-skills",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar GSAP Skills a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de GSAP Skills para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/greensock/gsap-skills",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Design DNA",
+      "slug": "skills-design-dna",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Design DNA a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Design DNA para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/zanwei/design-dna",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Motion Design Skill",
+      "slug": "skills-motion-design-skill",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Motion Design Skill a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Motion Design Skill para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/lottiefiles/motion-design-skill",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Genjutsu",
+      "slug": "skills-genjutsu",
+      "category": {
+        "name": "Skills",
+        "slug": "skills"
+      },
+      "itemType": "Skill",
+      "summary": "Referência pública para a equipe avaliar Genjutsu a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Genjutsu para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/AThevon/genjutsu",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Automação",
+          "slug": "automacao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Skill",
+          "slug": "skill",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Agency Agents",
+      "slug": "ferramentas-agency-agents",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Agency Agents a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Agency Agents para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/msitarzewski/agency-agents",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Agent Reach",
+      "slug": "ferramentas-agent-reach",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Agent Reach a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Agent Reach para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/Panniantong/agent-reach",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "LibreChat",
+      "slug": "ferramentas-librechat",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar LibreChat a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de LibreChat para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://www.librechat.ai/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "librechat.ai",
+          "slug": "librechat-ai",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Open Higgsfield AI",
+      "slug": "ferramentas-open-higgsfield-ai",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Open Higgsfield AI a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Open Higgsfield AI para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/sunnychase/open-higgsfield-ai",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Agentic Inbox",
+      "slug": "ferramentas-agentic-inbox",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Agentic Inbox a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Agentic Inbox para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/cloudflare/agentic-inbox",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Voicebox",
+      "slug": "ferramentas-voicebox",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Voicebox a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Voicebox para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://voicebox.sh/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "voicebox.sh",
+          "slug": "voicebox-sh",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Shepherd",
+      "slug": "ferramentas-shepherd",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Shepherd a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Shepherd para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/shepherd-agents/shepherd",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Open-LLM-VTuber",
+      "slug": "ferramentas-open-llm-vtuber",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Open-LLM-VTuber a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Open-LLM-VTuber para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/Open-LLM-VTuber/Open-LLM-VTuber",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Hyperframes",
+      "slug": "ferramentas-hyperframes",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Referência pública para a equipe avaliar Hyperframes a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Hyperframes para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://github.com/heygen-com/hyperframes",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Desenvolvimento",
+          "slug": "desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Ferramenta",
+          "slug": "ferramenta",
+          "aliases": []
+        },
+        {
+          "name": "github.com",
+          "slug": "github-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Microsoft Clarity com IA",
+      "slug": "tutoriais-microsoft-clarity-com-ia",
+      "category": {
+        "name": "Tutoriais",
+        "slug": "tutoriais"
+      },
+      "itemType": "Tutorial",
+      "summary": "Referência pública para a equipe avaliar Microsoft Clarity com IA a partir da fonte original do projeto ou serviço.",
+      "ownContent": "Este registro organiza a fonte pública de Microsoft Clarity com IA para a equipe. Use-o como ponto de partida para conferir documentação, compatibilidade, licença e processo de adoção antes de incluir a solução em um projeto.",
+      "officialUrl": "https://clarity.microsoft.com/",
+      "instructions": "Abra a fonte oficial, leia a documentação atual e siga somente as instruções do mantenedor. Antes de aplicar em produção, valide o fluxo em ambiente controlado e registre a decisão técnica.",
+      "topics": [
+        {
+          "name": "Boas práticas",
+          "slug": "boas-praticas"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Tutorial",
+          "slug": "tutorial",
+          "aliases": []
+        },
+        {
+          "name": "clarity.microsoft.com",
+          "slug": "clarity-microsoft-com",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Link público coletado da página liberada pelo usuário e classificado para a biblioteca; texto escrito originalmente para o Setup Vencedor."
+    }
+  ]
 }

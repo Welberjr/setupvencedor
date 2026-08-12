@@ -9,6 +9,7 @@ export type CatalogItem = {
   summary: string
   ownContent: string
   officialUrl: string
+  sourceUrls: string[]
   instructions: string
   status: CatalogItemStatus
   visibility: CatalogItemVisibility
