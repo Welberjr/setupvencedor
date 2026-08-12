@@ -11,14 +11,33 @@ function Bootstrap() {
   useEffect(() => {
     const supabase = getSupabaseClient()
     if (!supabase) { setIsLoading(false); return }
-    const hydrate = async (next: typeof supabase.auth extends never ? never : Awaited<ReturnType<typeof supabase.auth.getSession>>['data']['session']) => {
+    let active = true
+    const finishLoading = () => { if (active) setIsLoading(false) }
+    const hydrate = async (next: Awaited<ReturnType<typeof supabase.auth.getSession>>['data']['session']) => {
       if (!next) { setSession(null); return }
-      const { data: roles } = await supabase.from('user_roles').select('role').eq('user_id', next.user.id)
+      const { data: roles, error } = await supabase.from('user_roles').select('role').eq('user_id', next.user.id)
+      if (error) throw error
       setSession({ user: { id: next.user.id, email: next.user.email ?? '' }, roles: (roles ?? []).map((row) => row.role as Role) })
     }
-    supabase.auth.getSession().then(async ({ data }) => { await hydrate(data.session); setIsLoading(false) })
-    const { data: listener } = supabase.auth.onAuthStateChange(async (_event, next) => hydrate(next))
-    return () => listener.subscription.unsubscribe()
+    const loadingTimeout = window.setTimeout(() => {
+      finishLoading()
+    }, 3500)
+    void (async () => {
+      try {
+        const { data, error } = await supabase.auth.getSession()
+        if (error) throw error
+        await hydrate(data.session)
+      } catch {
+        setSession(null)
+      } finally {
+        window.clearTimeout(loadingTimeout)
+        finishLoading()
+      }
+    })()
+    const { data: listener } = supabase.auth.onAuthStateChange(async (_event, next) => {
+      try { await hydrate(next) } catch { setSession(null) } finally { finishLoading() }
+    })
+    return () => { active = false; window.clearTimeout(loadingTimeout); listener.subscription.unsubscribe() }
   }, [])
   if (isLoading) return <main className="app-shell"><p className="eyebrow">CARREGANDO ACESSO SEGURO</p></main>
   return <App session={session} />
