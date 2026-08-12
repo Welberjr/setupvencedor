@@ -116,7 +116,9 @@ export default {
         const roles = (invitation.roles as string[]).map((role) => ({ user_id: userId, role }))
         const { error: roleError } = await supabase.from('user_roles').upsert(roles, { onConflict: 'user_id,role', ignoreDuplicates: true })
         if (roleError) throw new Error('roles_not_created')
-        const { error: acceptanceError } = await supabase.from('invitations').update({ state: 'accepted', accepted_at: now, accepted_by: userId }).eq('id', invitation.id).eq('state', 'claimed')
+        // The database invariant records `claimed_at` only while the invitation is
+        // in the transient claimed state. Clear it as the invitation becomes accepted.
+        const { error: acceptanceError } = await supabase.from('invitations').update({ state: 'accepted', claimed_at: null, accepted_at: now, accepted_by: userId }).eq('id', invitation.id).eq('state', 'claimed')
         if (acceptanceError) throw new Error('invitation_not_accepted')
         await supabase.from('audit_events').insert({ actor_id: userId, target_user_id: userId, invitation_id: invitation.id, event_type: 'invitation.accepted' })
         return json({ ok: true }, { status: 201 })
