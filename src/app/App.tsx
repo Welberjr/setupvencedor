@@ -1,10 +1,21 @@
 import { useMemo, useState } from 'react'
 import { FavoriteButton } from '../features/catalog/FavoriteButton'
 import { sampleCatalog } from '../features/catalog/catalog-data'
+import { LoginForm } from '../features/auth/LoginForm'
+import { getSupabaseClient } from '../lib/supabase/client'
 
 type Session = { user: { id: string; email: string } } | null
 
 export function App({ session = null }: { session?: Session }) {
+  if (!session) {
+    return <main className="app-shell"><LoginForm onLogin={async (email, password) => {
+      const supabase = getSupabaseClient()
+      if (!supabase) throw new Error('supabase_not_configured')
+      const { error } = await supabase.auth.signInWithPassword({ email, password })
+      if (error) throw error
+      window.location.reload()
+    }} /></main>
+  }
   const [query, setQuery] = useState('')
   const [page, setPage] = useState<'explore' | 'assistant' | 'favorites' | 'support'>('explore')
   const results = useMemo(() => {
