@@ -3,6 +3,7 @@ import { FavoriteButton } from '../features/catalog/FavoriteButton'
 import { sampleCatalog } from '../features/catalog/catalog-data'
 import { LoginForm } from '../features/auth/LoginForm'
 import { getSupabaseClient } from '../lib/supabase/client'
+import { TicketForm } from '../features/support/TicketForm'
 
 type Session = { user: { id: string; email: string } } | null
 
@@ -42,7 +43,12 @@ export function App({ session = null }: { session?: Session }) {
       </section> : null}
       {page === 'assistant' ? <section className="hero"><p className="eyebrow">ASSISTENTE DO ACERVO</p><h1>Diga o que você quer resolver.</h1><p>O assistente encontra itens por tema, tags e problema resolvido, sem inventar respostas.</p></section> : null}
       {page === 'favorites' ? <section className="hero"><p className="eyebrow">SEUS FAVORITOS</p><h1>Seu atalho para o que importa.</h1><p>Os itens salvos ficam sincronizados com a sua conta quando o Supabase for conectado.</p></section> : null}
-      {page === 'support' ? <section className="hero"><p className="eyebrow">SUPORTE</p><h1>Precisando de uma mão?</h1><p>Abra um chamado de acesso, dúvida, bug ou sugestão e acompanhe a resposta aqui.</p><button className="primary">Abrir chamado</button></section> : null}
+      {page === 'support' ? <section className="hero"><p className="eyebrow">SUPORTE</p><h1>Precisando de uma mão?</h1><p>Abra um chamado de acesso, dúvida, bug ou sugestão e acompanhe a resposta aqui.</p><TicketForm onCreate={async (ticket) => {
+        const supabase = getSupabaseClient()
+        if (!supabase) return
+        const { data: created } = await supabase.from('support_tickets').insert({ requester_id: session.user.id, subject: ticket.subject, type: ticket.type }).select('id').single()
+        if (created) await supabase.from('support_messages').insert({ ticket_id: created.id, author_id: session.user.id, body: ticket.body })
+      }} /></section> : null}
     </main>
   )
 }
