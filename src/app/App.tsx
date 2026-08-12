@@ -4,10 +4,12 @@ import { sampleCatalog } from '../features/catalog/catalog-data'
 import { LoginForm } from '../features/auth/LoginForm'
 import { getSupabaseClient } from '../lib/supabase/client'
 import { TicketForm } from '../features/support/TicketForm'
+import { ActivateInvitePage } from '../features/auth/ActivateInvitePage'
 
 type Session = { user: { id: string; email: string } } | null
 
 export function App({ session = null }: { session?: Session }) {
+  if (window.location.pathname === '/ativar') return <ActivateInvitePage />
   if (!session) {
     return <main className="app-shell"><LoginForm onLogin={async (email, password) => {
       const supabase = getSupabaseClient()
@@ -15,6 +17,11 @@ export function App({ session = null }: { session?: Session }) {
       const { error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) throw error
       window.location.reload()
+    }} onForgotPassword={async (email) => {
+      const supabase = getSupabaseClient()
+      if (!supabase) throw new Error('supabase_not_configured')
+      const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/redefinir-senha` })
+      if (error) throw error
     }} /></main>
   }
   const [query, setQuery] = useState('')

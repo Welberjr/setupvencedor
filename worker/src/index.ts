@@ -7,7 +7,7 @@ type InviteInput = { email: string; recipientName: string; jobTitle?: string; ro
 type ActivateInput = { token: string; password: string }
 
 function json(data: unknown, init: ResponseInit = {}): Response {
-  return Response.json(data, { ...init, headers: { 'cache-control': 'no-store', ...(init.headers ?? {}) } })
+  return Response.json(data, { ...init, headers: { 'cache-control': 'no-store', 'access-control-allow-origin': 'https://setup-vencedor.pages.dev', 'access-control-allow-headers': 'authorization,content-type', ...(init.headers ?? {}) } })
 }
 
 function tokenFrom(request: Request): string | null {
@@ -59,6 +59,7 @@ async function getInviteByToken(token: string, env: Env) {
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+    if (request.method === 'OPTIONS') return new Response(null, { headers: { 'access-control-allow-origin': 'https://setup-vencedor.pages.dev', 'access-control-allow-headers': 'authorization,content-type', 'access-control-allow-methods': 'POST,OPTIONS' } })
     if (new URL(request.url).pathname === '/health') return Response.json({ ok: true })
     if (request.method === 'POST' && new URL(request.url).pathname === '/mcp') return mcpResponse(request, env)
     if (request.method === 'POST' && new URL(request.url).pathname === '/v1/invitations') {
