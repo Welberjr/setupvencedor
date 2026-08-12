@@ -5,8 +5,10 @@ import { LoginForm } from '../features/auth/LoginForm'
 import { getSupabaseClient } from '../lib/supabase/client'
 import { TicketForm } from '../features/support/TicketForm'
 import { ActivateInvitePage } from '../features/auth/ActivateInvitePage'
+import { InviteForm } from '../features/admin/InviteForm'
+import { hasAnyRole, type Role } from '../lib/roles'
 
-type Session = { user: { id: string; email: string } } | null
+type Session = { user: { id: string; email: string }; roles?: Role[] } | null
 
 export function App({ session = null }: { session?: Session }) {
   if (window.location.pathname === '/ativar') return <ActivateInvitePage />
@@ -25,7 +27,7 @@ export function App({ session = null }: { session?: Session }) {
     }} /></main>
   }
   const [query, setQuery] = useState('')
-  const [page, setPage] = useState<'explore' | 'assistant' | 'favorites' | 'support'>('explore')
+  const [page, setPage] = useState<'explore' | 'assistant' | 'favorites' | 'support' | 'admin'>('explore')
   const results = useMemo(() => {
     const normalized = query.toLowerCase().trim()
     return normalized ? sampleCatalog.filter((item) => `${item.title} ${item.summary} ${item.tags.join(' ')} ${item.topics.join(' ')}`.toLowerCase().includes(normalized)) : sampleCatalog
@@ -41,6 +43,7 @@ export function App({ session = null }: { session?: Session }) {
         <button onClick={() => setPage('assistant')}>Assistente</button>
         <button onClick={() => setPage('favorites')}>Favoritos</button>
         <button onClick={() => setPage('support')}>Suporte</button>
+        {hasAnyRole(session.roles ?? [], ['admin', 'manager', 'editor']) ? <button onClick={() => setPage('admin')}>Administração</button> : null}
       </nav>
       {page === 'explore' ? <section className="hero">
         <p className="eyebrow">CENTRAL DE CONHECIMENTO</p>
@@ -56,6 +59,7 @@ export function App({ session = null }: { session?: Session }) {
         const { data: created } = await supabase.from('support_tickets').insert({ requester_id: session.user.id, subject: ticket.subject, type: ticket.type }).select('id').single()
         if (created) await supabase.from('support_messages').insert({ ticket_id: created.id, author_id: session.user.id, body: ticket.body })
       }} /></section> : null}
+      {page === 'admin' && hasAnyRole(session.roles ?? [], ['admin', 'manager', 'editor']) ? <section className="hero"><p className="eyebrow">ADMINISTRAÇÃO</p><h1>Controle da equipe e do acervo.</h1><div className="admin-grid"><article className="catalog-card"><p className="eyebrow">PAPÉIS ATIVOS</p><h2>{(session.roles ?? []).join(' · ') || 'member'}</h2><p>Use a prévia de perfil quando a gestão de papéis estiver conectada ao catálogo real.</p></article><article className="catalog-card"><p className="eyebrow">SUPORTE</p><h2>Painel de atendimento</h2><p>Chamados abertos, respondidos, fechados e finalizados ficam protegidos pelas regras de acesso no Supabase.</p></article></div>{hasAnyRole(session.roles ?? [], ['admin']) ? <InviteForm /> : null}</section> : null}
     </main>
   )
 }
