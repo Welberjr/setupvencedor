@@ -1,0 +1,21 @@
+:root { color: #f4f7ff; background: #07090f; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: radial-gradient(circle at 20% -10%, #183bff50, transparent 36rem), #07090f; }
+.app-shell { min-height: 100vh; max-width: 1200px; margin: auto; padding: 1.5rem; }
+.app-header, .main-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.brand { color: #fff; font-weight: 800; letter-spacing: -0.04em; text-decoration: none; }
+.identity, .eyebrow { color: #9ca9c9; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+.main-nav { justify-content: flex-start; margin-top: 4rem; border-bottom: 1px solid #273047; padding-bottom: .75rem; }
+.main-nav button { color: #c6d0ea; border: 0; background: transparent; cursor: pointer; font: inherit; padding: .4rem .65rem; }
+.hero { padding: 8rem 0; max-width: 780px; }
+h1 { font-size: clamp(3rem, 9vw, 7rem); line-height: .9; letter-spacing: -.075em; margin: .5rem 0; }
+.search { display: grid; gap: .5rem; margin-top: 3rem; color: #c6d0ea; max-width: 720px; }
+.search input { border: 1px solid #2b3859; background: #101622cc; color: #f4f7ff; border-radius: 14px; padding: 1rem; font: inherit; }
+.catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem; max-width: 1060px; }
+.catalog-card { border: 1px solid #263251; background: linear-gradient(145deg, #121a2b99, #0d111bbb); border-radius: 18px; padding: 1.25rem; display: grid; gap: .85rem; }
+.catalog-card h2 { margin: 0; font-size: 1.35rem; }.catalog-card p { color: #bdc8e3; margin: 0; line-height: 1.5; }.catalog-card a { color: #88a1ff; font-weight: 700; }
+.tag-row { display: flex; flex-wrap: wrap; gap: .4rem; }.tag-row span { font-size: .78rem; color: #b9c7ff; background: #1d2b55; padding: .25rem .5rem; border-radius: 99px; }
+.favorite, .primary { border: 1px solid #4969f8; color: #dce4ff; border-radius: 10px; background: #15204a; padding: .65rem .85rem; width: fit-content; cursor: pointer; font: inherit; }.favorite.active, .primary { background: #315cff; color: #fff; }
+.auth-form { display: grid; gap: 1rem; max-width: 420px; margin: 12vh auto; padding: 2rem; border: 1px solid #2a375a; border-radius: 20px; background: #101622d9; }.auth-form h1 { font-size: clamp(2.4rem, 5vw, 4rem); }.auth-form label { display: grid; gap: .45rem; color: #c6d0ea; }.auth-form input { border: 1px solid #2b3859; background: #07090f; color: #fff; padding: .8rem; border-radius: 10px; font: inherit; }.auth-form [role=alert] { color: #ff9e9e; margin: 0; }.link-button { border: 0; background: transparent; color: #9bb0ff; padding: 0; width: fit-content; font: inherit; cursor: pointer; }
+.ticket-form { display: grid; gap: 1rem; max-width: 700px; margin-top: 2rem; }.ticket-form label { color: #c6d0ea; display: grid; gap: .45rem; }.ticket-form input, .ticket-form select, .ticket-form textarea { border: 1px solid #2b3859; background: #101622; color: white; padding: .8rem; border-radius: 10px; font: inherit; }.ticket-form textarea { min-height: 150px; resize: vertical; }
+.ticket-form.compact { max-width: 480px; padding: 1.25rem; border: 1px solid #2a375a; border-radius: 16px; background: #10162299; }.admin-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 1rem; max-width: 760px; margin-top: 2rem; }
