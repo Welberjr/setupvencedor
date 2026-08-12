@@ -21,12 +21,7 @@ async function requireAdmin(request: Request, env: Env) {
   const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY)
   const { data, error } = await supabase.auth.getUser(token)
   if (error || !data.user) throw new Error('unauthorized')
-  const { data: role, error: roleError } = await supabase
-    .from('user_roles')
-    .select('role')
-    .eq('user_id', data.user.id)
-    .eq('role', 'admin')
-    .maybeSingle()
+  const { data: role, error: roleError } = await supabase.from('user_roles').select('role').eq('user_id', data.user.id).eq('role', 'admin').maybeSingle()
   if (roleError || !role) throw new Error('forbidden')
   return { supabase, userId: data.user.id }
 }
@@ -35,12 +30,9 @@ async function sendInviteEmail(env: Env, recipient: InviteInput, token: string) 
   if (!env.RESEND_API_KEY || !env.EMAIL_FROM || !env.APP_URL) return
   const url = `${env.APP_URL.replace(/\/$/, '')}/ativar?token=${encodeURIComponent(token)}`
   const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
+    method: 'POST', headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
     body: JSON.stringify({
-      from: env.EMAIL_FROM,
-      to: recipient.email,
-      subject: 'Seu acesso ao Setup Vencedor',
+      from: env.EMAIL_FROM, to: recipient.email, subject: 'Seu acesso ao Setup Vencedor',
       html: `<main style="background:#07090f;color:#f4f7ff;padding:40px;font-family:Arial,sans-serif"><p style="color:#93a1c6;letter-spacing:.12em">SETUP VENCEDOR</p><h1>Seu acesso está pronto.</h1><p>Olá, ${recipient.recipientName}. Crie sua senha para entrar na central de conhecimento da equipe.</p><p><a href="${url}" style="display:inline-block;background:#315cff;color:white;padding:14px 20px;border-radius:12px;text-decoration:none">Criar meu acesso</a></p><p style="color:#93a1c6">Este link expira em 72 horas e só funciona para ${recipient.email}.</p></main>`,
     }),
   })
@@ -60,26 +52,17 @@ async function getInviteByToken(token: string, env: Env) {
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     if (request.method === 'OPTIONS') return new Response(null, { headers: { 'access-control-allow-origin': 'https://setup-vencedor.pages.dev', 'access-control-allow-headers': 'authorization,content-type', 'access-control-allow-methods': 'POST,OPTIONS' } })
-    if (new URL(request.url).pathname === '/health') return Response.json({ ok: true })
-    if (request.method === 'POST' && new URL(request.url).pathname === '/mcp') return mcpResponse(request, env)
-    if (request.method === 'POST' && new URL(request.url).pathname === '/v1/invitations') {
+    const path = new URL(request.url).pathname
+    if (path === '/health') return Response.json({ ok: true })
+    if (request.method === 'POST' && path === '/mcp') return mcpResponse(request, env)
+    if (request.method === 'POST' && path === '/v1/invitations') {
       try {
         const { supabase, userId } = await requireAdmin(request, env)
         const input = (await request.json()) as InviteInput
         const email = normalizeEmail(input.email)
-        if (!input.recipientName?.trim() || !Array.isArray(input.roles) || input.roles.length === 0) {
-          return json({ error: 'invalid_invitation' }, { status: 400 })
-        }
+        if (!input.recipientName?.trim() || !Array.isArray(input.roles) || input.roles.length === 0) return json({ error: 'invalid_invitation' }, { status: 400 })
         const token = createInviteToken()
-        const { error } = await supabase.from('invitations').insert({
-          email_normalized: email,
-          recipient_name: input.recipientName.trim(),
-          job_title: input.jobTitle?.trim() || null,
-          roles: input.roles,
-          token_hash: await sha256(token),
-          expires_at: new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString(),
-          created_by: userId,
-        })
+        const { error } = await supabase.from('invitations').insert({ email_normalized: email, recipient_name: input.recipientName.trim(), job_title: input.jobTitle?.trim() || null, roles: input.roles, token_hash: await sha256(token), expires_at: new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString(), created_by: userId })
         if (error) return json({ error: 'invitation_not_created' }, { status: 409 })
         await sendInviteEmail(env, { ...input, email }, token)
         return json({ ok: true }, { status: 201 })
@@ -88,14 +71,14 @@ export default {
         return json({ error: code }, { status: code === 'unauthorized' ? 401 : code === 'forbidden' ? 403 : 500 })
       }
     }
-    if (request.method === 'POST' && new URL(request.url).pathname === '/v1/invitations/validate') {
+    if (request.method === 'POST' && path === '/v1/invitations/validate') {
       const input = (await request.json()) as { token?: string }
       if (!input.token) return json({ error: 'invalid_invitation' }, { status: 400 })
       const invitation = await getInviteByToken(input.token, env)
       if (!invitation) return json({ error: 'invalid_or_expired_invitation' }, { status: 404 })
       return json({ email: invitation.email_normalized, recipientName: invitation.recipient_name })
     }
-    if (request.method === 'POST' && new URL(request.url).pathname === '/v1/invitations/activate') {
+    if (request.method === 'POST' && path === '/v1/invitations/activate') {
       try {
         const input = (await request.json()) as ActivateInput
         if (!input.token || !validPassword(input.password)) return json({ error: 'invalid_activation' }, { status: 400 })
@@ -105,10 +88,7 @@ export default {
         const invitation = Array.isArray(claimed) ? claimed[0] : null
         if (claimError || !invitation) return json({ error: 'invalid_or_expired_invitation' }, { status: 409 })
         const { data: created, error: createError } = await supabase.auth.admin.createUser({ email: invitation.email_normalized, password: input.password, email_confirm: true, user_metadata: { full_name: invitation.recipient_name } })
-        if (createError || !created.user) {
-          await supabase.from('invitations').update({ state: 'pending', claimed_at: null }).eq('id', invitation.id).eq('state', 'claimed')
-          return json({ error: 'activation_not_completed' }, { status: 409 })
-        }
+        if (createError || !created.user) { await supabase.from('invitations').update({ state: 'pending', claimed_at: null }).eq('id', invitation.id).eq('state', 'claimed'); return json({ error: 'activation_not_completed' }, { status: 409 }) }
         const userId = created.user.id
         const now = new Date().toISOString()
         const { error: profileError } = await supabase.from('profiles').upsert({ id: userId, email_normalized: invitation.email_normalized, full_name: invitation.recipient_name, job_title: invitation.job_title, state: 'active', activated_at: now }, { onConflict: 'id' })
@@ -116,15 +96,11 @@ export default {
         const roles = (invitation.roles as string[]).map((role) => ({ user_id: userId, role }))
         const { error: roleError } = await supabase.from('user_roles').upsert(roles, { onConflict: 'user_id,role', ignoreDuplicates: true })
         if (roleError) throw new Error('roles_not_created')
-        // The database invariant records `claimed_at` only while the invitation is
-        // in the transient claimed state. Clear it as the invitation becomes accepted.
         const { error: acceptanceError } = await supabase.from('invitations').update({ state: 'accepted', claimed_at: null, accepted_at: now, accepted_by: userId }).eq('id', invitation.id).eq('state', 'claimed')
         if (acceptanceError) throw new Error('invitation_not_accepted')
         await supabase.from('audit_events').insert({ actor_id: userId, target_user_id: userId, invitation_id: invitation.id, event_type: 'invitation.accepted' })
         return json({ ok: true }, { status: 201 })
-      } catch {
-        return json({ error: 'activation_not_completed' }, { status: 500 })
-      }
+      } catch { return json({ error: 'activation_not_completed' }, { status: 500 }) }
     }
     return Response.json({ error: 'not_found' }, { status: 404 })
   },

@@ -32,3 +32,10 @@ it('filters the catalog by a discovery niche', async () => {
 
   expect(screen.getByText(/itens em mcps/i)).toBeInTheDocument()
 })
+
+it('shows catalog pagination with the current page status', () => {
+  render(<App session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
+
+  expect(screen.getByRole('navigation', { name: 'Paginação do acervo' })).toBeInTheDocument()
+  expect(screen.getByText(/Página 1 de 1/)).toBeInTheDocument()
+})
