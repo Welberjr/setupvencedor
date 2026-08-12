@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { workerUrl } from '../../lib/api/worker'
 import type { Role } from '../../lib/roles'
+import { getSupabaseClient } from '../../lib/supabase/client'
 
 export function InviteForm() {
   const [email, setEmail] = useState('')
@@ -9,7 +10,9 @@ export function InviteForm() {
   const [message, setMessage] = useState('')
   async function submit(event: FormEvent) {
     event.preventDefault()
-    const { data: { session } } = await (await import('../../lib/supabase/client')).getSupabaseClient()!.auth.getSession()
+    const client = getSupabaseClient()
+    if (!client) { setMessage('A conexão segura ainda não está configurada.'); return }
+    const { data: { session } } = await client.auth.getSession()
     if (!session) { setMessage('Sua sessão expirou. Entre novamente.'); return }
     const response = await fetch(workerUrl('/v1/invitations'), { method: 'POST', headers: { authorization: `Bearer ${session.access_token}`, 'content-type': 'application/json' }, body: JSON.stringify({ email, recipientName: name, roles: [role] }) })
     setMessage(response.ok ? 'Convite criado. Ele será enviado quando o remetente Resend estiver verificado.' : 'Não foi possível criar esse convite.')

@@ -5,6 +5,7 @@ import { LoginForm } from '../features/auth/LoginForm'
 import { getSupabaseClient } from '../lib/supabase/client'
 import { TicketForm } from '../features/support/TicketForm'
 import { ActivateInvitePage } from '../features/auth/ActivateInvitePage'
+import { ResetPasswordPage } from '../features/auth/ResetPasswordPage'
 import { InviteForm } from '../features/admin/InviteForm'
 import { hasAnyRole, type Role } from '../lib/roles'
 
@@ -12,6 +13,7 @@ type Session = { user: { id: string; email: string }; roles?: Role[] } | null
 
 export function App({ session = null }: { session?: Session }) {
   if (window.location.pathname === '/ativar') return <ActivateInvitePage />
+  if (window.location.pathname === '/redefinir-senha') return <ResetPasswordPage />
   if (!session) {
     return <main className="app-shell"><LoginForm onLogin={async (email, password) => {
       const supabase = getSupabaseClient()
