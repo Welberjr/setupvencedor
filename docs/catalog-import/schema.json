@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Setup Vencedor public catalog import",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "items"],
+  "properties": {
+    "version": { "const": 1 },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "slug", "category", "itemType", "summary", "ownContent", "officialUrl", "instructions", "sourceCheckedAt", "sourceNote"],
+        "properties": {
+          "title": { "type": "string", "minLength": 3, "maxLength": 160 },
+          "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "category": { "$ref": "#/$defs/taxonomy" },
+          "itemType": { "type": "string", "minLength": 2, "maxLength": 60 },
+          "summary": { "type": "string", "minLength": 20, "maxLength": 500 },
+          "ownContent": { "type": "string", "minLength": 20, "maxLength": 20000 },
+          "officialUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
+          "instructions": { "type": "string", "minLength": 10, "maxLength": 10000 },
+          "topics": { "type": "array", "items": { "$ref": "#/$defs/taxonomy" }, "default": [] },
+          "tags": { "type": "array", "items": { "$ref": "#/$defs/tag" }, "default": [] },
+          "sourceCheckedAt": { "type": "string", "format": "date" },
+          "sourceNote": { "type": "string", "minLength": 10, "maxLength": 500 }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "taxonomy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "slug"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+      }
+    },
+    "tag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "slug"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "aliases": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 80 }, "default": [] }
+      }
+    }
+  }
+}

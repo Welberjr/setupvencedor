@@ -1,0 +1,797 @@
+﻿[
+    {
+        "url":  "https://aws.amazon.com/blogs/training-and-certification/learn-generative-ai-with-aws-cloud-quest-generative-ai-practitioner/",
+        "count":  2,
+        "titles":  "7 cursos gratuitos de IA para fortalecer seu currÃ­culo | AWS Cloud Quest: Generative AI Practitioner"
+    },
+    {
+        "url":  "https://aws.amazon.com/education/awseducate/",
+        "count":  2,
+        "titles":  "7 Certificados de IA que empresas realmente conhecem | AWS Educate / AWS Skill Builder"
+    },
+    {
+        "url":  "https://clarity.microsoft.com/",
+        "count":  2,
+        "titles":  "Como instalar Microsoft Clarity com IA | Microsoft Clarity com IA"
+    },
+    {
+        "url":  "https://claude.com/blog/improving-frontend-design-through-skills",
+        "count":  2,
+        "titles":  "5 Skills de Design para Claude Code | Frontend Design"
+    },
+    {
+        "url":  "https://claude.com/docs/cowork/guide/plugins",
+        "count":  1,
+        "titles":  "17 plugins oficiais da Anthropic"
+    },
+    {
+        "url":  "https://claude.com/docs/plugins/overview",
+        "count":  1,
+        "titles":  "17 plugins oficiais da Anthropic"
+    },
+    {
+        "url":  "https://claude.com/plugins",
+        "count":  1,
+        "titles":  "17 plugins oficiais da Anthropic"
+    },
+    {
+        "url":  "https://claude.com/plugins/frontend-design",
+        "count":  2,
+        "titles":  "5 Skills de Design para Claude Code | Frontend Design"
+    },
+    {
+        "url":  "https://dev.meta.ai",
+        "count":  2,
+        "titles":  "Como instalar o Muse Code, o agente de terminal da Meta | Muse Code"
+    },
+    {
+        "url":  "https://developers.google.com/machine-learning/crash-course",
+        "count":  2,
+        "titles":  "7 cursos gratuitos de IA para fortalecer seu currÃ­culo | Google Machine Learning Crash Course"
+    },
+    {
+        "url":  "https://developers.google.com/profile/badges/playlists/webdev/learn-ai",
+        "count":  2,
+        "titles":  "7 cursos gratuitos de IA para fortalecer seu currÃ­culo | Google Learn AI for Web Developers"
+    },
+    {
+        "url":  "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+        "count":  2,
+        "titles":  "12 coisas para instalar no Claude | Notion MCP"
+    },
+    {
+        "url":  "https://developers.plane.so/self-hosting/methods/docker-compose",
+        "count":  1,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a."
+    },
+    {
+        "url":  "https://docs.postiz.com/quickstart",
+        "count":  1,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a."
+    },
+    {
+        "url":  "https://docs.slack.dev/ai/slack-mcp-server/",
+        "count":  2,
+        "titles":  "12 coisas para instalar no Claude | Slack MCP"
+    },
+    {
+        "url":  "https://docs.twenty.com/developers/self-host/capabilities/docker-compose",
+        "count":  1,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a."
+    },
+    {
+        "url":  "https://docs.zapier.com/mcp/quickstart",
+        "count":  2,
+        "titles":  "12 coisas para instalar no Claude | Zapier MCP"
+    },
+    {
+        "url":  "https://documenso.com",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Documenso"
+    },
+    {
+        "url":  "https://documenso.com/",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | Documenso"
+    },
+    {
+        "url":  "https://documenso.com/self-hosting",
+        "count":  1,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a."
+    },
+    {
+        "url":  "https://formbricks.com",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Formbricks"
+    },
+    {
+        "url":  "https://formbricks.com/docs/self-hosting/deployment",
+        "count":  1,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a."
+    },
+    {
+        "url":  "https://gist.github.com/nud3l/15468abc5c4ca7e4e0e38e5b120a7997",
+        "count":  2,
+        "titles":  "5 skills para deixar seu SaaS vibe codado mais seguro | Codebase Audit"
+    },
+    {
+        "url":  "https://github.com/agamm/claude-code-owasp",
+        "count":  2,
+        "titles":  "5 skills para deixar seu SaaS vibe codado mais seguro | OWASP Security"
+    },
+    {
+        "url":  "https://github.com/agent-infra/sandbox",
+        "count":  2,
+        "titles":  "Seu agente estÃ¡ incompleto. | AIO Sandbox"
+    },
+    {
+        "url":  "https://github.com/AlexGladkov/claude-in-mobile",
+        "count":  1,
+        "titles":  "7 projetos que completam o Claude Code"
+    },
+    {
+        "url":  "https://github.com/amaancoderx/npxskillui",
+        "count":  2,
+        "titles":  "6 skills do Claude Code tÃ£o boas que nÃ£o deveriam ser grÃ¡tis | SkillUI"
+    },
+    {
+        "url":  "https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design",
+        "count":  5,
+        "titles":  "7 plugins do Claude Code que eu nÃ£o entendo como ainda sÃ£o grÃ¡tis | As skills de web design que fazem o Claude parar de criar site genÃ©rico | 6 skills do Claude Code tÃ£o boas que nÃ£o deveriam ser grÃ¡tis | 12 coisas para instalar no Claude | frontend-design"
+    },
+    {
+        "url":  "https://github.com/anthropics/claude-code/tree/main/plugins/security-guidance",
+        "count":  2,
+        "titles":  "7 plugins do Claude Code que eu nÃ£o entendo como ainda sÃ£o grÃ¡tis | Claude Security"
+    },
+    {
+        "url":  "https://github.com/anthropics/claude-code-security-review",
+        "count":  2,
+        "titles":  "5 skills para deixar seu SaaS vibe codado mais seguro | Claude Code Security Review"
+    },
+    {
+        "url":  "https://github.com/anthropics/claude-plugins-official",
+        "count":  1,
+        "titles":  "17 plugins oficiais da Anthropic"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins",
+        "count":  1,
+        "titles":  "17 plugins oficiais da Anthropic"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Pesquisador"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/cowork-plugin-management",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Gerente de Plugins"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/customer-support",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Suporte"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/data",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Analista"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/design",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Designer"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/engineering",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Engenheiro"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/enterprise-search",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Finder"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/finance",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Financeiro"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/human-resources",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Time de Pessoas"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/legal",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O JurÃ­dico"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/marketing",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Marketer"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/operations",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Operador"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/pdf-viewer",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Leitor"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/productivity",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | Seu Assistente"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O PM"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/sales",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Closer"
+    },
+    {
+        "url":  "https://github.com/anthropics/knowledge-work-plugins/tree/main/small-business",
+        "count":  2,
+        "titles":  "17 plugins oficiais da Anthropic | O Dono do NegÃ³cio"
+    },
+    {
+        "url":  "https://github.com/AThevon/genjutsu",
+        "count":  2,
+        "titles":  "As melhores skills do Claude Code para animaÃ§Ã£o | Genjutsu"
+    },
+    {
+        "url":  "https://github.com/blader/humanizer",
+        "count":  2,
+        "titles":  "12 coisas para instalar no Claude | humanizer"
+    },
+    {
+        "url":  "https://github.com/charlie947/social-media-skills",
+        "count":  2,
+        "titles":  "12 coisas para instalar no Claude | social-media-skills"
+    },
+    {
+        "url":  "https://github.com/CloudAI-X/threejs-skills",
+        "count":  2,
+        "titles":  "As melhores skills do Claude Code para animaÃ§Ã£o | Three.js Skills"
+    },
+    {
+        "url":  "https://github.com/cloudflare/agentic-inbox",
+        "count":  2,
+        "titles":  "9 ferramentas de IA gratuitas que vocÃª nunca ouviu falar | Agentic Inbox"
+    },
+    {
+        "url":  "https://github.com/coleam00/Archon",
+        "count":  2,
+        "titles":  "Seu agente estÃ¡ incompleto. | Archon"
+    },
+    {
+        "url":  "https://github.com/coleam00/second-brain-starter",
+        "count":  2,
+        "titles":  "12 coisas para instalar no Claude | ai-second-brain"
+    },
+    {
+        "url":  "https://github.com/coreyhaines31/marketingskills",
+        "count":  2,
+        "titles":  "12 coisas para instalar no Claude | marketing-skills"
+    },
+    {
+        "url":  "https://github.com/diegosouzapw/OmniRoute",
+        "count":  2,
+        "titles":  "5 ferramentas open source para Claude que quase ninguÃ©m usa | OmniRoute"
+    },
+    {
+        "url":  "https://github.com/documenso/documenso",
+        "count":  4,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Documenso | Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted"
+    },
+    {
+        "url":  "https://github.com/facebook/astryx",
+        "count":  2,
+        "titles":  "5 Skills de Design para Claude Code | Astryx"
+    },
+    {
+        "url":  "https://github.com/feiskyer/claude-code-settings",
+        "count":  2,
+        "titles":  "6 skills do Claude Code tÃ£o boas que nÃ£o deveriam ser grÃ¡tis | Claude Code Settings"
+    },
+    {
+        "url":  "https://github.com/firecrawl/open-agent-builder",
+        "count":  1,
+        "titles":  "7 projetos que completam o Claude Code"
+    },
+    {
+        "url":  "https://github.com/formbricks/formbricks",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Formbricks"
+    },
+    {
+        "url":  "https://github.com/freshtechbro/claudedesignskills",
+        "count":  2,
+        "titles":  "As skills de web design que fazem o Claude parar de criar site genÃ©rico | claudedesignskills"
+    },
+    {
+        "url":  "https://github.com/freshtechbro/claudedesignskills/tree/main/.claude/skills/three-js-game-skills",
+        "count":  1,
+        "titles":  "Three.js Game Skills"
+    },
+    {
+        "url":  "https://github.com/freshtechbro/claudedesignskills/tree/main/.claude/skills/web3d-integration-patterns",
+        "count":  2,
+        "titles":  "As skills de web design que fazem o Claude parar de criar site genÃ©rico | Web 3D Integration Patterns"
+    },
+    {
+        "url":  "https://github.com/FujiwaraChoki/supoclip",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | SupoClip"
+    },
+    {
+        "url":  "https://github.com/garrytan/gstack",
+        "count":  2,
+        "titles":  "12 coisas para instalar no Claude | gstack"
+    },
+    {
+        "url":  "https://github.com/gitroomhq/postiz-app",
+        "count":  4,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Postiz | Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted"
+    },
+    {
+        "url":  "https://github.com/greensock/gsap-skills",
+        "count":  2,
+        "titles":  "As melhores skills do Claude Code para animaÃ§Ã£o | GSAP Skills"
+    },
+    {
+        "url":  "https://github.com/headroomlabs-ai/headroom",
+        "count":  2,
+        "titles":  "Seu agente estÃ¡ incompleto. | Headroom"
+    },
+    {
+        "url":  "https://github.com/hemangjoshi37a/claude-code-frontend-dev",
+        "count":  1,
+        "titles":  "7 projetos que completam o Claude Code"
+    },
+    {
+        "url":  "https://github.com/heyform/heyform",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | HeyForm"
+    },
+    {
+        "url":  "https://github.com/heygen-com/hyperframes",
+        "count":  4,
+        "titles":  "12 coisas para instalar no Claude | hyperframes | 9 ferramentas de IA gratuitas que vocÃª nunca ouviu falar | Hyperframes"
+    },
+    {
+        "url":  "https://github.com/iamzhihuix/skills-manage",
+        "count":  2,
+        "titles":  "6 skills do Claude Code tÃ£o boas que nÃ£o deveriam ser grÃ¡tis | Skills Manage"
+    },
+    {
+        "url":  "https://github.com/jamiepine/voicebox",
+        "count":  1,
+        "titles":  "5 ferramentas open source para Claude que quase ninguÃ©m usa"
+    },
+    {
+        "url":  "https://github.com/jeffallan/claude-skills",
+        "count":  2,
+        "titles":  "12 coisas para instalar no Claude | claude-skills"
+    },
+    {
+        "url":  "https://github.com/knadh/listmonk",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Listmonk"
+    },
+    {
+        "url":  "https://github.com/lottiefiles/motion-design-skill",
+        "count":  2,
+        "titles":  "As melhores skills do Claude Code para animaÃ§Ã£o | Motion Design Skill"
+    },
+    {
+        "url":  "https://github.com/majidmanzarpour/threejs-game-skills",
+        "count":  1,
+        "titles":  "As skills de web design que fazem o Claude parar de criar site genÃ©rico"
+    },
+    {
+        "url":  "https://github.com/makeplane/plane",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Plane"
+    },
+    {
+        "url":  "https://github.com/microsoft/playwright-mcp",
+        "count":  2,
+        "titles":  "7 plugins do Claude Code que eu nÃ£o entendo como ainda sÃ£o grÃ¡tis | Playwright MCP"
+    },
+    {
+        "url":  "https://github.com/msitarzewski/agency-agents",
+        "count":  3,
+        "titles":  "5 ferramentas open source para Claude que quase ninguÃ©m usa | 9 ferramentas de IA gratuitas que vocÃª nunca ouviu falar | Agency Agents"
+    },
+    {
+        "url":  "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+        "count":  2,
+        "titles":  "5 Skills de Design para Claude Code | UI UX Pro Max"
+    },
+    {
+        "url":  "https://github.com/nexu-io/open-design",
+        "count":  2,
+        "titles":  "Open Design: o fim do Claude Design como vocÃª conhecia | Open Design"
+    },
+    {
+        "url":  "https://github.com/nexu-io/open-design/blob/main/QUICKSTART.md",
+        "count":  2,
+        "titles":  "Open Design: o fim do Claude Design como vocÃª conhecia | Open Design"
+    },
+    {
+        "url":  "https://github.com/Notifuse/notifuse",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | Notifuse"
+    },
+    {
+        "url":  "https://github.com/openai/codex-plugin-cc",
+        "count":  2,
+        "titles":  "7 plugins do Claude Code que eu nÃ£o entendo como ainda sÃ£o grÃ¡tis | Agent Codex"
+    },
+    {
+        "url":  "https://github.com/Open-LLM-VTuber/Open-LLM-VTuber",
+        "count":  2,
+        "titles":  "9 ferramentas de IA gratuitas que vocÃª nunca ouviu falar | Open-LLM-VTuber"
+    },
+    {
+        "url":  "https://github.com/Openpanel-dev/openpanel",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | OpenPanel"
+    },
+    {
+        "url":  "https://github.com/openstatusHQ/openstatus",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | OpenStatus"
+    },
+    {
+        "url":  "https://github.com/oraios/serena",
+        "count":  3,
+        "titles":  "7 plugins do Claude Code que eu nÃ£o entendo como ainda sÃ£o grÃ¡tis | Seu agente estÃ¡ incompleto. | Serena"
+    },
+    {
+        "url":  "https://github.com/oso95/scroll-world",
+        "count":  3,
+        "titles":  "As skills de web design que fazem o Claude parar de criar site genÃ©rico | 5 ferramentas open source para Claude que quase ninguÃ©m usa | Scroll World"
+    },
+    {
+        "url":  "https://github.com/Panniantong/Agent-Reach",
+        "count":  3,
+        "titles":  "7 projetos que completam o Claude Code | 9 ferramentas de IA gratuitas que vocÃª nunca ouviu falar | Agent Reach"
+    },
+    {
+        "url":  "https://github.com/papermark/papermark",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | Papermark"
+    },
+    {
+        "url":  "https://github.com/pbakaus/impeccable",
+        "count":  2,
+        "titles":  "5 Skills de Design para Claude Code | Impeccable"
+    },
+    {
+        "url":  "https://github.com/repowise-dev/repowise",
+        "count":  2,
+        "titles":  "6 skills do Claude Code tÃ£o boas que nÃ£o deveriam ser grÃ¡tis | RepoWise"
+    },
+    {
+        "url":  "https://github.com/Rich627/whatsapp-claude-plugin",
+        "count":  2,
+        "titles":  "Controle seu Claude Code pelo WhatsApp | WhatsApp Claude Plugin"
+    },
+    {
+        "url":  "https://github.com/Rich627/whatsapp-claude-plugin/blob/main/ACCESS.md",
+        "count":  1,
+        "titles":  "WhatsApp Claude Plugin"
+    },
+    {
+        "url":  "https://github.com/Rich627/whatsapp-claude-plugin/blob/main/USAGE.md",
+        "count":  1,
+        "titles":  "WhatsApp Claude Plugin"
+    },
+    {
+        "url":  "https://github.com/rixinhahaha/snip",
+        "count":  1,
+        "titles":  "7 projetos que completam o Claude Code"
+    },
+    {
+        "url":  "https://github.com/rohitg00/agentmemory",
+        "count":  2,
+        "titles":  "Seu agente estÃ¡ incompleto. | AgentMemory"
+    },
+    {
+        "url":  "https://github.com/Security-Phoenix-demo/security-skills-claude-code",
+        "count":  2,
+        "titles":  "5 skills para deixar seu SaaS vibe codado mais seguro | Security Skills for Claude Code"
+    },
+    {
+        "url":  "https://github.com/shaun0927/openchrome",
+        "count":  2,
+        "titles":  "Seu agente estÃ¡ incompleto. | OpenChrome"
+    },
+    {
+        "url":  "https://github.com/ShawnPana/phone-harness",
+        "count":  2,
+        "titles":  "Agora o Claude Code pode controlar seu iPhone | Phone Harness"
+    },
+    {
+        "url":  "https://github.com/ShawnPana/phone-harness/blob/main/install.md",
+        "count":  2,
+        "titles":  "Agora o Claude Code pode controlar seu iPhone | Phone Harness"
+    },
+    {
+        "url":  "https://github.com/ShawnPana/phone-harness/blob/main/README.md",
+        "count":  1,
+        "titles":  "Agora o Claude Code pode controlar seu iPhone"
+    },
+    {
+        "url":  "https://github.com/ShawnPana/phone-harness/blob/main/SKILL.md",
+        "count":  2,
+        "titles":  "Agora o Claude Code pode controlar seu iPhone | Phone Harness"
+    },
+    {
+        "url":  "https://github.com/shepherd-agents/shepherd",
+        "count":  2,
+        "titles":  "9 ferramentas de IA gratuitas que vocÃª nunca ouviu falar | Shepherd"
+    },
+    {
+        "url":  "https://github.com/snyk/agent-scan",
+        "count":  2,
+        "titles":  "Seu agente estÃ¡ incompleto. | Agent Scan"
+    },
+    {
+        "url":  "https://github.com/sunnychase/open-higgsfield-ai",
+        "count":  2,
+        "titles":  "9 ferramentas de IA gratuitas que vocÃª nunca ouviu falar | Open Higgsfield AI"
+    },
+    {
+        "url":  "https://github.com/topoteretes/cognee",
+        "count":  2,
+        "titles":  "5 ferramentas open source para Claude que quase ninguÃ©m usa | Cognee"
+    },
+    {
+        "url":  "https://github.com/trailofbits/skills",
+        "count":  2,
+        "titles":  "5 skills para deixar seu SaaS vibe codado mais seguro | Trail of Bits Security Skills"
+    },
+    {
+        "url":  "https://github.com/twentyhq/twenty",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Twenty"
+    },
+    {
+        "url":  "https://github.com/umami-software/umami",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Umami"
+    },
+    {
+        "url":  "https://github.com/Untrivial-ai/agent-orchestrator",
+        "count":  1,
+        "titles":  "7 projetos que completam o Claude Code"
+    },
+    {
+        "url":  "https://github.com/upstash/context7",
+        "count":  2,
+        "titles":  "7 plugins do Claude Code que eu nÃ£o entendo como ainda sÃ£o grÃ¡tis | Context7"
+    },
+    {
+        "url":  "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
+        "count":  2,
+        "titles":  "5 Skills de Design para Claude Code | Web Design Guidelines"
+    },
+    {
+        "url":  "https://github.com/ykdojo/claude-code-tips",
+        "count":  2,
+        "titles":  "7 plugins do Claude Code que eu nÃ£o entendo como ainda sÃ£o grÃ¡tis | DX"
+    },
+    {
+        "url":  "https://github.com/zanwei/design-dna",
+        "count":  2,
+        "titles":  "As melhores skills do Claude Code para animaÃ§Ã£o | Design DNA"
+    },
+    {
+        "url":  "https://github.com/zernio-dev/zernflow",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | ZernFlow"
+    },
+    {
+        "url":  "https://github.com/zhaoxuya520/reverse-skill",
+        "count":  2,
+        "titles":  "6 skills do Claude Code tÃ£o boas que nÃ£o deveriam ser grÃ¡tis | Reverse Skill"
+    },
+    {
+        "url":  "https://github.com/zilliztech/claude-context",
+        "count":  1,
+        "titles":  "7 projetos que completam o Claude Code"
+    },
+    {
+        "url":  "https://heyform.net/",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | HeyForm"
+    },
+    {
+        "url":  "https://higgsfield.ai/mcp",
+        "count":  2,
+        "titles":  "12 coisas para instalar no Claude | Higgsfield MCP"
+    },
+    {
+        "url":  "https://learn.microsoft.com/",
+        "count":  2,
+        "titles":  "7 Certificados de IA que empresas realmente conhecem | Microsoft Learn"
+    },
+    {
+        "url":  "https://learn.microsoft.com/en-us/credentials/applied-skills/build-a-generative-ai-chat-app/",
+        "count":  2,
+        "titles":  "7 cursos gratuitos de IA para fortalecer seu currÃ­culo | Microsoft Develop a Generative AI Chat App"
+    },
+    {
+        "url":  "https://learn.microsoft.com/en-us/credentials/applied-skills/create-an-ai-agent/",
+        "count":  2,
+        "titles":  "7 cursos gratuitos de IA para fortalecer seu currÃ­culo | Microsoft Applied Skills: Create an AI Agent"
+    },
+    {
+        "url":  "https://listmonk.app",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Listmonk"
+    },
+    {
+        "url":  "https://mcpmarket.com/tools/skills",
+        "count":  1,
+        "titles":  "5 Skills de Design para Claude Code"
+    },
+    {
+        "url":  "https://omniroute.online",
+        "count":  2,
+        "titles":  "Claude Code sem depender de uma sÃ³ cota. | OmniRoute"
+    },
+    {
+        "url":  "https://openpanel.dev/",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | OpenPanel"
+    },
+    {
+        "url":  "https://plane.so",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Plane"
+    },
+    {
+        "url":  "https://postiz.com",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Postiz"
+    },
+    {
+        "url":  "https://postiz.com/",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | Postiz"
+    },
+    {
+        "url":  "https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf",
+        "count":  1,
+        "titles":  "5 Skills de Design para Claude Code"
+    },
+    {
+        "url":  "https://skillbuilder.aws/",
+        "count":  2,
+        "titles":  "7 Certificados de IA que empresas realmente conhecem | AWS Educate / AWS Skill Builder"
+    },
+    {
+        "url":  "https://skills.sh",
+        "count":  1,
+        "titles":  "5 Skills de Design para Claude Code"
+    },
+    {
+        "url":  "https://skillsbuild.org/",
+        "count":  2,
+        "titles":  "7 Certificados de IA que empresas realmente conhecem | IBM SkillsBuild"
+    },
+    {
+        "url":  "https://skillsbuild.org/adult-learners/explore-learning/artificial-intelligence",
+        "count":  2,
+        "titles":  "7 cursos gratuitos de IA para fortalecer seu currÃ­culo | IBM Artificial Intelligence Fundamentals"
+    },
+    {
+        "url":  "https://skillsforall.com/",
+        "count":  2,
+        "titles":  "7 Certificados de IA que empresas realmente conhecem | Cisco Skills For All"
+    },
+    {
+        "url":  "https://skillsforall.com/catalog",
+        "count":  2,
+        "titles":  "7 cursos gratuitos de IA para fortalecer seu currÃ­culo | Cisco Introduction to Modern AI"
+    },
+    {
+        "url":  "https://support.claude.com/pt/articles/13837440-usar-plugins-no-cowork",
+        "count":  1,
+        "titles":  "17 plugins oficiais da Anthropic"
+    },
+    {
+        "url":  "https://twenty.com",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Twenty"
+    },
+    {
+        "url":  "https://ui-ux-pro-max-skill.nextlevelbuilder.io/",
+        "count":  2,
+        "titles":  "5 Skills de Design para Claude Code | UI UX Pro Max"
+    },
+    {
+        "url":  "https://umami.is",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | Umami"
+    },
+    {
+        "url":  "https://voicebox.sh/",
+        "count":  2,
+        "titles":  "9 ferramentas de IA gratuitas que vocÃª nunca ouviu falar | Voicebox"
+    },
+    {
+        "url":  "https://www.cloudskillsboost.google/",
+        "count":  2,
+        "titles":  "7 Certificados de IA que empresas realmente conhecem | Google Cloud Skills Boost"
+    },
+    {
+        "url":  "https://www.hostgator.com.br/52600-13-3-12.html",
+        "count":  1,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted"
+    },
+    {
+        "url":  "https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/training/overview.html",
+        "count":  2,
+        "titles":  "7 Certificados de IA que empresas realmente conhecem | Intel AI Academy / Edge AI"
+    },
+    {
+        "url":  "https://www.librechat.ai/",
+        "count":  2,
+        "titles":  "9 ferramentas de IA gratuitas que vocÃª nunca ouviu falar | LibreChat"
+    },
+    {
+        "url":  "https://www.notifuse.com/",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | Notifuse"
+    },
+    {
+        "url":  "https://www.nvidia.com/en-us/training/",
+        "count":  2,
+        "titles":  "7 Certificados de IA que empresas realmente conhecem | NVIDIA Deep Learning Institute"
+    },
+    {
+        "url":  "https://www.openstatus.dev",
+        "count":  2,
+        "titles":  "Pare de pagar por software que vocÃª pode instalar de graÃ§a. | OpenStatus"
+    },
+    {
+        "url":  "https://www.papermark.com/",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | Papermark"
+    },
+    {
+        "url":  "https://www.typeui.sh",
+        "count":  1,
+        "titles":  "5 Skills de Design para Claude Code"
+    },
+    {
+        "url":  "https://www.ui-skills.com",
+        "count":  1,
+        "titles":  "5 Skills de Design para Claude Code"
+    },
+    {
+        "url":  "https://www.zernflow.com/",
+        "count":  2,
+        "titles":  "Economize atÃ© R$1.000/mÃªs com ferramentas self-hosted | ZernFlow"
+    },
+    {
+        "url":  "https://youtu.be/razqHMAxLb4",
+        "count":  1,
+        "titles":  "Claude Code sem depender de uma sÃ³ cota."
+    }
+]

@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "title": "Node.js",
+      "slug": "nodejs",
+      "category": {
+        "name": "Runtimes",
+        "slug": "runtimes"
+      },
+      "itemType": "Runtime JavaScript",
+      "summary": "Ambiente de execucao para rodar JavaScript fora do navegador em projetos e ferramentas de desenvolvimento.",
+      "ownContent": "Use como referencia quando a equipe precisar executar scripts, servidores locais ou automacoes em JavaScript. Antes de adotar uma versao, confira a compatibilidade do projeto e a politica de suporte de longo prazo.",
+      "officialUrl": "https://github.com/nodejs/node",
+      "instructions": "Consulte a documentacao oficial para escolher a versao compativel e seguir o instalador do seu sistema operacional.",
+      "topics": [
+        {
+          "name": "Backend",
+          "slug": "backend"
+        }
+      ],
+      "tags": [
+        {
+          "name": "JavaScript",
+          "slug": "javascript",
+          "aliases": ["js"]
+        },
+        {
+          "name": "Runtime",
+          "slug": "runtime"
+        }
+      ],
+      "sourceCheckedAt": "2026-08-12",
+      "sourceNote": "Repositorio publico oficial verificado manualmente; os textos deste exemplo foram escritos para esta biblioteca."
+    }
+  ]
+}
