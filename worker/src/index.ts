@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import type { Env } from './env'
 import { createInviteToken, normalizeEmail, sha256 } from './invitations'
+import { mcpResponse } from './mcp'
 
 type InviteInput = { email: string; recipientName: string; jobTitle?: string; roles: string[] }
 
@@ -48,6 +49,7 @@ async function sendInviteEmail(env: Env, recipient: InviteInput, token: string) 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     if (new URL(request.url).pathname === '/health') return Response.json({ ok: true })
+    if (request.method === 'POST' && new URL(request.url).pathname === '/mcp') return mcpResponse(request, env)
     if (request.method === 'POST' && new URL(request.url).pathname === '/v1/invitations') {
       try {
         const { supabase, userId } = await requireAdmin(request, env)
