@@ -6,7 +6,7 @@ import { FavoriteButton } from '../features/catalog/FavoriteButton'
 import { PublicSources } from '../features/catalog/PublicSources'
 import { CatalogDetailPanel } from '../features/catalog/CatalogDetailPanel'
 import { CatalogPagination } from '../features/catalog/CatalogPagination'
-import { getPageWindow } from '../features/catalog/pagination'
+import { ASSISTANT_RESULTS_PAGE_SIZE, getPageWindow } from '../features/catalog/pagination'
 import { useCatalogPageSize } from '../features/catalog/useCatalogPageSize'
 import { createCardSummary } from '../features/catalog/catalog-narrative'
 import { AssistantSearch } from '../features/catalog/AssistantSearch'
@@ -87,9 +87,9 @@ export function App({ session = null }: { session?: Session }) {
     if (error) { setFavoriteIds((current) => { const next = new Set(current); wasFavorite ? next.add(itemId) : next.delete(itemId); return next }); setCatalogStatus('Não foi possível atualizar seus favoritos. Tente novamente.') }
   }
 
-  const renderCatalog = (items: CatalogItem[]) => {
-    const pageWindow = getPageWindow(items, catalogPage, catalogPageSize)
-    return <><div className="catalog-grid">{pageWindow.items.map((item) => <article className={`catalog-card type-${item.type.toLowerCase().replaceAll(' ', '-')}`} key={item.id}><div className="card-topline"><p className="eyebrow">{item.type}</p><span>{item.category}</span></div><h2>{item.title}</h2><p>{createCardSummary(item)}</p><div className="card-actions"><button aria-label={`Ver detalhes de ${item.title}`} className="details-button" onClick={() => setSelectedItem(item)} type="button">Ver detalhes <CommandIcon name="arrow" size={22} /></button><FavoriteButton title={item.title} isFavorite={favoriteIds.has(item.id)} onToggle={() => toggleFavorite(item.id)} /></div></article>)}</div><CatalogPagination currentPage={pageWindow.currentPage} onPageChange={setCatalogPage} totalPages={pageWindow.totalPages} /></>
+  const renderCatalog = (items: CatalogItem[], options?: { gridClassName?: string; pageSize?: number }) => {
+    const pageWindow = getPageWindow(items, catalogPage, options?.pageSize ?? catalogPageSize)
+    return <><div className={`catalog-grid${options?.gridClassName ? ` ${options.gridClassName}` : ''}`}>{pageWindow.items.map((item) => <article className={`catalog-card type-${item.type.toLowerCase().replaceAll(' ', '-')}`} key={item.id}><div className="card-topline"><p className="eyebrow">{item.type}</p><span>{item.category}</span></div><h2>{item.title}</h2><p>{createCardSummary(item)}</p><div className="card-actions"><button aria-label={`Ver detalhes de ${item.title}`} className="details-button" onClick={() => setSelectedItem(item)} type="button">Ver detalhes <CommandIcon name="arrow" size={22} /></button><FavoriteButton title={item.title} isFavorite={favoriteIds.has(item.id)} onToggle={() => toggleFavorite(item.id)} /></div></article>)}</div><CatalogPagination currentPage={pageWindow.currentPage} onPageChange={setCatalogPage} totalPages={pageWindow.totalPages} /></>
   }
   const switchPage = (nextPage: Page) => { setPage(nextPage); setCatalogPage(1); if (nextPage === 'explore') setSelectedCategory(null) }
   const selectCategory = (category: string | null) => { setSelectedCategory(category); setCatalogPage(1) }
@@ -123,7 +123,7 @@ export function App({ session = null }: { session?: Session }) {
       </section> : null}
       {page === 'assistant' ? <section className="inner-page page-shell assistant-page">
         <div className="page-heading"><h1 className="page-title">O que você precisa construir?</h1><p>Descreva seu objetivo, tecnologia ou desafio. A busca encontra recursos no acervo da sua equipe.</p></div>
-        <AssistantSearch query={query} onQueryChange={(value) => { setQuery(value); setCatalogPage(1) }} results={results} renderResults={() => renderCatalog(results)} />
+        <AssistantSearch query={query} onQueryChange={(value) => { setQuery(value); setCatalogPage(1) }} results={results} renderResults={() => renderCatalog(results, { gridClassName: 'assistant-catalog-grid', pageSize: ASSISTANT_RESULTS_PAGE_SIZE })} />
       </section> : null}
       {page === 'favorites' ? <section className="inner-page page-shell page-favorites">
         <div className="page-heading"><h1 className="page-title">Seus atalhos favoritos.</h1><p>{favoriteItems.length ? 'Recursos salvos para você voltar ao que importa.' : 'Salve recursos para montar sua própria trilha de trabalho.'}</p></div>
