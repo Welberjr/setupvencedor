@@ -12,6 +12,7 @@ type TypeContext = {
   what: string
   use: string
   outcome: string
+  cardOutcome: string
 }
 
 const typeContext: Record<string, TypeContext> = {
@@ -19,36 +20,43 @@ const typeContext: Record<string, TypeContext> = {
     what: 'uma habilidade reutilizável para orientar decisões técnicas recorrentes',
     use: 'quando a equipe precisa repetir um padrão com mais consistência',
     outcome: 'reduzindo retrabalho nas próximas entregas',
+    cardOutcome: 'reduzir retrabalho nas próximas entregas',
   },
   plugin: {
     what: 'uma extensão que adiciona capacidade ao fluxo de desenvolvimento',
     use: 'quando há uma etapa manual que pode ficar mais rápida sem perder controle',
     outcome: 'deixando o processo mais fluido',
+    cardOutcome: 'deixar o processo mais fluido',
   },
   mcp: {
     what: 'um conector que leva contexto e dados externos ao ambiente de trabalho',
     use: 'quando uma decisão depende de uma fonte confiável e atualizada',
     outcome: 'diminuindo suposições no dia a dia',
+    cardOutcome: 'diminuir suposições no dia a dia',
   },
   ferramenta: {
     what: 'uma ferramenta prática para destravar uma etapa do trabalho',
     use: 'quando existe um gargalo concreto e a equipe precisa testar uma alternativa',
     outcome: 'encurtando o caminho até uma decisão',
+    cardOutcome: 'encurtar o caminho até uma decisão',
   },
   tutorial: {
     what: 'um roteiro guiado para aprender e aplicar uma prática',
     use: 'quando alguém precisa sair do zero com uma sequência clara',
     outcome: 'transformando teoria em uma primeira entrega',
+    cardOutcome: 'transformar teoria em uma primeira entrega',
   },
   referência: {
     what: 'um material de consulta para comparar caminhos com critério técnico',
     use: 'quando há alternativas suficientes para exigir uma escolha mais consciente',
     outcome: 'dando base para uma decisão bem documentada',
+    cardOutcome: 'dar base para uma decisão bem documentada',
   },
   curso: {
     what: 'uma trilha de aprendizagem curta e aplicada',
     use: 'quando a equipe quer ampliar autonomia sem interromper a produção',
     outcome: 'criando repertório para os próximos projetos',
+    cardOutcome: 'criar repertório para os próximos projetos',
   },
 }
 
@@ -61,6 +69,7 @@ function getContext(type: string): TypeContext {
     what: 'um recurso técnico para apoiar uma etapa real do projeto',
     use: 'quando a equipe precisa de um ponto de partida confiável',
     outcome: 'dando mais clareza para a próxima ação',
+    cardOutcome: 'dar mais clareza para a próxima ação',
   }
 }
 
@@ -71,14 +80,22 @@ function firstReadableSentence(value: string) {
   return sentence.replace(/[.!?]+$/, '')
 }
 
+function isPlaceholderSummary(value: string) {
+  return /^referência pública para a equipe avaliar/i.test(value.trim())
+}
+
+function titleSeed(value: string) {
+  return [...value].reduce((total, character) => total + character.charCodeAt(0), 0)
+}
+
 function formatFocus(item: CatalogItem) {
   return item.topics.find(Boolean) ?? item.tags.find(Boolean) ?? 'o trabalho da equipe'
 }
 
 export function createCatalogNarrative(item: CatalogItem): CatalogNarrative {
   const context = getContext(item.type)
-  const summary = firstReadableSentence(item.summary)
-  const detail = firstReadableSentence(item.ownContent)
+  const summary = isPlaceholderSummary(item.summary) ? null : firstReadableSentence(item.summary)
+  const detail = isPlaceholderSummary(item.ownContent) ? null : firstReadableSentence(item.ownContent)
   const focus = formatFocus(item)
   const teamUse = firstReadableSentence(item.instructions) ?? `Teste ${item.title} em uma tarefa pequena, registre o resultado e compartilhe o padrão que funcionou com a equipe.`
 
@@ -86,8 +103,8 @@ export function createCatalogNarrative(item: CatalogItem): CatalogNarrative {
     whatItIs: summary ? `${item.title} é ${context.what}. ${summary}.` : `${item.title} é ${context.what}.`,
     whenToUse: `${context.use}, especialmente em iniciativas de ${focus}.`,
     firstSteps: [
-      'Abra a fonte oficial e confirme o propósito do recurso.',
-      'Valide em uma tarefa pequena do projeto atual.',
+      `Abra a fonte oficial de ${item.title} e identifique o fluxo principal.`,
+      `Valide o recurso em uma tarefa pequena ligada a ${focus}.`,
       'Registre o que funcionou antes de transformar o uso em padrão.',
     ],
     teamUse: detail ? `${teamUse} Resultado esperado: ${detail}.` : teamUse,
@@ -97,7 +114,13 @@ export function createCatalogNarrative(item: CatalogItem): CatalogNarrative {
 
 export function createCardSummary(item: CatalogItem): string {
   const context = getContext(item.type)
-  const summary = firstReadableSentence(item.summary)
-  const opening = summary ? `${summary}.` : `${item.title} é ${context.what}.`
-  return `${opening} Uma opção útil para ${context.outcome}.`
+  const summary = isPlaceholderSummary(item.summary) ? null : firstReadableSentence(item.summary)
+  if (summary) return `${summary}. Uma opção útil para ${context.cardOutcome}.`
+  const focus = formatFocus(item)
+  const openers = [
+    `Use ${item.title} para dar um passo mais claro em ${focus}`,
+    `${item.title} ajuda a equipe a experimentar ${focus} com menos atrito`,
+    `Quando ${focus} pede uma referência confiável, ${item.title} oferece um ponto de partida`,
+  ]
+  return `${openers[titleSeed(item.title) % openers.length]}. É ${context.what}, pensada para ${context.cardOutcome}.`
 }

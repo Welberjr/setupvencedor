@@ -18,6 +18,7 @@ import { TicketForm } from '../features/support/TicketForm'
 import { ActivateInvitePage } from '../features/auth/ActivateInvitePage'
 import { ResetPasswordPage } from '../features/auth/ResetPasswordPage'
 import { InviteForm } from '../features/admin/InviteForm'
+import { PeopleDirectory } from '../features/admin/PeopleDirectory'
 import { hasAnyRole, type Role } from '../lib/roles'
 import { PwaInstallPrompt } from '../features/pwa/PwaInstallPrompt'
 
@@ -51,6 +52,7 @@ export function App({ session = null }: { session?: Session }) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [selectedItem, setSelectedItem] = useState<CatalogItem | null>(null)
   const [catalogPage, setCatalogPage] = useState(1)
+  const [accessRefreshKey, setAccessRefreshKey] = useState(0)
   const catalogPageSize = useCatalogPageSize()
 
   useEffect(() => {
@@ -110,7 +112,7 @@ export function App({ session = null }: { session?: Session }) {
       {page === 'assistant' ? <section className="inner-page page-shell assistant-page"><p className="eyebrow">ASSISTENTE DO ACERVO</p><h1>Encontre o próximo recurso.</h1><p>Use palavras do problema, tecnologia ou resultado esperado. A busca consulta títulos, temas e tags do seu próprio acervo.</p><AssistantSearch query={query} onQueryChange={(value) => { setQuery(value); setCatalogPage(1) }} results={results} renderResults={() => renderCatalog(results)} /></section> : null}
       {page === 'favorites' ? <section className="inner-page page-shell page-favorites"><p className="eyebrow">SEUS FAVORITOS</p><h1>Seu painel de atalhos.</h1><p>{favoriteItems.length ? 'Recursos salvos nesta conta.' : 'Salve recursos para montar sua própria trilha de trabalho.'}</p>{renderCatalog(favoriteItems)}</section> : null}
       {page === 'support' ? <section className="inner-page page-shell support-page"><p className="eyebrow">SUPORTE OPERACIONAL</p><h1>Uma dúvida não precisa travar sua entrega.</h1><p>Abra um chamado de acesso, dúvida, bug ou sugestão. A equipe responsável acompanha por status.</p><TicketForm onCreate={async (ticket) => { const supabase = getSupabaseClient(); if (!supabase) return; const { data: created, error } = await supabase.from('support_tickets').insert({ requester_id: authenticatedSession.user.id, subject: ticket.subject, type: ticket.type }).select('id').single(); if (error) throw error; if (created) { const { error: messageError } = await supabase.from('support_messages').insert({ ticket_id: created.id, author_id: authenticatedSession.user.id, body: ticket.body }); if (messageError) throw messageError } }} /></section> : null}
-      {page === 'admin' && canAdmin ? <section className="inner-page page-shell"><p className="eyebrow">ADMINISTRAÇÃO</p><h1>Controle com visão de sistema.</h1><div className="admin-grid"><article className="metric-card"><p>RECURSOS PUBLICADOS</p><strong>{catalog.length}</strong><span>Disponíveis para a equipe</span></article><article className="metric-card"><p>PAPÉIS ATIVOS</p><strong>{(authenticatedSession.roles ?? []).length || 1}</strong><span>{(authenticatedSession.roles ?? []).join(' / ') || 'member'}</span></article><article className="metric-card"><p>FAVORITOS DA SESSÃO</p><strong>{favoriteIds.size}</strong><span>Atalhos pessoais salvos</span></article></div>{hasAnyRole(authenticatedSession.roles ?? [], ['admin']) ? <InviteForm /> : null}</section> : null}
+      {page === 'admin' && canAdmin ? <section className="inner-page page-shell admin-page"><p className="eyebrow">ADMINISTRAÇÃO</p><h1>Controle com visão de sistema.</h1><div className="admin-grid"><article className="metric-card"><p>RECURSOS PUBLICADOS</p><strong>{catalog.length}</strong><span>Disponíveis para a equipe</span></article><article className="metric-card"><p>PAPÉIS ATIVOS</p><strong>{(authenticatedSession.roles ?? []).length || 1}</strong><span>{(authenticatedSession.roles ?? []).join(' / ') || 'membro'}</span></article><article className="metric-card"><p>FAVORITOS DA SESSÃO</p><strong>{favoriteIds.size}</strong><span>Atalhos pessoais salvos</span></article></div>{hasAnyRole(authenticatedSession.roles ?? [], ['admin']) ? <><InviteForm onCreated={() => setAccessRefreshKey((current) => current + 1)} /><PeopleDirectory currentUserId={authenticatedSession.user.id} refreshKey={accessRefreshKey} /></> : null}</section> : null}
     </section>
     {selectedItem ? <CatalogDetailPanel isFavorite={favoriteIds.has(selectedItem.id)} item={selectedItem} onClose={() => setSelectedItem(null)} onToggleFavorite={() => toggleFavorite(selectedItem.id)} /> : null}
   </main>

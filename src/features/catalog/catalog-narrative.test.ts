@@ -29,10 +29,10 @@ it('translates a skill into a practical starting point for the team', () => {
 })
 
 it('creates concise Portuguese card copy without the repeated public-reference phrase', () => {
-  const summary = createCardSummary({ ...item, type: 'Ferramenta', title: 'Open Higgsfield AI' })
+  const summary = createCardSummary({ ...item, type: 'Ferramenta', title: 'Open Higgsfield AI', summary: 'Referência pública para a equipe avaliar a fonte original.' })
 
   expect(summary).toMatch(/execução|decisão/i)
-  expect(summary).not.toMatch(/Referência pública para a equipe avaliar/i)
+  expect(summary).not.toMatch(/Referência pública/i)
   expect(summary.split('. ').length).toBeLessThanOrEqual(2)
 })
 
