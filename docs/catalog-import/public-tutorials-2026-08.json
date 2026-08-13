@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "title": "AGENTS.md: regras persistentes para agentes",
+      "slug": "tutorial-agents-md-regras-persistentes",
+      "category": { "name": "Tutoriais", "slug": "tutoriais" },
+      "itemType": "Tutorial",
+      "summary": "Crie um arquivo de instruções do repositório para que agentes de programação entendam padrões, comandos e limites antes de editar código.",
+      "ownContent": "AGENTS.md funciona como uma apresentação objetiva do projeto para agentes de código. Em vez de repetir comandos, convenções e cuidados a cada tarefa, a equipe registra o essencial em um lugar versionado. Ele faz sentido quando há mais de uma pessoa ou agente atuando no mesmo repositório e quando erros recorrentes podem ser prevenidos com orientações claras.",
+      "officialUrl": "https://github.com/agentsmd/agents.md",
+      "instructions": "Crie AGENTS.md na raiz do repositório. Inclua como rodar o projeto, testes obrigatórios, estrutura de pastas, regras de segurança e limites de escopo. Mantenha o arquivo curto, verificável e atualizado junto com o código.",
+      "topics": [{ "name": "Desenvolvimento", "slug": "desenvolvimento" }, { "name": "Boas práticas", "slug": "boas-praticas" }],
+      "tags": [{ "name": "AGENTS.md", "slug": "agents-md", "aliases": [] }, { "name": "Agentes de código", "slug": "agentes-de-codigo", "aliases": [] }, { "name": "Documentação", "slug": "documentacao", "aliases": [] }],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Formato aberto e repositório público do projeto agents.md; texto escrito originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "CLAUDE.md: memória de projeto no Claude Code",
+      "slug": "tutorial-claude-md-memoria-projeto",
+      "category": { "name": "Tutoriais", "slug": "tutoriais" },
+      "itemType": "Tutorial",
+      "summary": "Organize instruções duradouras do projeto para que o Claude Code comece cada sessão com o contexto que realmente importa.",
+      "ownContent": "CLAUDE.md guarda o briefing que você não quer redigitar: arquitetura, padrões, comandos de teste, decisões técnicas e cuidados do time. A documentação oficial diferencia esse arquivo da memória automática: o primeiro é escrito e controlado pela equipe; a segunda registra aprendizados do próprio Claude. Use ambos com critério e não transforme a memória do projeto em um manual enorme.",
+      "officialUrl": "https://code.claude.com/docs/en/memory",
+      "instructions": "Crie CLAUDE.md na raiz do projeto e escreva apenas regras que devam valer em toda sessão. Para procedimentos extensos, prefira arquivos específicos ou skills. No Windows, se já existir AGENTS.md, use uma referência @AGENTS.md dentro do CLAUDE.md para evitar duplicação.",
+      "topics": [{ "name": "Desenvolvimento", "slug": "desenvolvimento" }, { "name": "Boas práticas", "slug": "boas-praticas" }],
+      "tags": [{ "name": "Claude Code", "slug": "claude-code", "aliases": [] }, { "name": "CLAUDE.md", "slug": "claude-md", "aliases": [] }, { "name": "Memória", "slug": "memoria", "aliases": [] }],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Documentação pública oficial do Claude Code; texto escrito originalmente para o Setup Vencedor."
+    }
+  ]
+}
