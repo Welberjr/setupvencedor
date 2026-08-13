@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1120"/>
+      <stop offset="50%" stop-color="#1a1d4f"/>
+      <stop offset="100%" stop-color="#00d7ff"/>
+    </linearGradient>
+    <linearGradient id="haloGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8f7bff"/>
+      <stop offset="100%" stop-color="#1de3ff"/>
+    </linearGradient>
+    <linearGradient id="glyphGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e9f4ff"/>
+      <stop offset="100%" stop-color="#84ffcf"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#9b8dff" flood-opacity="0.3"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#2be7ff" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect x="8" y="8" width="176" height="176" rx="42" fill="url(#bgGrad)"/>
+  <g transform="translate(96 96)">
+    <polygon points="-39,-67 39,-33 39,33 -39,67 -69,0" fill="url(#haloGrad)" opacity="0.22" transform="rotate(18)" filter="url(#glow)"/>
+    <polygon points="-34,-59 34,-29 34,29 -34,59 -60,0" fill="none" stroke="#5fe0ff" stroke-width="6" stroke-opacity="0.55" transform="rotate(18)"/>
+    <circle cx="0" cy="0" r="34" fill="none" stroke="url(#haloGrad)" stroke-width="6" opacity="0.55"/>
+    <path d="M-46 18 L0 -26 L46 18 L31 18 L31 52 L-31 52 L-31 18 Z" fill="url(#glyphGrad)"/>
+    <path d="M-18 -56 L18 -56 L18 -12 L-18 -12 Z" fill="url(#glyphGrad)"/>
+  </g>
+
+  <ellipse cx="144" cy="144" rx="22" ry="12" fill="#7ef7ff" opacity="0.3"/>
+  <path d="M24 34C30 34 35 39 35 45C35 51 30 56 24 56H20V76H24C34 76 42 84 42 94C42 104 34 112 24 112H10L0 138H19L29 114C52 111 70 90 70 66C70 38 47 16 20 16C9 16 0 25 0 36H14L17 56H8C4 56 0 52 0 48C0 43 4 39 8 39H20" fill="#aef8ff" opacity="0.75"/>
+
+</svg>

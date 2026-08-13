@@ -3,26 +3,101 @@ import type { CatalogItem } from './types'
 type CatalogNarrative = {
   whatItIs: string
   whenToUse: string
-  firstStep: string
+  firstSteps: string[]
+  teamUse: string
+  impact: string
 }
 
-const typeContext: Record<string, { what: string; use: string }> = {
-  skill: { what: 'uma instrução reutilizável que dá ao Claude Code um jeito mais consistente de executar uma tarefa específica', use: 'quando a equipe quiser reduzir tentativas, padronizar o resultado e levar conhecimento técnico para dentro do fluxo de trabalho' },
-  plugin: { what: 'uma extensão que acrescenta uma capacidade ou um fluxo de trabalho ao ambiente do agente', use: 'quando o recurso se encaixar em uma rotina recorrente da equipe e houver um caso de uso claro para testar' },
-  mcp: { what: 'um conector que permite ao agente consultar ou operar uma fonte externa de dados e ferramentas', use: 'quando o trabalho depender de documentação, navegação, dados ou uma integração que o agente não possui sozinho' },
-  ferramenta: { what: 'uma aplicação ou projeto que pode apoiar uma etapa real da operação técnica', use: 'quando existir um problema prático a resolver e a equipe precisar avaliar compatibilidade, manutenção e custo' },
-  tutorial: { what: 'um ponto de partida guiado para aprender ou configurar uma capacidade', use: 'quando alguém precisar sair do zero com segurança antes de aplicar a solução em um projeto' },
-  referência: { what: 'uma fonte pública para estudo, comparação e tomada de decisão técnica', use: 'quando a equipe precisar entender alternativas antes de escolher uma direção' },
-  referencia: { what: 'uma fonte pública para estudo, comparação e tomada de decisão técnica', use: 'quando a equipe precisar entender alternativas antes de escolher uma direção' },
-  curso: { what: 'uma trilha de aprendizado que ajuda a equipe a desenvolver repertório prático', use: 'quando o objetivo for criar base antes de adotar novas ferramentas em entregas reais' },
+type TypeContext = {
+  what: string
+  use: string
+  outcome: string
+}
+
+const typeContext: Record<string, TypeContext> = {
+  skill: {
+    what: 'uma habilidade reutilizável para orientar decisões técnicas recorrentes',
+    use: 'quando a equipe precisa repetir um padrão com mais consistência',
+    outcome: 'reduzindo retrabalho nas próximas entregas',
+  },
+  plugin: {
+    what: 'uma extensão que adiciona capacidade ao fluxo de desenvolvimento',
+    use: 'quando há uma etapa manual que pode ficar mais rápida sem perder controle',
+    outcome: 'deixando o processo mais fluido',
+  },
+  mcp: {
+    what: 'um conector que leva contexto e dados externos ao ambiente de trabalho',
+    use: 'quando uma decisão depende de uma fonte confiável e atualizada',
+    outcome: 'diminuindo suposições no dia a dia',
+  },
+  ferramenta: {
+    what: 'uma ferramenta prática para destravar uma etapa do trabalho',
+    use: 'quando existe um gargalo concreto e a equipe precisa testar uma alternativa',
+    outcome: 'encurtando o caminho até uma decisão',
+  },
+  tutorial: {
+    what: 'um roteiro guiado para aprender e aplicar uma prática',
+    use: 'quando alguém precisa sair do zero com uma sequência clara',
+    outcome: 'transformando teoria em uma primeira entrega',
+  },
+  referência: {
+    what: 'um material de consulta para comparar caminhos com critério técnico',
+    use: 'quando há alternativas suficientes para exigir uma escolha mais consciente',
+    outcome: 'dando base para uma decisão bem documentada',
+  },
+  curso: {
+    what: 'uma trilha de aprendizagem curta e aplicada',
+    use: 'quando a equipe quer ampliar autonomia sem interromper a produção',
+    outcome: 'criando repertório para os próximos projetos',
+  },
+}
+
+function normalizeType(type: string) {
+  return type.trim().toLocaleLowerCase('pt-BR')
+}
+
+function getContext(type: string): TypeContext {
+  return typeContext[normalizeType(type)] ?? {
+    what: 'um recurso técnico para apoiar uma etapa real do projeto',
+    use: 'quando a equipe precisa de um ponto de partida confiável',
+    outcome: 'dando mais clareza para a próxima ação',
+  }
+}
+
+function firstReadableSentence(value: string) {
+  const normalized = value.replace(/\s+/g, ' ').trim()
+  if (normalized.length < 20) return null
+  const sentence = normalized.match(/^(.{20,220}?[.!?])(?:\s|$)/)?.[1] ?? normalized.slice(0, 220)
+  return sentence.replace(/[.!?]+$/, '')
+}
+
+function formatFocus(item: CatalogItem) {
+  return item.topics.find(Boolean) ?? item.tags.find(Boolean) ?? 'o trabalho da equipe'
 }
 
 export function createCatalogNarrative(item: CatalogItem): CatalogNarrative {
-  const context = typeContext[item.type.toLowerCase()] ?? { what: 'um recurso técnico catalogado para avaliação da equipe', use: 'quando o assunto estiver relacionado ao problema que você precisa resolver' }
-  const focus = item.topics.length ? ` O foco registrado para este item é ${item.topics.join(', ')}.` : ''
+  const context = getContext(item.type)
+  const summary = firstReadableSentence(item.summary)
+  const detail = firstReadableSentence(item.ownContent)
+  const focus = formatFocus(item)
+  const teamUse = firstReadableSentence(item.instructions) ?? `Teste ${item.title} em uma tarefa pequena, registre o resultado e compartilhe o padrão que funcionou com a equipe.`
+
   return {
-    whatItIs: `${item.title} e ${context.what}.${focus}`,
-    whenToUse: `Use ${item.title} ${context.use}.`,
-    firstStep: 'Comece pela fonte oficial, confirme requisitos e licença, e valide em um ambiente controlado antes de incorporar ao fluxo da equipe.',
+    whatItIs: summary ? `${item.title} é ${context.what}. ${summary}.` : `${item.title} é ${context.what}.`,
+    whenToUse: `${context.use}, especialmente em iniciativas de ${focus}.`,
+    firstSteps: [
+      'Abra a fonte oficial e confirme o propósito do recurso.',
+      'Valide em uma tarefa pequena do projeto atual.',
+      'Registre o que funcionou antes de transformar o uso em padrão.',
+    ],
+    teamUse: detail ? `${teamUse} Resultado esperado: ${detail}.` : teamUse,
+    impact: `${item.title} ajuda a equipe a avançar com mais clareza, ${context.outcome}.`,
   }
+}
+
+export function createCardSummary(item: CatalogItem): string {
+  const context = getContext(item.type)
+  const summary = firstReadableSentence(item.summary)
+  const opening = summary ? `${summary}.` : `${item.title} é ${context.what}.`
+  return `${opening} Uma opção útil para ${context.outcome}.`
 }

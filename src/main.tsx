@@ -6,7 +6,71 @@ import { getSupabaseClient } from './lib/supabase/client'
 import type { Role } from './lib/roles'
 import './styles.css'
 
+const SW_UPDATE_INTERVAL_MS = 5 * 60 * 1000
+
+function usePwaUpdate() {
+  useEffect(() => {
+    if (!('serviceWorker' in navigator)) return
+
+    let hasReloaded = false
+    let intervalId: number | undefined
+
+    const onControllerChange = () => {
+      if (hasReloaded) return
+      hasReloaded = true
+      window.location.reload()
+    }
+
+    const applyUpdate = (registration: ServiceWorkerRegistration) => {
+      if (registration.waiting) {
+        registration.waiting.postMessage({ type: 'SKIP_WAITING' })
+        return
+      }
+
+      const worker = registration.installing
+      if (!worker) return
+      worker.addEventListener('statechange', () => {
+        if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+          worker.postMessage({ type: 'SKIP_WAITING' })
+        }
+      })
+    }
+
+    void (async () => {
+      try {
+        navigator.serviceWorker.addEventListener('controllerchange', onControllerChange)
+
+        const registration = await navigator.serviceWorker.register('/sw.js')
+
+        applyUpdate(registration)
+
+        intervalId = window.setInterval(() => {
+          void registration.update()
+        }, SW_UPDATE_INTERVAL_MS)
+
+        registration.addEventListener('updatefound', () => {
+          const installingWorker = registration.installing
+          if (!installingWorker) return
+          installingWorker.addEventListener('statechange', () => {
+            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              installingWorker.postMessage({ type: 'SKIP_WAITING' })
+            }
+          })
+        })
+      } catch {
+        // Se o service worker não puder ser registrado, o app continua normal no modo web.
+      }
+    })()
+
+    return () => {
+      navigator.serviceWorker.removeEventListener('controllerchange', onControllerChange)
+      if (intervalId !== undefined) window.clearInterval(intervalId)
+    }
+  }, [])
+}
+
 function Bootstrap() {
+  usePwaUpdate()
   const [session, setSession] = useState<{ user: { id: string; email: string }; roles: Role[] } | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
