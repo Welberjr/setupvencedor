@@ -9,7 +9,7 @@ it('does not show catalog results before the user starts a useful search', () =>
   render(<AssistantSearch query="" onQueryChange={vi.fn()} results={[item]} renderResults={() => <article>UI UX Pro Max</article>} />)
 
   expect(screen.queryByText('UI UX Pro Max')).not.toBeInTheDocument()
-  expect(screen.getByText(/Digite pelo menos 2 caracteres/i)).toBeInTheDocument()
+  expect(screen.queryByText(/Digite pelo menos 2 caracteres/i)).not.toBeInTheDocument()
 })
 
 it('shows matching results after two useful characters', () => {
