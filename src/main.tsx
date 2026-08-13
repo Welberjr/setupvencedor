@@ -95,7 +95,7 @@ function Bootstrap() {
     })
     return () => { active = false; window.clearTimeout(loadingTimeout); listener.subscription.unsubscribe() }
   }, [])
-  if (isLoading) return <main className="app-shell"><p className="eyebrow">CARREGANDO ACESSO SEGURO</p></main>
+  if (isLoading) return null
   return <App session={session} />
 }
 
