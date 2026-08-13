@@ -3,10 +3,10 @@ import { expect, it } from 'vitest'
 import { BrandMark } from './BrandMark'
 import { CommandIcon } from './CommandIcon'
 
-it('renders the custom SV monogram with a product label', () => {
+it('renders the approved SV monogram asset with a product label', () => {
   render(<BrandMark />)
-  expect(screen.getByLabelText('Setup Vencedor')).toBeInTheDocument()
-  expect(screen.getByTestId('brand-mark-ribbon')).toBeInTheDocument()
+  expect(screen.getByRole('img', { name: 'Setup Vencedor' })).toBeInTheDocument()
+  expect(screen.getByTestId('brand-mark-approved')).toHaveAttribute('src', '/brand/setup-vencedor-sv-approved.png')
 })
 
 it('renders a faceted green detail arrow', () => {
