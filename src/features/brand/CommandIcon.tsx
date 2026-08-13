@@ -11,7 +11,7 @@ const iconPaths: Record<CommandIconName, ReactNode> = {
   close: <><path d="m7 7 10 10M17 7 7 17" /></>,
   previous: <path d="m14.5 6-6 6 6 6" />,
   next: <path d="m9.5 6 6 6-6 6" />,
-  arrow: <><path d="M4 7c3.5 0 3 8 7.3 8H18" /><path d="m14.5 11.5 3.5 3.5-3.5 3.5" /></>,
+  arrow: <><defs><linearGradient id="detail-arrow-light" x1="8" x2="21" y1="6" y2="17" gradientUnits="userSpaceOnUse"><stop stopColor="#edff6e" /><stop offset=".5" stopColor="#b7ff32" /><stop offset="1" stopColor="#61c917" /></linearGradient><linearGradient id="detail-arrow-shadow" x1="10" x2="20" y1="12" y2="18" gradientUnits="userSpaceOnUse"><stop stopColor="#4d9213" /><stop offset="1" stopColor="#1d4e10" /></linearGradient></defs><path d="M3.5 12h10" stroke="#8be52a" strokeWidth="2.4" /><path d="m12.6 6.3 8.4 5.7-8.4 5.7 2-5.7-2-5.7Z" data-testid="detail-arrow-light-face" fill="url(#detail-arrow-light)" stroke="none" /><path d="m14.6 12 6.4 0-8.4 5.7 2-5.7Z" data-testid="detail-arrow-shadow-face" fill="url(#detail-arrow-shadow)" stroke="none" /></>,
 }
 
 export function CommandIcon({ name, size = 18 }: { name: CommandIconName; size?: number }) {
