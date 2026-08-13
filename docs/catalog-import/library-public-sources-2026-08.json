@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "title": "DX: produtividade para Claude Code",
+      "slug": "plugin-dx-claude-code",
+      "category": { "name": "Plugins", "slug": "plugins" },
+      "itemType": "Plugin",
+      "summary": "Plugin público que reúne atalhos de produtividade para sessões de Claude Code, incluindo handoff, análise de falhas e revisão de instruções do projeto.",
+      "ownContent": "O DX é uma extensão de produtividade publicada no repositório claude-code-tips. Ele faz sentido para quem já trabalha diariamente com Claude Code e quer reduzir tarefas repetitivas de contexto, diagnóstico e passagem de trabalho. Antes de usar, revise os comandos disponíveis e as permissões pedidas pelo plugin para decidir se fazem sentido para o seu ambiente.",
+      "officialUrl": "https://github.com/ykdojo/claude-code-tips",
+      "instructions": "No Claude Code, adicione o marketplace com `claude plugin marketplace add ykdojo/claude-code-tips` e instale com `claude plugin install dx@ykdojo`. Em seguida, execute um comando DX em um repositório de teste e revise o que ele lê ou altera antes de adotar no fluxo da equipe.",
+      "topics": [{ "name": "IA e desenvolvimento", "slug": "ia-desenvolvimento" }, { "name": "Produtividade", "slug": "produtividade" }],
+      "tags": [{ "name": "Claude Code", "slug": "claude-code", "aliases": [] }, { "name": "Plugin", "slug": "plugin", "aliases": [] }, { "name": "Produtividade", "slug": "produtividade", "aliases": [] }],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público do mantenedor verificado; descrição e orientação escritas originalmente para o Setup Vencedor."
+    },
+    {
+      "title": "Teste fluxos reais da sua aplicação",
+      "slug": "guia-testes-reais-webapp-playwright",
+      "category": { "name": "Guias e referências", "slug": "guias-referencias" },
+      "itemType": "Referência",
+      "summary": "Use testes de ponta a ponta para conferir os caminhos que a pessoa realmente percorre no navegador, antes de liberar uma nova versão.",
+      "ownContent": "Uma tela pode parecer pronta e ainda falhar no login, no envio de um formulário ou na navegação pelo celular. Este guia propõe testar jornadas curtas e críticas com Playwright: abrir a página, executar uma ação real e confirmar o resultado que a pessoa enxerga. A ideia não é automatizar tudo de uma vez, mas proteger primeiro os fluxos que geram mais impacto quando quebram.",
+      "officialUrl": "https://playwright.dev/docs/writing-tests",
+      "instructions": "Instale Playwright no projeto com `npm init playwright@latest`. Crie um teste para uma jornada importante, usando locators que reflitam elementos visíveis, como papel, rótulo ou texto. Rode `npx playwright test` antes de publicar e corrija falhas observadas no relatório.",
+      "topics": [{ "name": "Desenvolvimento", "slug": "desenvolvimento" }, { "name": "Qualidade", "slug": "qualidade" }],
+      "tags": [{ "name": "Playwright", "slug": "playwright", "aliases": [] }, { "name": "Testes E2E", "slug": "testes-e2e", "aliases": [] }, { "name": "Web", "slug": "web", "aliases": [] }],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Documentação oficial do Playwright verificada; texto e roteiro são originais do Setup Vencedor."
+    },
+    {
+      "title": "Depure a interface vendo o que acontece",
+      "slug": "guia-debug-visual-playwright",
+      "category": { "name": "Guias e referências", "slug": "guias-referencias" },
+      "itemType": "Referência",
+      "summary": "Transforme uma falha difícil de reproduzir em uma sequência observável, usando modo visual, navegador aberto e relatório de testes.",
+      "ownContent": "Depurar pelo código é útil, mas alguns problemas só ficam claros quando você observa o navegador: uma camada sobreposta, um clique que não dispara ou um layout que muda entre dispositivos. O Playwright oferece modos visuais e relatórios para investigar esses casos. Use-os para entender a causa antes de aplicar uma correção, sem depender de tentativa e erro.",
+      "officialUrl": "https://playwright.dev/docs/running-tests",
+      "instructions": "Para acompanhar a execução, rode `npx playwright test --ui`. Se precisar ver a janela do navegador, use `npx playwright test --headed`; para investigar passo a passo, use `npx playwright test --debug`. Registre o cenário que falhou e converta a correção em um teste que continue protegendo o fluxo.",
+      "topics": [{ "name": "Desenvolvimento", "slug": "desenvolvimento" }, { "name": "Qualidade", "slug": "qualidade" }],
+      "tags": [{ "name": "Playwright", "slug": "playwright", "aliases": [] }, { "name": "Debug", "slug": "debug", "aliases": [] }, { "name": "Interface", "slug": "interface", "aliases": [] }],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Documentação oficial do Playwright verificada; texto e roteiro são originais do Setup Vencedor."
+    },
+    {
+      "title": "Direção visual para interfaces feitas com agentes",
+      "slug": "guia-direcao-visual-agentes",
+      "category": { "name": "Guias e referências", "slug": "guias-referencias" },
+      "itemType": "Referência",
+      "summary": "Dê uma direção estética clara ao agente para transformar requisitos em telas com identidade, em vez de repetir componentes genéricos.",
+      "ownContent": "Uma interface marcante começa antes do código: público, função principal, tom, contraste, ritmo e referências precisam estar claros. O plugin oficial Frontend Design do Claude Code foi criado para orientar escolhas estéticas mais específicas no trabalho de frontend. Use-o como apoio, mas mantenha a aprovação humana sobre acessibilidade, identidade da marca e consistência com o produto.",
+      "officialUrl": "https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design",
+      "instructions": "Descreva primeiro o objetivo da tela, quem a usa e qual sensação ela deve transmitir. Peça uma direção visual completa, incluindo tipografia, cores e estados importantes. Depois, revise a tela em desktop e mobile, ajuste contraste e confirme se a implementação continua funcional com conteúdo real.",
+      "topics": [{ "name": "IA e desenvolvimento", "slug": "ia-desenvolvimento" }, { "name": "Design", "slug": "design" }],
+      "tags": [{ "name": "Claude Code", "slug": "claude-code", "aliases": [] }, { "name": "Frontend", "slug": "frontend", "aliases": [] }, { "name": "Design", "slug": "design", "aliases": [] }],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Plugin oficial público da Anthropic verificado; texto e orientação são originais do Setup Vencedor."
+    },
+    {
+      "title": "Checklist de segurança antes de publicar",
+      "slug": "guia-checklist-seguranca-publicacao",
+      "category": { "name": "Guias e referências", "slug": "guias-referencias" },
+      "itemType": "Referência",
+      "summary": "Faça uma revisão objetiva de acesso, configuração, dados e falhas comuns antes de colocar uma aplicação web em produção.",
+      "ownContent": "Publicar rápido não deve significar publicar sem controle. Antes de liberar uma versão, confira quem pode acessar cada área, quais variáveis de ambiente estão expostas, se o comportamento de erro é seguro e se eventos relevantes são registrados. A lista OWASP Top 10 ajuda a equipe a priorizar riscos recorrentes de aplicações web; ela não substitui uma avaliação de segurança adequada ao contexto do produto.",
+      "officialUrl": "https://owasp.org/Top10/2025/",
+      "instructions": "Revise as permissões de cada perfil, teste autenticação e recuperação de senha, remova segredos do frontend e valide as configurações do ambiente de produção. Use a lista OWASP como pauta de revisão e registre risco, responsável e decisão para os pontos que não puderem ser resolvidos antes da liberação.",
+      "topics": [{ "name": "Segurança", "slug": "seguranca" }, { "name": "Desenvolvimento", "slug": "desenvolvimento" }],
+      "tags": [{ "name": "OWASP", "slug": "owasp", "aliases": [] }, { "name": "Segurança", "slug": "seguranca", "aliases": [] }, { "name": "Publicação", "slug": "publicacao", "aliases": [] }],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "OWASP Top 10 público e oficial verificado; checklist e explicação escritos originalmente para o Setup Vencedor."
+    }
+  ]
+}
