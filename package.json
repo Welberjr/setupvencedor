@@ -5,6 +5,7 @@
   "type": "module",
   "workspaces": ["worker"],
   "scripts": {
+    "prebuild": "node scripts/validate-public-auth-env.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
