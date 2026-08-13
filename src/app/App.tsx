@@ -9,6 +9,7 @@ import { CatalogPagination } from '../features/catalog/CatalogPagination'
 import { ASSISTANT_RESULTS_PAGE_SIZE, getPageWindow } from '../features/catalog/pagination'
 import { useCatalogPageSize } from '../features/catalog/useCatalogPageSize'
 import { createCardSummary } from '../features/catalog/catalog-narrative'
+import { isRedundantCategoryLabel } from '../features/catalog/card-label'
 import { AssistantSearch } from '../features/catalog/AssistantSearch'
 import { sampleCatalog } from '../features/catalog/catalog-data'
 import type { CatalogItem } from '../features/catalog/types'
@@ -89,7 +90,7 @@ export function App({ session = null }: { session?: Session }) {
 
   const renderCatalog = (items: CatalogItem[], options?: { gridClassName?: string; pageSize?: number }) => {
     const pageWindow = getPageWindow(items, catalogPage, options?.pageSize ?? catalogPageSize)
-    return <><div className={`catalog-grid${options?.gridClassName ? ` ${options.gridClassName}` : ''}`}>{pageWindow.items.map((item) => <article className={`catalog-card type-${item.type.toLowerCase().replaceAll(' ', '-')}`} key={item.id}><div className="card-topline"><p className="eyebrow">{item.type}</p><span>{item.category}</span></div><h2>{item.title}</h2><p>{createCardSummary(item)}</p><div className="card-actions"><button aria-label={`Ver detalhes de ${item.title}`} className="details-button" onClick={() => setSelectedItem(item)} type="button">Ver detalhes <CommandIcon name="arrow" size={22} /></button><FavoriteButton title={item.title} isFavorite={favoriteIds.has(item.id)} onToggle={() => toggleFavorite(item.id)} /></div></article>)}</div><CatalogPagination currentPage={pageWindow.currentPage} onPageChange={setCatalogPage} totalPages={pageWindow.totalPages} /></>
+    return <><div className={`catalog-grid${options?.gridClassName ? ` ${options.gridClassName}` : ''}`}>{pageWindow.items.map((item) => <article className={`catalog-card type-${item.type.toLowerCase().replaceAll(' ', '-')}`} key={item.id}><div className="card-topline"><p className="eyebrow">{item.type}</p>{!isRedundantCategoryLabel(item.type, item.category) && <span>{item.category}</span>}</div><h2>{item.title}</h2><p>{createCardSummary(item)}</p><div className="card-actions"><button aria-label={`Ver detalhes de ${item.title}`} className="details-button" onClick={() => setSelectedItem(item)} type="button">Ver detalhes <CommandIcon name="arrow" size={22} /></button><FavoriteButton title={item.title} isFavorite={favoriteIds.has(item.id)} onToggle={() => toggleFavorite(item.id)} /></div></article>)}</div><CatalogPagination currentPage={pageWindow.currentPage} onPageChange={setCatalogPage} totalPages={pageWindow.totalPages} /></>
   }
   const switchPage = (nextPage: Page) => { setPage(nextPage); setCatalogPage(1); if (nextPage === 'explore') setSelectedCategory(null) }
   const selectCategory = (category: string | null) => { setSelectedCategory(category); setCatalogPage(1) }
