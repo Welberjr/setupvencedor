@@ -11,7 +11,7 @@ it('renders the custom SV monogram with a product label', () => {
 
 it('renders a faceted green detail arrow', () => {
   render(<CommandIcon name="arrow" />)
-  expect(screen.getByTestId('command-icon-arrow')).toBeInTheDocument()
+  expect(screen.getByTestId('command-icon-arrow')).toHaveAttribute('data-direction', 'left')
   expect(screen.getByTestId('detail-arrow-light-face')).toBeInTheDocument()
   expect(screen.getByTestId('detail-arrow-shadow-face')).toBeInTheDocument()
 })
