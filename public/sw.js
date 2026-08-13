@@ -1,4 +1,4 @@
-const CACHE_NAME = 'setup-vencedor-cache-v2-20260812-pwa-stable'
+const CACHE_NAME = 'setup-vencedor-cache-v3-20260813-approved-brand'
 const SHELL_ASSETS = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png']
 
 self.addEventListener('install', (event) => {
