@@ -1,0 +1,1639 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "title": "OpenAI Codex",
+      "slug": "github-openai-codex",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Agente de programação da OpenAI para trabalhar no terminal e acelerar tarefas reais do repositório.",
+      "ownContent": "Codex ajuda a explorar uma base de código, implementar mudanças e verificar resultados com contexto do projeto. Ele faz mais sentido quando a equipe mantém instruções claras, testes executáveis e revisão humana antes de publicar.",
+      "officialUrl": "https://github.com/openai/codex",
+      "instructions": "Abra o guia oficial de início rápido, instale no ambiente de teste e execute uma tarefa pequena em um repositório sem dados sensíveis. Registre comandos, limites e critérios de revisão antes de levar o fluxo para a equipe.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        },
+        {
+          "name": "Codex",
+          "slug": "codex",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e com licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Claude Code",
+      "slug": "github-claude-code",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Agente de programação da Anthropic para trabalhar no terminal com contexto do código e dos fluxos Git.",
+      "ownContent": "Claude Code é indicado para equipes que querem delegar exploração, implementação assistida e tarefas de rotina sem perder os padrões do repositório. CLAUDE.md, regras curtas e revisão de diffs são a base para uma adoção segura.",
+      "officialUrl": "https://github.com/anthropics/claude-code",
+      "instructions": "Siga a instalação indicada pelo mantenedor e comece com um projeto de teste. Antes de liberar permissões amplas, defina comandos de teste obrigatórios, regras persistentes e uma revisão humana para cada alteração relevante.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        },
+        {
+          "name": "Claude Code",
+          "slug": "claude-code",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório oficial público e ativo verificado no GitHub; avalie os termos do mantenedor antes de qualquer redistribuição."
+    },
+    {
+      "title": "Vercel AI SDK",
+      "slug": "github-vercel-ai-sdk",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Biblioteca TypeScript para criar experiências de IA, streaming e agentes em aplicações web.",
+      "ownContent": "O AI SDK reduz o trabalho de integrar modelos, mensagens em streaming e interfaces de chat em aplicações TypeScript. Use-o quando o produto precisa de uma camada de IA bem integrada ao frontend e ao backend, com controle de autenticação e custo.",
+      "officialUrl": "https://github.com/vercel/ai",
+      "instructions": "Crie um projeto de exemplo, instale o pacote conforme a documentação e use uma chave de desenvolvimento sem privilégios. Teste streaming, tratamento de erro e limites de uso antes de conectar ao produto principal.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "TypeScript",
+          "slug": "typescript",
+          "aliases": []
+        },
+        {
+          "name": "IA",
+          "slug": "ia",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório oficial público, ativo e amplamente adotado verificado no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Model Context Protocol Servers",
+      "slug": "github-model-context-protocol-servers",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "MCP",
+      "summary": "Coleção de servidores de referência para conectar agentes a dados, ferramentas e sistemas externos via MCP.",
+      "ownContent": "Este repositório é um bom ponto de partida para entender padrões de servidores MCP e avaliar integrações que fazem sentido para um agente. Cada servidor deve ser revisado individualmente: permissões, origem dos dados e escopo das ferramentas importam mais do que apenas fazê-lo conectar.",
+      "officialUrl": "https://github.com/modelcontextprotocol/servers",
+      "instructions": "Escolha um servidor de referência e leia o README completo antes da instalação. Configure-o em ambiente isolado, limite credenciais e confirme que as ferramentas expostas atendem somente ao que o projeto precisa.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": []
+        },
+        {
+          "name": "Integrações",
+          "slug": "integracoes",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público do projeto Model Context Protocol, ativo e muito adotado; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Browser Use",
+      "slug": "github-browser-use",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Automação de navegador voltada a agentes, para executar e verificar fluxos web com supervisão.",
+      "ownContent": "Browser Use serve para construir automações que precisam entender páginas e executar tarefas em um navegador. É útil em validações controladas e rotinas internas; não deve receber credenciais sensíveis nem ser usado para burlar regras de outros serviços.",
+      "officialUrl": "https://github.com/browser-use/browser-use",
+      "instructions": "Monte um caso de teste em uma página de demonstração e limite as ações permitidas. Registre cada automação, use credenciais de teste e mantenha uma pessoa responsável por revisar o resultado antes de qualquer ação externa.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Automação",
+          "slug": "automacao",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Aider",
+      "slug": "github-aider",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Assistente de programação no terminal que trabalha diretamente com arquivos e histórico Git.",
+      "ownContent": "Aider é uma alternativa para experimentar programação assistida por IA com foco em mudanças rastreáveis no repositório. Ele é mais útil quando as tarefas são pequenas, a suíte de testes é rápida e cada modificação passa por revisão de diff.",
+      "officialUrl": "https://github.com/Aider-AI/aider",
+      "instructions": "Siga a instalação indicada no repositório e abra um projeto de teste versionado com Git. Comece pedindo uma alteração pequena, rode os testes e revise o diff antes de aceitar o resultado.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Terminal",
+          "slug": "terminal",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "PydanticAI",
+      "slug": "github-pydantic-ai",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Framework Python para agentes de IA com tipagem, validação e contratos de dados explícitos.",
+      "ownContent": "PydanticAI ajuda a criar agentes com entradas e saídas verificáveis, reduzindo respostas que não seguem o formato esperado. É uma boa escolha quando automações precisam produzir dados estruturados para sistemas internos, APIs ou bancos de dados.",
+      "officialUrl": "https://github.com/pydantic/pydantic-ai",
+      "instructions": "Crie um ambiente Python isolado e siga o quickstart oficial. Comece com um modelo de saída pequeno, valide os dados gerados e só então conecte o agente a serviços que alterem informações reais.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Python",
+          "slug": "python",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "LangChain",
+      "slug": "github-langchain",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Plataforma para estruturar aplicações que usam modelos, ferramentas, dados e fluxos de agentes.",
+      "ownContent": "LangChain é útil quando um produto precisa combinar modelos de IA com contexto, chamadas de ferramenta e integrações externas. A equipe deve começar com poucos componentes, observabilidade e testes, evitando criar cadeias extensas sem um objetivo mensurável.",
+      "officialUrl": "https://github.com/langchain-ai/langchain",
+      "instructions": "Escolha uma linguagem suportada e implemente um único fluxo de exemplo com dados fictícios. Registre entradas, saídas e erros; depois incorpore uma integração por vez, mantendo limites de custo e permissões.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "IA",
+          "slug": "ia",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "LangGraph",
+      "slug": "github-langgraph",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Framework para agentes com estados, ciclos de revisão e fluxos resilientes de longa duração.",
+      "ownContent": "LangGraph organiza agentes como um fluxo de estados, facilitando pausar, validar e retomar etapas complexas. Ele é indicado para processos em que uma resposta precisa passar por checagem, aprovação ou tratamento de falha antes de avançar.",
+      "officialUrl": "https://github.com/langchain-ai/langgraph",
+      "instructions": "Modele primeiro o fluxo em poucas etapas e defina claramente quando ele termina ou exige intervenção humana. Execute com dados de teste, acompanhe transições e só depois conecte ferramentas com efeito externo.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "IA",
+          "slug": "ia",
+          "aliases": []
+        },
+        {
+          "name": "Fluxos",
+          "slug": "fluxos",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "CrewAI",
+      "slug": "github-crewai",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Framework para orquestrar agentes com papéis complementares em uma mesma tarefa.",
+      "ownContent": "CrewAI ajuda a separar uma tarefa em responsabilidades, como pesquisa, execução e revisão. Funciona melhor quando cada papel tem uma entrega objetiva e quando a equipe define quais decisões ainda exigem aprovação humana.",
+      "officialUrl": "https://github.com/crewAIInc/crewAI",
+      "instructions": "Crie um experimento com dois papéis e uma saída curta. Defina entradas permitidas, resultado esperado e um limite de passos; revise o resultado antes de aumentar a autonomia ou conectar dados de produção.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        },
+        {
+          "name": "Orquestração",
+          "slug": "orquestracao",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "AutoGen",
+      "slug": "github-microsoft-autogen",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Framework da Microsoft para criar fluxos e aplicações baseadas em agentes de IA.",
+      "ownContent": "AutoGen é uma opção para equipes Python que querem estruturar colaboração entre agentes, pessoas e ferramentas. A adoção deve começar com observabilidade e uma tarefa controlada, porque orquestração não elimina a necessidade de validar resultados.",
+      "officialUrl": "https://github.com/microsoft/autogen",
+      "instructions": "Use o exemplo mais simples da documentação oficial e mantenha as ferramentas simuladas na primeira rodada. Meça qualidade, custo e tempo de execução antes de autorizar conexões com dados ou sistemas internos.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Microsoft",
+          "slug": "microsoft",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial e ativo verificado no GitHub; revise a licença indicada pelo mantenedor para o seu caso de uso."
+    },
+    {
+      "title": "Hugging Face Transformers",
+      "slug": "github-hugging-face-transformers",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Biblioteca central para trabalhar com modelos de linguagem, visão, áudio e multimodais.",
+      "ownContent": "Transformers dá acesso a uma grande variedade de modelos e pipelines em Python. É valioso para protótipos e produtos que precisam avaliar modelos além das APIs fechadas, mas a licença de cada modelo deve ser conferida separadamente.",
+      "officialUrl": "https://github.com/huggingface/transformers",
+      "instructions": "Crie um ambiente Python isolado e rode um pipeline pequeno com um modelo público. Verifique requisitos de hardware, licença do modelo e qualidade do resultado antes de construir qualquer integração persistente.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Python",
+          "slug": "python",
+          "aliases": []
+        },
+        {
+          "name": "Modelos",
+          "slug": "modelos",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Ollama",
+      "slug": "github-ollama",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Ambiente para executar e experimentar modelos de linguagem localmente.",
+      "ownContent": "Ollama permite testar modelos locais e reduzir dependência de chamadas externas em alguns cenários. Ele faz sentido para experimentos, privacidade e desenvolvimento; desempenho e qualidade variam conforme o hardware e o modelo escolhido.",
+      "officialUrl": "https://github.com/ollama/ollama",
+      "instructions": "Instale pelo método indicado no projeto e teste um modelo pequeno em uma máquina de desenvolvimento. Documente consumo de memória, tempo de resposta e licença do modelo antes de recomendar o ambiente ao time.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Modelos locais",
+          "slug": "modelos-locais",
+          "aliases": []
+        },
+        {
+          "name": "IA",
+          "slug": "ia",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Open WebUI",
+      "slug": "github-open-webui",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Interface web auto-hospedável para conversar com modelos locais e APIs compatíveis.",
+      "ownContent": "Open WebUI é útil quando uma equipe quer concentrar experimentos com modelos em uma interface interna. Como pode reunir provedores e histórico de conversa, é essencial definir autenticação, retenção de dados e quem pode configurar conexões.",
+      "officialUrl": "https://github.com/open-webui/open-webui",
+      "instructions": "Suba uma instância apenas em ambiente de teste e crie contas sem dados reais. Configure um único provedor, revise o controle de acesso e valide a política de retenção antes de liberar para mais pessoas.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Self-hosted",
+          "slug": "self-hosted",
+          "aliases": []
+        },
+        {
+          "name": "IA",
+          "slug": "ia",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial e ativo verificado no GitHub; revise a licença e os requisitos de hospedagem antes de adoção."
+    },
+    {
+      "title": "OpenHands",
+      "slug": "github-openhands",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Plataforma de desenvolvimento assistido por agentes para executar tarefas de software em ambientes controlados.",
+      "ownContent": "OpenHands é voltado a fluxos de engenharia de software guiados por IA. Ele deve ser tratado como uma ferramenta de execução: isole o ambiente, restrinja credenciais e valide todo código produzido antes de abrir um pull request.",
+      "officialUrl": "https://github.com/OpenHands/OpenHands",
+      "instructions": "Siga a documentação para executar localmente ou em sandbox. Comece por uma issue de exemplo, sem chaves de produção, e faça a revisão do diff, dos testes e das permissões usadas pelo agente.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        },
+        {
+          "name": "Sandbox",
+          "slug": "sandbox",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Gemini CLI",
+      "slug": "github-gemini-cli",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Agente de IA do Google para uso no terminal, com foco em tarefas de desenvolvimento.",
+      "ownContent": "Gemini CLI amplia o conjunto de agentes que a equipe pode avaliar para trabalho de código. Use-o como alternativa em tarefas isoladas e compare resultado, contexto, privacidade e custo; não padronize apenas pela primeira demonstração.",
+      "officialUrl": "https://github.com/google-gemini/gemini-cli",
+      "instructions": "Instale no ambiente de teste conforme o repositório oficial e conecte uma conta de desenvolvimento. Execute uma tarefa simples, rode os testes do projeto e compare o diff com o padrão já adotado pela equipe.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Terminal",
+          "slug": "terminal",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Cline",
+      "slug": "github-cline",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Agente de programação que pode operar como extensão, SDK ou assistente de linha de comando.",
+      "ownContent": "Cline é uma opção para quem quer experimentar agentes diretamente no editor ou em automações locais. O ganho vem de tarefas bem delimitadas, confirmação das ações e controle rigoroso das credenciais ligadas ao projeto.",
+      "officialUrl": "https://github.com/cline/cline",
+      "instructions": "Instale pela forma recomendada pelo projeto e conecte somente um provedor de teste. Comece com leitura e planejamento; libere edição de arquivos apenas depois de conferir o plano e o custo estimado.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "IDE",
+          "slug": "ide",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Continue",
+      "slug": "github-continue",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Agente de código open source para usar no editor e integrar modelos ao fluxo de desenvolvimento.",
+      "ownContent": "Continue oferece uma forma flexível de testar assistentes de código em editores usados pela equipe. A ferramenta faz sentido quando o time quer comparar modelos e manter a configuração versionada, sem expor informações desnecessárias do repositório.",
+      "officialUrl": "https://github.com/continuedev/continue",
+      "instructions": "Instale a extensão ou CLI indicada no repositório e configure um modelo de desenvolvimento. Faça um teste de leitura de código, depois uma alteração pequena coberta por teste, revisando o diff antes de aceitar.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "IDE",
+          "slug": "ide",
+          "aliases": []
+        },
+        {
+          "name": "Open source",
+          "slug": "open-source",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Goose",
+      "slug": "github-goose-agent",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Agente extensível que executa tarefas com diferentes modelos e integrações.",
+      "ownContent": "Goose serve para testar fluxos de agente que vão além de sugerir código: ele pode usar extensões e executar etapas declaradas. Isso torna a avaliação de permissões, logs e limites de ação ainda mais importante para o uso profissional.",
+      "officialUrl": "https://github.com/aaif-goose/goose",
+      "instructions": "Siga o guia de instalação do mantenedor e escolha uma extensão de baixo risco para a primeira experiência. Valide os comandos gerados, mantenha tokens fora de arquivos versionados e documente o que cada extensão pode acessar.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Agentes",
+          "slug": "agentes",
+          "aliases": []
+        },
+        {
+          "name": "Integrações",
+          "slug": "integracoes",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Semantic Kernel",
+      "slug": "github-semantic-kernel",
+      "category": {
+        "name": "IA e agentes",
+        "slug": "ia-agentes"
+      },
+      "itemType": "Ferramenta",
+      "summary": "SDK da Microsoft para integrar recursos de IA a aplicações em .NET, Python e Java.",
+      "ownContent": "Semantic Kernel é útil quando uma aplicação empresarial precisa organizar prompts, funções e provedores de IA dentro de uma arquitetura tradicional. Ele ajuda a manter integrações explícitas, mas não substitui validação de dados nem autorização do lado do servidor.",
+      "officialUrl": "https://github.com/microsoft/semantic-kernel",
+      "instructions": "Escolha a linguagem do projeto e execute o exemplo inicial da documentação. Comece com uma função sem efeito externo, adicione logs e valide as entradas antes de conectar banco, e-mail ou APIs de produção.",
+      "topics": [
+        {
+          "name": "IA e desenvolvimento",
+          "slug": "ia-desenvolvimento"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Microsoft",
+          "slug": "microsoft",
+          "aliases": []
+        },
+        {
+          "name": "SDK",
+          "slug": "sdk",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Supabase",
+      "slug": "github-supabase",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Plataforma Postgres para banco, autenticação, armazenamento, Edge Functions e recursos em tempo real.",
+      "ownContent": "Supabase concentra blocos importantes de um produto moderno e já faz parte da infraestrutura do Setup Vencedor. É uma boa referência para aplicações que precisam de dados relacionais, autenticação e RLS, desde que o desenho de permissões seja feito antes da interface.",
+      "officialUrl": "https://github.com/supabase/supabase",
+      "instructions": "Comece pelo projeto de teste e leia a documentação da área necessária. Modele tabelas e políticas RLS antes de conectar o frontend; valide com usuários de papéis diferentes para evitar acesso indevido.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Banco de dados",
+          "slug": "banco-de-dados",
+          "aliases": []
+        },
+        {
+          "name": "Cloud",
+          "slug": "cloud",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "n8n",
+      "slug": "github-n8n",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Plataforma de automação visual com integrações, código e capacidades nativas para fluxos de IA.",
+      "ownContent": "n8n permite ligar sistemas e criar rotinas sem começar toda integração do zero. É ótimo para automatizações internas, mas cada credencial, gatilho e ação deve ter dono, registro e limite de execução para que o fluxo não vire uma caixa-preta.",
+      "officialUrl": "https://github.com/n8n-io/n8n",
+      "instructions": "Crie uma instância de teste e conecte uma integração sem dados críticos. Comece com um fluxo de leitura ou notificação, registre as credenciais usadas e adicione ações de escrita somente após revisão do time.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Automação",
+          "slug": "automacao",
+          "aliases": []
+        },
+        {
+          "name": "Integrações",
+          "slug": "integracoes",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial e ativo verificado no GitHub; o projeto usa modelo fair-code, então revise os termos antes de uso comercial."
+    },
+    {
+      "title": "Cloudflare Workers SDK",
+      "slug": "github-cloudflare-workers-sdk",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Repositório do Wrangler e ferramentas oficiais para desenvolver e publicar aplicações na Cloudflare.",
+      "ownContent": "Workers SDK é a base para criar Workers, Pages Functions e integrações de edge computing na Cloudflare. Faz sentido para equipes que buscam baixa latência e deploy simples, desde que segredos e permissões de conta não sejam colocados no código.",
+      "officialUrl": "https://github.com/cloudflare/workers-sdk",
+      "instructions": "Crie um projeto mínimo com o Wrangler e publique primeiro em ambiente de prévia. Use variáveis secretas pelo painel ou CLI, valide rotas e logs, e só então associe recursos de produção.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Cloudflare",
+          "slug": "cloudflare",
+          "aliases": []
+        },
+        {
+          "name": "Edge",
+          "slug": "edge",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "OpenTofu",
+      "slug": "github-opentofu",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Infraestrutura como código declarativa para provisionar e manter recursos de cloud.",
+      "ownContent": "OpenTofu permite transformar infraestrutura em código revisável e repetível. É indicado quando a equipe precisa evitar configurações manuais e manter histórico de mudanças, com atenção especial ao state, aos segredos e às aprovações de deploy.",
+      "officialUrl": "https://github.com/opentofu/opentofu",
+      "instructions": "Crie um diretório de laboratório e modele um recurso sem dados críticos. Rode validação e plano, revise as alterações previstas com outra pessoa e só depois aplique em uma conta controlada.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Infraestrutura",
+          "slug": "infraestrutura",
+          "aliases": []
+        },
+        {
+          "name": "IaC",
+          "slug": "iac",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MPL-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Pulumi",
+      "slug": "github-pulumi",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Infraestrutura como código usando linguagens de programação como TypeScript, Python, Go e C#.",
+      "ownContent": "Pulumi é interessante para times que preferem criar infraestrutura com as mesmas linguagens usadas no produto. Ele combina recursos cloud com abstrações de código, por isso revisão, testes e armazenamento seguro do estado continuam indispensáveis.",
+      "officialUrl": "https://github.com/pulumi/pulumi",
+      "instructions": "Siga o quickstart para um provedor de teste e crie uma stack separada. Execute preview, confira os recursos que serão criados e proteja credenciais e estado antes de usar um ambiente compartilhado.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Infraestrutura",
+          "slug": "infraestrutura",
+          "aliases": []
+        },
+        {
+          "name": "IaC",
+          "slug": "iac",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Caddy",
+      "slug": "github-caddy",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Servidor web moderno com HTTPS automático e configuração enxuta para aplicações e APIs.",
+      "ownContent": "Caddy simplifica a publicação de sites e serviços com TLS bem configurado por padrão. É uma escolha prática para ambientes pequenos e médios, desde que proxy reverso, domínios, logs e atualizações sejam tratados como parte do deploy.",
+      "officialUrl": "https://github.com/caddyserver/caddy",
+      "instructions": "Suba uma página de teste em porta local e use um domínio de homologação para validar certificados. Mantenha a configuração versionada e verifique cabeçalhos, redirecionamentos e logs antes de trocar o tráfego real.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Servidor web",
+          "slug": "servidor-web",
+          "aliases": []
+        },
+        {
+          "name": "DevOps",
+          "slug": "devops",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Traefik",
+      "slug": "github-traefik",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Proxy de aplicações cloud-native para roteamento dinâmico de serviços e containers.",
+      "ownContent": "Traefik é útil quando há vários serviços, containers ou rotas para administrar. Ele se integra bem a ambientes modernos, mas uma configuração de entrada errada pode expor painéis ou serviços internos; segurança vem antes de conveniência.",
+      "officialUrl": "https://github.com/traefik/traefik",
+      "instructions": "Use um ambiente com dois serviços de teste e configure rotas explícitas. Desative ou proteja o dashboard, valide HTTPS e registre como a equipe atualiza regras de roteamento.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Proxy",
+          "slug": "proxy",
+          "aliases": []
+        },
+        {
+          "name": "DevOps",
+          "slug": "devops",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Kubernetes",
+      "slug": "github-kubernetes",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Plataforma para orquestrar containers e operar aplicações distribuídas em escala.",
+      "ownContent": "Kubernetes resolve problemas de implantação, disponibilidade e escalabilidade quando a operação já justifica essa complexidade. Não é o primeiro passo para todo projeto; uma equipe pequena deve avaliar custo operacional, observabilidade e maturidade antes de adotá-lo.",
+      "officialUrl": "https://github.com/kubernetes/kubernetes",
+      "instructions": "Comece em um cluster local ou de treinamento e publique uma aplicação simples. Aprenda deployment, service, namespace e secret antes de experimentar escalonamento, ingress ou recursos de produção.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Kubernetes",
+          "slug": "kubernetes",
+          "aliases": []
+        },
+        {
+          "name": "Containers",
+          "slug": "containers",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Helm",
+      "slug": "github-helm",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Gerenciador de pacotes para instalar e versionar aplicações em Kubernetes.",
+      "ownContent": "Helm ajuda a manter deployments Kubernetes configuráveis e repetíveis por meio de charts. Ele faz sentido depois que os fundamentos de Kubernetes já estão claros, porque valores incorretos ou charts não auditados podem introduzir risco operacional.",
+      "officialUrl": "https://github.com/helm/helm",
+      "instructions": "Instale o CLI e use um chart de exemplo em um cluster local. Leia os valores padrão, substitua segredos por referências seguras e valide o manifesto renderizado antes de aplicar.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Kubernetes",
+          "slug": "kubernetes",
+          "aliases": []
+        },
+        {
+          "name": "DevOps",
+          "slug": "devops",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Grafana",
+      "slug": "github-grafana",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Plataforma de observabilidade para visualizar métricas, logs e traces de diferentes fontes.",
+      "ownContent": "Grafana transforma sinais técnicos em painéis que ajudam a equipe a entender disponibilidade e desempenho. Ele gera valor quando os gráficos respondem a perguntas operacionais reais, como erro, latência e capacidade, e não quando vira apenas decoração.",
+      "officialUrl": "https://github.com/grafana/grafana",
+      "instructions": "Suba uma instância de laboratório e conecte uma fonte de métricas de teste. Crie um painel com poucas métricas úteis, defina alertas com responsáveis e valide se a equipe consegue agir a partir deles.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Observabilidade",
+          "slug": "observabilidade",
+          "aliases": []
+        },
+        {
+          "name": "DevOps",
+          "slug": "devops",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença AGPL-3.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Prometheus",
+      "slug": "github-prometheus",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Sistema de métricas e banco de séries temporais para monitorar aplicações e infraestrutura.",
+      "ownContent": "Prometheus coleta métricas para acompanhar saúde, desempenho e capacidade dos serviços. É uma base comum de observabilidade, mas só funciona bem quando as métricas escolhidas têm limites e alertas que o time realmente entende.",
+      "officialUrl": "https://github.com/prometheus/prometheus",
+      "instructions": "Instrumente uma aplicação de teste com poucas métricas e configure uma coleta local. Verifique consultas básicas, crie um alerta de laboratório e documente quem responde quando ele dispara.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Observabilidade",
+          "slug": "observabilidade",
+          "aliases": []
+        },
+        {
+          "name": "Métricas",
+          "slug": "metricas",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Argo CD",
+      "slug": "github-argo-cd",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Ferramenta de entrega contínua declarativa para sincronizar aplicações Kubernetes a partir do Git.",
+      "ownContent": "Argo CD aplica a prática de GitOps: o estado desejado da aplicação fica versionado, revisado e sincronizado com o cluster. É útil para ambientes Kubernetes maduros, com atenção rigorosa a quem pode alterar repositórios, manifests e credenciais.",
+      "officialUrl": "https://github.com/argoproj/argo-cd",
+      "instructions": "Comece com um cluster de laboratório e um repositório de manifests simples. Configure somente leitura na primeira avaliação, revise a diferença exibida e defina processo de aprovação antes de permitir sincronização automática.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Kubernetes",
+          "slug": "kubernetes",
+          "aliases": []
+        },
+        {
+          "name": "GitOps",
+          "slug": "gitops",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Coolify",
+      "slug": "github-coolify",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "PaaS auto-hospedável para publicar aplicações, bancos e serviços em servidores próprios.",
+      "ownContent": "Coolify é uma alternativa para equipes que desejam simplificar deploys sem abrir mão de controlar a própria infraestrutura. O benefício vem com responsabilidade operacional: backup, atualização, firewall, monitoramento e acesso administrativo precisam estar definidos.",
+      "officialUrl": "https://github.com/coollabsio/coolify",
+      "instructions": "Instale primeiro em servidor de homologação e publique uma aplicação estática sem dados. Valide domínio, HTTPS, logs e backup; só depois conecte banco, serviços externos ou aplicações de clientes.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Self-hosted",
+          "slug": "self-hosted",
+          "aliases": []
+        },
+        {
+          "name": "Deploy",
+          "slug": "deploy",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Dokku",
+      "slug": "github-dokku",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "PaaS baseado em Docker para gerenciar o ciclo de vida de aplicações em um servidor próprio.",
+      "ownContent": "Dokku aproxima uma experiência de plataforma de deploy de um servidor que a equipe controla. É interessante para projetos simples e médios, desde que exista rotina de atualização do host, backup e proteção de chaves e bancos.",
+      "officialUrl": "https://github.com/dokku/dokku",
+      "instructions": "Prepare uma máquina de teste e publique uma aplicação de demonstração. Confira domínio, certificado, logs e rollback antes de permitir que outras pessoas usem a plataforma para aplicações reais.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Docker",
+          "slug": "docker",
+          "aliases": []
+        },
+        {
+          "name": "Deploy",
+          "slug": "deploy",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Gitea",
+      "slug": "github-gitea",
+      "category": {
+        "name": "Cloud e infraestrutura",
+        "slug": "cloud-infraestrutura"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Plataforma auto-hospedável de Git, revisão de código, pacotes e colaboração de desenvolvimento.",
+      "ownContent": "Gitea é uma opção para times que precisam manter repositórios e colaboração em infraestrutura própria. A instalação deve ser pensada como um serviço crítico: acesso, backup, atualização e recuperação precisam estar definidos antes de migrar código importante.",
+      "officialUrl": "https://github.com/go-gitea/gitea",
+      "instructions": "Suba uma instância de laboratório e crie um repositório sem informações sensíveis. Teste permissões por equipe, backup e restauração antes de importar projetos ou convidar pessoas.",
+      "topics": [
+        {
+          "name": "Cloud e infraestrutura",
+          "slug": "cloud-infraestrutura"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Git",
+          "slug": "git",
+          "aliases": []
+        },
+        {
+          "name": "Self-hosted",
+          "slug": "self-hosted",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Playwright",
+      "slug": "github-playwright",
+      "category": {
+        "name": "Qualidade e segurança",
+        "slug": "qualidade-seguranca"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Framework de testes e automação para Chromium, Firefox e WebKit com uma única API.",
+      "ownContent": "Playwright permite testar o que a pessoa realmente faz na aplicação, como entrar, navegar, preencher e confirmar uma ação. Ele é especialmente útil para proteger fluxos críticos depois de uma correção ou antes de publicar uma versão.",
+      "officialUrl": "https://github.com/microsoft/playwright",
+      "instructions": "Use `npm init playwright@latest` em um projeto de teste e crie um cenário pequeno de ponta a ponta. Execute em mais de um navegador e mantenha o teste junto do código para prevenir regressões.",
+      "topics": [
+        {
+          "name": "Qualidade e segurança",
+          "slug": "qualidade-seguranca"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Testes",
+          "slug": "testes",
+          "aliases": []
+        },
+        {
+          "name": "Automação",
+          "slug": "automacao",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Cypress",
+      "slug": "github-cypress",
+      "category": {
+        "name": "Qualidade e segurança",
+        "slug": "qualidade-seguranca"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Ferramenta de testes para aplicações web, com execução interativa e integração contínua.",
+      "ownContent": "Cypress é uma alternativa consolidada para validar comportamento de aplicações que rodam no navegador. Ele ajuda a equipe a tornar cenários repetitivos verificáveis, desde que os testes usem dados previsíveis e não dependam de detalhes frágeis da interface.",
+      "officialUrl": "https://github.com/cypress-io/cypress",
+      "instructions": "Adicione Cypress a um projeto de laboratório e grave um único fluxo essencial. Rode em modo interativo para entender o teste, depois coloque-o no pipeline de CI quando estiver estável.",
+      "topics": [
+        {
+          "name": "Qualidade e segurança",
+          "slug": "qualidade-seguranca"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Testes",
+          "slug": "testes",
+          "aliases": []
+        },
+        {
+          "name": "Web",
+          "slug": "web",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Vitest",
+      "slug": "github-vitest",
+      "category": {
+        "name": "Qualidade e segurança",
+        "slug": "qualidade-seguranca"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Framework moderno de testes para projetos JavaScript e TypeScript baseado no ecossistema Vite.",
+      "ownContent": "Vitest é indicado para testar funções, componentes e regras de negócio com feedback rápido durante o desenvolvimento. Ele funciona melhor quando os testes descrevem o comportamento esperado e não apenas detalhes internos da implementação.",
+      "officialUrl": "https://github.com/vitest-dev/vitest",
+      "instructions": "Instale em um projeto de teste e escreva primeiro um caso simples para uma função crítica. Faça o teste falhar, implemente o mínimo para passar e execute a suíte completa antes do commit.",
+      "topics": [
+        {
+          "name": "Qualidade e segurança",
+          "slug": "qualidade-seguranca"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Testes",
+          "slug": "testes",
+          "aliases": []
+        },
+        {
+          "name": "TypeScript",
+          "slug": "typescript",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Trivy",
+      "slug": "github-trivy",
+      "category": {
+        "name": "Qualidade e segurança",
+        "slug": "qualidade-seguranca"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Scanner para vulnerabilidades, configurações inseguras, segredos e SBOM em código, containers e cloud.",
+      "ownContent": "Trivy ajuda a encontrar problemas antes que eles cheguem à produção, cobrindo mais do que bibliotecas vulneráveis. Ele deve entrar como uma verificação orientada a risco: resultados precisam de triagem, responsável e prazo, não apenas um alerta acumulado.",
+      "officialUrl": "https://github.com/aquasecurity/trivy",
+      "instructions": "Instale pelo método oficial e rode uma varredura em uma imagem ou repositório de demonstração. Revise os achados por severidade, corrija um caso real e só então automatize a checagem no CI.",
+      "topics": [
+        {
+          "name": "Qualidade e segurança",
+          "slug": "qualidade-seguranca"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Segurança",
+          "slug": "seguranca",
+          "aliases": []
+        },
+        {
+          "name": "Containers",
+          "slug": "containers",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença Apache-2.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "TruffleHog",
+      "slug": "github-trufflehog",
+      "category": {
+        "name": "Qualidade e segurança",
+        "slug": "qualidade-seguranca"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Scanner que localiza e verifica possíveis credenciais expostas em repositórios e fontes de dados.",
+      "ownContent": "TruffleHog reduz o risco de tokens, senhas e chaves vazarem em código ou histórico Git. O uso correto inclui um processo de resposta: revogar o segredo, investigar alcance e impedir que a mesma exposição volte a acontecer.",
+      "officialUrl": "https://github.com/trufflesecurity/trufflehog",
+      "instructions": "Rode primeiro em um repositório de teste ou espelho seguro. Caso encontre uma credencial real, não a exponha em chat ou issue: revogue-a pelo provedor e registre a correção de forma restrita.",
+      "topics": [
+        {
+          "name": "Qualidade e segurança",
+          "slug": "qualidade-seguranca"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Segurança",
+          "slug": "seguranca",
+          "aliases": []
+        },
+        {
+          "name": "Segredos",
+          "slug": "segredos",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença AGPL-3.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Semgrep",
+      "slug": "github-semgrep",
+      "category": {
+        "name": "Qualidade e segurança",
+        "slug": "qualidade-seguranca"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Análise estática para encontrar padrões de bugs e riscos de segurança em várias linguagens.",
+      "ownContent": "Semgrep permite transformar padrões de erro conhecidos em regras que a equipe consegue revisar continuamente. É útil quando combinamos regras prontas com regras específicas do próprio produto, evitando falsos positivos sem ignorar riscos importantes.",
+      "officialUrl": "https://github.com/semgrep/semgrep",
+      "instructions": "Instale no ambiente de teste e rode apenas um conjunto de regras apropriado à linguagem do projeto. Analise exemplos de achados, ajuste o nível de severidade e incorpore no CI quando a equipe souber como tratar falhas.",
+      "topics": [
+        {
+          "name": "Qualidade e segurança",
+          "slug": "qualidade-seguranca"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Segurança",
+          "slug": "seguranca",
+          "aliases": []
+        },
+        {
+          "name": "Análise estática",
+          "slug": "analise-estatica",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença LGPL-2.1 verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "Gitleaks",
+      "slug": "github-gitleaks",
+      "category": {
+        "name": "Qualidade e segurança",
+        "slug": "qualidade-seguranca"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Ferramenta leve para detectar segredos expostos em arquivos, commits e pipelines.",
+      "ownContent": "Gitleaks funciona como uma barreira preventiva contra vazamento acidental de chaves no Git. Ele deve ser combinado com variáveis de ambiente, cofre de segredos e revisão de código; bloquear um commit é melhor do que remediar uma credencial publicada.",
+      "officialUrl": "https://github.com/gitleaks/gitleaks",
+      "instructions": "Rode o scanner em um repositório de exemplo e configure uma regra de pré-commit ou CI. Teste com um segredo fictício, confirme o bloqueio e documente o que fazer quando houver um achado verdadeiro.",
+      "topics": [
+        {
+          "name": "Qualidade e segurança",
+          "slug": "qualidade-seguranca"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "Segurança",
+          "slug": "seguranca",
+          "aliases": []
+        },
+        {
+          "name": "Git",
+          "slug": "git",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença MIT verificados no GitHub; texto autoral do Setup Vencedor."
+    },
+    {
+      "title": "OWASP ASVS",
+      "slug": "github-owasp-asvs",
+      "category": {
+        "name": "Qualidade e segurança",
+        "slug": "qualidade-seguranca"
+      },
+      "itemType": "Referência",
+      "summary": "Padrão de verificação para elevar o nível de segurança de aplicações web.",
+      "ownContent": "OWASP ASVS oferece critérios práticos para avaliar controles de segurança de uma aplicação, como autenticação, sessão, dados e tratamento de erros. Ele é útil para criar checklists de revisão e conversar com clareza sobre o nível de segurança esperado em cada entrega.",
+      "officialUrl": "https://github.com/OWASP/ASVS",
+      "instructions": "Comece escolhendo uma área da aplicação, como autenticação ou controle de acesso. Transforme poucos requisitos aplicáveis em itens de revisão, registre evidências e aumente a cobertura gradualmente a cada versão.",
+      "topics": [
+        {
+          "name": "Qualidade e segurança",
+          "slug": "qualidade-seguranca"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": []
+        },
+        {
+          "name": "OWASP",
+          "slug": "owasp",
+          "aliases": []
+        },
+        {
+          "name": "Segurança",
+          "slug": "seguranca",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-13",
+      "sourceNote": "Repositório público oficial, ativo e sob licença CC-BY-SA-4.0 verificados no GitHub; texto autoral do Setup Vencedor."
+    }
+  ]
+}
