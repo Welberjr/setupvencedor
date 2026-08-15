@@ -186,3 +186,52 @@ it('makes the laboratory brand, workspace label and signed-in identity legible',
   official.remove()
   laboratory.remove()
 })
+
+it('gives support and invitation controls a safe paper inset in the laboratory', () => {
+  const style = mountStyle(`${readStyle('src/styles/handdrawn-tokens.css')}\n${readStyle('src/styles/handdrawn-pages.css')}`)
+  const laboratory = document.createElement('main')
+  laboratory.className = 'handdrawn-lab'
+  laboratory.innerHTML = `
+    <section class="support-page"><form class="ticket-form"></form></section>
+    <section class="admin-page"><section class="invite-studio"><form class="invite-form"></form></section></section>
+  `
+  document.body.append(laboratory)
+
+  const supportForm = getComputedStyle(laboratory.querySelector('.support-page .ticket-form')!)
+  const inviteStudio = getComputedStyle(laboratory.querySelector('.admin-page .invite-studio')!)
+
+  expect(supportForm.maxWidth).toBe('940px')
+  expect(supportForm.padding).toBe('32px 36px')
+  expect(supportForm.gap).toBe('20px')
+  expect(inviteStudio.padding).toBe('48px')
+
+  style.remove()
+  laboratory.remove()
+})
+
+it('keeps the editorial guide art compact and the return control readable in the laboratory', () => {
+  const style = mountStyle(`${readStyle('src/styles/handdrawn-tokens.css')}\n${readStyle('src/styles/handdrawn-pages.css')}`)
+  const laboratory = document.createElement('main')
+  laboratory.className = 'handdrawn-lab'
+  laboratory.innerHTML = `
+    <section class="resource-profile-pilot-editorial">
+      <button class="resource-back">Voltar ao acervo</button>
+      <figure class="handdrawn-guide-art"><img alt="Guia desenhado" /></figure>
+    </section>
+  `
+  document.body.append(laboratory)
+
+  const artwork = getComputedStyle(laboratory.querySelector('.handdrawn-guide-art img')!)
+  const back = getComputedStyle(laboratory.querySelector('.resource-back')!)
+  const rules = Array.from(style.sheet?.cssRules ?? []).filter((rule): rule is CSSStyleRule => rule instanceof CSSStyleRule)
+  const backRule = rules.find((rule) => rule.selectorText === '.handdrawn-lab .resource-profile-pilot-editorial .resource-back')
+
+  expect(artwork.maxWidth).toBe('340px')
+  expect(artwork.maxHeight).toBe('420px')
+  expect(back.minHeight).toBe('44px')
+  expect(backRule?.style.background).toBe('var(--note-green)')
+  expect(backRule?.style.color).toBe('var(--ink)')
+
+  style.remove()
+  laboratory.remove()
+})

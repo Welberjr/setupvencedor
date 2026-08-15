@@ -52,6 +52,21 @@
   border-radius: 15px 20px 16px 18px;
 }
 
+.handdrawn-lab .support-page .ticket-form {
+  width: 100%;
+  max-width: 940px;
+  padding: 32px 36px;
+  gap: 20px;
+}
+
+.handdrawn-lab .admin-page .invite-studio {
+  padding: 48px;
+}
+
+.handdrawn-lab .admin-page .invite-form {
+  gap: 20px;
+}
+
 .handdrawn-lab .assistant-composer > label,
 .handdrawn-lab .ticket-form label,
 .handdrawn-lab .ticket-form label small,
@@ -250,6 +265,28 @@
 .handdrawn-lab .auth-form [role=alert] { color: #a32727; }
 .handdrawn-lab .link-button { min-height: 44px; color: #174f74; font-weight: 800; }
 
+.handdrawn-lab .resource-profile-pilot-editorial .resource-back {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--note-green);
+  box-shadow: 2px 3px 0 #201f1b35;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.handdrawn-lab .resource-profile-pilot-editorial .handdrawn-guide-art {
+  align-self: start;
+}
+
+.handdrawn-lab .resource-profile-pilot-editorial .handdrawn-guide-art img {
+  width: min(100%, 340px);
+  max-width: 340px;
+  max-height: 420px;
+  object-fit: contain;
+}
+
 @media (max-width: 900px) {
   .handdrawn-lab.auth-shell { grid-template-columns: 1fr; align-content: start; }
   .handdrawn-lab .handdrawn-auth-artwork { width: min(680px, 100%); margin-inline: auto; }
@@ -260,6 +297,8 @@
   .handdrawn-lab.auth-shell { padding: 14px; }
   .handdrawn-lab .handdrawn-auth-artwork { padding: 20px; }
   .handdrawn-lab .handdrawn-auth-artwork h2 { font-size: 34px; }
+  .handdrawn-lab .support-page .ticket-form { padding: 22px 18px; }
+  .handdrawn-lab .admin-page .invite-studio { padding: 28px 18px; }
   .handdrawn-lab .assistant-reasons li:nth-child(even),
   .handdrawn-lab .metric-card:nth-child(n) { transform: none; }
 }
