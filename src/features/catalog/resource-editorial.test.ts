@@ -21,7 +21,7 @@ it('gives every MCP an authored editorial route and category illustration family
   const editorial = createResourceEditorial(item, guide)
 
   expect(editorial.heading).toBe('Conecte contexto ao trabalho')
-  expect(editorial.illustration.src).toBe('/illustrations/handdrawn/categories/mcps-connections.png')
+  expect(editorial.illustration.src).toBe('/illustrations/handdrawn/categories/mcps-connections.webp')
   expect(editorial.steps).toHaveLength(4)
   expect(editorial.steps[0]).toMatchObject({ title: 'Entenda o recurso', detail: guide.plainLanguage })
   expect(editorial.steps[2].claudePrompt).toContain('https://github.com/upstash/context7')
@@ -33,5 +33,5 @@ it('keeps the custom Frontend Design editorial story inside the shared renderer'
 
   expect(editorial.heading).toBe('Da ideia à primeira tela')
   expect(editorial.steps.map((step) => step.title)).toContain('Dê um clima à interface')
-  expect(editorial.illustration.src).toBe('/illustrations/frontend-design-handdrawn-guide.png')
+  expect(editorial.illustration.src).toBe('/illustrations/frontend-design-handdrawn-guide.webp')
 })

@@ -9,6 +9,7 @@ import './styles.css'
 import './styles/handdrawn-tokens.css'
 import './styles/handdrawn-shell.css'
 import './styles/handdrawn-explore.css'
+import './styles/handdrawn-pages.css'
 import './styles/handdrawn-responsive.css'
 
 const SW_UPDATE_INTERVAL_MS = 5 * 60 * 1000

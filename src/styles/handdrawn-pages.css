@@ -1,0 +1,250 @@
+.handdrawn-lab .inner-page > .illustrated-hero {
+  margin-bottom: 32px;
+}
+
+.handdrawn-lab .handdrawn-area-note {
+  width: fit-content;
+  max-width: 330px;
+  margin-top: 22px;
+  padding: 10px 14px;
+  border: 2px dashed #9d5e2e;
+  border-radius: 9px 13px 10px 15px;
+  background: var(--note-coral);
+  box-shadow: 3px 4px 0 #201f1b2b;
+  color: var(--ink);
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+  font-weight: 700;
+  transform: rotate(-0.7deg);
+}
+
+.handdrawn-lab .assistant-advisor,
+.handdrawn-lab .ticket-form {
+  color: var(--ink);
+}
+
+.handdrawn-lab .assistant-composer,
+.handdrawn-lab .ticket-form,
+.handdrawn-lab .invite-studio,
+.handdrawn-lab .people-directory,
+.handdrawn-lab .metric-card,
+.handdrawn-lab .directory-panel {
+  border: var(--paper-border);
+  background: var(--paper-raised);
+  box-shadow: var(--sketch-shadow);
+}
+
+.handdrawn-lab .assistant-composer,
+.handdrawn-lab .ticket-form {
+  border-radius: 15px 20px 16px 18px;
+}
+
+.handdrawn-lab .assistant-composer > label,
+.handdrawn-lab .ticket-form label,
+.handdrawn-lab .ticket-form label small,
+.handdrawn-lab .invite-heading p:not(.eyebrow),
+.handdrawn-lab .directory-panel > p,
+.handdrawn-lab .person-summary span,
+.handdrawn-lab .person-summary small,
+.handdrawn-lab .activation-intro {
+  color: var(--ink-muted);
+}
+
+.handdrawn-lab .assistant-composer textarea,
+.handdrawn-lab .ticket-form input,
+.handdrawn-lab .ticket-form select,
+.handdrawn-lab .ticket-form textarea,
+.handdrawn-lab .people-search input,
+.handdrawn-lab .rich-composer,
+.handdrawn-lab .rich-editor {
+  border: 2px solid #201f1b7a;
+  background: #fffdf7;
+  color: var(--ink);
+}
+
+.handdrawn-lab .assistant-composer textarea::placeholder,
+.handdrawn-lab .rich-editor:empty::before {
+  color: #777067;
+}
+
+.handdrawn-lab .voice-button,
+.handdrawn-lab .recording-button,
+.handdrawn-lab .advisor-submit,
+.handdrawn-lab .primary,
+.handdrawn-lab .rich-toolbar button,
+.handdrawn-lab .attachment-trigger,
+.handdrawn-lab .attachment-remove,
+.handdrawn-lab .people-search button,
+.handdrawn-lab .person-actions button,
+.handdrawn-lab .activation-link button {
+  min-height: 44px;
+  border: var(--paper-border);
+  border-radius: 9px 12px 10px 13px;
+  box-shadow: 2px 3px 0 #201f1b35;
+  color: var(--ink);
+}
+
+.handdrawn-lab .voice-button,
+.handdrawn-lab .rich-toolbar button,
+.handdrawn-lab .attachment-trigger,
+.handdrawn-lab .attachment-remove,
+.handdrawn-lab .people-search button,
+.handdrawn-lab .person-actions button,
+.handdrawn-lab .activation-link button {
+  background: var(--note-blue);
+}
+
+.handdrawn-lab .advisor-submit,
+.handdrawn-lab .primary {
+  background: var(--brand-green);
+}
+
+.handdrawn-lab .assistant-note,
+.handdrawn-lab .assistant-status,
+.handdrawn-lab .assistant-transcript {
+  color: var(--ink-muted);
+}
+
+.handdrawn-lab .assistant-mode {
+  color: #4f7d13;
+}
+
+.handdrawn-lab .assistant-answer > h2,
+.handdrawn-lab .assistant-reasons strong {
+  color: var(--ink);
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+}
+
+.handdrawn-lab .assistant-reasons li {
+  border: var(--paper-border);
+  background: var(--note-lilac);
+  box-shadow: 3px 4px 0 #201f1b35;
+}
+
+.handdrawn-lab .assistant-reasons li:nth-child(even) {
+  background: var(--note-green);
+  transform: rotate(0.25deg);
+}
+
+.handdrawn-lab .assistant-reasons b,
+.handdrawn-lab .assistant-reasons p,
+.handdrawn-lab .assistant-reasons small {
+  color: var(--ink);
+}
+
+.handdrawn-lab .empty-state {
+  border: 2px dashed #7d5a31;
+  background: var(--note-lilac);
+  box-shadow: var(--sketch-shadow);
+  color: var(--ink);
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+}
+
+.handdrawn-lab .metric-card {
+  border-radius: 14px 19px 15px 17px;
+}
+
+.handdrawn-lab .metric-card:nth-child(2) { background: var(--note-blue); transform: rotate(0.25deg); }
+.handdrawn-lab .metric-card:nth-child(3) { background: var(--note-coral); transform: rotate(-0.25deg); }
+.handdrawn-lab .metric-card p,
+.handdrawn-lab .metric-card span { color: var(--ink-muted); }
+.handdrawn-lab .metric-card strong { color: #4f7d13; font-family: 'Comic Sans MS', 'Segoe Print', cursive; }
+
+.handdrawn-lab .invite-heading h2,
+.handdrawn-lab .directory-heading h2,
+.handdrawn-lab .directory-panel-title h3,
+.handdrawn-lab .person-summary strong { color: var(--ink); }
+
+.handdrawn-lab .invite-expiry,
+.handdrawn-lab .direct-link-note {
+  border-color: #7d5a31;
+  background: var(--note-green);
+  color: var(--ink);
+}
+
+.handdrawn-lab .delivery-picker legend,
+.handdrawn-lab .delivery-picker strong,
+.handdrawn-lab .direct-link-note strong,
+.handdrawn-lab .direct-link-note span { color: var(--ink); }
+
+.handdrawn-lab .delivery-picker label {
+  border: 2px solid #201f1b73;
+  background: #fffdf7;
+  color: var(--ink);
+}
+
+.handdrawn-lab .delivery-picker label.selected {
+  border-color: var(--ink);
+  background: var(--note-green);
+}
+
+.handdrawn-lab .directory-panel-title,
+.handdrawn-lab .access-list li,
+.handdrawn-lab .rich-toolbar { border-color: #201f1b38; }
+.handdrawn-lab .directory-panel-title span,
+.handdrawn-lab .person-avatar { background: var(--brand-green); color: var(--ink); }
+.handdrawn-lab .person-avatar.pending { background: var(--note-lilac); color: var(--ink); }
+
+.handdrawn-lab.auth-shell {
+  grid-template-columns: minmax(360px, 680px) minmax(340px, 480px);
+  align-content: center;
+  gap: clamp(24px, 5vw, 80px);
+  min-height: 100vh;
+  background: radial-gradient(#c8b99155 0.8px, transparent 0.8px) 0 0 / 9px 9px, var(--paper);
+}
+
+.handdrawn-lab .handdrawn-auth-artwork {
+  display: grid;
+  gap: 18px;
+  padding: clamp(22px, 4vw, 40px);
+  border: var(--paper-border);
+  border-radius: 24px 18px 27px 20px;
+  background: var(--paper-raised);
+  box-shadow: 7px 9px 0 #201f1b40;
+}
+
+.handdrawn-lab .handdrawn-auth-artwork header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font: 800 11px 'DM Mono', monospace;
+  letter-spacing: .1em;
+}
+
+.handdrawn-lab .handdrawn-auth-artwork header img { width: 42px; height: 42px; }
+.handdrawn-lab .handdrawn-auth-artwork p { width: fit-content; margin: 0 0 10px; padding: 5px 9px; border: var(--paper-border); border-radius: 999px; background: var(--brand-green); color: var(--ink); font: 800 10px 'DM Mono', monospace; }
+.handdrawn-lab .handdrawn-auth-artwork h2 { max-width: 14ch; margin: 0; color: var(--ink); font-family: 'Comic Sans MS', 'Segoe Print', cursive; font-size: clamp(32px, 4vw, 54px); letter-spacing: -.06em; line-height: .98; }
+.handdrawn-lab .handdrawn-auth-artwork div > span { display: block; max-width: 560px; margin-top: 14px; color: var(--ink-muted); line-height: 1.6; }
+.handdrawn-lab .handdrawn-auth-artwork figure { margin: 0; overflow: hidden; border: 2px dashed #b78056; border-radius: 43% 57% 46% 54%; background: #f8f0dc; }
+.handdrawn-lab .handdrawn-auth-artwork figure img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.handdrawn-lab .handdrawn-auth-artwork ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.handdrawn-lab .handdrawn-auth-artwork li { padding: 7px 10px; border: 2px solid #201f1b70; border-radius: 999px; background: var(--note-blue); color: var(--ink); font-size: 11px; font-weight: 800; }
+
+.handdrawn-lab .auth-form {
+  border: var(--paper-border);
+  border-radius: 18px 23px 19px 21px;
+  background: var(--paper-raised);
+  box-shadow: 6px 8px 0 #201f1b40;
+  color: var(--ink);
+}
+
+.handdrawn-lab .auth-form::before { color: #4f7d13; }
+.handdrawn-lab .auth-form h1 { color: var(--ink); font-family: 'Comic Sans MS', 'Segoe Print', cursive; }
+.handdrawn-lab .auth-form label { color: var(--ink-muted); }
+.handdrawn-lab .auth-form input { border: 2px solid #201f1b73; background: #fffdf7; color: var(--ink); }
+.handdrawn-lab .auth-form [role=alert] { color: #a32727; }
+.handdrawn-lab .link-button { min-height: 44px; color: #174f74; font-weight: 800; }
+
+@media (max-width: 900px) {
+  .handdrawn-lab.auth-shell { grid-template-columns: 1fr; align-content: start; }
+  .handdrawn-lab .handdrawn-auth-artwork { width: min(680px, 100%); margin-inline: auto; }
+  .handdrawn-lab .auth-form { width: min(680px, 100%); margin-inline: auto; }
+}
+
+@media (max-width: 540px) {
+  .handdrawn-lab.auth-shell { padding: 14px; }
+  .handdrawn-lab .handdrawn-auth-artwork { padding: 20px; }
+  .handdrawn-lab .handdrawn-auth-artwork h2 { font-size: 34px; }
+  .handdrawn-lab .assistant-reasons li:nth-child(even),
+  .handdrawn-lab .metric-card:nth-child(n) { transform: none; }
+}

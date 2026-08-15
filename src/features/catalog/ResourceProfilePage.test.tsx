@@ -18,7 +18,7 @@ it('turns Frontend Design into a hand-drawn interactive guide with clear actions
   expect(screen.queryByRole('heading', { name: frontendDesignItem.title, level: 1 })).not.toBeInTheDocument()
   expect(screen.getByRole('heading', { name: frontendDesignItem.title, level: 2 })).toBeInTheDocument()
   expect(screen.getByText(guide.plainLanguage)).toBeInTheDocument()
-  expect(screen.getByRole('img', { name: 'Ilustração desenhada à mão sobre Frontend Design' })).toHaveAttribute('src', '/illustrations/frontend-design-handdrawn-guide.png')
+  expect(screen.getByRole('img', { name: 'Ilustração desenhada à mão sobre Frontend Design' })).toHaveAttribute('src', '/illustrations/frontend-design-handdrawn-guide.webp')
   expect(screen.getByRole('img', { name: 'Marca Setup Vencedor' })).toHaveAttribute('src', '/brand/setup-vencedor-sv-approved.png')
   expect(screen.getByRole('heading', { name: 'Da ideia à primeira tela' })).toBeInTheDocument()
   expect(screen.getByText('GUIA VISUAL DE EXECUÇÃO')).toBeInTheDocument()
@@ -74,7 +74,7 @@ it('renders a resource without a custom pilot as a complete hand-drawn editorial
 
   expect(screen.getByRole('heading', { name: 'Context7', level: 2 })).toBeInTheDocument()
   expect(screen.getByRole('heading', { name: 'Conecte contexto ao trabalho' })).toBeInTheDocument()
-  expect(screen.getByRole('img', { name: /Conexões desenhadas à mão/i })).toHaveAttribute('src', '/illustrations/handdrawn/categories/mcps-connections.png')
+  expect(screen.getByRole('img', { name: /Conexões desenhadas à mão/i })).toHaveAttribute('src', '/illustrations/handdrawn/categories/mcps-connections.webp')
   expect(screen.getAllByRole('button', { name: /copiar etapa .* claude code/i })).not.toHaveLength(0)
   expect(screen.getAllByRole('button', { name: /copiar etapa .* codex/i })).not.toHaveLength(0)
   expect(screen.queryByRole('heading', { name: 'Para que serve' })).not.toBeInTheDocument()

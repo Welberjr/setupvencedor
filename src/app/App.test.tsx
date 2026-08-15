@@ -113,3 +113,31 @@ it('keeps all primary Explore actions available in the handdrawn lab', async () 
   expect(screen.getByLabelText('Filtrar acervo')).toBeInTheDocument()
   expect(screen.getAllByRole('button', { name: /Ver detalhes/i }).length).toBeGreaterThan(0)
 })
+
+it('gives every signed-in workspace area its own handdrawn illustration', async () => {
+  const user = userEvent.setup()
+  render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' }, roles: ['admin'] }} />)
+
+  expect(screen.getByRole('img', { name: /Biblioteca desenhada/i })).toBeInTheDocument()
+
+  await user.click(screen.getByRole('button', { name: 'Assistente' }))
+  expect(screen.getByRole('img', { name: /Agentes e tarefas ligados/i })).toBeInTheDocument()
+
+  await user.click(screen.getByRole('button', { name: 'Favoritos' }))
+  expect(screen.getByRole('img', { name: /Caderno desenhado/i })).toBeInTheDocument()
+
+  await user.click(screen.getByRole('button', { name: 'Suporte' }))
+  expect(screen.getByRole('img', { name: /Bancada de suporte/i })).toBeInTheDocument()
+
+  await user.click(screen.getByRole('button', { name: 'Administração' }))
+  expect(screen.getByRole('img', { name: /Biblioteca privada desenhada/i })).toBeInTheDocument()
+})
+
+it('turns the private login into a handdrawn welcome page only in the lab', () => {
+  const { rerender } = render(<App />)
+  expect(screen.queryByRole('img', { name: /Escudo desenhado/i })).not.toBeInTheDocument()
+
+  rerender(<App visualMode="handdrawn-lab" />)
+  expect(screen.getByRole('img', { name: /Escudo desenhado/i })).toHaveAttribute('src', '/illustrations/handdrawn/categories/quality-shield.webp')
+  expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument()
+})

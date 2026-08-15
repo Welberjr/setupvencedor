@@ -3,28 +3,28 @@ export type HanddrawnIllustration = { src: string; alt: string }
 
 const areaIllustrations: Record<HanddrawnArea, HanddrawnIllustration> = {
   explore: {
-    src: '/illustrations/handdrawn/explore-library.png',
+    src: '/illustrations/handdrawn/explore-library.webp',
     alt: 'Biblioteca desenhada com fichas, lupa, laptop e caminhos conectados',
   },
   assistant: {
-    src: '/illustrations/handdrawn/explore-library.png',
-    alt: 'Caminhos desenhados entre recursos técnicos',
+    src: '/illustrations/handdrawn/categories/agents-orchestration.webp',
+    alt: 'Agentes e tarefas ligados por setas em um mapa desenhado à mão',
   },
   favorites: {
-    src: '/illustrations/handdrawn/explore-library.png',
-    alt: 'Fichas técnicas organizadas em uma biblioteca desenhada',
+    src: '/illustrations/handdrawn/categories/guides-notebook.webp',
+    alt: 'Caderno desenhado à mão com fichas, favoritos e marcadores coloridos',
   },
   support: {
-    src: '/illustrations/handdrawn/explore-library.png',
-    alt: 'Ferramentas técnicas organizadas em uma mesa desenhada',
+    src: '/illustrations/handdrawn/categories/tools-workbench.webp',
+    alt: 'Bancada de suporte desenhada à mão com ferramentas e checklist',
   },
   admin: {
-    src: '/illustrations/handdrawn/explore-library.png',
-    alt: 'Biblioteca técnica desenhada e organizada',
+    src: '/illustrations/handdrawn/categories/cloud-infrastructure.webp',
+    alt: 'Biblioteca privada desenhada à mão como uma infraestrutura conectada',
   },
   auth: {
-    src: '/illustrations/handdrawn/explore-library.png',
-    alt: 'Entrada desenhada para uma biblioteca privada',
+    src: '/illustrations/handdrawn/categories/quality-shield.webp',
+    alt: 'Escudo desenhado à mão protegendo a entrada da biblioteca privada',
   },
 }
 

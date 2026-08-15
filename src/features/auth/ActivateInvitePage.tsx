@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { workerUrl } from '../../lib/api/worker'
+import { AuthArtwork } from '../handdrawn/AuthArtwork'
+import type { VisualMode } from '../handdrawn/visual-mode'
 
 type InvitePreview = { delivery: 'email' | 'direct_link'; email: string | null; recipientName: string | null }
 
-export function ActivateInvitePage() {
+export function ActivateInvitePage({ visualMode = 'command-center' }: { visualMode?: VisualMode }) {
   const [invite, setInvite] = useState<InvitePreview | null>(null)
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
@@ -34,5 +36,5 @@ export function ActivateInvitePage() {
 
   const directLink = invite?.delivery === 'direct_link'
   const needsName = !invite?.recipientName
-  return <main className="app-shell auth-shell"><form className="auth-form" onSubmit={activate}><p className="eyebrow">ATIVAR CONVITE</p><h1>Crie seu acesso.</h1><p className="activation-intro">{directLink ? 'Este link é individual. Informe seus dados para vinculá-lo à sua conta.' : 'Defina sua senha para entrar na biblioteca privada da equipe.'}</p>{directLink ? <label>E-mail<input aria-label="E-mail" autoComplete="email" onChange={(event) => setEmail(event.target.value)} required type="email" value={email} /></label> : <label>E-mail<input aria-label="E-mail" readOnly value={email} /></label>}{needsName ? <label>Seu nome<input aria-label="Seu nome" autoComplete="name" onChange={(event) => setName(event.target.value)} required value={name} /></label> : <input aria-label="Seu nome" readOnly type="hidden" value={name} />}<label>Nova senha<input aria-label="Nova senha" autoComplete="new-password" onChange={(event) => setPassword(event.target.value)} type="password" value={password} /><small>12+ caracteres, com maiúscula, minúscula, número e símbolo.</small></label>{message ? <p role="alert">{message}</p> : null}<button className="primary" disabled={!invite || pending} type="submit">{pending ? 'Criando acesso…' : 'Criar meu acesso'}</button></form></main>
+  return <main className={`app-shell auth-shell ${visualMode}`}>{visualMode === 'handdrawn-lab' ? <AuthArtwork /> : null}<form className="auth-form" onSubmit={activate}><p className="eyebrow">ATIVAR CONVITE</p><h1>Crie seu acesso.</h1><p className="activation-intro">{directLink ? 'Este link é individual. Informe seus dados para vinculá-lo à sua conta.' : 'Defina sua senha para entrar na biblioteca privada da equipe.'}</p>{directLink ? <label>E-mail<input aria-label="E-mail" autoComplete="email" onChange={(event) => setEmail(event.target.value)} required type="email" value={email} /></label> : <label>E-mail<input aria-label="E-mail" readOnly value={email} /></label>}{needsName ? <label>Seu nome<input aria-label="Seu nome" autoComplete="name" onChange={(event) => setName(event.target.value)} required value={name} /></label> : <input aria-label="Seu nome" readOnly type="hidden" value={name} />}<label>Nova senha<input aria-label="Nova senha" autoComplete="new-password" onChange={(event) => setPassword(event.target.value)} type="password" value={password} /><small>12+ caracteres, com maiúscula, minúscula, número e símbolo.</small></label>{message ? <p role="alert">{message}</p> : null}<button className="primary" disabled={!invite || pending} type="submit">{pending ? 'Criando acesso…' : 'Criar meu acesso'}</button></form></main>
 }

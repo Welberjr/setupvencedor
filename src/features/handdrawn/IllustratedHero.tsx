@@ -19,7 +19,7 @@ export function IllustratedHero({ eyebrow, title, description, illustration, asi
         {aside}
       </div>
       <figure className="illustrated-hero-artwork">
-        <img src={illustration.src} alt={illustration.alt} width="420" height="210" loading="eager" />
+        <img src={illustration.src} alt={illustration.alt} width="1200" height="800" loading="eager" decoding="async" />
       </figure>
     </section>
   )

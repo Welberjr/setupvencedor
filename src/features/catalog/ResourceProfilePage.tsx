@@ -53,7 +53,7 @@ export function ResourceProfilePage({ item, guide, isFavorite, onBack, onToggleF
       <div className="handdrawn-guide-route"><p>{editorial.eyebrow}</p><h3>{editorial.heading}</h3><span>{editorial.introduction}</span></div>
       <div className="handdrawn-guide-map">
         <ol className="handdrawn-guide-steps">{editorial.steps.map((step, index) => <li className={`handdrawn-step handdrawn-step-${index + 1}`} key={step.title}><button aria-label={step.title} aria-pressed={selectedStep === index} onClick={() => setSelectedStep(index)} type="button"><span aria-hidden="true">{index + 1}</span><strong>{step.title}</strong><small>{step.detail}</small></button></li>)}</ol>
-        <figure className="handdrawn-guide-art"><img alt={editorial.illustration.alt} src={editorial.illustration.src} /><figcaption>Toque em uma caixa para escolher a próxima ação.</figcaption></figure>
+        <figure className="handdrawn-guide-art"><img alt={editorial.illustration.alt} decoding="async" height="800" loading="lazy" src={editorial.illustration.src} width="1200" /><figcaption>Toque em uma caixa para escolher a próxima ação.</figcaption></figure>
       </div>
       <section className="handdrawn-guide-detail" aria-live="polite">
         <div><p>AGORA, FAÇA ISTO</p><h3>{activeStep.title}</h3><span>{activeStep.detail}</span></div>
