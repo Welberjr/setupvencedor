@@ -1,3 +1,6 @@
+import { createCatalogNarrative } from './catalog-narrative'
+import type { CatalogItem } from './types'
+
 export type CatalogGuideLevel = 'iniciante' | 'intermediario' | 'avancado'
 
 export type CatalogGuideRow = {
@@ -24,7 +27,7 @@ export type CatalogGuide = {
   level: CatalogGuideLevel
   prerequisites: string[]
   estimatedMinutes: number
-  sourceCheckedAt: string
+  sourceCheckedAt: string | null
   sourceNote: string
 }
 
@@ -41,5 +44,23 @@ export function guideFromRow(row: CatalogGuideRow): CatalogGuide {
     estimatedMinutes: row.estimated_minutes,
     sourceCheckedAt: row.source_checked_at,
     sourceNote: row.source_note,
+  }
+}
+
+export function createFallbackCatalogGuide(item: CatalogItem): CatalogGuide {
+  const narrative = createCatalogNarrative(item)
+
+  return {
+    catalogItemId: item.id,
+    plainLanguage: narrative.whatItIs,
+    solves: narrative.impact,
+    whenToUse: narrative.whenToUse,
+    whenNotToUse: `Deixe ${item.title} para outra hora quando a fonte oficial não se aplicar ao contexto atual ou quando o primeiro teste ainda não puder ser validado com segurança.`,
+    firstSteps: narrative.firstSteps,
+    level: 'intermediario',
+    prerequisites: [],
+    estimatedMinutes: 15,
+    sourceCheckedAt: null,
+    sourceNote: `Conteúdo editorial montado a partir da fonte pública cadastrada para ${item.title}. Confirme a documentação oficial antes de executar comandos ou alterar o projeto.`,
   }
 }

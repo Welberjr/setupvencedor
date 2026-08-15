@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { expect, it } from 'vitest'
+import { beforeEach, expect, it } from 'vitest'
 import { App } from './App'
+
+beforeEach(() => window.history.replaceState({}, '', '/'))
 
 it('renders the protected application shell after a session is supplied', () => {
   render(<App session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
@@ -13,14 +15,15 @@ it('renders the login form when no session is supplied', () => {
   expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument()
 })
 
-it('opens an individual detail panel from the catalog', async () => {
+it('opens every catalog item in a full editorial resource page', async () => {
   const user = userEvent.setup()
   render(<App session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
 
   await user.click(screen.getAllByRole('button', { name: /ver detalhes/i })[0])
 
-  expect(screen.getByRole('dialog', { name: /detalhes do recurso/i })).toBeInTheDocument()
-  expect(screen.getByText(/como a equipe pode usar/i)).toBeInTheDocument()
+  expect(screen.queryByRole('dialog', { name: /detalhes do recurso/i })).not.toBeInTheDocument()
+  expect(screen.getByRole('heading', { name: 'Frontend Design', level: 2 })).toBeInTheDocument()
+  expect(screen.getByRole('heading', { name: 'Acople a capacidade certa' })).toBeInTheDocument()
 })
 
 it('reveals category filters directly from the compact Explore button', async () => {

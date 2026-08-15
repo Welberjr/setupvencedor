@@ -47,19 +47,40 @@ it('turns Frontend Design into a hand-drawn interactive guide with clear actions
   expect(screen.getByRole('button', { name: 'Copiar etapa Dê um clima à interface para Codex' })).toBeInTheDocument()
 })
 
-it('lets a teammate select and copy a Web Design Premium step', async () => {
+it('brings Web Design Premium into the same illustrated editorial renderer', async () => {
   const user = userEvent.setup()
   const webDesignItem = { ...frontendDesignItem, slug: 'skills-web-design-premium', title: 'As skills de web design que fazem o Claude parar de criar site genérico' }
 
   render(<ResourceProfilePage item={webDesignItem} guide={{ ...guide, estimatedMinutes: 25 }} isFavorite={false} onBack={() => {}} onToggleFavorite={() => {}} />)
 
   expect(screen.getByRole('heading', { name: 'Construa com intenção' })).toBeInTheDocument()
-  expect(screen.getByText('Liste a ação principal e o que a pessoa precisa entender em poucos segundos.')).toBeInTheDocument()
+  expect(screen.getAllByText('Liste a ação principal e o que a pessoa precisa entender em poucos segundos.')).not.toHaveLength(0)
+  expect(screen.getByRole('heading', { name: webDesignItem.title, level: 2 })).toBeInTheDocument()
 
   await user.click(screen.getByRole('button', { name: 'Direção visual' }))
 
-  expect(screen.getByText('Traga uma referência de clima sem copiar marcas, páginas ou layouts de terceiros.')).toBeInTheDocument()
-  expect(screen.getByRole('button', { name: 'Copiar passo Direção visual para Claude Code' })).toBeInTheDocument()
-  expect(screen.getByRole('button', { name: 'Copiar passo Direção visual para Codex' })).toBeInTheDocument()
+  expect(screen.getAllByText('Traga uma referência de clima sem copiar marcas, páginas ou layouts de terceiros.')).not.toHaveLength(0)
+  expect(screen.getByRole('button', { name: 'Copiar etapa Direção visual para Claude Code' })).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Copiar etapa Direção visual para Codex' })).toBeInTheDocument()
   expect(screen.queryByRole('heading', { name: 'Antes de começar' })).not.toBeInTheDocument()
+})
+
+it('renders a resource without a custom pilot as a complete hand-drawn editorial page', async () => {
+  const user = userEvent.setup()
+  const context7Item = { ...frontendDesignItem, id: 'context7', slug: 'context7', title: 'Context7', type: 'MCP', category: 'MCPs', officialUrl: 'https://github.com/upstash/context7' }
+  const fallbackGuide = { ...guide, catalogItemId: 'context7', sourceCheckedAt: null, sourceNote: 'Conteúdo editorial montado a partir da fonte pública cadastrada.' }
+
+  render(<ResourceProfilePage item={context7Item} guide={fallbackGuide} isFavorite={false} onBack={() => {}} onToggleFavorite={() => {}} />)
+
+  expect(screen.getByRole('heading', { name: 'Context7', level: 2 })).toBeInTheDocument()
+  expect(screen.getByRole('heading', { name: 'Conecte contexto ao trabalho' })).toBeInTheDocument()
+  expect(screen.getByRole('img', { name: /Conexões desenhadas à mão/i })).toHaveAttribute('src', '/illustrations/handdrawn/categories/mcps-connections.png')
+  expect(screen.getAllByRole('button', { name: /copiar etapa .* claude code/i })).not.toHaveLength(0)
+  expect(screen.getAllByRole('button', { name: /copiar etapa .* codex/i })).not.toHaveLength(0)
+  expect(screen.queryByRole('heading', { name: 'Para que serve' })).not.toBeInTheDocument()
+  expect(screen.queryByRole('heading', { name: 'Antes de começar' })).not.toBeInTheDocument()
+  expect(screen.getByText(/fontes públicas cadastradas/i)).toBeInTheDocument()
+
+  await user.click(screen.getByRole('button', { name: 'Faça o primeiro teste' }))
+  expect(screen.getByRole('button', { name: 'Copiar etapa Faça o primeiro teste para Codex' })).toBeInTheDocument()
 })

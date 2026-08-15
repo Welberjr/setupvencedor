@@ -4,7 +4,6 @@ import { BrandMark } from '../features/brand/BrandMark'
 import { CommandIcon, type CommandIconName } from '../features/brand/CommandIcon'
 import { FavoriteButton } from '../features/catalog/FavoriteButton'
 import { PublicSources } from '../features/catalog/PublicSources'
-import { CatalogDetailPanel } from '../features/catalog/CatalogDetailPanel'
 import { ResourceProfilePage } from '../features/catalog/ResourceProfilePage'
 import { CatalogPagination } from '../features/catalog/CatalogPagination'
 import { getPageWindow } from '../features/catalog/pagination'
@@ -12,7 +11,7 @@ import { useCatalogPageSize } from '../features/catalog/useCatalogPageSize'
 import { createCardSummary } from '../features/catalog/catalog-narrative'
 import { isRedundantCategoryLabel } from '../features/catalog/card-label'
 import { dedupeCatalogItems } from '../features/catalog/catalog-deduplication'
-import { guideFromRow, type CatalogGuideRow } from '../features/catalog/catalog-guide'
+import { createFallbackCatalogGuide, guideFromRow, type CatalogGuideRow } from '../features/catalog/catalog-guide'
 import { readResourceSlug, resourcePath } from '../features/catalog/catalog-route'
 import { pilotGuideForItem } from '../features/catalog/pilot-guide-data'
 import { AssistantAdvisor, type AssistantResponse } from '../features/catalog/AssistantAdvisor'
@@ -62,7 +61,6 @@ export function App({ session = null, visualMode = 'command-center' }: { session
   const [catalogStatus, setCatalogStatus] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false)
-  const [selectedItem, setSelectedItem] = useState<CatalogItem | null>(null)
   const [resourceSlug, setResourceSlug] = useState(() => readResourceSlug(window.location.pathname))
   const [catalogPage, setCatalogPage] = useState(1)
   const [accessRefreshKey, setAccessRefreshKey] = useState(0)
@@ -106,6 +104,7 @@ export function App({ session = null, visualMode = 'command-center' }: { session
   const favoriteItems = useMemo(() => catalog.filter((item) => favoriteIds.has(item.id)), [catalog, favoriteIds])
   const assistantItems = useMemo(() => assistantResponse?.resources.map((resource) => catalog.find((item) => item.id === resource.id)).filter((item): item is CatalogItem => Boolean(item)) ?? [], [assistantResponse, catalog])
   const resourceItem = useMemo(() => resourceSlug ? catalog.find((item) => item.slug === resourceSlug) ?? null : null, [catalog, resourceSlug])
+  const resourceGuide = useMemo(() => resourceItem ? resourceItem.guide ?? createFallbackCatalogGuide(resourceItem) : null, [resourceItem])
 
   async function toggleFavorite(itemId: string) {
     const supabase = getSupabaseClient(); if (!supabase) return
@@ -117,9 +116,7 @@ export function App({ session = null, visualMode = 'command-center' }: { session
   }
 
   function openItem(item: CatalogItem) {
-    if (!item.guide) { setSelectedItem(item); return }
     window.history.pushState({}, '', resourcePath(item.slug))
-    setSelectedItem(null)
     setResourceSlug(item.slug)
   }
 
@@ -165,7 +162,7 @@ export function App({ session = null, visualMode = 'command-center' }: { session
           <div className="identity"><span className="avatar">{authenticatedSession.user.email.slice(0, 1).toUpperCase()}</span><span>{authenticatedSession.user.email}</span></div>
         </div>
       </header>
-      {resourceSlug ? resourceItem?.guide ? <ResourceProfilePage guide={resourceItem.guide} isFavorite={favoriteIds.has(resourceItem.id)} item={resourceItem} onBack={closeResourceProfile} onToggleFavorite={() => toggleFavorite(resourceItem.id)} /> : <section className="resource-profile page-shell"><p role="status">Carregando a ficha do recurso…</p></section> : <>
+      {resourceSlug ? resourceItem && resourceGuide ? <ResourceProfilePage guide={resourceGuide} isFavorite={favoriteIds.has(resourceItem.id)} item={resourceItem} onBack={closeResourceProfile} onToggleFavorite={() => toggleFavorite(resourceItem.id)} /> : <section className="resource-profile page-shell"><p role="status">Carregando a ficha do recurso…</p></section> : <>
       {page === 'explore' ? <section className="explore-page page-shell">
         {visualMode === 'handdrawn-lab' ? <ExploreHero totalItems={catalog.length} /> : <div className="page-heading command-hero">
           <h1 className="page-title">Escolha o próximo <em>atalho técnico.</em></h1>
@@ -194,6 +191,5 @@ export function App({ session = null, visualMode = 'command-center' }: { session
       </section> : null}
       </>}
     </section>
-    {selectedItem ? <CatalogDetailPanel isFavorite={favoriteIds.has(selectedItem.id)} item={selectedItem} onClose={() => setSelectedItem(null)} onToggleFavorite={() => toggleFavorite(selectedItem.id)} /> : null}
   </main>
 }
