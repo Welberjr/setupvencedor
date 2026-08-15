@@ -72,7 +72,7 @@
 - Do not copy: `.env*`, `Chaves.txt`, `.superpowers/`, `dist/`, `node_modules/`
 
 **Interfaces:**
-- Consumes: current approved frontend behavior and commit `9a1b04b` containing the laboratory specification.
+- Consumes: current approved frontend behavior and the approved planning `HEAD` containing the laboratory specification and this execution plan.
 - Produces: branch `codex/handdrawn-platform-lab` with an exact frontend-only baseline and installed dependencies.
 
 - [ ] **Step 1: Create the worktree using the required worktree skill**
@@ -80,7 +80,7 @@
 Invoke `superpowers:using-git-worktrees`, then create the approved location and branch:
 
 ```powershell
-git worktree add 'C:\Dev\_worktrees\setup-vencedor-handdrawn-lab' -b 'codex/handdrawn-platform-lab' 9a1b04b
+git worktree add 'C:\Dev\_worktrees\setup-vencedor-handdrawn-lab' -b 'codex/handdrawn-platform-lab' HEAD
 ```
 
 Expected: a clean worktree on `codex/handdrawn-platform-lab`; the original checkout remains dirty and unchanged.
@@ -154,7 +154,6 @@ Expected: staged paths are limited to `src`, `public` and `.gitignore`.
 - Create: `src/features/handdrawn/visual-mode.ts`
 - Test: `src/features/handdrawn/visual-mode.test.ts`
 - Modify: `src/vite-env.d.ts`
-- Modify: `src/main.tsx`
 
 **Interfaces:**
 - Consumes: optional `VITE_VISUAL_MODE` string from Vite.
@@ -206,18 +205,6 @@ interface ImportMeta {
 }
 ```
 
-In `src/main.tsx`, resolve once and pass to `App`:
-
-```ts
-import { readVisualMode } from './features/handdrawn/visual-mode'
-
-const visualMode = readVisualMode(import.meta.env.VITE_VISUAL_MODE)
-```
-
-```tsx
-return <App session={session} visualMode={visualMode} />
-```
-
 - [ ] **Step 4: Run test and typecheck**
 
 ```powershell
@@ -230,7 +217,7 @@ Expected: PASS.
 - [ ] **Step 5: Commit**
 
 ```powershell
-git add src/features/handdrawn/visual-mode.ts src/features/handdrawn/visual-mode.test.ts src/vite-env.d.ts src/main.tsx
+git add src/features/handdrawn/visual-mode.ts src/features/handdrawn/visual-mode.test.ts src/vite-env.d.ts
 git commit -m "feat: isolate handdrawn visual mode"
 ```
 
@@ -243,10 +230,11 @@ git commit -m "feat: isolate handdrawn visual mode"
 - Test: `src/features/handdrawn/HanddrawnLabBadge.test.tsx`
 - Modify: `src/app/App.tsx`
 - Modify: `src/app/App.test.tsx`
+- Modify: `src/main.tsx`
 
 **Interfaces:**
 - Consumes: `VisualMode`, official URL `https://www.setupvencedor.com.br/`.
-- Produces: `HanddrawnLabBadge` and root classes `app-shell command-center` or `app-shell handdrawn-lab`.
+- Produces: `HanddrawnLabBadge`, root classes `app-shell command-center` or `app-shell handdrawn-lab`, and the build-mode integration at the application entrypoint.
 
 - [ ] **Step 1: Write failing shell-isolation tests**
 
@@ -315,6 +303,18 @@ For authenticated and auth shells, include the correct root class. Inside the au
 {visualMode === 'handdrawn-lab' ? <HanddrawnLabBadge /> : null}
 ```
 
+In `src/main.tsx`, resolve the build mode once and pass it to `App`:
+
+```ts
+import { readVisualMode } from './features/handdrawn/visual-mode'
+
+const visualMode = readVisualMode(import.meta.env.VITE_VISUAL_MODE)
+```
+
+```tsx
+return <App session={session} visualMode={visualMode} />
+```
+
 - [ ] **Step 4: Run tests and typecheck**
 
 ```powershell
@@ -327,7 +327,7 @@ Expected: PASS; existing navigation, category and pagination tests remain green.
 - [ ] **Step 5: Commit**
 
 ```powershell
-git add src/app/App.tsx src/app/App.test.tsx src/features/handdrawn/HanddrawnLabBadge.tsx src/features/handdrawn/HanddrawnLabBadge.test.tsx
+git add src/app/App.tsx src/app/App.test.tsx src/main.tsx src/features/handdrawn/HanddrawnLabBadge.tsx src/features/handdrawn/HanddrawnLabBadge.test.tsx
 git commit -m "feat: add handdrawn laboratory shell"
 ```
 
