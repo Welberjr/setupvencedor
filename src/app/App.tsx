@@ -29,6 +29,7 @@ import { hasAnyRole, type Role } from '../lib/roles'
 import { PwaInstallPrompt } from '../features/pwa/PwaInstallPrompt'
 import { HanddrawnLabBadge } from '../features/handdrawn/HanddrawnLabBadge'
 import type { VisualMode } from '../features/handdrawn/visual-mode'
+import { ExploreHero } from '../features/handdrawn/ExploreHero'
 
 type Session = { user: { id: string; email: string }; roles?: Role[] } | null
 type Page = 'explore' | 'assistant' | 'favorites' | 'support' | 'admin'
@@ -166,10 +167,10 @@ export function App({ session = null, visualMode = 'command-center' }: { session
       </header>
       {resourceSlug ? resourceItem?.guide ? <ResourceProfilePage guide={resourceItem.guide} isFavorite={favoriteIds.has(resourceItem.id)} item={resourceItem} onBack={closeResourceProfile} onToggleFavorite={() => toggleFavorite(resourceItem.id)} /> : <section className="resource-profile page-shell"><p role="status">Carregando a ficha do recurso…</p></section> : <>
       {page === 'explore' ? <section className="explore-page page-shell">
-        <div className="page-heading command-hero">
+        {visualMode === 'handdrawn-lab' ? <ExploreHero totalItems={catalog.length} /> : <div className="page-heading command-hero">
           <h1 className="page-title">Escolha o próximo <em>atalho técnico.</em></h1>
           <p>Cada recurso vem com propósito: acelerar decisões, padronizar execuções e entregar resultado com clareza.</p>
-        </div>
+        </div>}
         <label className="command-search explore-search"><Search size={20} /><span className="sr-only">Buscar no acervo</span><input aria-label="Buscar no acervo" value={exploreQuery} onChange={(event) => { setExploreQuery(event.target.value); setCatalogPage(1) }} placeholder="Pesquisar no acervo" /></label>
         {catalogStatus ? <p role="status">{catalogStatus}</p> : null}
         <section className="catalog-section"><div className="section-heading"><h2>{selectedCategory ?? 'Explore o que está disponível'}</h2><span>{results.length} {selectedCategory ? `itens em ${selectedCategory}` : 'itens disponíveis'} · Selecione um recurso e aplique em uma tarefa real.</span></div>{renderCatalog(results)}</section>
