@@ -5,8 +5,9 @@ it('publishes an official WhatsApp preview based on the approved brand', () => {
   const html = readFileSync('index.html', 'utf8')
 
   expect(html).toContain('property="og:title" content="Setup Vencedor"')
-  expect(html).toContain('property="og:image" content="https://setup-vencedor.pages.dev/social-preview.png"')
-  expect(html).toContain('name="twitter:card" content="summary_large_image"')
+  expect(html).toContain('property="og:url" content="https://setupvencedor.com.br/"')
+  expect(html).toContain('property="og:image" content="https://setupvencedor.com.br/brand/setup-vencedor-whatsapp-avatar.png"')
+  expect(html).toContain('name="twitter:card" content="summary"')
 })
 
 it('uses the approved SV mark for browser and installed-app icons', () => {
@@ -19,6 +20,7 @@ it('uses the approved SV mark for browser and installed-app icons', () => {
   expect(existsSync('public/favicon.ico')).toBe(true)
   expect(existsSync('public/apple-touch-icon.png')).toBe(true)
   expect(existsSync('public/social-preview.png')).toBe(true)
+  expect(existsSync('public/brand/setup-vencedor-whatsapp-avatar.png')).toBe(true)
 })
 
 it('keeps a safe visual shell if the main stylesheet cannot be loaded', () => {
