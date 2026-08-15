@@ -1,0 +1,1065 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "title": "7 configurações que eu instalaria no Claude Code se estivesse começando hoje",
+      "slug": "claude-code-configuracoes-iniciais",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-e-referencias"
+      },
+      "itemType": "Guia",
+      "summary": "Um roteiro de configuração inicial para usar Claude Code com contexto, regras, validação e ferramentas de equipe.",
+      "ownContent": "Este guia editorial do Setup Vencedor organiza decisões que evitam começar no automático: defina instruções do repositório, regras por contexto, verificações e integrações antes de delegar alterações. Adote cada parte em um projeto de teste e mantenha as permissões mínimas.",
+      "officialUrl": "https://code.claude.com/docs/en/getting-started",
+      "instructions": "Abra a documentação oficial, crie um repositório de teste e configure uma prática por vez. Valide o efeito antes de levar a configuração ao projeto principal.",
+      "topics": [
+        {
+          "name": "Agentes",
+          "slug": "agentes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Claude Code",
+          "slug": "claude-code",
+          "aliases": [
+            "claude"
+          ]
+        },
+        {
+          "name": "Configuração",
+          "slug": "configuracao",
+          "aliases": [
+            "setup"
+          ]
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Documentação oficial do Claude Code."
+    },
+    {
+      "title": "50 servidores MCP que dão superpoderes ao Claude, Codex e Gemini",
+      "slug": "mcp-curadoria-50-servidores",
+      "category": {
+        "name": "Guias e referências",
+        "slug": "guias-e-referencias"
+      },
+      "itemType": "Guia",
+      "summary": "Curadoria para avaliar servidores MCP por objetivo, escopo de acesso e risco antes de conectá-los ao agente.",
+      "ownContent": "A lista não é uma autorização para instalar tudo. Use-a para encontrar uma integração adequada ao trabalho e, antes de conectar, confirme fornecedor, transporte, permissões, dados expostos e se existe modo somente leitura. Comece sempre em uma conta ou ambiente de teste.",
+      "officialUrl": "https://modelcontextprotocol.io/",
+      "instructions": "Escolha um objetivo concreto, confira o fornecedor na fonte primária e conecte primeiro com o menor escopo disponível. Registre o que o servidor pode ler ou alterar.",
+      "topics": [
+        {
+          "name": "Agentes",
+          "slug": "agentes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Segurança",
+          "slug": "seguranca",
+          "aliases": [
+            "permissoes"
+          ]
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Site oficial do protocolo MCP."
+    },
+    {
+      "title": "Regras por contexto (.claude/rules/)",
+      "slug": "claude-code-regras-por-contexto",
+      "category": {
+        "name": "Tutoriais",
+        "slug": "tutoriais"
+      },
+      "itemType": "Tutorial",
+      "summary": "Ensina a aplicar instruções específicas somente aos arquivos e áreas do projeto em que elas fazem sentido.",
+      "ownContent": "Regras por contexto ajudam a reduzir instruções genéricas e repetitivas. Separe convenções de frontend, banco e testes; cada regra deve ser curta, verificável e ligada a um padrão de arquivos. Isso deixa o agente mais previsível sem sobrecarregar todo pedido.",
+      "officialUrl": "https://code.claude.com/docs/en/memory",
+      "instructions": "Leia a seção de configurações do Claude Code, crie uma regra pequena para uma área do projeto e valide o comportamento com uma alteração controlada.",
+      "topics": [
+        {
+          "name": "Agentes",
+          "slug": "agentes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Claude Code",
+          "slug": "claude-code",
+          "aliases": [
+            "claude"
+          ]
+        },
+        {
+          "name": "Regras",
+          "slug": "regras",
+          "aliases": [
+            "instructions"
+          ]
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Documentação oficial de configurações do Claude Code."
+    },
+    {
+      "title": "Hooks do Claude Code",
+      "slug": "claude-code-hooks",
+      "category": {
+        "name": "Tutoriais",
+        "slug": "tutoriais"
+      },
+      "itemType": "Tutorial",
+      "summary": "Mostra como usar hooks para exigir verificações e automatizar tarefas locais ao longo de uma sessão.",
+      "ownContent": "Hooks são úteis quando uma ação precisa ser verificada de forma consistente, como formatar código ou bloquear um comando inadequado. Trate cada hook como código de produção: mantenha escopo explícito, mensagens claras e uma forma simples de desfazer a configuração.",
+      "officialUrl": "https://code.claude.com/docs/en/hooks",
+      "instructions": "Comece com um hook sem efeito destrutivo, execute-o em um repositório de teste e confirme no terminal quando ele dispara e quando não deve disparar.",
+      "topics": [
+        {
+          "name": "Agentes",
+          "slug": "agentes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "Claude Code",
+          "slug": "claude-code",
+          "aliases": [
+            "claude"
+          ]
+        },
+        {
+          "name": "Automação",
+          "slug": "automacao",
+          "aliases": [
+            "workflow"
+          ]
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Documentação oficial de hooks do Claude Code."
+    },
+    {
+      "title": "GitHub CLI",
+      "slug": "github-cli",
+      "category": {
+        "name": "Ferramentas",
+        "slug": "ferramentas"
+      },
+      "itemType": "Ferramenta",
+      "summary": "Cliente oficial de terminal para trabalhar com repositórios, issues, pull requests e ações do GitHub.",
+      "ownContent": "O GitHub CLI reduz trocas de contexto quando o trabalho já acontece no terminal. Ele é mais útil quando o agente precisa consultar informações do repositório ou preparar uma colaboração, mas comandos que mudam estado devem continuar exigindo revisão humana.",
+      "officialUrl": "https://cli.github.com/manual/",
+      "instructions": "Instale pela documentação oficial, autentique apenas no escopo necessário e teste comandos de leitura como gh repo view antes de criar ou alterar recursos.",
+      "topics": [
+        {
+          "name": "Colaboração",
+          "slug": "colaboracao"
+        }
+      ],
+      "tags": [
+        {
+          "name": "GitHub",
+          "slug": "github",
+          "aliases": [
+            "gh"
+          ]
+        },
+        {
+          "name": "Terminal",
+          "slug": "terminal",
+          "aliases": [
+            "cli"
+          ]
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Manual oficial do GitHub CLI."
+    },
+    {
+      "title": "Airtable MCP",
+      "slug": "airtable-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Conecta o agente a bases e registros do Airtable, com revisão explícita das permissões da base.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Airtable pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://airtable.com/developers",
+      "instructions": "Avalie primeiro uma base de teste e libere somente as tabelas e ações necessárias.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Airtable",
+          "slug": "airtable",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Airtable verificada em 2026-08-15."
+    },
+    {
+      "title": "Asana MCP",
+      "slug": "asana-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Permite consultar e operar tarefas e projetos do Asana por um cliente MCP autenticado.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Asana pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://developers.asana.com/docs/mcp-server",
+      "instructions": "Use o servidor V2 oficial, registre o cliente OAuth e teste em um projeto sem dados sensíveis.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Asana",
+          "slug": "asana",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Asana verificada em 2026-08-15."
+    },
+    {
+      "title": "Atlassian Rovo (Jira/Confluence)",
+      "slug": "atlassian-rovo-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Integra Jira e Confluence ao agente para pesquisa e ações controladas no espaço da equipe.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Atlassian pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/use-atlassian-rovo-mcp-server/",
+      "instructions": "Conecte somente após revisar os produtos, espaços e permissões que o usuário autenticado poderá acessar.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Atlassian",
+          "slug": "atlassian",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Atlassian verificada em 2026-08-15."
+    },
+    {
+      "title": "AWS MCP (awslabs)",
+      "slug": "aws-mcp-awslabs",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Família de servidores para trabalhar com serviços AWS a partir de um agente, um serviço por vez.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. AWS pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://github.com/awslabs/mcp",
+      "instructions": "Comece por uma conta de sandbox, use uma role com menor privilégio e aprove cada ação que possa alterar infraestrutura.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "AWS",
+          "slug": "aws",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de AWS verificada em 2026-08-15."
+    },
+    {
+      "title": "Base MCP",
+      "slug": "base-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Ponto de partida para avaliar integrações MCP ligadas ao ecossistema Base e operações onchain.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Base pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://docs.base.org/",
+      "instructions": "Nunca conceda permissão de carteira ou assine transações reais em um primeiro teste; use rede de teste e revisão humana.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Base",
+          "slug": "base",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Base verificada em 2026-08-15."
+    },
+    {
+      "title": "Brave Search MCP",
+      "slug": "brave-search-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Leva busca na web ao agente por meio do Brave Search, respeitando a chave e os limites do serviço.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Brave Search pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://api.search.brave.com/app/documentation/mcp",
+      "instructions": "Crie uma chave limitada, teste consultas sem dados pessoais e revise o que será enviado ao provedor de busca.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Brave Search",
+          "slug": "brave-search",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Brave Search verificada em 2026-08-15."
+    },
+    {
+      "title": "Cloudflare MCP",
+      "slug": "cloudflare-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Conecta o agente a recursos Cloudflare, como Workers, DNS, R2 e configurações de conta, via OAuth.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Cloudflare pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+      "instructions": "Use o endpoint oficial, comece em uma conta ou zona de teste e mantenha confirmação humana para mudanças.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Cloudflare",
+          "slug": "cloudflare",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Cloudflare verificada em 2026-08-15."
+    },
+    {
+      "title": "Docker Hub MCP",
+      "slug": "docker-hub-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Ajuda a pesquisar imagens e metadados do Docker Hub no contexto do agente.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Docker pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://docs.docker.com/ai/mcp-catalog-and-toolkit/",
+      "instructions": "Use consultas de leitura primeiro e valide a procedência, a licença e as tags antes de usar uma imagem em produção.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Docker",
+          "slug": "docker",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Docker verificada em 2026-08-15."
+    },
+    {
+      "title": "Dune MCP",
+      "slug": "dune-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Permite avaliar consultas e dados analíticos onchain do Dune em fluxos assistidos.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Dune pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://docs.dune.com/",
+      "instructions": "Faça consultas somente de leitura, confira a origem dos dados e não trate resultados onchain como instrução financeira.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Dune",
+          "slug": "dune",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Dune verificada em 2026-08-15."
+    },
+    {
+      "title": "Gmail MCP",
+      "slug": "gmail-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Integra fluxos de leitura e envio de e-mails ao agente, exigindo atenção especial à privacidade.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Gmail pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://developers.google.com/workspace/gmail/api",
+      "instructions": "Use uma conta de teste, comece apenas com leitura e revise manualmente qualquer destinatário ou mensagem antes do envio.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Gmail",
+          "slug": "gmail",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Gmail verificada em 2026-08-15."
+    },
+    {
+      "title": "Google Calendar MCP",
+      "slug": "google-calendar-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Conecta agenda e disponibilidade a um agente para apoiar planejamento e consultas de calendário.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Google Calendar pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://developers.google.com/workspace/calendar/api",
+      "instructions": "Teste em um calendário secundário e confirme participantes, horários e fuso antes de criar ou alterar eventos.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Google Calendar",
+          "slug": "google-calendar",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Google Calendar verificada em 2026-08-15."
+    },
+    {
+      "title": "Google Drive MCP",
+      "slug": "google-drive-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Leva busca e leitura de arquivos do Google Drive ao contexto do agente sob permissões do usuário.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Google Drive pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://developers.google.com/workspace/drive/api",
+      "instructions": "Comece por uma pasta de teste e revise quais arquivos e compartilhamentos estarão acessíveis antes de conectar.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Google Drive",
+          "slug": "google-drive",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Google Drive verificada em 2026-08-15."
+    },
+    {
+      "title": "Linear MCP",
+      "slug": "linear-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Servidor remoto oficial para ler e atualizar issues, projetos e comentários do Linear com OAuth.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Linear pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://linear.app/docs/mcp",
+      "instructions": "Prefira o endpoint somente leitura quando ele atender ao objetivo e teste os escopos antes de permitir gravações.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Linear",
+          "slug": "linear",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Linear verificada em 2026-08-15."
+    },
+    {
+      "title": "PayPal MCP",
+      "slug": "paypal-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência para avaliar integrações do PayPal Agent Toolkit em fluxos de pagamentos e suporte.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. PayPal pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://github.com/paypal/agent-toolkit",
+      "instructions": "Use credenciais sandbox, nunca compartilhe segredos no chat e exija confirmação humana antes de qualquer operação financeira.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "PayPal",
+          "slug": "paypal",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de PayPal verificada em 2026-08-15."
+    },
+    {
+      "title": "Plaid MCP",
+      "slug": "plaid-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência para avaliar acesso assistido a dados financeiros por integrações do ecossistema Plaid.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Plaid pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://plaid.com/docs/",
+      "instructions": "Use ambiente sandbox e dados fictícios. Não conecte contas bancárias reais até compreender cada escopo e cada dado retornado.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Plaid",
+          "slug": "plaid",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Plaid verificada em 2026-08-15."
+    },
+    {
+      "title": "Postgres MCP",
+      "slug": "postgres-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Servidor de referência para consultar bancos Postgres com consciência do schema e do contexto do projeto.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Postgres pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://registry.modelcontextprotocol.io/",
+      "instructions": "Conecte primeiro a uma cópia ou banco de teste com usuário somente leitura; revise toda consulta que possa modificar dados.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Postgres",
+          "slug": "postgres",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Postgres verificada em 2026-08-15."
+    },
+    {
+      "title": "QuickBooks MCP",
+      "slug": "quickbooks-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Referência para fluxos com dados contábeis e faturamento do ecossistema QuickBooks.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. QuickBooks pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://developer.intuit.com/app/developer/qbo/docs/get-started",
+      "instructions": "Use uma empresa sandbox e dados de exemplo. Nunca permita conciliação, fatura ou alteração real sem conferência humana.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "QuickBooks",
+          "slug": "quickbooks",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de QuickBooks verificada em 2026-08-15."
+    },
+    {
+      "title": "Redis MCP",
+      "slug": "redis-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Integra consultas a Redis para inspeção de chaves, cache e memória em contextos de desenvolvimento.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Redis pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://redis.io/docs/latest/",
+      "instructions": "Use uma instância não produtiva ou acesso somente leitura e confirme TTL, namespace e impacto antes de alterar chaves.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Redis",
+          "slug": "redis",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Redis verificada em 2026-08-15."
+    },
+    {
+      "title": "Sentry MCP",
+      "slug": "sentry-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Apoia investigação de issues e eventos do Sentry dentro do contexto do agente.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Sentry pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://docs.sentry.io/",
+      "instructions": "Comece com leitura de eventos e revise filtros, dados pessoais e permissões de projeto antes de fazer comentários ou mudanças.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Sentry",
+          "slug": "sentry",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Sentry verificada em 2026-08-15."
+    },
+    {
+      "title": "Solana Agent Kit",
+      "slug": "solana-agent-kit",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Kit comunitário para avaliar ações e dados do ecossistema Solana com integração de agente.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Solana pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://github.com/sendaifun/solana-agent-kit",
+      "instructions": "Trate como integração de alto risco: use rede de teste, carteira sem saldo e confirmação humana para qualquer assinatura.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Solana",
+          "slug": "solana",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Solana verificada em 2026-08-15."
+    },
+    {
+      "title": "SQLite MCP",
+      "slug": "sqlite-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Servidor de referência para trabalhar com arquivos SQLite locais em tarefas de análise e desenvolvimento.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. SQLite pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://github.com/modelcontextprotocol/servers/releases",
+      "instructions": "Faça uma cópia do arquivo .db e comece com consultas de leitura; valide backup e permissões antes de alterar tabelas.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "SQLite",
+          "slug": "sqlite",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de SQLite verificada em 2026-08-15."
+    },
+    {
+      "title": "Stripe MCP",
+      "slug": "stripe-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Servidor oficial Stripe para pesquisar documentação e operar recursos da conta com OAuth.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Stripe pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://docs.stripe.com/mcp",
+      "instructions": "Conecte primeiro em modo de teste, restrinja os escopos e exija confirmação humana para reembolsos, clientes ou cobranças.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Stripe",
+          "slug": "stripe",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Stripe verificada em 2026-08-15."
+    },
+    {
+      "title": "The Graph MCP",
+      "slug": "the-graph-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Apoia consulta de dados indexados onchain por subgraphs e fontes do protocolo The Graph.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. The Graph pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://thegraph.com/docs/en/subgraphs/tooling/subgraph-mcp/introduction/",
+      "instructions": "Use apenas consultas de leitura, verifique qual subgraph está sendo usado e não interprete dados onchain como recomendação financeira.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "The Graph",
+          "slug": "the-graph",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de The Graph verificada em 2026-08-15."
+    },
+    {
+      "title": "Thirdweb MCP",
+      "slug": "thirdweb-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Integra recursos Thirdweb para avaliar contratos inteligentes e operações em cadeias EVM.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Thirdweb pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://portal.thirdweb.com/changelog/introducing-the-new-thirdweb",
+      "instructions": "Comece em testnet e com carteira de teste. Revise contrato, rede e custo antes de assinar qualquer transação.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Thirdweb",
+          "slug": "thirdweb",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Thirdweb verificada em 2026-08-15."
+    },
+    {
+      "title": "Vercel MCP",
+      "slug": "vercel-mcp",
+      "category": {
+        "name": "MCPs",
+        "slug": "mcps"
+      },
+      "itemType": "MCP",
+      "summary": "Servidor remoto oficial para documentação, projetos, deploys e logs da Vercel usando OAuth.",
+      "ownContent": "Esta ficha foi escrita pelo Setup Vencedor. Vercel pode ampliar o contexto do agente, mas a conexão concede acesso conforme a identidade autorizada. Antes de usar, confirme fornecedor, permissões, dados expostos e se há modo de leitura. Prefira ambiente de teste e menor privilégio.",
+      "officialUrl": "https://vercel.com/docs/agent-resources/vercel-mcp",
+      "instructions": "Conecte com OAuth e use confirmação humana para alterações. Comece por consultas de documentação, deploys e logs.",
+      "topics": [
+        {
+          "name": "Integrações",
+          "slug": "integracoes"
+        }
+      ],
+      "tags": [
+        {
+          "name": "MCP",
+          "slug": "mcp",
+          "aliases": [
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Vercel",
+          "slug": "vercel",
+          "aliases": []
+        }
+      ],
+      "sourceCheckedAt": "2026-08-15",
+      "sourceNote": "Fonte primária de Vercel verificada em 2026-08-15."
+    }
+  ]
+}
