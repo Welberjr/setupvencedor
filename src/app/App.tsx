@@ -58,6 +58,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
 
   const [exploreQuery, setExploreQuery] = useState('')
   const [assistantResponse, setAssistantResponse] = useState<AssistantResponse | null>(null)
+  const [copiedAssistantPrompt, setCopiedAssistantPrompt] = useState<string | null>(null)
   const [page, setPage] = useState<Page>('explore')
   const [catalog, setCatalog] = useState<CatalogItem[]>(sampleCatalog)
   const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set())
@@ -131,6 +132,11 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
     setResourceSlug(null)
   }
 
+  async function copyAssistantPrompt(id: string, prompt: string) {
+    await navigator.clipboard?.writeText(prompt)
+    setCopiedAssistantPrompt(id)
+  }
+
   const renderCatalog = (items: CatalogItem[], options?: { gridClassName?: string; pageSize?: number }) => {
     const pageWindow = getPageWindow(items, catalogPage, options?.pageSize ?? catalogPageSize)
     return <><div className={`catalog-grid${options?.gridClassName ? ` ${options.gridClassName}` : ''}`}>{pageWindow.items.map((item) => <article className={`catalog-card type-${item.type.toLowerCase().replaceAll(' ', '-')}`} key={item.id}><div className="card-topline"><p className="eyebrow">{item.type}</p>{!isRedundantCategoryLabel(item.type, item.category) && <span>{item.category}</span>}</div><h2>{item.title}</h2><p>{createCardSummary(item)}</p><div className="card-actions"><button aria-label={`Ver detalhes de ${item.title}`} className="details-button" onClick={() => openItem(item)} type="button">Ver detalhes <CommandIcon name="arrow" size={22} /></button><FavoriteButton title={item.title} isFavorite={favoriteIds.has(item.id)} onToggle={() => toggleFavorite(item.id)} /></div></article>)}</div><CatalogPagination currentPage={pageWindow.currentPage} onPageChange={setCatalogPage} totalPages={pageWindow.totalPages} /></>
@@ -196,8 +202,29 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
       </section> : null}
       {page === 'assistant' ? <section className="inner-page page-shell assistant-page">
         {visualMode === 'handdrawn-lab' ? <WorkspaceAreaHero area="assistant" description="Explique com suas palavras ou por voz. Você receberá uma trilha com os recursos certos para começar." /> : <div className="page-heading"><h1 className="page-title">O que você precisa construir?</h1><p>Explique com suas palavras ou por voz. Você receberá uma trilha com os recursos certos para começar.</p></div>}
-        <AssistantAdvisor onResult={(result) => { setAssistantResponse(result); setCatalogPage(1) }} />
-        {assistantResponse ? <section className="assistant-answer"><p className="assistant-mode">{assistantResponse.mode === 'ai' ? 'RECOMENDAÇÃO INTELIGENTE' : 'BUSCA GUIADA DO ACERVO'}</p><h2>{assistantResponse.summary}</h2>{assistantResponse.transcript ? <p className="assistant-transcript">Transcrição: “{assistantResponse.transcript}”</p> : null}<ol className={`assistant-reasons${assistantResponse.recommendations.length % 2 ? ' assistant-reasons-odd' : ''}`}>{assistantResponse.recommendations.map((recommendation, index) => { const resource = assistantResponse.resources.find((item) => item.id === recommendation.id); return <li key={recommendation.id}><b>{String(index + 1).padStart(2, '0')}</b><div><strong>{resource?.title ?? 'Recurso recomendado'}</strong><p>{recommendation.why}</p><small>Primeiro passo: {recommendation.firstStep}</small></div></li> })}</ol>{assistantItems.length ? renderCatalog(assistantItems, { gridClassName: 'assistant-catalog-grid', pageSize: 10 }) : <p className="assistant-empty">Nenhum recurso do acervo corresponde a essa necessidade ainda.</p>}</section> : null}
+        <AssistantAdvisor onResult={(result) => { setAssistantResponse(result); setCopiedAssistantPrompt(null); setCatalogPage(1) }} />
+        {assistantResponse ? <section className="assistant-answer">
+          <p className="assistant-mode">TRILHA PARA {assistantResponse.client.label.toUpperCase()}</p>
+          <h2>{assistantResponse.summary}</h2>
+          {assistantResponse.transcript ? <p className="assistant-transcript">Transcrição: “{assistantResponse.transcript}”</p> : null}
+          <ol className={`assistant-reasons${assistantResponse.recommendations.length % 2 ? ' assistant-reasons-odd' : ''}`}>
+            {assistantResponse.recommendations.map((recommendation, index) => {
+              const resource = assistantResponse.resources.find((item) => item.id === recommendation.id)
+              const title = resource?.title ?? 'Recurso recomendado'
+              return <li key={recommendation.id}>
+                <b>{String(index + 1).padStart(2, '0')}</b>
+                <div>
+                  <strong>{title}</strong>
+                  <p>{recommendation.why}</p>
+                  <small><em>Como começar</em>{recommendation.installation}</small>
+                  <small><em>Depois disso</em>{recommendation.nextStep}</small>
+                  <button aria-label={`Copiar prompt de ${title} para ${assistantResponse.client.label}`} className="assistant-prompt-copy" onClick={() => void copyAssistantPrompt(recommendation.id, recommendation.prompt)} type="button">{copiedAssistantPrompt === recommendation.id ? 'Prompt copiado' : 'Copiar prompt pronto'}</button>
+                </div>
+              </li>
+            })}
+          </ol>
+          {assistantItems.length ? renderCatalog(assistantItems, { gridClassName: 'assistant-catalog-grid', pageSize: 10 }) : <p className="assistant-empty">Nenhum recurso do acervo corresponde a essa necessidade ainda.</p>}
+        </section> : null}
       </section> : null}
       {page === 'favorites' ? <section className="inner-page page-shell page-favorites">
         {visualMode === 'handdrawn-lab' ? <WorkspaceAreaHero area="favorites" description={favoriteItems.length ? 'Recursos salvos para você voltar ao que importa.' : 'Salve recursos para montar sua própria trilha de trabalho.'} /> : <div className="page-heading"><h1 className="page-title">Seus atalhos favoritos.</h1><p>{favoriteItems.length ? 'Recursos salvos para você voltar ao que importa.' : 'Salve recursos para montar sua própria trilha de trabalho.'}</p></div>}

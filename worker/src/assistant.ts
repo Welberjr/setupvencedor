@@ -15,12 +15,14 @@ type CatalogForIndex = {
   catalog_item_topics: Array<{ topics: { name: string } | null }>; catalog_item_tags: Array<{ tags: { name: string } | null }>
 }
 
-export type AssistantRecommendation = { id: string; why: string; firstStep: string }
+export type AssistantClient = { id: 'codex' | 'claude-code' | 'hermes' | 'other'; label: string }
+export type AssistantRecommendation = { id: string; why: string; firstStep: string; installation: string; prompt: string; nextStep: string }
 export type AssistantResult = {
-  query: string; transcript?: string; mode: 'ai' | 'fallback'; summary: string; recommendations: AssistantRecommendation[]; resources: Array<Pick<AssistantCandidate, 'id' | 'slug' | 'title' | 'item_type' | 'category' | 'summary' | 'official_url' | 'instructions'>>
+  query: string; transcript?: string; mode: 'ai' | 'fallback'; client: AssistantClient; summary: string; recommendations: AssistantRecommendation[]; resources: Array<Pick<AssistantCandidate, 'id' | 'slug' | 'title' | 'item_type' | 'category' | 'summary' | 'official_url' | 'instructions'>>
 }
 type AssistantGuidance = Pick<AssistantResult, 'mode' | 'summary' | 'recommendations'>
 type AssistantResource = AssistantResult['resources'][number]
+const defaultAssistantClient: AssistantClient = { id: 'other', label: 'seu agente' }
 
 export class AssistantError extends Error {
   constructor(readonly code: string, readonly status: number) { super(code) }
@@ -30,13 +32,23 @@ function cleanText(value: unknown): string {
   return typeof value === 'string' ? value.replace(/\s+/g, ' ').trim().slice(0, MAX_QUERY_LENGTH) : ''
 }
 
+export function assistantClientFrom(value: unknown, otherClient?: unknown): AssistantClient {
+  if (value === 'codex') return { id: 'codex', label: 'Codex' }
+  if (value === 'claude-code') return { id: 'claude-code', label: 'Claude Code' }
+  if (value === 'hermes') return { id: 'hermes', label: 'Hermes' }
+  const customLabel = cleanText(otherClient).slice(0, 80)
+  return customLabel ? { id: 'other', label: customLabel } : defaultAssistantClient
+}
+
 function isVisualObjective(query: string): boolean {
   const normalized = query.toLocaleLowerCase('pt-BR')
   return /\b(lp|landing|landing page|interface|frontend|design|visual|animação|animacao|3d)\b/.test(normalized)
 }
 
-export function enrichAssistantSearchQuery(query: string): string {
-  return isVisualObjective(query) ? `${query} frontend design interface landing page` : query
+export function enrichAssistantSearchQuery(query: string, client: AssistantClient = defaultAssistantClient): string {
+  const visualTerms = isVisualObjective(query) ? ' frontend design interface landing page' : ''
+  const clientTerms = client.id === 'codex' ? ' Codex' : client.id === 'claude-code' ? ' Claude Code' : client.id === 'hermes' ? ' Hermes' : ''
+  return `${query}${visualTerms}${clientTerms}`
 }
 
 function canonicalCandidateTitle(title: string): string {
@@ -66,17 +78,13 @@ export function mergeAssistantCandidates(semantic: AssistantCandidate[], keyword
   return dedupeAssistantCandidates([...candidatesById.values()]).sort((left, right) => right.relevance - left.relevance).slice(0, 20)
 }
 
-export function addVisualDesignComplement(query: string, guidance: AssistantGuidance, candidates: AssistantCandidate[]): AssistantGuidance {
+export function addVisualDesignComplement(query: string, guidance: AssistantGuidance, candidates: AssistantCandidate[], client: AssistantClient = defaultAssistantClient): AssistantGuidance {
   if (!isVisualObjective(query) || guidance.recommendations.length >= 4 || guidance.recommendations.some((item) => canonicalCandidateTitle(candidates.find((candidate) => candidate.id === item.id)?.title ?? '') === 'frontend design')) return guidance
   const frontendDesign = candidates.find((candidate) => canonicalCandidateTitle(candidate.title) === 'frontend design')
   if (!frontendDesign) return guidance
   return {
     ...guidance,
-    recommendations: [...guidance.recommendations, {
-      id: frontendDesign.id,
-      why: 'Complementa a direção visual ao transformar a proposta em escolhas práticas de interface e frontend.',
-      firstStep: 'Abra a skill e defina a identidade visual, os blocos da página e as referências de interação.',
-    }],
+    recommendations: [...guidance.recommendations, createRecommendation(frontendDesign, query, client, 'Complementa a direção visual ao transformar a proposta em escolhas práticas de interface e frontend.')],
   }
 }
 
@@ -167,20 +175,43 @@ async function findCandidates(supabase: SupabaseClient, env: Env, query: string)
   return mergeAssistantCandidates((data ?? []) as AssistantCandidate[], await keywordSearch(supabase, query))
 }
 
-export function createFallbackGuidance(query: string, candidates: AssistantCandidate[]): AssistantGuidance {
-  const recommendations = candidates.slice(0, 4).map((candidate) => ({
+function nextStepFor(candidate: AssistantCandidate, client: AssistantClient): string {
+  const kind = canonicalCandidateTitle(candidate.item_type)
+  if (kind.includes('mcp')) return `No ${client.label}, conecte primeiro com o menor escopo de permissão e confira quais dados esse MCP poderá acessar.`
+  if (kind.includes('skill')) return `No ${client.label}, aplique ${candidate.title} em uma tarefa pequena antes de levá-lo ao fluxo principal.`
+  if (kind.includes('guia') || kind.includes('tutorial')) return `No ${client.label}, execute a primeira etapa de ${candidate.title} e valide o resultado antes de avançar.`
+  return `Use ${candidate.title} no ${client.label} em um teste pequeno e confirme o resultado antes de ampliar o escopo.`
+}
+
+function createPrompt(candidate: AssistantCandidate, query: string, client: AssistantClient, installation: string): string {
+  const source = candidate.official_url ? `\nFonte oficial: ${candidate.official_url}` : ''
+  return `Meu ambiente é ${client.label}.\n\nObjetivo: ${query}\n\nQuero usar o recurso “${candidate.title}” para avançar nesse objetivo.${source}\n\nAntes de executar qualquer comando, confirme os pré-requisitos e explique o que cada etapa fará. Comece por esta orientação do acervo: ${installation}\n\nDepois, proponha o menor próximo passo seguro para eu testar agora e só avance quando eu confirmar o resultado.`
+}
+
+function createRecommendation(candidate: AssistantCandidate, query: string, client: AssistantClient, why?: string): AssistantRecommendation {
+  const installation = candidate.instructions.slice(0, 280) || `Abra a fonte oficial de ${candidate.title} e confirme os pré-requisitos antes de instalar ou conectar.`
+  const firstStep = nextStepFor(candidate, client)
+  return {
     id: candidate.id,
-    why: candidate.summary.slice(0, 220) || `Relaciona-se diretamente ao objetivo: ${query}.`,
-    firstStep: candidate.instructions.slice(0, 180) || 'Abra a fonte oficial e valide como este recurso se aplica ao projeto.',
-  }))
+    why: (why ?? candidate.summary.slice(0, 220)) || `Relaciona-se diretamente ao objetivo: ${query}.`,
+    firstStep,
+    installation,
+    prompt: createPrompt(candidate, query, client, installation),
+    nextStep: firstStep,
+  }
+}
+
+export function createFallbackGuidance(query: string, candidates: AssistantCandidate[], client: AssistantClient = defaultAssistantClient): AssistantGuidance {
+  const recommendations = candidates.slice(0, 4).map((candidate) => createRecommendation(candidate, query, client))
+  const primary = candidates[0]
   return {
     mode: 'fallback',
-    summary: `Encontrei ${recommendations.length} recurso${recommendations.length === 1 ? '' : 's'} relacionado${recommendations.length === 1 ? '' : 's'} a “${query}”. A ordenação considera o conteúdo e os termos do acervo.`,
+    summary: primary ? `Para ${client.label}, o melhor ponto de partida é ${primary.title}. Ele conversa com “${query}” e já vem com uma forma concreta de começar.` : `Ainda não encontrei um recurso do acervo para “${query}” no ${client.label}. Tente descrever a tecnologia, o resultado e as restrições do seu caso.`,
     recommendations,
   }
 }
 
-export function buildAssistantResult(query: string, transcript: string | undefined, guidance: AssistantGuidance, candidates: AssistantCandidate[]): AssistantResult {
+export function buildAssistantResult(query: string, transcript: string | undefined, guidance: AssistantGuidance, candidates: AssistantCandidate[], client: AssistantClient = defaultAssistantClient): AssistantResult {
   const candidatesById = new Map(candidates.map((candidate) => [candidate.id, candidate]))
   const resourceIds = new Set<string>()
   const resources: AssistantResource[] = []
@@ -194,18 +225,18 @@ export function buildAssistantResult(query: string, transcript: string | undefin
     resources.push(resource)
   }
 
-  return { query, ...(transcript ? { transcript } : {}), ...guidance, resources }
+  return { query, ...(transcript ? { transcript } : {}), client, ...guidance, resources }
 }
 
-function advise(query: string, candidates: AssistantCandidate[]): AssistantGuidance {
-  return createFallbackGuidance(query, candidates)
+function advise(query: string, candidates: AssistantCandidate[], client: AssistantClient): AssistantGuidance {
+  return createFallbackGuidance(query, candidates, client)
 }
 
 export async function handleAssistantRequest(request: Request, env: Env): Promise<{ body: AssistantResult; status: number }> {
   const { supabase, userId } = await authenticate(request, env)
   const multipart = request.headers.get('content-type')?.includes('multipart/form-data')
   const form = multipart ? await request.formData() : null
-  const payload = form ? null : await request.json().catch(() => ({})) as { query?: unknown }
+  const payload = form ? null : await request.json().catch(() => ({})) as { query?: unknown; client?: unknown; otherClient?: unknown }
   const audio = form?.get('audio')
   const requestKind = audio instanceof File ? 'audio' : 'text'
   await enforceRateLimit(supabase, userId, requestKind)
@@ -216,10 +247,11 @@ export async function handleAssistantRequest(request: Request, env: Env): Promis
     await recordUsage(supabase, userId, requestKind, 'rejected')
     throw new AssistantError('invalid_assistant_query', 400)
   }
-  const candidates = await findCandidates(supabase, env, enrichAssistantSearchQuery(query))
-  const guidance = addVisualDesignComplement(query, advise(query, candidates), candidates)
+  const client = assistantClientFrom(form?.get('client') ?? payload?.client, form?.get('otherClient') ?? payload?.otherClient)
+  const candidates = await findCandidates(supabase, env, enrichAssistantSearchQuery(query, client))
+  const guidance = addVisualDesignComplement(query, advise(query, candidates, client), candidates, client)
   await recordUsage(supabase, userId, requestKind, guidance.mode === 'ai' ? 'success' : 'fallback')
-  return { status: 200, body: buildAssistantResult(query, transcript, guidance, candidates) }
+  return { status: 200, body: buildAssistantResult(query, transcript, guidance, candidates, client) }
 }
 
 export async function indexCatalogEmbeddings(env: Env): Promise<void> {

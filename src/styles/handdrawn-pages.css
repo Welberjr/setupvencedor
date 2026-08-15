@@ -121,6 +121,9 @@
 .handdrawn-lab .assistant-context-hints > div { display: flex; flex-wrap: wrap; gap: 7px; }
 .handdrawn-lab .assistant-context-hints button { border: 1px dashed var(--ink-soft); border-radius: 999px; background: var(--paper-warm); color: var(--ink); cursor: pointer; padding: 6px 10px; font: 700 11px var(--font-mono); }
 .handdrawn-lab .assistant-context-hints button:hover { background: var(--note-blue); }
+.handdrawn-lab .assistant-context-hints button[aria-pressed='true'] { border: 2px solid var(--ink); background: var(--brand-green); box-shadow: 2px 2px 0 #201f1b35; }
+.handdrawn-lab .assistant-other-client { display: grid; gap: 6px; max-width: 330px; margin-top: 10px; color: var(--ink-muted); font-size: 12px; font-weight: 700; }
+.handdrawn-lab .assistant-other-client input { min-height: 38px; border: 2px solid #201f1b7a; border-radius: 9px 12px 10px 13px; background: #fffdf7; color: var(--ink); padding: 0 10px; }
 
 .handdrawn-lab .voice-button,
 .handdrawn-lab .recording-button,
@@ -186,6 +189,8 @@
 .handdrawn-lab .assistant-reasons small {
   color: var(--ink);
 }
+.handdrawn-lab .assistant-reasons small em { display: block; margin-bottom: 4px; color: #4f7d13; font: 800 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.handdrawn-lab .assistant-prompt-copy { min-height: 40px; margin-top: 14px; border: var(--paper-border); border-radius: 9px 12px 10px 13px; background: var(--note-coral); box-shadow: 2px 3px 0 #201f1b35; color: var(--ink); cursor: pointer; padding: 0 12px; font: 800 11px var(--font-mono); }
 
 .handdrawn-lab .empty-state {
   border: 2px dashed #7d5a31;

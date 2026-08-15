@@ -18,7 +18,7 @@ it('returns only the resources explicitly selected for the objective', () => {
     undefined,
     {
       mode: 'ai', summary: 'Comece com uma direção visual autoral para uma landing page impactante.',
-      recommendations: [{ id: 'visual-direction', why: 'Define a identidade visual da página.', firstStep: 'Descreva público e a sensação desejada.' }],
+      recommendations: [{ id: 'visual-direction', why: 'Define a identidade visual da página.', firstStep: 'Descreva público e a sensação desejada.', installation: 'Defina público e sensação desejada.', prompt: 'Prompt pronto', nextStep: 'Teste em um ambiente seguro.' }],
     },
     [visualDirection, pydanticAi],
   )
@@ -49,7 +49,7 @@ it('keeps direct keyword matches alongside semantic candidates for a visual obje
 it('adds Frontend Design as a complementary resource for a visual landing-page objective', () => {
   const guidance = addVisualDesignComplement(
     'Quero criar uma LP inovadora, com 3D e impactante',
-    { mode: 'ai', summary: 'Defina uma direção visual autoral.', recommendations: [{ id: 'visual-direction', why: 'Orienta a identidade.', firstStep: 'Defina o público.' }] },
+    { mode: 'ai', summary: 'Defina uma direção visual autoral.', recommendations: [{ id: 'visual-direction', why: 'Orienta a identidade.', firstStep: 'Defina o público.', installation: 'Defina o público.', prompt: 'Prompt pronto', nextStep: 'Teste em um ambiente seguro.' }] },
     [visualDirection, { ...visualDirection, id: 'frontend-design', title: 'Frontend Design' }],
   )
 
@@ -60,6 +60,17 @@ it('keeps the deterministic recommendation trail focused on four resources', () 
   const guidance = createFallbackGuidance('quero criar uma landing page bonita', Array.from({ length: 5 }, (_, index) => ({ ...visualDirection, id: `resource-${index}` })))
 
   expect(guidance.recommendations).toHaveLength(4)
+})
+
+it('turns a selected agent into a ready-to-use recommendation recipe', () => {
+  const guidance = createFallbackGuidance('quero criar uma landing page bonita', [visualDirection], { id: 'codex', label: 'Codex' })
+
+  expect(guidance.summary).toContain('Codex')
+  expect(guidance.recommendations[0]).toMatchObject({
+    installation: 'Defina público e sensação desejada.',
+    prompt: expect.stringContaining('Meu ambiente é Codex.'),
+  })
+  expect(guidance.recommendations[0].nextStep).toContain('Codex')
 })
 
 it('keeps recommendations grounded in the catalog without calling a generative model', () => {
