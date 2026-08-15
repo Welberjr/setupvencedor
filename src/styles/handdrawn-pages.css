@@ -187,6 +187,7 @@
 .handdrawn-lab.auth-shell {
   grid-template-columns: minmax(360px, 680px) minmax(340px, 480px);
   align-content: center;
+  justify-content: center;
   gap: clamp(24px, 5vw, 80px);
   min-height: 100vh;
   background: radial-gradient(#c8b99155 0.8px, transparent 0.8px) 0 0 / 9px 9px, var(--paper);
