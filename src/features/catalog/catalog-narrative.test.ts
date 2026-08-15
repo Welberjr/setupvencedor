@@ -43,3 +43,11 @@ it('returns each first action as an individual ordered step', () => {
     expect.stringMatching(/registr/i),
   ])
 })
+
+it('uses the authored plain-language explanation on a guided catalog card', () => {
+  const summary = createCardSummary({ ...item, guide: {
+    catalogItemId: item.id, plainLanguage: 'É como um diretor de arte que ajuda o Claude a criar telas com identidade própria.', solves: 'Evita páginas genéricas.', whenToUse: 'Ao criar uma interface.', whenNotToUse: 'Ao corrigir banco.', firstSteps: ['Defina o público.', 'Teste uma tela.'], level: 'iniciante', prerequisites: [], estimatedMinutes: 20, sourceCheckedAt: '2026-08-13T12:00:00.000Z', sourceNote: 'Fonte oficial verificada.',
+  } })
+
+  expect(summary).toBe('É como um diretor de arte que ajuda o Claude a criar telas com identidade própria.')
+})

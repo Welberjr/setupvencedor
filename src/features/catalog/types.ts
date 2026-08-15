@@ -16,6 +16,7 @@ export type CatalogItem = {
   category: string
   topics: string[]
   tags: string[]
+  guide?: CatalogGuide
 }
 
 export type CatalogFilters = {
@@ -29,3 +30,4 @@ export type SearchResult = CatalogItem & {
   reasons: string[]
   score: number
 }
+import type { CatalogGuide } from './catalog-guide'

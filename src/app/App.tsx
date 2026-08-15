@@ -1,16 +1,21 @@
 import { useEffect, useMemo, useState } from 'react'
-import { BookOpen, Search, Sparkles } from 'lucide-react'
+import { Search } from 'lucide-react'
 import { BrandMark } from '../features/brand/BrandMark'
 import { CommandIcon, type CommandIconName } from '../features/brand/CommandIcon'
 import { FavoriteButton } from '../features/catalog/FavoriteButton'
 import { PublicSources } from '../features/catalog/PublicSources'
 import { CatalogDetailPanel } from '../features/catalog/CatalogDetailPanel'
+import { ResourceProfilePage } from '../features/catalog/ResourceProfilePage'
 import { CatalogPagination } from '../features/catalog/CatalogPagination'
-import { ASSISTANT_RESULTS_PAGE_SIZE, getPageWindow } from '../features/catalog/pagination'
+import { getPageWindow } from '../features/catalog/pagination'
 import { useCatalogPageSize } from '../features/catalog/useCatalogPageSize'
 import { createCardSummary } from '../features/catalog/catalog-narrative'
 import { isRedundantCategoryLabel } from '../features/catalog/card-label'
-import { AssistantSearch } from '../features/catalog/AssistantSearch'
+import { dedupeCatalogItems } from '../features/catalog/catalog-deduplication'
+import { guideFromRow, type CatalogGuideRow } from '../features/catalog/catalog-guide'
+import { readResourceSlug, resourcePath } from '../features/catalog/catalog-route'
+import { pilotGuideForItem } from '../features/catalog/pilot-guide-data'
+import { AssistantAdvisor, type AssistantResponse } from '../features/catalog/AssistantAdvisor'
 import { sampleCatalog } from '../features/catalog/catalog-data'
 import type { CatalogItem } from '../features/catalog/types'
 import { LoginForm } from '../features/auth/LoginForm'
@@ -29,11 +34,12 @@ type Page = 'explore' | 'assistant' | 'favorites' | 'support' | 'admin'
 type CatalogRow = {
   id: string; slug: string; title: string; item_type: string; summary: string; own_content: string; official_url: string; instructions: string
   status: CatalogItem['status']; visibility: CatalogItem['visibility']; categories: { name: string } | null
-  catalog_item_topics: Array<{ topics: { name: string } | null }>; catalog_item_tags: Array<{ tags: { name: string } | null }>; catalog_item_sources: Array<{ source_url: string }>
+  catalog_item_topics: Array<{ topics: { name: string } | null }>; catalog_item_tags: Array<{ tags: { name: string } | null }>; catalog_item_sources: Array<{ source_url: string }>; catalog_item_guides?: CatalogGuideRow[]
 }
 
 function toCatalogItem(row: CatalogRow): CatalogItem {
-  return { id: row.id, slug: row.slug, title: row.title, type: row.item_type, summary: row.summary, ownContent: row.own_content, officialUrl: row.official_url, sourceUrls: row.catalog_item_sources.map((source) => source.source_url), instructions: row.instructions, status: row.status, visibility: row.visibility, category: row.categories?.name ?? 'Acervo', topics: row.catalog_item_topics.map((item) => item.topics?.name).filter((name): name is string => Boolean(name)), tags: row.catalog_item_tags.map((item) => item.tags?.name).filter((name): name is string => Boolean(name)) }
+  const guide = row.catalog_item_guides?.[0] ? guideFromRow(row.catalog_item_guides[0]) : pilotGuideForItem(row.slug, row.id)
+  return { id: row.id, slug: row.slug, title: row.title, type: row.item_type, summary: row.summary, ownContent: row.own_content, officialUrl: row.official_url, sourceUrls: row.catalog_item_sources.map((source) => source.source_url), instructions: row.instructions, status: row.status, visibility: row.visibility, category: row.categories?.name ?? 'Acervo', topics: row.catalog_item_topics.map((item) => item.topics?.name).filter((name): name is string => Boolean(name)), tags: row.catalog_item_tags.map((item) => item.tags?.name).filter((name): name is string => Boolean(name)), guide }
 }
 
 const navItems: Array<{ id: Page; label: string; icon: CommandIconName }> = [
@@ -45,39 +51,58 @@ export function App({ session = null }: { session?: Session }) {
   if (!session) return <main className="app-shell auth-shell"><LoginForm onLogin={async (email, password) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signInWithPassword({ email, password }); if (error) throw error }} onForgotPassword={async (email) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/redefinir-senha` }); if (error) throw error }} /></main>
   const authenticatedSession = session
 
-  const [query, setQuery] = useState('')
+  const [exploreQuery, setExploreQuery] = useState('')
+  const [assistantResponse, setAssistantResponse] = useState<AssistantResponse | null>(null)
   const [page, setPage] = useState<Page>('explore')
   const [catalog, setCatalog] = useState<CatalogItem[]>(sampleCatalog)
   const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set())
   const [catalogStatus, setCatalogStatus] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false)
   const [selectedItem, setSelectedItem] = useState<CatalogItem | null>(null)
+  const [resourceSlug, setResourceSlug] = useState(() => readResourceSlug(window.location.pathname))
   const [catalogPage, setCatalogPage] = useState(1)
   const [accessRefreshKey, setAccessRefreshKey] = useState(0)
   const catalogPageSize = useCatalogPageSize()
+
+  useEffect(() => {
+    const handlePopState = () => setResourceSlug(readResourceSlug(window.location.pathname))
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
 
   useEffect(() => {
     const supabase = getSupabaseClient(); if (!supabase) return
     const catalogClient = supabase
     let active = true
     async function loadCatalog() {
-      const [{ data: itemRows, error: itemsError }, { data: favoriteRows, error: favoritesError }] = await Promise.all([
-        catalogClient.from('catalog_items').select('id,slug,title,item_type,summary,own_content,official_url,instructions,status,visibility,categories(name),catalog_item_topics(topics(name)),catalog_item_tags(tags(name)),catalog_item_sources(source_url)').eq('status', 'published').order('published_at', { ascending: false }),
+      const baseCatalogSelect = 'id,slug,title,item_type,summary,own_content,official_url,instructions,status,visibility,categories(name),catalog_item_topics(topics(name)),catalog_item_tags(tags(name)),catalog_item_sources(source_url)'
+      const [{ data: guideRows, error: guideError }, { data: favoriteRows, error: favoritesError }] = await Promise.all([
+        catalogClient.from('catalog_items').select(`${baseCatalogSelect},catalog_item_guides(*)`).eq('status', 'published').order('published_at', { ascending: false }),
         catalogClient.from('favorites').select('catalog_item_id').eq('user_id', authenticatedSession.user.id),
       ])
+      let itemRows: unknown = guideRows
+      let itemsError = guideError
+      if (guideError) {
+        const fallback = await catalogClient.from('catalog_items').select(baseCatalogSelect).eq('status', 'published').order('published_at', { ascending: false })
+        itemRows = fallback.data
+        itemsError = fallback.error
+      }
       if (!active) return
       if (itemsError || favoritesError) { setCatalogStatus('Não foi possível sincronizar o acervo agora. Tente novamente em instantes.'); return }
-      setCatalog((itemRows as unknown as CatalogRow[]).map(toCatalogItem)); setFavoriteIds(new Set((favoriteRows ?? []).map((row) => row.catalog_item_id)))
+      setCatalog(dedupeCatalogItems((itemRows as unknown as CatalogRow[]).map(toCatalogItem))); setFavoriteIds(new Set((favoriteRows ?? []).map((row) => row.catalog_item_id)))
     }
     void loadCatalog(); return () => { active = false }
   }, [authenticatedSession.user.id])
 
   const categories = useMemo(() => [...new Set(catalog.map((item) => item.category))].sort((first, second) => first.localeCompare(second)), [catalog])
   const results = useMemo(() => {
-    const normalized = query.toLowerCase().trim()
+    const normalized = exploreQuery.toLowerCase().trim()
     return catalog.filter((item) => (!selectedCategory || item.category === selectedCategory) && (!normalized || `${item.title} ${item.summary} ${item.ownContent} ${item.tags.join(' ')} ${item.topics.join(' ')}`.toLowerCase().includes(normalized)))
-  }, [catalog, query, selectedCategory])
+  }, [catalog, exploreQuery, selectedCategory])
   const favoriteItems = useMemo(() => catalog.filter((item) => favoriteIds.has(item.id)), [catalog, favoriteIds])
+  const assistantItems = useMemo(() => assistantResponse?.resources.map((resource) => catalog.find((item) => item.id === resource.id)).filter((item): item is CatalogItem => Boolean(item)) ?? [], [assistantResponse, catalog])
+  const resourceItem = useMemo(() => resourceSlug ? catalog.find((item) => item.slug === resourceSlug) ?? null : null, [catalog, resourceSlug])
 
   async function toggleFavorite(itemId: string) {
     const supabase = getSupabaseClient(); if (!supabase) return
@@ -88,16 +113,43 @@ export function App({ session = null }: { session?: Session }) {
     if (error) { setFavoriteIds((current) => { const next = new Set(current); wasFavorite ? next.add(itemId) : next.delete(itemId); return next }); setCatalogStatus('Não foi possível atualizar seus favoritos. Tente novamente.') }
   }
 
+  function openItem(item: CatalogItem) {
+    if (!item.guide) { setSelectedItem(item); return }
+    window.history.pushState({}, '', resourcePath(item.slug))
+    setSelectedItem(null)
+    setResourceSlug(item.slug)
+  }
+
+  function closeResourceProfile() {
+    window.history.pushState({}, '', '/')
+    setResourceSlug(null)
+  }
+
   const renderCatalog = (items: CatalogItem[], options?: { gridClassName?: string; pageSize?: number }) => {
     const pageWindow = getPageWindow(items, catalogPage, options?.pageSize ?? catalogPageSize)
-    return <><div className={`catalog-grid${options?.gridClassName ? ` ${options.gridClassName}` : ''}`}>{pageWindow.items.map((item) => <article className={`catalog-card type-${item.type.toLowerCase().replaceAll(' ', '-')}`} key={item.id}><div className="card-topline"><p className="eyebrow">{item.type}</p>{!isRedundantCategoryLabel(item.type, item.category) && <span>{item.category}</span>}</div><h2>{item.title}</h2><p>{createCardSummary(item)}</p><div className="card-actions"><button aria-label={`Ver detalhes de ${item.title}`} className="details-button" onClick={() => setSelectedItem(item)} type="button">Ver detalhes <CommandIcon name="arrow" size={22} /></button><FavoriteButton title={item.title} isFavorite={favoriteIds.has(item.id)} onToggle={() => toggleFavorite(item.id)} /></div></article>)}</div><CatalogPagination currentPage={pageWindow.currentPage} onPageChange={setCatalogPage} totalPages={pageWindow.totalPages} /></>
+    return <><div className={`catalog-grid${options?.gridClassName ? ` ${options.gridClassName}` : ''}`}>{pageWindow.items.map((item) => <article className={`catalog-card type-${item.type.toLowerCase().replaceAll(' ', '-')}`} key={item.id}><div className="card-topline"><p className="eyebrow">{item.type}</p>{!isRedundantCategoryLabel(item.type, item.category) && <span>{item.category}</span>}</div><h2>{item.title}</h2><p>{createCardSummary(item)}</p><div className="card-actions"><button aria-label={`Ver detalhes de ${item.title}`} className="details-button" onClick={() => openItem(item)} type="button">Ver detalhes <CommandIcon name="arrow" size={22} /></button><FavoriteButton title={item.title} isFavorite={favoriteIds.has(item.id)} onToggle={() => toggleFavorite(item.id)} /></div></article>)}</div><CatalogPagination currentPage={pageWindow.currentPage} onPageChange={setCatalogPage} totalPages={pageWindow.totalPages} /></>
   }
-  const switchPage = (nextPage: Page) => { setPage(nextPage); setCatalogPage(1); if (nextPage === 'explore') setSelectedCategory(null) }
-  const selectCategory = (category: string | null) => { setSelectedCategory(category); setCatalogPage(1) }
+  const switchPage = (nextPage: Page) => { setPage(nextPage); setCatalogPage(1); setIsCategoryMenuOpen(false) }
+  const selectCategory = (category: string | null) => { setSelectedCategory(category); setPage('explore'); setCatalogPage(1); setIsCategoryMenuOpen(false) }
   const canAdmin = hasAnyRole(authenticatedSession.roles ?? [], ['admin', 'manager', 'editor'])
 
   return <main className="app-shell">
-    <aside className="command-rail"><a className="brand" href="/"><BrandMark /><span>Setup<br />Vencedor</span></a><nav aria-label="Principal" className="main-nav">{navItems.map(({ id, label, icon }) => <button aria-label={label} className={page === id ? 'active' : ''} key={id} onClick={() => switchPage(id)} type="button"><CommandIcon name={icon} /><span>{label}</span></button>)}{canAdmin ? <button aria-label="Administração" className={page === 'admin' ? 'active' : ''} onClick={() => switchPage('admin')} type="button"><CommandIcon name="admin" /><span>Administração</span></button> : null}</nav><div className="rail-footer"><span className="online-dot" /> Base privada ativa</div></aside>
+    <aside className="command-rail">
+      <a className="brand" href="/"><BrandMark /><span>Setup<br />Vencedor</span></a>
+      <nav aria-label="Principal" className="main-nav">
+        {navItems.map(({ id, label, icon }) => id === 'explore' ? <div className="explore-nav-group" key={id}>
+          <button aria-controls="explore-category-menu" aria-expanded={page === 'explore' && isCategoryMenuOpen} aria-label="Explorar e filtrar categorias" className={page === id ? 'active' : ''} onClick={() => { if (page !== 'explore') switchPage('explore'); setIsCategoryMenuOpen((open) => page === 'explore' ? !open : true) }} type="button"><CommandIcon name={icon} /><span>Explorar</span><i aria-hidden="true" className={page === 'explore' && isCategoryMenuOpen ? 'filter-chevron open' : 'filter-chevron'} /></button>
+          {page === 'explore' && isCategoryMenuOpen ? <>
+            <div aria-label="Filtrar acervo" className="explore-submenu" id="explore-category-menu">
+              <button aria-pressed={selectedCategory === null} className={selectedCategory === null ? 'selected' : ''} onClick={() => selectCategory(null)} type="button">Todos <b>{catalog.length}</b></button>
+              {categories.map((category) => <button aria-pressed={selectedCategory === category} className={selectedCategory === category ? 'selected' : ''} key={category} onClick={() => selectCategory(category)} type="button">{category} <b>{catalog.filter((item) => item.category === category).length}</b></button>)}
+            </div>
+          </> : null}
+        </div> : <button aria-label={label} className={page === id ? 'active' : ''} key={id} onClick={() => switchPage(id)} type="button"><CommandIcon name={icon} /><span>{label}</span></button>)}
+        {canAdmin ? <button aria-label="Administração" className={page === 'admin' ? 'active' : ''} onClick={() => switchPage('admin')} type="button"><CommandIcon name="admin" /><span>Administração</span></button> : null}
+      </nav>
+      <div className="rail-footer"><span className="online-dot" /> Base privada ativa</div>
+    </aside>
     <section className="workspace">
       <header className="topbar">
         <div>
@@ -109,26 +161,24 @@ export function App({ session = null }: { session?: Session }) {
           <div className="identity"><span className="avatar">{authenticatedSession.user.email.slice(0, 1).toUpperCase()}</span><span>{authenticatedSession.user.email}</span></div>
         </div>
       </header>
+      {resourceSlug ? resourceItem?.guide ? <ResourceProfilePage guide={resourceItem.guide} isFavorite={favoriteIds.has(resourceItem.id)} item={resourceItem} onBack={closeResourceProfile} onToggleFavorite={() => toggleFavorite(resourceItem.id)} /> : <section className="resource-profile page-shell"><p role="status">Carregando a ficha do recurso…</p></section> : <>
       {page === 'explore' ? <section className="explore-page page-shell">
         <div className="page-heading command-hero">
           <h1 className="page-title">Escolha o próximo <em>atalho técnico.</em></h1>
           <p>Cada recurso vem com propósito: acelerar decisões, padronizar execuções e entregar resultado com clareza.</p>
         </div>
-        <label className="command-search explore-search"><Search size={20} /><span className="sr-only">Buscar no acervo</span><input aria-label="Buscar no acervo" value={query} onChange={(event) => { setQuery(event.target.value); setCatalogPage(1) }} placeholder="O que você quer construir hoje?" /><kbd>⌘ K</kbd></label>
-        <section className="discovery-section">
-          <div className="section-heading"><h2>Encontre o caminho para a sua próxima decisão.</h2><span>{results.length} {selectedCategory ? `itens em ${selectedCategory}` : 'itens disponíveis'}</span></div>
-          <div className="category-rail"><button className={selectedCategory === null ? 'active' : ''} onClick={() => selectCategory(null)} type="button"><BookOpen size={16} /> Tudo <b>{catalog.length}</b></button>{categories.map((category) => <button aria-pressed={selectedCategory === category} className={selectedCategory === category ? 'active' : ''} key={category} onClick={() => selectCategory(category)} type="button"><Sparkles size={16} /> {category} <b>{catalog.filter((item) => item.category === category).length}</b></button>)}</div>
-        </section>
+        <label className="command-search explore-search"><Search size={20} /><span className="sr-only">Buscar no acervo</span><input aria-label="Buscar no acervo" value={exploreQuery} onChange={(event) => { setExploreQuery(event.target.value); setCatalogPage(1) }} placeholder="Pesquisar no acervo" /></label>
         {catalogStatus ? <p role="status">{catalogStatus}</p> : null}
-        <section className="catalog-section"><div className="section-heading"><h2>{selectedCategory ?? 'Explore o que está disponível'}</h2><span>Selecione um recurso e aplique em uma tarefa real.</span></div>{renderCatalog(results)}</section>
+        <section className="catalog-section"><div className="section-heading"><h2>{selectedCategory ?? 'Explore o que está disponível'}</h2><span>{results.length} {selectedCategory ? `itens em ${selectedCategory}` : 'itens disponíveis'} · Selecione um recurso e aplique em uma tarefa real.</span></div>{renderCatalog(results)}</section>
       </section> : null}
       {page === 'assistant' ? <section className="inner-page page-shell assistant-page">
-        <div className="page-heading"><h1 className="page-title">O que você precisa construir?</h1><p>Descreva seu objetivo, tecnologia ou desafio. A busca encontra recursos no acervo da sua equipe.</p></div>
-        <AssistantSearch query={query} onQueryChange={(value) => { setQuery(value); setCatalogPage(1) }} results={results} renderResults={() => renderCatalog(results, { gridClassName: 'assistant-catalog-grid', pageSize: ASSISTANT_RESULTS_PAGE_SIZE })} />
+        <div className="page-heading"><h1 className="page-title">O que você precisa construir?</h1><p>Explique com suas palavras ou por voz. Você receberá uma trilha com os recursos certos para começar.</p></div>
+        <AssistantAdvisor onResult={(result) => { setAssistantResponse(result); setCatalogPage(1) }} />
+        {assistantResponse ? <section className="assistant-answer"><p className="assistant-mode">{assistantResponse.mode === 'ai' ? 'RECOMENDAÇÃO INTELIGENTE' : 'BUSCA GUIADA DO ACERVO'}</p><h2>{assistantResponse.summary}</h2>{assistantResponse.transcript ? <p className="assistant-transcript">Transcrição: “{assistantResponse.transcript}”</p> : null}<ol className={`assistant-reasons${assistantResponse.recommendations.length % 2 ? ' assistant-reasons-odd' : ''}`}>{assistantResponse.recommendations.map((recommendation, index) => { const resource = assistantResponse.resources.find((item) => item.id === recommendation.id); return <li key={recommendation.id}><b>{String(index + 1).padStart(2, '0')}</b><div><strong>{resource?.title ?? 'Recurso recomendado'}</strong><p>{recommendation.why}</p><small>Primeiro passo: {recommendation.firstStep}</small></div></li> })}</ol>{assistantItems.length ? renderCatalog(assistantItems, { gridClassName: 'assistant-catalog-grid', pageSize: 10 }) : <p className="assistant-empty">Nenhum recurso do acervo corresponde a essa necessidade ainda.</p>}</section> : null}
       </section> : null}
       {page === 'favorites' ? <section className="inner-page page-shell page-favorites">
         <div className="page-heading"><h1 className="page-title">Seus atalhos favoritos.</h1><p>{favoriteItems.length ? 'Recursos salvos para você voltar ao que importa.' : 'Salve recursos para montar sua própria trilha de trabalho.'}</p></div>
-        {favoriteItems.length ? renderCatalog(favoriteItems) : <p className="empty-state">Ainda não há recursos salvos. Explore o acervo e favorite o que fizer sentido para você.</p>}
+  {favoriteItems.length ? renderCatalog(favoriteItems) : <div className="favorites-empty-zone"><p className="empty-state">Ainda não há recursos salvos. Explore o acervo e favorite o que fizer sentido para você.</p></div>}
       </section> : null}
       {page === 'support' ? <section className="inner-page page-shell support-page">
         <div className="page-heading"><h1 className="page-title">Como podemos ajudar?</h1><p>Abra um chamado de acesso, dúvida, bug ou sugestão. A equipe responsável acompanha por status.</p></div>
@@ -138,6 +188,7 @@ export function App({ session = null }: { session?: Session }) {
         <div className="page-heading"><h1 className="page-title">Controle da sua biblioteca.</h1><p>Gerencie acessos, convites e os recursos disponíveis para toda a equipe.</p></div>
         <div className="admin-grid"><article className="metric-card"><p>RECURSOS PUBLICADOS</p><strong>{catalog.length}</strong><span>Disponíveis para a equipe</span></article><article className="metric-card"><p>PAPÉIS ATIVOS</p><strong>{(authenticatedSession.roles ?? []).length || 1}</strong><span>{(authenticatedSession.roles ?? []).join(' / ') || 'membro'}</span></article><article className="metric-card"><p>FAVORITOS DA SESSÃO</p><strong>{favoriteIds.size}</strong><span>Atalhos pessoais salvos</span></article></div>{hasAnyRole(authenticatedSession.roles ?? [], ['admin']) ? <><InviteForm onCreated={() => setAccessRefreshKey((current) => current + 1)} /><PeopleDirectory currentUserId={authenticatedSession.user.id} refreshKey={accessRefreshKey} /></> : null}
       </section> : null}
+      </>}
     </section>
     {selectedItem ? <CatalogDetailPanel isFavorite={favoriteIds.has(selectedItem.id)} item={selectedItem} onClose={() => setSelectedItem(null)} onToggleFavorite={() => toggleFavorite(selectedItem.id)} /> : null}
   </main>

@@ -21,4 +21,5 @@ it('offers rich text controls and an image attachment', () => {
   expect(screen.getByRole('button', { name: 'Itálico' })).toBeInTheDocument()
   expect(screen.getByRole('button', { name: 'Sublinhar' })).toBeInTheDocument()
   expect(screen.getByLabelText('Anexar imagem')).toHaveAttribute('accept', 'image/png,image/jpeg,image/webp')
+  expect(screen.getByText('PNG, JPEG ou WebP. Limite de 5 MB.')).toBeInTheDocument()
 })

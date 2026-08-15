@@ -113,6 +113,7 @@ export function createCatalogNarrative(item: CatalogItem): CatalogNarrative {
 }
 
 export function createCardSummary(item: CatalogItem): string {
+  if (item.guide?.plainLanguage) return item.guide.plainLanguage
   const context = getContext(item.type)
   const summary = isPlaceholderSummary(item.summary) ? null : firstReadableSentence(item.summary)
   if (summary) return `${summary}. Uma opção útil para ${context.cardOutcome}.`
