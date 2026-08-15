@@ -7,8 +7,11 @@ it('keeps the auth bootstrap visually silent while restoring the session', () =>
   expect(source).not.toContain('CARREGANDO ACESSO SEGURO')
 })
 
-it('ships the handdrawn release with a fresh service worker cache', () => {
+it('keeps the PWA installed without intercepting the application files', () => {
   const serviceWorker = readFileSync('public/sw.js', 'utf8')
 
-  expect(serviceWorker).toContain("const CACHE_NAME = 'setup-vencedor-cache-v4-20260815-handdrawn-release'")
+  expect(serviceWorker).not.toContain("addEventListener('fetch'")
+  expect(serviceWorker).toContain("const LEGACY_CACHE_PREFIX = 'setup-vencedor-cache-'")
+  expect(serviceWorker).toContain('name.startsWith(LEGACY_CACHE_PREFIX)')
+  expect(serviceWorker).toContain('self.clients.claim()')
 })

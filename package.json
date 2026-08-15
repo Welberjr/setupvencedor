@@ -13,6 +13,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "verify:public-release": "node scripts/verify-public-release.mjs",
     "worker:dev": "npm --workspace worker run dev",
     "worker:check": "npm --workspace worker run check",
     "worker:test": "npm --workspace worker run test"
