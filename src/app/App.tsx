@@ -49,7 +49,7 @@ function toCatalogItem(row: CatalogRow): CatalogItem {
 const navItems: Array<{ id: Page; label: string; icon: CommandIconName }> = [
   { id: 'explore', label: 'Explorar', icon: 'explore' }, { id: 'assistant', label: 'Assistente', icon: 'assistant' }, { id: 'favorites', label: 'Favoritos', icon: 'favorites' }, { id: 'support', label: 'Suporte', icon: 'support' },
 ]
-export function App({ session = null, visualMode = 'command-center' }: { session?: Session; visualMode?: VisualMode }) {
+export function App({ session = null, visualMode = 'command-center', showLabBadge = false }: { session?: Session; visualMode?: VisualMode; showLabBadge?: boolean }) {
   if (window.location.pathname === '/ativar') return <ActivateInvitePage visualMode={visualMode} />
   if (window.location.pathname === '/redefinir-senha') return <ResetPasswordPage visualMode={visualMode} />
   if (!session) return <main className={`app-shell auth-shell ${visualMode}`}>{visualMode === 'handdrawn-lab' ? <AuthArtwork /> : null}<LoginForm onLogin={async (email, password) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signInWithPassword({ email, password }); if (error) throw error }} onForgotPassword={async (email) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/redefinir-senha` }); if (error) throw error }} /></main>
@@ -163,7 +163,7 @@ export function App({ session = null, visualMode = 'command-center' }: { session
           <p className="eyebrow">WORKSPACE / BIBLIOTECA</p>
           <p className="topbar-title">A central de decisões técnicas da sua equipe.</p>
         </div>
-        {visualMode === 'handdrawn-lab' ? <HanddrawnLabBadge /> : null}
+        {visualMode === 'handdrawn-lab' && showLabBadge ? <HanddrawnLabBadge /> : null}
         <div className="topbar-tools">
           <PwaInstallPrompt />
           <div className="identity"><span className="avatar">{authenticatedSession.user.email.slice(0, 1).toUpperCase()}</span><span>{authenticatedSession.user.email}</span></div>

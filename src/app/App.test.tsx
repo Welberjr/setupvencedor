@@ -97,10 +97,15 @@ it('keeps the official shell unchanged by default', () => {
   expect(screen.queryByText('LABORATÓRIO VISUAL · DADOS REAIS')).not.toBeInTheDocument()
 })
 
-it('scopes the handdrawn lab and warns that actions use real data', () => {
-  const { container } = render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
+it('renders the laboratory warning only when the laboratory marker is enabled', () => {
+  const session = { user: { id: 'u1', email: 'dev@example.com' } }
+  const { container, rerender } = render(<App visualMode="handdrawn-lab" session={session} />)
 
   expect(container.querySelector('.app-shell')).toHaveClass('handdrawn-lab')
+  expect(screen.queryByText('LABORATÓRIO VISUAL · DADOS REAIS')).not.toBeInTheDocument()
+
+  rerender(<App showLabBadge visualMode="handdrawn-lab" session={session} />)
+
   expect(screen.getByText('LABORATÓRIO VISUAL · DADOS REAIS')).toBeInTheDocument()
   expect(screen.getByRole('link', { name: 'Comparar com a plataforma oficial' })).toHaveAttribute('href', 'https://www.setupvencedor.com.br/')
 })

@@ -14,6 +14,7 @@ import './styles/handdrawn-responsive.css'
 
 const SW_UPDATE_INTERVAL_MS = 5 * 60 * 1000
 const visualMode = readVisualMode(import.meta.env.VITE_VISUAL_MODE)
+const showLabBadge = import.meta.env.VITE_LAB_BADGE === 'true'
 
 function usePwaUpdate() {
   useEffect(() => {
@@ -103,7 +104,7 @@ function Bootstrap() {
     return () => { active = false; window.clearTimeout(loadingTimeout); listener.subscription.unsubscribe() }
   }, [])
   if (isLoading) return null
-  return <App session={session} visualMode={visualMode} />
+  return <App session={session} showLabBadge={showLabBadge} visualMode={visualMode} />
 }
 
 createRoot(document.getElementById('root')!).render(
