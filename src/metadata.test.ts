@@ -20,3 +20,11 @@ it('uses the approved SV mark for browser and installed-app icons', () => {
   expect(existsSync('public/apple-touch-icon.png')).toBe(true)
   expect(existsSync('public/social-preview.png')).toBe(true)
 })
+
+it('keeps a safe visual shell if the main stylesheet cannot be loaded', () => {
+  const html = readFileSync('index.html', 'utf8')
+
+  expect(html).toContain('data-release-fallback')
+  expect(html).toContain('img { display: block; max-width: 100%; height: auto; }')
+  expect(html).toContain('.app-shell { min-height: 100vh; background: #fff8ec; }')
+})
