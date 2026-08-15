@@ -179,6 +179,18 @@
 .handdrawn-lab .account-menu small { margin: 0; }
 .handdrawn-lab .account-menu p { color: var(--ink-muted); font: 700 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
 .handdrawn-lab .account-menu strong { overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.handdrawn-lab .account-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  border: 2px dashed #2074a9;
+  border-radius: 9px 12px 10px 11px;
+  background: var(--note-blue);
+  color: var(--ink);
+  font: 800 11px var(--font-mono);
+  text-decoration: none;
+}
 .handdrawn-lab .account-menu button {
   display: flex;
   align-items: center;
@@ -214,6 +226,25 @@
 .handdrawn-lab .workspace-account .pwa-status {
   color: #174f74;
 }
+
+.handdrawn-lab .community-rail-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  width: 100%;
+  min-height: 38px;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border: 2px dashed #2074a9;
+  border-radius: 10px 13px 9px 12px;
+  background: var(--note-blue);
+  color: var(--ink);
+  font: 800 10px 'DM Mono', monospace;
+  letter-spacing: .02em;
+  text-decoration: none;
+}
+.handdrawn-lab .community-rail-link:hover { background: #bce3ff; transform: rotate(-.3deg); }
 
 .handdrawn-lab .workspace-name-backdrop {
   position: fixed;

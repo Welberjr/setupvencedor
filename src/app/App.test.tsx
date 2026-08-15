@@ -14,9 +14,18 @@ it('renders the protected application shell after a session is supplied', () => 
   expect(screen.getByRole('navigation', { name: 'Principal' })).toBeInTheDocument()
 })
 
-it('renders the login form when no session is supplied', () => {
+it('opens with a free access path when no session is supplied', () => {
   render(<App />)
-  expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Criar meu acesso grátis' })).toBeInTheDocument()
+  expect(screen.getByText(/100% gratuito/i)).toBeInTheDocument()
+})
+
+it('keeps the community invitation visible after email confirmation', () => {
+  window.history.replaceState({}, '', '/boas-vindas')
+  render(<App />)
+
+  expect(screen.getByRole('heading', { name: /Seu acesso está confirmado/i })).toBeInTheDocument()
+  expect(screen.getByRole('link', { name: /Entrar na comunidade do WhatsApp/i })).toHaveAttribute('href', 'https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr')
 })
 
 it('opens every catalog item in a full editorial resource page', async () => {
@@ -150,6 +159,12 @@ it('opens the centered account menu with a clear sign-out action', async () => {
   expect(screen.getByRole('menuitem', { name: 'Sair' })).toBeInTheDocument()
 })
 
+it('keeps the community link available inside the signed-in workspace', () => {
+  render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com', displayName: 'Dev' } }} />)
+
+  expect(screen.getByRole('link', { name: /Comunidade WhatsApp/ })).toHaveAttribute('href', 'https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr')
+})
+
 it('asks for a workspace name when a handdrawn session has none', () => {
   render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
 
@@ -176,13 +191,13 @@ it('gives every signed-in workspace area its own handdrawn illustration', async 
   expect(screen.getByRole('img', { name: /Biblioteca privada desenhada/i })).toBeInTheDocument()
 })
 
-it('turns the private login into a handdrawn welcome page only in the lab', () => {
+it('turns the public access page into a handdrawn welcome page only in the lab', () => {
   const { rerender } = render(<App />)
-  expect(screen.queryByRole('img', { name: /Escudo desenhado/i })).not.toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Criar meu acesso grátis' })).toBeInTheDocument()
 
   rerender(<App visualMode="handdrawn-lab" />)
-  expect(screen.getByRole('img', { name: /Escudo desenhado/i })).toHaveAttribute('src', '/illustrations/handdrawn/categories/quality-shield.webp')
-  expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument()
+  expect(screen.getByText('QUER QUE EU DESENHE?')).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Criar meu acesso grátis' })).toBeInTheDocument()
 })
 
 it('returns to the top when the user changes workspace area', async () => {

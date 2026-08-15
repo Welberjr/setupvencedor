@@ -94,6 +94,7 @@ function Bootstrap() {
       ])
       if (rolesError || profileError) throw rolesError ?? profileError
       setSession({ user: { id: next.user.id, email: next.user.email ?? '', displayName: profile?.display_name ?? '' }, roles: (roles ?? []).map((row) => row.role as Role) })
+      void supabase.rpc('record_profile_activity')
     }
     const loadingTimeout = window.setTimeout(finishLoading, 300)
     const { data: listener } = supabase.auth.onAuthStateChange((_event, next) => {

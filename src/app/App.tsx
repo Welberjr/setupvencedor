@@ -17,7 +17,7 @@ import { pilotGuideForItem } from '../features/catalog/pilot-guide-data'
 import { AssistantAdvisor, type AssistantResponse } from '../features/catalog/AssistantAdvisor'
 import { sampleCatalog } from '../features/catalog/catalog-data'
 import type { CatalogItem } from '../features/catalog/types'
-import { LoginForm } from '../features/auth/LoginForm'
+import { PublicAccessPage } from '../features/auth/PublicAccessPage'
 import { getSupabaseClient } from '../lib/supabase/client'
 import { TicketForm } from '../features/support/TicketForm'
 import { ActivateInvitePage } from '../features/auth/ActivateInvitePage'
@@ -30,7 +30,6 @@ import { HanddrawnLabBadge } from '../features/handdrawn/HanddrawnLabBadge'
 import type { VisualMode } from '../features/handdrawn/visual-mode'
 import { ExploreHero } from '../features/handdrawn/ExploreHero'
 import { WorkspaceAreaHero } from '../features/handdrawn/WorkspaceAreaHero'
-import { AuthArtwork } from '../features/handdrawn/AuthArtwork'
 import { WorkspaceNamePrompt } from '../features/profile/WorkspaceNamePrompt'
 
 type Session = { user: { id: string; email: string; displayName?: string }; roles?: Role[] } | null
@@ -53,7 +52,8 @@ const navItems: Array<{ id: Page; label: string; icon: CommandIconName }> = [
 export function App({ session = null, visualMode = 'command-center', showLabBadge = false }: { session?: Session; visualMode?: VisualMode; showLabBadge?: boolean }) {
   if (window.location.pathname === '/ativar') return <ActivateInvitePage visualMode={visualMode} />
   if (window.location.pathname === '/redefinir-senha') return <ResetPasswordPage visualMode={visualMode} />
-  if (!session) return <main className={`app-shell auth-shell ${visualMode}`}>{visualMode === 'handdrawn-lab' ? <AuthArtwork /> : null}<LoginForm onLogin={async (email, password) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signInWithPassword({ email, password }); if (error) throw error }} onForgotPassword={async (email) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/redefinir-senha` }); if (error) throw error }} /></main>
+  if (!session && window.location.pathname === '/boas-vindas') return <main className={`app-shell auth-shell ${visualMode}`}><section className="public-confirmation"><p className="eyebrow">SETUP VENCEDOR</p><h1>Seu acesso está confirmado.</h1><p>Agora você pode entrar no acervo e, se quiser acompanhar novidades e tirar dúvidas, participar da nossa comunidade.</p><a href="https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr" rel="noreferrer" target="_blank">Entrar na comunidade do WhatsApp ↗</a><a className="public-confirmation-login" href="/">Entrar no acervo</a></section></main>
+  if (!session) return <main className={`app-shell auth-shell ${visualMode}`}><PublicAccessPage onLogin={async (email, password) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signInWithPassword({ email, password }); if (error) throw error }} onSignUp={async ({ fullName, email, phone, password }) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: fullName, phone: phone || undefined }, emailRedirectTo: `${window.location.origin}/boas-vindas` } }); if (error) throw error }} onForgotPassword={async (email) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/redefinir-senha` }); if (error) throw error }} /></main>
   const authenticatedSession = session
 
   const [exploreQuery, setExploreQuery] = useState('')
@@ -182,8 +182,9 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
         {canAdmin ? <button aria-label="Administração" className={page === 'admin' ? 'active' : ''} onClick={() => switchPage('admin')} type="button"><CommandIcon name="admin" /><span>Administração</span></button> : null}
       </nav>
       <div aria-label="Conta da área de trabalho" className="workspace-account">
-        {isAccountMenuOpen ? <div aria-label="Menu da conta" className="account-menu" id="workspace-account-menu" role="menu"><p>Conta conectada</p><strong>{authenticatedSession.user.email}</strong><button onClick={() => void signOut()} role="menuitem" type="button"><LogOut aria-hidden="true" size={16} />Sair</button>{accountStatus ? <small role="status">{accountStatus}</small> : null}</div> : null}
+        {isAccountMenuOpen ? <div aria-label="Menu da conta" className="account-menu" id="workspace-account-menu" role="menu"><p>Conta conectada</p><strong>{authenticatedSession.user.email}</strong><a href="https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr" rel="noreferrer" role="menuitem" target="_blank">Comunidade WhatsApp ↗</a><button onClick={() => void signOut()} role="menuitem" type="button"><LogOut aria-hidden="true" size={16} />Sair</button>{accountStatus ? <small role="status">{accountStatus}</small> : null}</div> : null}
         <button aria-controls="workspace-account-menu" aria-expanded={isAccountMenuOpen} aria-haspopup="menu" aria-label="Abrir menu da conta" className="identity account-trigger" onClick={() => { setAccountStatus(''); setIsAccountMenuOpen((open) => !open) }} title={authenticatedSession.user.email} type="button"><span className="avatar">{accountName.slice(0, 1).toUpperCase()}</span><span>{accountName}</span><ChevronDown aria-hidden="true" className={isAccountMenuOpen ? 'account-chevron open' : 'account-chevron'} size={15} /></button>
+        <a className="community-rail-link" href="https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr" rel="noreferrer" target="_blank">Comunidade WhatsApp <span>↗</span></a>
         <PwaInstallPrompt />
       </div>
     </aside>

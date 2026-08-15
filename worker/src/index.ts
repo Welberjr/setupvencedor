@@ -3,6 +3,7 @@ import type { Env } from './env'
 import { createInviteToken, normalizeEmail, sha256, validateInviteInput, type InviteInput } from './invitations'
 import { mcpResponse } from './mcp'
 import { AssistantError, handleAssistantRequest } from './assistant'
+import { parsePeoplePagination, type PeoplePagination } from './admin-people'
 
 type ActivateInput = { token: string; password: string; email?: string; recipientName?: string }
 type AdminContext = { supabase: SupabaseClient; userId: string }
@@ -119,22 +120,32 @@ async function revokeInvitation(context: AdminContext, invitationId: string, rea
   await context.supabase.from('audit_events').insert({ actor_id: context.userId, invitation_id: invitationId, event_type: reason, payload: {} })
 }
 
-async function listPeople(context: AdminContext, query: string) {
+async function listPeople(context: AdminContext, query: string, pagination: PeoplePagination) {
   const normalized = query.trim().slice(0, 120)
-  let profilesQuery = context.supabase.from('profiles').select('id,email_normalized,full_name,job_title,state,created_at,disabled_at').order('created_at', { ascending: false }).limit(80)
-  if (normalized) profilesQuery = profilesQuery.or(`full_name.ilike.%${normalized.replaceAll('%', '\\%').replaceAll('_', '\\_')}%,email_normalized.ilike.%${normalized.replaceAll('%', '\\%').replaceAll('_', '\\_')}%`)
-  const [{ data: profiles, error: profilesError }, { data: invitations, error: invitationsError }] = await Promise.all([
+  const searchTerm = normalized.replaceAll('%', '\\%').replaceAll('_', '\\_')
+  const from = (pagination.page - 1) * pagination.pageSize
+  const to = from + pagination.pageSize - 1
+  let profilesQuery = context.supabase.from('profiles').select('id,email_normalized,full_name,phone,job_title,state,created_at,disabled_at,last_seen_at', { count: 'exact' }).order('created_at', { ascending: false }).range(from, to)
+  let invitationsQuery = context.supabase.from('invitations').select('id,delivery,email_normalized,recipient_name,job_title,roles,state,expires_at,created_at', { count: 'exact' }).in('state', ['pending', 'claimed']).order('created_at', { ascending: false }).range(from, to)
+  if (normalized) {
+    profilesQuery = profilesQuery.or(`full_name.ilike.%${searchTerm}%,email_normalized.ilike.%${searchTerm}%`)
+    invitationsQuery = invitationsQuery.or(`recipient_name.ilike.%${searchTerm}%,email_normalized.ilike.%${searchTerm}%`)
+  }
+  const [{ data: profiles, error: profilesError, count: peopleTotal }, { data: invitations, error: invitationsError, count: invitationsTotal }] = await Promise.all([
     profilesQuery,
-    context.supabase.from('invitations').select('id,delivery,email_normalized,recipient_name,job_title,roles,state,expires_at,created_at').in('state', ['pending', 'claimed']).order('created_at', { ascending: false }).limit(80),
+    invitationsQuery,
   ])
   if (profilesError || invitationsError) throw new Error('people_not_available')
   const ids = (profiles ?? []).map((profile) => profile.id)
   const { data: roles, error: rolesError } = ids.length ? await context.supabase.from('user_roles').select('user_id,role').in('user_id', ids) : { data: [], error: null }
   if (rolesError) throw new Error('people_not_available')
-  const filteredInvitations = ((invitations ?? []) as InvitationRow[]).filter((invitation) => !normalized || `${invitation.recipient_name ?? ''} ${invitation.email_normalized ?? ''}`.toLocaleLowerCase('pt-BR').includes(normalized.toLocaleLowerCase('pt-BR')))
   return {
     people: (profiles ?? []).map((profile) => ({ ...profile, roles: (roles ?? []).filter((role) => role.user_id === profile.id).map((role) => role.role) })),
-    invitations: filteredInvitations,
+    invitations: invitations ?? [],
+    peopleTotal: peopleTotal ?? 0,
+    invitationsTotal: invitationsTotal ?? 0,
+    page: pagination.page,
+    pageSize: pagination.pageSize,
   }
 }
 
@@ -210,7 +221,10 @@ export default {
 
     try {
       const context = await requireAdmin(request, env)
-      if (request.method === 'GET' && path === '/v1/admin/people') return json(await listPeople(context, new URL(request.url).searchParams.get('query') ?? ''), request)
+      if (request.method === 'GET' && path === '/v1/admin/people') {
+        const url = new URL(request.url)
+        return json(await listPeople(context, url.searchParams.get('query') ?? '', parsePeoplePagination(url.searchParams)), request)
+      }
 
       const resendId = routeId(path, /^\/v1\/admin\/invitations\/([^/]+)\/resend$/)
       if (request.method === 'POST' && resendId) {

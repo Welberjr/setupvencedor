@@ -7,6 +7,7 @@
   .handdrawn-lab .workspace-account { display: flex; align-items: center; gap: 8px; margin: 0 0 0 auto; padding: 0; border-top: 0; }
   .handdrawn-lab .workspace-account .identity { width: auto; }
   .handdrawn-lab .workspace-account .pwa-install-btn { width: auto; padding: 7px 9px; }
+  .handdrawn-lab .workspace-account .community-rail-link { display: none; }
   .handdrawn-lab .illustrated-hero { grid-template-columns: 1fr; }
   .handdrawn-lab .inner-page > .illustrated-hero { padding: 28px; gap: 28px; }
   .handdrawn-lab .illustrated-hero h1 { max-width: 14ch; }

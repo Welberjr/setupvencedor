@@ -15,3 +15,13 @@ it('explains when the signed-in user lacks administrative access to the director
 
   await waitFor(() => expect(screen.getByText('Seu usuário não tem permissão para consultar os acessos.')).toBeInTheDocument())
 })
+
+it('shows the total independently from the compact page of people', async () => {
+  vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ people: [], invitations: [], peopleTotal: 37, invitationsTotal: 4, page: 1, pageSize: 10 }), { status: 200 })))
+
+  render(<PeopleDirectory currentUserId="admin-1" refreshKey={0} />)
+
+  await waitFor(() => expect(screen.getByText('37 pessoas')).toBeInTheDocument())
+  expect(screen.getByLabelText('Pessoas por página')).toHaveValue('10')
+  expect(screen.getByText(/4 convites/)).toBeInTheDocument()
+})
