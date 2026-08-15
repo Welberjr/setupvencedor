@@ -16,3 +16,11 @@ it('accepts only a signed token for the Setup Agent resource', async () => {
   const token = await createMcpAccessToken({ userId: '00000000-0000-0000-0000-0000000000a1', clientId: 'test-client', scopes: ['mcp:read'] }, env)
   await expect(validateMcpAccessToken(token, env)).resolves.toMatchObject({ userId: '00000000-0000-0000-0000-0000000000a1' })
 })
+
+it('binds a default access token to the configured staging MCP origin', async () => {
+  const stagingEnv = { ...env, MCP_PUBLIC_ORIGIN: 'https://staging.setup-vencedor-staging.pages.dev' }
+  const token = await createMcpAccessToken({ userId: '00000000-0000-0000-0000-0000000000a1', clientId: 'test-client', scopes: ['mcp:read'] }, stagingEnv)
+
+  await expect(validateMcpAccessToken(token, stagingEnv)).resolves.toMatchObject({ clientId: 'test-client' })
+  await expect(validateMcpAccessToken(token, env)).rejects.toThrow('invalid_token')
+})

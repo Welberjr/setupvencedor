@@ -6,8 +6,6 @@ type OAuthEnv = {
 
 type AccessClaims = { sub: string; client_id: string; scope: string; aud: string; exp: number; iat: number }
 
-export const MCP_RESOURCE = 'https://setupvencedor.com.br/api/mcp'
-
 function base64Url(bytes: Uint8Array): string {
   let binary = ''
   for (const byte of bytes) binary += String.fromCharCode(byte)
@@ -57,7 +55,7 @@ export function protectedResourceMetadata(env: OAuthEnv) {
 
 export async function createMcpAccessToken(input: { userId: string; clientId: string; scopes: string[]; resource?: string }, env: OAuthEnv): Promise<string> {
   const now = Math.floor(Date.now() / 1000)
-  const claims: AccessClaims = { sub: input.userId, client_id: input.clientId, scope: input.scopes.join(' '), aud: input.resource ?? MCP_RESOURCE, iat: now, exp: now + Math.max(300, Number(env.MCP_ACCESS_TOKEN_TTL_SECONDS ?? 900)) }
+  const claims: AccessClaims = { sub: input.userId, client_id: input.clientId, scope: input.scopes.join(' '), aud: input.resource ?? `${publicOrigin(env)}/api/mcp`, iat: now, exp: now + Math.max(300, Number(env.MCP_ACCESS_TOKEN_TTL_SECONDS ?? 900)) }
   const header = base64Url(new TextEncoder().encode(JSON.stringify({ alg: 'HS256', typ: 'JWT' })))
   const payload = base64Url(new TextEncoder().encode(JSON.stringify(claims)))
   return `${header}.${payload}.${await hmac(`${header}.${payload}`, env.MCP_OAUTH_SIGNING_KEY)}`

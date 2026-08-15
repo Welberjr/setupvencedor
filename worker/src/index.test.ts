@@ -13,6 +13,16 @@ it('allows the handdrawn laboratory to call the administrative worker', async ()
   expect(response.headers.get('vary')).toContain('Origin')
 })
 
+it('allows the dedicated Setup Vencedor staging site to call its worker', async () => {
+  const origin = 'https://staging.setup-vencedor-staging.pages.dev'
+  const response = await worker.fetch(new Request('https://setup-vencedor-worker-staging.example/v1/admin/people', {
+    headers: { origin },
+    method: 'OPTIONS',
+  }), {} as never)
+
+  expect(response.headers.get('access-control-allow-origin')).toBe(origin)
+})
+
 it('does not grant worker access to an unknown web origin', async () => {
   const response = await worker.fetch(new Request('https://setup-vencedor-worker.example/v1/admin/people', {
     headers: { origin: 'https://unknown.example' },

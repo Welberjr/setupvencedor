@@ -16,6 +16,7 @@ type InvitationRow = {
 const allowedOrigins = new Set([
   'https://setup-vencedor.pages.dev',
   'https://handdrawn-lab.setup-vencedor.pages.dev',
+  'https://staging.setup-vencedor-staging.pages.dev',
   'https://setupvencedor.com.br',
   'https://www.setupvencedor.com.br',
 ])
