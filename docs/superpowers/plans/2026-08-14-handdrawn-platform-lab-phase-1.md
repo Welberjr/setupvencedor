@@ -67,7 +67,7 @@
 
 **Files:**
 - Create worktree: `C:\Dev\_worktrees\setup-vencedor-handdrawn-lab`
-- Snapshot from: `C:\Dev\Setup-Vencedor\src\**`, `C:\Dev\Setup-Vencedor\public\**`
+- Snapshot from: `C:\Dev\Setup-Vencedor\src\**`, `C:\Dev\Setup-Vencedor\public\**`, `C:\Dev\Setup-Vencedor\docs\catalog-import\pilot-guides-2026-08.json`
 - Modify: `.gitignore`
 - Do not copy: `.env*`, `Chaves.txt`, `.superpowers/`, `dist/`, `node_modules/`
 
@@ -96,6 +96,8 @@ Copy-Item -LiteralPath 'C:\Dev\Setup-Vencedor\src' -Destination "$labRoot\_front
 Copy-Item -LiteralPath 'C:\Dev\Setup-Vencedor\public' -Destination "$labRoot\_public_snapshot" -Recurse -Force
 Copy-Item -Path "$labRoot\_frontend_snapshot\*" -Destination "$labRoot\src" -Recurse -Force
 Copy-Item -Path "$labRoot\_public_snapshot\*" -Destination "$labRoot\public" -Recurse -Force
+New-Item -ItemType Directory -Force -Path "$labRoot\docs\catalog-import" | Out-Null
+Copy-Item -LiteralPath 'C:\Dev\Setup-Vencedor\docs\catalog-import\pilot-guides-2026-08.json' -Destination "$labRoot\docs\catalog-import\pilot-guides-2026-08.json" -Force
 ```
 
 Then remove only the two verified temporary directories inside the new worktree after checking their resolved paths equal the intended targets:
@@ -139,12 +141,12 @@ Expected: the second command prints nothing. Do not open any matched secret file
 - [ ] **Step 6: Commit the isolated baseline**
 
 ```powershell
-git add -- src public .gitignore
+git add -- src public docs/catalog-import/pilot-guides-2026-08.json .gitignore
 git diff --cached --name-only
 git commit -m "chore: snapshot frontend for handdrawn lab"
 ```
 
-Expected: staged paths are limited to `src`, `public` and `.gitignore`.
+Expected: staged paths are limited to `src`, `public`, the single imported catalog JSON and `.gitignore`.
 
 ---
 
