@@ -168,7 +168,7 @@ async function findCandidates(supabase: SupabaseClient, env: Env, query: string)
 }
 
 export function createFallbackGuidance(query: string, candidates: AssistantCandidate[]): AssistantGuidance {
-  const recommendations = candidates.slice(0, 10).map((candidate) => ({
+  const recommendations = candidates.slice(0, 4).map((candidate) => ({
     id: candidate.id,
     why: candidate.summary.slice(0, 220) || `Relaciona-se diretamente ao objetivo: ${query}.`,
     firstStep: candidate.instructions.slice(0, 180) || 'Abra a fonte oficial e valide como este recurso se aplica ao projeto.',

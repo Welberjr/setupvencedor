@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest'
 import { existsSync, readFileSync } from 'node:fs'
-import { addVisualDesignComplement, buildAssistantResult, dedupeAssistantCandidates, enrichAssistantSearchQuery, mergeAssistantCandidates } from './assistant'
+import { addVisualDesignComplement, buildAssistantResult, createFallbackGuidance, dedupeAssistantCandidates, enrichAssistantSearchQuery, mergeAssistantCandidates } from './assistant'
 
 const visualDirection = {
   id: 'visual-direction', slug: 'visual-direction', title: 'Direção visual para interfaces', item_type: 'Referência', category: 'Guias e referências',
@@ -54,6 +54,12 @@ it('adds Frontend Design as a complementary resource for a visual landing-page o
   )
 
   expect(guidance.recommendations.map((item) => item.id)).toEqual(['visual-direction', 'frontend-design'])
+})
+
+it('keeps the deterministic recommendation trail focused on four resources', () => {
+  const guidance = createFallbackGuidance('quero criar uma landing page bonita', Array.from({ length: 5 }, (_, index) => ({ ...visualDirection, id: `resource-${index}` })))
+
+  expect(guidance.recommendations).toHaveLength(4)
 })
 
 it('keeps recommendations grounded in the catalog without calling a generative model', () => {
