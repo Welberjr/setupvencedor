@@ -5,6 +5,12 @@ import { getSupabaseClient } from '../../lib/supabase/client'
 type Person = { id: string; email_normalized: string; full_name: string; job_title: string | null; state: 'active' | 'disabled'; created_at: string; roles: string[] }
 type Invitation = { id: string; delivery: 'email' | 'direct_link'; email_normalized: string | null; recipient_name: string | null; job_title: string | null; roles: string[]; state: 'pending' | 'claimed'; expires_at: string }
 
+function directoryLoadMessage(status?: number): string {
+  if (status === 401) return 'Sua sessão expirou. Entre novamente para consultar os acessos.'
+  if (status === 403) return 'Seu usuário não tem permissão para consultar os acessos.'
+  return 'Não foi possível carregar os acessos. Tente novamente em instantes.'
+}
+
 async function authorizedFetch(path: string, init: RequestInit = {}) {
   const client = getSupabaseClient()
   const { data: { session } } = await client?.auth.getSession() ?? { data: { session: null } }
@@ -23,10 +29,13 @@ export function PeopleDirectory({ refreshKey, currentUserId }: { refreshKey: num
     setLoading(true)
     try {
       const response = await authorizedFetch(`/v1/admin/people?query=${encodeURIComponent(search)}`)
-      if (!response.ok) throw new Error()
+      if (!response.ok) throw new Error(String(response.status))
       const data = await response.json() as { people: Person[]; invitations: Invitation[] }
       setPeople(data.people); setInvitations(data.invitations); setMessage('')
-    } catch { setMessage('Não foi possível carregar os acessos agora.') } finally { setLoading(false) }
+    } catch (error) {
+      const status = error instanceof Error ? Number(error.message) : undefined
+      setMessage(directoryLoadMessage(status))
+    } finally { setLoading(false) }
   }, [query])
 
   useEffect(() => { void load('') }, [refreshKey]) // eslint-disable-line react-hooks/exhaustive-deps

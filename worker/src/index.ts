@@ -10,16 +10,28 @@ type InvitationRow = {
   job_title: string | null; roles: string[]; state: 'pending' | 'claimed' | 'accepted' | 'revoked' | 'expired'; expires_at: string; created_at: string
 }
 
-const appOrigin = 'https://setup-vencedor.pages.dev'
+const allowedOrigins = new Set([
+  'https://setup-vencedor.pages.dev',
+  'https://handdrawn-lab.setup-vencedor.pages.dev',
+  'https://setupvencedor.com.br',
+  'https://www.setupvencedor.com.br',
+])
 const inviteExpiryMs = 72 * 60 * 60 * 1000
 
-function json(data: unknown, init: ResponseInit = {}): Response {
+function corsHeaders(origin: string | null): HeadersInit {
+  return {
+    ...(origin && allowedOrigins.has(origin) ? { 'access-control-allow-origin': origin } : {}),
+    'access-control-allow-headers': 'authorization,content-type',
+    vary: 'Origin',
+  }
+}
+
+function json(data: unknown, request: Request, init: ResponseInit = {}): Response {
   return Response.json(data, {
     ...init,
     headers: {
       'cache-control': 'no-store',
-      'access-control-allow-origin': appOrigin,
-      'access-control-allow-headers': 'authorization,content-type',
+      ...corsHeaders(request.headers.get('origin')),
       ...(init.headers ?? {}),
     },
   })
@@ -131,43 +143,43 @@ function routeId(path: string, pattern: RegExp): string | null {
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
-    if (request.method === 'OPTIONS') return new Response(null, { headers: { 'access-control-allow-origin': appOrigin, 'access-control-allow-headers': 'authorization,content-type', 'access-control-allow-methods': 'GET,POST,DELETE,OPTIONS' } })
+    if (request.method === 'OPTIONS') return new Response(null, { headers: { ...corsHeaders(request.headers.get('origin')), 'access-control-allow-methods': 'GET,POST,DELETE,OPTIONS' } })
     const path = new URL(request.url).pathname
-    if (path === '/health') return Response.json({ ok: true })
+    if (path === '/health') return json({ ok: true }, request)
     if (request.method === 'POST' && path === '/mcp') return mcpResponse(request, env)
 
     if (request.method === 'POST' && path === '/v1/invitations') {
       try {
         const context = await requireAdmin(request, env)
         const created = await createInvitation(context, env, validateInviteInput(await readJson<InviteInput>(request)))
-        return json({ ok: true, emailDelivered: created.emailDelivered, activationUrl: created.activationUrl }, { status: 201 })
+        return json({ ok: true, emailDelivered: created.emailDelivered, activationUrl: created.activationUrl }, request, { status: 201 })
       } catch (error) {
         const code = error instanceof Error ? error.message : 'internal_error'
-        return json({ error: code }, { status: code === 'unauthorized' ? 401 : code === 'forbidden' ? 403 : code === 'invalid_invitation' || code === 'invalid_email' ? 400 : 409 })
+        return json({ error: code }, request, { status: code === 'unauthorized' ? 401 : code === 'forbidden' ? 403 : code === 'invalid_invitation' || code === 'invalid_email' ? 400 : 409 })
       }
     }
 
     if (request.method === 'POST' && path === '/v1/invitations/validate') {
       const input = await readJson<{ token?: string }>(request)
-      if (!input.token) return json({ error: 'invalid_invitation' }, { status: 400 })
+      if (!input.token) return json({ error: 'invalid_invitation' }, request, { status: 400 })
       const invitation = await getInviteByToken(input.token, env)
-      if (!invitation) return json({ error: 'invalid_or_expired_invitation' }, { status: 404 })
-      return json({ delivery: invitation.delivery, email: invitation.email_normalized, recipientName: invitation.recipient_name })
+      if (!invitation) return json({ error: 'invalid_or_expired_invitation' }, request, { status: 404 })
+      return json({ delivery: invitation.delivery, email: invitation.email_normalized, recipientName: invitation.recipient_name }, request)
     }
 
     if (request.method === 'POST' && path === '/v1/invitations/activate') {
       try {
         const input = await readJson<ActivateInput>(request)
-        if (!input.token || !validPassword(input.password)) return json({ error: 'invalid_activation' }, { status: 400 })
+        if (!input.token || !validPassword(input.password)) return json({ error: 'invalid_activation' }, request, { status: 400 })
         const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY)
         const activationEmail = input.email ? normalizeEmail(input.email) : null
         const { data: claimed, error: claimError } = await supabase.rpc('claim_invitation', { invitation_token_hash: await sha256(input.token), activation_email: activationEmail, activation_recipient_name: input.recipientName?.trim() || null })
         const invitation = Array.isArray(claimed) ? claimed[0] : null
-        if (claimError || !invitation) return json({ error: 'invalid_or_expired_invitation' }, { status: 409 })
+        if (claimError || !invitation) return json({ error: 'invalid_or_expired_invitation' }, request, { status: 409 })
         const { data: created, error: createError } = await supabase.auth.admin.createUser({ email: invitation.email_normalized, password: input.password, email_confirm: true, user_metadata: { full_name: invitation.recipient_name } })
         if (createError || !created.user) {
           await supabase.from('invitations').update({ state: 'pending', claimed_at: null }).eq('id', invitation.id).eq('state', 'claimed')
-          return json({ error: 'activation_not_completed' }, { status: 409 })
+          return json({ error: 'activation_not_completed' }, request, { status: 409 })
         }
         const userId = created.user.id
         const now = new Date().toISOString()
@@ -178,16 +190,16 @@ export default {
         const { error: acceptanceError } = await supabase.from('invitations').update({ state: 'accepted', claimed_at: null, accepted_at: now, accepted_by: userId }).eq('id', invitation.id).eq('state', 'claimed')
         if (acceptanceError) throw new Error('invitation_not_accepted')
         await supabase.from('audit_events').insert({ actor_id: userId, target_user_id: userId, invitation_id: invitation.id, event_type: 'invitation.accepted' })
-        return json({ ok: true }, { status: 201 })
+        return json({ ok: true }, request, { status: 201 })
       } catch (error) {
         const code = error instanceof Error ? error.message : 'activation_not_completed'
-        return json({ error: code === 'invalid_email' ? 'invalid_activation' : 'activation_not_completed' }, { status: 500 })
+        return json({ error: code === 'invalid_email' ? 'invalid_activation' : 'activation_not_completed' }, request, { status: 500 })
       }
     }
 
     try {
       const context = await requireAdmin(request, env)
-      if (request.method === 'GET' && path === '/v1/admin/people') return json(await listPeople(context, new URL(request.url).searchParams.get('query') ?? ''))
+      if (request.method === 'GET' && path === '/v1/admin/people') return json(await listPeople(context, new URL(request.url).searchParams.get('query') ?? ''), request)
 
       const resendId = routeId(path, /^\/v1\/admin\/invitations\/([^/]+)\/resend$/)
       if (request.method === 'POST' && resendId) {
@@ -195,7 +207,7 @@ export default {
         if (!data) throw new Error('invitation_not_available')
         await revokeInvitation(context, resendId, 'invitation.replaced')
         const created = await createInvitation(context, env, validateInviteInput({ delivery: 'email', email: data.email_normalized ?? undefined, recipientName: data.recipient_name ?? undefined, jobTitle: data.job_title ?? undefined, roles: data.roles }))
-        return json({ ok: true, emailDelivered: created.emailDelivered })
+        return json({ ok: true, emailDelivered: created.emailDelivered }, request)
       }
 
       const regenerateId = routeId(path, /^\/v1\/admin\/invitations\/([^/]+)\/regenerate$/)
@@ -204,13 +216,13 @@ export default {
         if (!data) throw new Error('invitation_not_available')
         await revokeInvitation(context, regenerateId, 'invitation.replaced')
         const created = await createInvitation(context, env, validateInviteInput({ delivery: 'direct_link', recipientName: data.recipient_name ?? undefined, jobTitle: data.job_title ?? undefined, roles: data.roles }))
-        return json({ ok: true, activationUrl: created.activationUrl })
+        return json({ ok: true, activationUrl: created.activationUrl }, request)
       }
 
       const revokeId = routeId(path, /^\/v1\/admin\/invitations\/([^/]+)\/revoke$/)
       if (request.method === 'POST' && revokeId) {
         await revokeInvitation(context, revokeId, 'invitation.revoked')
-        return json({ ok: true })
+        return json({ ok: true }, request)
       }
 
       const accessUserId = routeId(path, /^\/v1\/admin\/people\/([^/]+)\/access$/)
@@ -222,7 +234,7 @@ export default {
         const { error } = await context.supabase.from('profiles').update({ state: input.state, disabled_at: input.state === 'disabled' ? new Date().toISOString() : null, activated_at: input.state === 'active' ? new Date().toISOString() : null }).eq('id', accessUserId)
         if (error) throw new Error('access_not_updated')
         await context.supabase.from('audit_events').insert({ actor_id: context.userId, target_user_id: accessUserId, event_type: input.state === 'disabled' ? 'profile.disabled' : 'profile.activated' })
-        return json({ ok: true })
+        return json({ ok: true }, request)
       }
 
       const deleteUserId = routeId(path, /^\/v1\/admin\/people\/([^/]+)$/)
@@ -232,12 +244,12 @@ export default {
         await context.supabase.from('audit_events').insert({ actor_id: context.userId, target_user_id: deleteUserId, event_type: 'profile.deleted' })
         const { error } = await context.supabase.auth.admin.deleteUser(deleteUserId, false)
         if (error) throw new Error('person_not_deleted')
-        return json({ ok: true })
+        return json({ ok: true }, request)
       }
     } catch (error) {
       const code = error instanceof Error ? error.message : 'internal_error'
-      return json({ error: code }, { status: code === 'unauthorized' ? 401 : code === 'forbidden' ? 403 : code.startsWith('invalid_') || code.startsWith('cannot_') ? 400 : 409 })
+      return json({ error: code }, request, { status: code === 'unauthorized' ? 401 : code === 'forbidden' ? 403 : code.startsWith('invalid_') || code.startsWith('cannot_') ? 400 : 409 })
     }
-    return Response.json({ error: 'not_found' }, { status: 404 })
+    return json({ error: 'not_found' }, request, { status: 404 })
   },
 } satisfies ExportedHandler<Env>

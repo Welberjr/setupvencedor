@@ -64,7 +64,28 @@
 }
 
 .handdrawn-lab .admin-page .invite-form {
-  gap: 20px;
+  gap: 24px;
+}
+
+.handdrawn-lab .admin-page .delivery-picker {
+  padding: 16px;
+  border: 2px solid #201f1b73;
+  border-radius: 15px 19px 14px 17px;
+}
+
+.handdrawn-lab .admin-page .delivery-picker legend {
+  margin-inline: 8px;
+  padding: 0 8px;
+  background: var(--paper-raised);
+}
+
+.handdrawn-lab .admin-page .form-columns {
+  row-gap: 22px;
+  column-gap: 24px;
+}
+
+.handdrawn-lab .admin-page .form-columns > label {
+  gap: 10px;
 }
 
 .handdrawn-lab .assistant-composer > label,
@@ -209,6 +230,20 @@
 .handdrawn-lab .directory-panel-title,
 .handdrawn-lab .access-list li,
 .handdrawn-lab .rich-toolbar { border-color: #201f1b38; }
+.handdrawn-lab .people-directory .form-message {
+  width: fit-content;
+  max-width: 100%;
+  margin: 22px 0 0;
+  padding: 11px 14px;
+  border: 2px dashed #9d5e2e;
+  border-radius: 10px 14px 11px 13px;
+  background: var(--note-coral);
+  color: var(--ink);
+  font-weight: 700;
+}
+.handdrawn-lab .people-directory .directory-panel > p,
+.handdrawn-lab .people-directory .person-summary span,
+.handdrawn-lab .people-directory .person-summary small { color: #4b453d; }
 .handdrawn-lab .directory-panel-title span,
 .handdrawn-lab .person-avatar { background: var(--brand-green); color: var(--ink); }
 .handdrawn-lab .person-avatar.pending { background: var(--note-lilac); color: var(--ink); }

@@ -235,3 +235,28 @@ it('keeps the editorial guide art compact and the return control readable in the
   style.remove()
   laboratory.remove()
 })
+
+it('gives the laboratory invitation form room around its choices and fields', () => {
+  const style = mountStyle(`${readStyle('src/styles/handdrawn-tokens.css')}\n${readStyle('src/styles/handdrawn-pages.css')}`)
+  const laboratory = document.createElement('main')
+  laboratory.className = 'handdrawn-lab'
+  laboratory.innerHTML = `
+    <section class="admin-page"><section class="invite-studio"><form class="invite-form">
+      <fieldset class="delivery-picker"></fieldset>
+      <div class="form-columns"><label><input /></label></div>
+    </form></section></section>
+  `
+  document.body.append(laboratory)
+
+  const form = getComputedStyle(laboratory.querySelector('.invite-form')!)
+  const picker = getComputedStyle(laboratory.querySelector('.delivery-picker')!)
+  const fields = getComputedStyle(laboratory.querySelector('.form-columns')!)
+
+  expect(form.gap).toBe('24px')
+  expect(picker.padding).toBe('16px')
+  expect(fields.rowGap).toBe('22px')
+  expect(fields.columnGap).toBe('24px')
+
+  style.remove()
+  laboratory.remove()
+})
