@@ -138,8 +138,9 @@ it('keeps internal illustrated heroes compact without shrinking the Explore cove
   const innerArtwork = getComputedStyle(laboratory.querySelector('.inner-page .illustrated-hero-artwork')!)
 
   expect(innerHero.maxWidth).toBe('1400px')
-  expect(innerHero.padding).toBe('40px')
-  expect(innerArtwork.maxWidth).toBe('640px')
+  expect(innerHero.padding).toBe('28px')
+  expect(innerHero.gap).toBe('36px')
+  expect(innerArtwork.maxWidth).toBe('540px')
   expect(exploreHero.maxWidth).not.toBe('1400px')
 
   style.remove()
