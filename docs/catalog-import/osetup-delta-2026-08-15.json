@@ -6,7 +6,7 @@
       "slug": "claude-code-configuracoes-iniciais",
       "category": {
         "name": "Guias e referências",
-        "slug": "guias-e-referencias"
+        "slug": "guias-referencias"
       },
       "itemType": "Guia",
       "summary": "Um roteiro de configuração inicial para usar Claude Code com contexto, regras, validação e ferramentas de equipe.",
@@ -43,7 +43,7 @@
       "slug": "mcp-curadoria-50-servidores",
       "category": {
         "name": "Guias e referências",
-        "slug": "guias-e-referencias"
+        "slug": "guias-referencias"
       },
       "itemType": "Guia",
       "summary": "Curadoria para avaliar servidores MCP por objetivo, escopo de acesso e risco antes de conectá-los ao agente.",
