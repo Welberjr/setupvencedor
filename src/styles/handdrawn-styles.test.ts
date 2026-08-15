@@ -147,14 +147,13 @@ it('keeps internal illustrated heroes compact without shrinking the Explore cove
   laboratory.remove()
 })
 
-it('makes the laboratory brand, workspace label and signed-in identity legible', () => {
+it('keeps the laboratory brand and account controls legible in the left rail', () => {
   const style = mountStyle(`${readStyle('src/styles/handdrawn-tokens.css')}\n${readStyle('src/styles/handdrawn-shell.css')}`)
   const official = document.createElement('main')
   const laboratory = document.createElement('main')
   laboratory.className = 'handdrawn-lab'
   const shell = `
-    <aside class="command-rail"><a class="brand"><span class="brand-mark"></span><span>Setup Vencedor</span></a></aside>
-    <header class="topbar"><div><p class="eyebrow">WORKSPACE / BIBLIOTECA</p><p class="topbar-title">A central de decisões técnicas da sua equipe.</p></div><div class="identity"><span class="avatar">W</span><span>welber@example.com</span></div></header>
+    <aside class="command-rail"><a class="brand"><span class="brand-mark"></span><span>Setup Vencedor</span></a><div class="workspace-account"><div class="identity"><span class="avatar">W</span><span>welber@example.com</span></div><div class="pwa-install"><button class="pwa-install-btn">Instalar app</button></div></div></aside>
   `
   official.innerHTML = shell
   laboratory.innerHTML = shell
@@ -162,11 +161,10 @@ it('makes the laboratory brand, workspace label and signed-in identity legible',
 
   const brand = getComputedStyle(laboratory.querySelector('.brand')!)
   const mark = getComputedStyle(laboratory.querySelector('.brand-mark')!)
-  const eyebrow = getComputedStyle(laboratory.querySelector('.topbar .eyebrow')!)
-  const title = getComputedStyle(laboratory.querySelector('.topbar-title')!)
   const identity = getComputedStyle(laboratory.querySelector('.identity')!)
   const avatar = getComputedStyle(laboratory.querySelector('.avatar')!)
   const rules = Array.from(style.sheet?.cssRules ?? []).filter((rule): rule is CSSStyleRule => rule instanceof CSSStyleRule)
+  const accountRule = rules.find((rule) => rule.selectorText === '.handdrawn-lab .workspace-account')
   const identityRule = rules.find((rule) => rule.selectorText === '.handdrawn-lab .identity')
   const avatarRule = rules.find((rule) => rule.selectorText === '.handdrawn-lab .avatar')
 
@@ -174,8 +172,8 @@ it('makes the laboratory brand, workspace label and signed-in identity legible',
   expect(brand.textAlign).toBe('center')
   expect(brand.color).toBe('var(--ink)')
   expect(mark.width).toBe('48px')
-  expect(eyebrow.color).toBe('rgb(78, 88, 105)')
-  expect(title.color).toBe('var(--ink-muted)')
+  expect(accountRule?.style.padding).toBe('12px 0px 0px')
+  expect(accountRule?.style.borderTop).toBe('2px dashed rgb(183, 128, 86)')
   expect(identityRule?.style.background).toBe('var(--paper-raised)')
   expect(identity.color).toBe('var(--ink)')
   expect(avatarRule?.style.background).toBe('var(--brand-green)')

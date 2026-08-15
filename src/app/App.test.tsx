@@ -123,6 +123,15 @@ it('keeps all primary Explore actions available in the handdrawn lab', async () 
   expect(screen.getAllByRole('button', { name: /Ver detalhes/i }).length).toBeGreaterThan(0)
 })
 
+it('puts workspace account actions in the rail and lets the acervo start without a topbar', () => {
+  const { container } = render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'welber.especialistadigital@gmail.com' } }} />)
+
+  expect(container.querySelector('.topbar')).not.toBeInTheDocument()
+  expect(screen.getByLabelText('Conta da área de trabalho')).toHaveTextContent('welber.especialistadigital@gmail.com')
+  expect(screen.getByRole('button', { name: 'Instalar app' })).toBeInTheDocument()
+  expect(screen.getByText('BEM-VINDO AO ACERVO')).toBeInTheDocument()
+})
+
 it('gives every signed-in workspace area its own handdrawn illustration', async () => {
   const user = userEvent.setup()
   render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' }, roles: ['admin'] }} />)

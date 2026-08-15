@@ -33,20 +33,8 @@
   background: radial-gradient(#c8b99155 0.8px, transparent 0.8px) 0 0 / 9px 9px, var(--paper);
 }
 
-.handdrawn-lab .topbar {
-  border-bottom: 2px dashed #b78056;
-  background: #fffaf0cc;
-  color: var(--ink);
-}
-
-.handdrawn-lab .topbar .eyebrow {
-  color: #4e5869;
-  font-weight: 800;
-}
-
-.handdrawn-lab .topbar-title {
-  color: var(--ink-muted);
-  font-weight: 600;
+.handdrawn-lab .page-shell {
+  padding-top: clamp(20px, 3vw, 36px);
 }
 
 .handdrawn-lab .main-nav button {
@@ -107,7 +95,8 @@
 }
 
 .handdrawn-lab .identity {
-  max-width: min(330px, 36vw);
+  width: 100%;
+  max-width: none;
   padding: 5px 9px 5px 5px;
   border: var(--paper-border);
   border-radius: 13px 9px 12px 10px;
@@ -132,6 +121,35 @@
   background: var(--brand-green);
   color: var(--ink);
   font-weight: 800;
+}
+
+.handdrawn-lab .workspace-account {
+  display: grid;
+  gap: 10px;
+  margin-top: auto;
+  padding: 12px 0 0;
+  border-top: 2px dashed #b78056;
+}
+
+.handdrawn-lab .workspace-account .pwa-install {
+  align-items: stretch;
+}
+
+.handdrawn-lab .workspace-account .pwa-install-btn {
+  width: 100%;
+  border: var(--paper-border);
+  background: var(--note-blue);
+  color: var(--ink);
+  box-shadow: 2px 3px 0 #201f1b35;
+}
+
+.handdrawn-lab .workspace-account .pwa-status {
+  color: #174f74;
+}
+
+.handdrawn-lab .rail-footer {
+  margin-top: 16px;
+  color: var(--ink-muted);
 }
 
 .handdrawn-lab .handdrawn-lab-badge {

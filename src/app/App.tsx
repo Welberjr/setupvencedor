@@ -155,20 +155,14 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
         </div> : <button aria-label={label} className={page === id ? 'active' : ''} key={id} onClick={() => switchPage(id)} type="button"><CommandIcon name={icon} /><span>{label}</span></button>)}
         {canAdmin ? <button aria-label="Administração" className={page === 'admin' ? 'active' : ''} onClick={() => switchPage('admin')} type="button"><CommandIcon name="admin" /><span>Administração</span></button> : null}
       </nav>
+      <div aria-label="Conta da área de trabalho" className="workspace-account">
+        <div className="identity"><span className="avatar">{authenticatedSession.user.email.slice(0, 1).toUpperCase()}</span><span>{authenticatedSession.user.email}</span></div>
+        <PwaInstallPrompt />
+      </div>
       <div className="rail-footer"><span className="online-dot" /> Base privada ativa</div>
     </aside>
     <section className="workspace">
-      <header className="topbar">
-        <div>
-          <p className="eyebrow">WORKSPACE / BIBLIOTECA</p>
-          <p className="topbar-title">A central de decisões técnicas da sua equipe.</p>
-        </div>
-        {visualMode === 'handdrawn-lab' && showLabBadge ? <HanddrawnLabBadge /> : null}
-        <div className="topbar-tools">
-          <PwaInstallPrompt />
-          <div className="identity"><span className="avatar">{authenticatedSession.user.email.slice(0, 1).toUpperCase()}</span><span>{authenticatedSession.user.email}</span></div>
-        </div>
-      </header>
+      {visualMode === 'handdrawn-lab' && showLabBadge ? <HanddrawnLabBadge /> : null}
       {resourceSlug ? resourceItem && resourceGuide ? <ResourceProfilePage guide={resourceGuide} isFavorite={favoriteIds.has(resourceItem.id)} item={resourceItem} onBack={closeResourceProfile} onToggleFavorite={() => toggleFavorite(resourceItem.id)} /> : <section className="resource-profile page-shell"><p role="status">Carregando a ficha do recurso…</p></section> : <>
       {page === 'explore' ? <section className="explore-page page-shell">
         {visualMode === 'handdrawn-lab' ? <ExploreHero totalItems={catalog.length} /> : <div className="page-heading command-hero">

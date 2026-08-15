@@ -4,7 +4,9 @@
   .handdrawn-lab .brand { width: auto; align-self: auto; flex-direction: row; }
   .handdrawn-lab .brand-mark { width: 40px; height: 40px; }
   .handdrawn-lab .main-nav button, .handdrawn-lab button, .handdrawn-lab a { min-height: 44px; }
-  .handdrawn-lab .topbar { align-items: flex-start; flex-direction: column; }
+  .handdrawn-lab .workspace-account { display: flex; align-items: center; gap: 8px; margin: 0 0 0 auto; padding: 0; border-top: 0; }
+  .handdrawn-lab .workspace-account .identity { width: auto; }
+  .handdrawn-lab .workspace-account .pwa-install-btn { width: auto; padding: 7px 9px; }
   .handdrawn-lab .illustrated-hero { grid-template-columns: 1fr; }
   .handdrawn-lab .inner-page > .illustrated-hero { padding: 28px; gap: 28px; }
   .handdrawn-lab .illustrated-hero h1 { max-width: 14ch; }
