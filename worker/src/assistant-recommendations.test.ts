@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { addVisualDesignComplement, buildAssistantResult, dedupeAssistantCandidates, enrichAssistantSearchQuery, mergeAssistantCandidates } from './assistant'
 
 const visualDirection = {
@@ -57,7 +57,7 @@ it('adds Frontend Design as a complementary resource for a visual landing-page o
 })
 
 it('keeps recommendations grounded in the catalog without calling a generative model', () => {
-  const source = readFileSync('src/assistant.ts', 'utf8')
+  const source = readFileSync(existsSync('worker/src/assistant.ts') ? 'worker/src/assistant.ts' : 'src/assistant.ts', 'utf8')
 
   expect(source).not.toContain('api.openai.com')
 })
