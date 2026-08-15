@@ -15,13 +15,42 @@
 }
 
 @media (max-width: 540px) {
-  .handdrawn-lab .workspace { overflow-x: clip; }
+  .handdrawn-lab .command-rail { gap: 8px; padding: 8px 10px; min-width: 0; }
+  .handdrawn-lab .brand { flex: 0 0 34px; }
+  .handdrawn-lab .brand-mark { width: 34px; height: 34px; }
+  .handdrawn-lab .main-nav { gap: 4px; min-width: 0; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: none; }
+  .handdrawn-lab .main-nav::-webkit-scrollbar { display: none; }
+  .handdrawn-lab .main-nav button { flex: 0 0 42px; justify-content: center; width: 42px; min-width: 42px; padding: 0; }
+  .handdrawn-lab .main-nav .command-icon { width: 28px; height: 28px; flex-basis: 28px; }
+  .handdrawn-lab .main-nav .filter-chevron,
+  .handdrawn-lab .workspace-account .account-chevron { display: none; }
+  .handdrawn-lab .workspace-account { min-width: 0; gap: 5px; }
+  .handdrawn-lab .workspace-account .identity { display: grid; width: 44px; min-width: 44px; padding: 4px; place-items: center; }
+  .handdrawn-lab .workspace-account .account-menu { top: calc(100% + 8px); right: 0; bottom: auto; left: auto; width: min(210px, calc(100vw - 20px)); transform: rotate(-0.35deg); }
+  .handdrawn-lab .workspace { overflow-x: clip; padding: 0 12px 36px; }
+  .handdrawn-lab .page-shell,
+  .handdrawn-lab .resource-profile { padding-top: 18px; }
   .handdrawn-lab .handdrawn-lab-badge { align-items: flex-start; flex-direction: column; }
-  .handdrawn-lab .illustrated-hero { padding: 22px 18px; border-radius: 16px 12px 18px 14px; }
-  .handdrawn-lab .illustrated-hero h1 { font-size: clamp(35px, 11vw, 48px); }
+  .handdrawn-lab .illustrated-hero { gap: 18px; padding: 20px 16px; border-radius: 16px 12px 18px 14px; }
+  .handdrawn-lab .illustrated-hero h1 { font-size: clamp(32px, 10.5vw, 42px); }
+  .handdrawn-lab .illustrated-description { margin-top: 15px; font-size: 14px; line-height: 1.5; }
+  .handdrawn-lab .handdrawn-count-note { margin-top: 17px; padding: 10px 12px; }
+  .handdrawn-lab .explore-page .illustrated-hero-artwork { width: min(100%, 300px); margin-inline: auto; padding: 8px; }
+  .handdrawn-lab .catalog-section { padding-top: 24px; }
+  .handdrawn-lab .catalog-card { min-height: 0; gap: 11px; padding: 17px; }
+  .handdrawn-lab .catalog-card .card-actions { margin-top: 4px; }
   .handdrawn-lab .handdrawn-count-note { transform: none; }
   .handdrawn-lab .catalog-grid { grid-template-columns: 1fr; }
   .handdrawn-lab .catalog-card, .handdrawn-lab .catalog-card:nth-child(n) { transform: none; }
+  .handdrawn-lab .resource-profile,
+  .handdrawn-lab .resource-primary-actions,
+  .handdrawn-lab .handdrawn-guide { min-width: 0; max-width: 100%; }
+  .handdrawn-lab .resource-profile-pilot-editorial .resource-primary-actions { padding: 10px; }
+  .handdrawn-lab .handdrawn-guide-heading { flex-direction: column; align-items: center; text-align: center; }
+  .handdrawn-lab .handdrawn-guide-heading > img { width: 48px; }
+  .handdrawn-lab .handdrawn-guide-heading h2 { font-size: clamp(29px, 9vw, 36px); overflow-wrap: anywhere; }
+  .handdrawn-lab .handdrawn-guide-heading span,
+  .handdrawn-lab .handdrawn-guide-route span { overflow-wrap: anywhere; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -109,6 +109,18 @@ it('defines visible focus, touch targets, mobile card stability and motion reduc
   style.remove()
 })
 
+it('keeps the mobile rail, cards and resource pages inside the useful viewport', () => {
+  const style = mountStyle(readStyle('src/styles/handdrawn-responsive.css'))
+  const mobileRule = Array.from(style.sheet?.cssRules ?? []).find((rule): rule is CSSMediaRule => rule instanceof CSSMediaRule && rule.conditionText === '(max-width: 540px)')
+  const mobileSelectors = Array.from(mobileRule?.cssRules ?? []).filter((rule): rule is CSSStyleRule => rule instanceof CSSStyleRule)
+
+  expect(mobileSelectors.some((rule) => rule.selectorText.includes('.main-nav .filter-chevron') && rule.style.display === 'none')).toBe(true)
+  expect(mobileSelectors.some((rule) => rule.selectorText.includes('.catalog-card') && rule.style.minHeight === '0')).toBe(true)
+  expect(mobileSelectors.some((rule) => rule.selectorText.includes('.resource-profile') && rule.style.paddingTop === '18px')).toBe(true)
+
+  style.remove()
+})
+
 it('frames the approved navigation icons only inside the handdrawn laboratory', () => {
   const style = mountStyle(`${readStyle('src/styles/handdrawn-tokens.css')}\n${readStyle('src/styles/handdrawn-shell.css')}`)
   const rules = Array.from(style.sheet?.cssRules ?? []).filter((rule): rule is CSSStyleRule => rule instanceof CSSStyleRule)
