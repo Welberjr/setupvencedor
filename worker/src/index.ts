@@ -2,6 +2,7 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import type { Env } from './env'
 import { createInviteToken, normalizeEmail, sha256, validateInviteInput, type InviteInput } from './invitations'
 import { mcpResponse } from './mcp'
+import { AssistantError, handleAssistantRequest } from './assistant'
 
 type ActivateInput = { token: string; password: string; email?: string; recipientName?: string }
 type AdminContext = { supabase: SupabaseClient; userId: string }
@@ -147,6 +148,16 @@ export default {
     const path = new URL(request.url).pathname
     if (path === '/health') return json({ ok: true }, request)
     if (request.method === 'POST' && path === '/mcp') return mcpResponse(request, env)
+
+    if (request.method === 'POST' && path === '/v1/assistant/recommendations') {
+      try {
+        const response = await handleAssistantRequest(request, env)
+        return json(response.body, request, { status: response.status })
+      } catch (error) {
+        if (error instanceof AssistantError) return json({ error: error.code }, request, { status: error.status })
+        return json({ error: 'assistant_not_available' }, request, { status: 503 })
+      }
+    }
 
     if (request.method === 'POST' && path === '/v1/invitations') {
       try {

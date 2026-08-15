@@ -2,5 +2,8 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "setup-vencedor-worker",
   "main": "src/index.ts",
-  "compatibility_date": "2026-08-11"
+  "compatibility_date": "2026-08-11",
+  "ai": {
+    "binding": "AI"
+  }
 }
