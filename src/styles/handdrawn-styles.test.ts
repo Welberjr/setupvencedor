@@ -88,3 +88,23 @@ it('publishes each Explore control selector under the laboratory root', () => {
 
   style.remove()
 })
+
+it('defines visible focus, touch targets, mobile card stability and motion reduction', () => {
+  const style = mountStyle(`${readStyle('src/styles/handdrawn-shell.css')}\n${readStyle('src/styles/handdrawn-responsive.css')}`)
+  const rootRules = Array.from(style.sheet?.cssRules ?? [])
+  const focusRule = rootRules.find((rule): rule is CSSStyleRule => rule instanceof CSSStyleRule && rule.selectorText.includes(':focus-visible'))
+  const mediaRules = rootRules.filter((rule): rule is CSSMediaRule => rule instanceof CSSMediaRule)
+  const tabletRule = mediaRules.find((rule) => rule.conditionText === '(max-width: 820px)')
+  const mobileRule = mediaRules.find((rule) => rule.conditionText === '(max-width: 540px)')
+  const reducedMotionRule = mediaRules.find((rule) => rule.conditionText === '(prefers-reduced-motion: reduce)')
+
+  expect(focusRule?.style.outline).toBe('3px solid #174f74')
+  expect(focusRule?.style.outlineOffset).toBe('3px')
+  expect(Array.from(tabletRule?.cssRules ?? []).some((rule) => rule instanceof CSSStyleRule && rule.style.minHeight === '44px')).toBe(true)
+  expect(Array.from(mobileRule?.cssRules ?? []).some((rule) => rule instanceof CSSStyleRule && rule.selectorText.includes('.catalog-card') && rule.style.transform === 'none')).toBe(true)
+  expect(Array.from(reducedMotionRule?.cssRules ?? []).some((rule) => rule instanceof CSSStyleRule
+    && rule.style.transition === 'none'
+    && rule.style.animation === 'none')).toBe(true)
+
+  style.remove()
+})

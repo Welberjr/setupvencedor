@@ -97,3 +97,16 @@ it('scopes the handdrawn lab and warns that actions use real data', () => {
   expect(screen.getByText('LABORATÓRIO VISUAL · DADOS REAIS')).toBeInTheDocument()
   expect(screen.getByRole('link', { name: 'Comparar com a plataforma oficial' })).toHaveAttribute('href', 'https://www.setupvencedor.com.br/')
 })
+
+it('keeps all primary Explore actions available in the handdrawn lab', async () => {
+  const user = userEvent.setup()
+  render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
+
+  expect(screen.getByLabelText('Buscar no acervo')).toBeInTheDocument()
+  expect(screen.getByRole('navigation', { name: 'Paginação do acervo' })).toBeInTheDocument()
+
+  await user.click(screen.getByRole('button', { name: 'Explorar e filtrar categorias' }))
+
+  expect(screen.getByLabelText('Filtrar acervo')).toBeInTheDocument()
+  expect(screen.getAllByRole('button', { name: /Ver detalhes/i }).length).toBeGreaterThan(0)
+})
