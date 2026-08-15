@@ -13,6 +13,8 @@
   .handdrawn-lab .illustrated-hero h1 { max-width: 14ch; }
   .handdrawn-lab .illustrated-hero-artwork { width: min(620px, 100%); margin-inline: auto; }
   .handdrawn-lab .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .handdrawn-lab .setup-agent-configs { grid-template-columns: 1fr; }
+  .handdrawn-lab .setup-agent-tools > div:last-child { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 540px) {
@@ -42,6 +44,10 @@
   .handdrawn-lab .catalog-card .card-actions { margin-top: 4px; }
   .handdrawn-lab .handdrawn-count-note { transform: none; }
   .handdrawn-lab .catalog-grid { grid-template-columns: 1fr; }
+  .handdrawn-lab .setup-agent-intro, .handdrawn-lab .setup-agent-install, .handdrawn-lab .setup-agent-tools { padding: 20px 17px; }
+  .handdrawn-lab .setup-agent-endpoint { align-items: stretch; flex-direction: column; }
+  .handdrawn-lab .setup-agent-endpoint button, .handdrawn-lab .setup-agent-primary { width: 100%; }
+  .handdrawn-lab .setup-agent-tools > div:last-child { grid-template-columns: 1fr; }
   .handdrawn-lab .catalog-card, .handdrawn-lab .catalog-card:nth-child(n) { transform: none; }
   .handdrawn-lab .resource-profile,
   .handdrawn-lab .resource-primary-actions,

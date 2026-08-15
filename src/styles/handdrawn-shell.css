@@ -71,6 +71,12 @@
   transform: rotate(1.4deg);
 }
 
+.handdrawn-lab .main-nav .command-icon-agent {
+  background: var(--note-blue);
+  color: #174f74;
+  transform: rotate(-.4deg);
+}
+
 .handdrawn-lab .main-nav .command-icon-favorites {
   background: var(--note-coral);
   color: #a63f4c;

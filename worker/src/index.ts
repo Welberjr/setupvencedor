@@ -4,6 +4,7 @@ import { createInviteToken, normalizeEmail, sha256, validateInviteInput, type In
 import { mcpResponse } from './mcp'
 import { AssistantError, handleAssistantRequest } from './assistant'
 import { parsePeoplePagination, type PeoplePagination } from './admin-people'
+import { createMcpAccessToken, hashSecret, oauthMetadata, protectedResourceMetadata, publicOrigin, verifyPkce } from './oauth'
 
 type ActivateInput = { token: string; password: string; email?: string; recipientName?: string }
 type AdminContext = { supabase: SupabaseClient; userId: string }
@@ -26,6 +27,69 @@ function corsHeaders(origin: string | null): HeadersInit {
     'access-control-allow-headers': 'authorization,content-type',
     vary: 'Origin',
   }
+}
+
+function oauthError(error: string, request: Request, redirectUri?: string, state?: string): Response {
+  if (redirectUri) {
+    const target = new URL(redirectUri)
+    target.searchParams.set('error', error)
+    if (state) target.searchParams.set('state', state)
+    return Response.redirect(target.toString(), 302)
+  }
+  return json({ error }, request, { status: 400 })
+}
+
+function validRedirectUri(value: string): boolean {
+  try {
+    const url = new URL(value)
+    return url.protocol === 'https:' || (url.protocol === 'http:' && (url.hostname === 'localhost' || url.hostname === '127.0.0.1'))
+  } catch { return false }
+}
+
+async function registerMcpClient(request: Request, env: Env): Promise<Response> {
+  const input = await readJson<{ client_name?: string; redirect_uris?: string[] }>(request)
+  if (!input.client_name?.trim() || !Array.isArray(input.redirect_uris) || input.redirect_uris.length === 0 || !input.redirect_uris.every(validRedirectUri)) return json({ error: 'invalid_client_metadata' }, request, { status: 400 })
+  const clientId = `setup_${crypto.randomUUID().replaceAll('-', '')}`
+  const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY)
+  const { error } = await supabase.from('mcp_oauth_clients').insert({ client_id: clientId, client_name: input.client_name.trim().slice(0, 120), redirect_uris: [...new Set(input.redirect_uris)] })
+  if (error) return json({ error: 'client_registration_unavailable' }, request, { status: 503 })
+  return json({ client_id: clientId, client_name: input.client_name.trim().slice(0, 120), redirect_uris: input.redirect_uris, token_endpoint_auth_method: 'none' }, request, { status: 201 })
+}
+
+async function approveMcpAuthorization(request: Request, env: Env): Promise<Response> {
+  const token = tokenFrom(request)
+  if (!token) return json({ error: 'unauthorized' }, request, { status: 401 })
+  const input = await readJson<{ client_id?: string; redirect_uri?: string; code_challenge?: string; state?: string; approved?: boolean }>(request)
+  if (!input.client_id || !input.redirect_uri || !input.code_challenge || !validRedirectUri(input.redirect_uri)) return json({ error: 'invalid_authorization_request' }, request, { status: 400 })
+  const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY)
+  const { data: userResult } = await supabase.auth.getUser(token)
+  if (!userResult.user) return json({ error: 'unauthorized' }, request, { status: 401 })
+  const [{ data: profile }, { data: client }] = await Promise.all([
+    supabase.from('profiles').select('state').eq('id', userResult.user.id).eq('state', 'active').maybeSingle(),
+    supabase.from('mcp_oauth_clients').select('client_id,redirect_uris').eq('client_id', input.client_id).is('disabled_at', null).maybeSingle(),
+  ])
+  if (!profile) return json({ error: 'forbidden' }, request, { status: 403 })
+  if (!client || !(client.redirect_uris as string[]).includes(input.redirect_uri)) return json({ error: 'invalid_authorization_request' }, request, { status: 400 })
+  if (!input.approved) return oauthError('access_denied', request, input.redirect_uri, input.state)
+  const code = [...crypto.getRandomValues(new Uint8Array(32))].map((value) => value.toString(16).padStart(2, '0')).join('')
+  const { error } = await supabase.from('mcp_authorization_codes').insert({ code_hash: await hashSecret(code), client_id: input.client_id, user_id: userResult.user.id, redirect_uri: input.redirect_uri, code_challenge: input.code_challenge, scope: 'mcp:read', resource: `${publicOrigin(env)}/api/mcp`, expires_at: new Date(Date.now() + 5 * 60 * 1000).toISOString() })
+  if (error) return json({ error: 'authorization_unavailable' }, request, { status: 503 })
+  const redirect = new URL(input.redirect_uri)
+  redirect.searchParams.set('code', code)
+  if (input.state) redirect.searchParams.set('state', input.state)
+  return json({ redirect_uri: redirect.toString() }, request)
+}
+
+async function exchangeMcpToken(request: Request, env: Env): Promise<Response> {
+  const input = await readJson<{ grant_type?: string; code?: string; redirect_uri?: string; client_id?: string; code_verifier?: string }>(request)
+  if (input.grant_type !== 'authorization_code' || !input.code || !input.client_id || !input.redirect_uri || !input.code_verifier) return json({ error: 'invalid_request' }, request, { status: 400 })
+  const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY)
+  const { data: row } = await supabase.from('mcp_authorization_codes').select('id,client_id,user_id,redirect_uri,code_challenge,scope,resource,expires_at,consumed_at').eq('code_hash', await hashSecret(input.code)).maybeSingle()
+  if (!row || row.client_id !== input.client_id || row.redirect_uri !== input.redirect_uri || row.consumed_at || new Date(row.expires_at).getTime() <= Date.now() || !await verifyPkce(input.code_verifier, row.code_challenge)) return json({ error: 'invalid_grant' }, request, { status: 400 })
+  const { data: consumed } = await supabase.from('mcp_authorization_codes').update({ consumed_at: new Date().toISOString() }).eq('id', row.id).is('consumed_at', null).select('id').maybeSingle()
+  if (!consumed) return json({ error: 'invalid_grant' }, request, { status: 400 })
+  const accessToken = await createMcpAccessToken({ userId: row.user_id, clientId: row.client_id, scopes: row.scope.split(' '), resource: row.resource }, env)
+  return json({ access_token: accessToken, token_type: 'Bearer', expires_in: Number(env.MCP_ACCESS_TOKEN_TTL_SECONDS ?? 900), scope: row.scope, resource: row.resource }, request)
 }
 
 function json(data: unknown, request: Request, init: ResponseInit = {}): Response {
@@ -157,8 +221,24 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     if (request.method === 'OPTIONS') return new Response(null, { headers: { ...corsHeaders(request.headers.get('origin')), 'access-control-allow-methods': 'GET,POST,DELETE,OPTIONS' } })
     const path = new URL(request.url).pathname
-    if (path === '/health') return json({ ok: true }, request)
-    if (request.method === 'POST' && path === '/mcp') return mcpResponse(request, env)
+    if (path === '/health' || path === '/api/health') return json({ ok: true }, request)
+    if (request.method === 'GET' && path === '/.well-known/oauth-protected-resource') return json(protectedResourceMetadata(env), request)
+    if (request.method === 'GET' && path === '/.well-known/oauth-authorization-server') return json(oauthMetadata(env), request)
+    if (request.method === 'POST' && path === '/api/oauth/register') return registerMcpClient(request, env)
+    if (request.method === 'POST' && path === '/api/oauth/consent') return approveMcpAuthorization(request, env)
+    if (request.method === 'POST' && path === '/api/oauth/token') return exchangeMcpToken(request, env)
+    if (request.method === 'GET' && path === '/api/oauth/authorize') {
+      const url = new URL(request.url)
+      const clientId = url.searchParams.get('client_id')
+      const redirectUri = url.searchParams.get('redirect_uri')
+      const codeChallenge = url.searchParams.get('code_challenge')
+      if (url.searchParams.get('response_type') !== 'code' || !clientId || !redirectUri || !codeChallenge || !validRedirectUri(redirectUri)) return oauthError('invalid_request', request)
+      const approval = new URL(`${publicOrigin(env)}/mcp/autorizar`)
+      approval.search = url.search
+      return Response.redirect(approval.toString(), 302)
+    }
+    if ((request.method === 'POST' || request.method === 'GET') && path === '/api/mcp') return mcpResponse(request, env)
+    if (path === '/mcp') return Response.redirect(`${publicOrigin(env)}/api/mcp`, 308)
 
     if (request.method === 'POST' && path === '/v1/assistant/recommendations') {
       try {

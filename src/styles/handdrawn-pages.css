@@ -192,6 +192,34 @@
 .handdrawn-lab .assistant-reasons small em { display: block; margin-bottom: 4px; color: #4f7d13; font: 800 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
 .handdrawn-lab .assistant-prompt-copy { min-height: 40px; margin-top: 14px; border: var(--paper-border); border-radius: 9px 12px 10px 13px; background: var(--note-coral); box-shadow: 2px 3px 0 #201f1b35; color: var(--ink); cursor: pointer; padding: 0 12px; font: 800 11px var(--font-mono); }
 
+.handdrawn-lab .setup-agent-page { display: grid; width: min(1120px, 100%); margin: 0 auto; gap: 20px; color: var(--ink); }
+.handdrawn-lab .setup-agent-intro, .handdrawn-lab .setup-agent-install, .handdrawn-lab .setup-agent-configs article, .handdrawn-lab .setup-agent-tools { border: var(--paper-border); background: var(--paper-raised); box-shadow: var(--sketch-shadow); }
+.handdrawn-lab .setup-agent-intro { padding: 28px 32px; border-radius: 17px 22px 18px 20px; background: linear-gradient(110deg, var(--paper-raised), var(--note-blue)); }
+.handdrawn-lab .setup-agent-intro h1, .handdrawn-lab .setup-agent-install h2, .handdrawn-lab .setup-agent-tools h2, .handdrawn-lab .setup-agent-tools h3 { margin: 7px 0 0; color: var(--ink); font-family: 'Comic Sans MS', 'Segoe Print', cursive; }
+.handdrawn-lab .setup-agent-intro > p:last-child, .handdrawn-lab .setup-agent-install > p { max-width: 700px; color: var(--ink-muted); line-height: 1.6; }
+.handdrawn-lab .setup-agent-install { display: grid; gap: 15px; padding: 28px 32px; border-radius: 21px 15px 19px 17px; background: linear-gradient(120deg, var(--note-green), var(--paper-raised)); }
+.handdrawn-lab .setup-agent-install h2 { font-size: clamp(25px, 3.2vw, 38px); }
+.handdrawn-lab .setup-agent-endpoint { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 2px dashed #776047; border-radius: 10px 13px 11px 14px; background: #fffdf7; }
+.handdrawn-lab .setup-agent-endpoint code { min-width: 0; overflow: hidden; color: #174f74; font: 700 12px var(--font-mono); text-overflow: ellipsis; white-space: nowrap; }
+.handdrawn-lab .setup-agent-page button { border: var(--paper-border); border-radius: 9px 12px 10px 13px; box-shadow: 2px 3px 0 #201f1b35; color: var(--ink); cursor: pointer; font: 800 11px var(--font-mono); }
+.handdrawn-lab .setup-agent-endpoint button { flex: 0 0 auto; min-height: 38px; padding: 0 11px; background: var(--note-blue); }
+.handdrawn-lab .setup-agent-primary { width: fit-content; min-height: 45px; padding: 0 16px; background: var(--brand-green); }
+.handdrawn-lab .setup-agent-message { margin: 0; color: #3d7b45; font-weight: 700; }
+.handdrawn-lab .setup-agent-configs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.handdrawn-lab .setup-agent-configs article { display: grid; min-width: 0; gap: 12px; padding: 18px; border-radius: 14px 18px 15px 17px; }
+.handdrawn-lab .setup-agent-configs article:nth-child(2) { background: var(--note-lilac); transform: rotate(.25deg); }
+.handdrawn-lab .setup-agent-configs article:nth-child(3) { background: var(--note-coral); transform: rotate(-.25deg); }
+.handdrawn-lab .setup-agent-configs article > div { display: flex; justify-content: space-between; gap: 8px; }
+.handdrawn-lab .setup-agent-configs strong { color: var(--ink); }
+.handdrawn-lab .setup-agent-configs span, .handdrawn-lab .setup-agent-tools small { color: #4f7d13; font: 800 10px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.handdrawn-lab .setup-agent-configs pre { min-height: 118px; margin: 0; overflow: auto; padding: 11px; border: 2px solid #201f1b52; border-radius: 9px 12px 10px 13px; background: #fffdf7; color: var(--ink); font: 11px/1.5 var(--font-mono); white-space: pre-wrap; }
+.handdrawn-lab .setup-agent-configs button { justify-self: start; min-height: 36px; padding: 0 12px; background: var(--paper-raised); }
+.handdrawn-lab .setup-agent-tools { padding: 26px 30px; border-radius: 18px 22px 17px 20px; background: linear-gradient(120deg, var(--paper-raised), var(--note-blue)); }
+.handdrawn-lab .setup-agent-tools > div:last-child { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.handdrawn-lab .setup-agent-tools article { padding: 14px; border: 2px solid #201f1b52; border-radius: 12px 15px 11px 14px; background: #fffdf7; }
+.handdrawn-lab .setup-agent-tools article b { color: #4f7d13; font: 800 11px var(--font-mono); }
+.handdrawn-lab .setup-agent-tools article p { color: var(--ink-muted); font-size: 13px; line-height: 1.5; }
+
 .handdrawn-lab .empty-state {
   border: 2px dashed #7d5a31;
   background: var(--note-lilac);
@@ -357,6 +385,11 @@
 .handdrawn-lab .public-confirmation > p:not(.eyebrow) { color: var(--ink-muted); line-height: 1.6; }
 .handdrawn-lab .public-confirmation a { display: block; margin-top: 14px; padding: 13px; border: var(--paper-border); border-radius: 10px 13px 9px 12px; background: var(--brand-green); box-shadow: 2px 3px 0 #201f1b35; color: var(--ink); font-weight: 800; text-decoration: none; }
 .handdrawn-lab .public-confirmation .public-confirmation-login { background: var(--note-blue); }
+.handdrawn-lab .mcp-authorize { text-align: left; }
+.handdrawn-lab .mcp-authorize-note { padding: 12px; border: 2px dashed #557d2c; border-radius: 11px 14px 10px 13px; background: var(--note-green); }
+.handdrawn-lab .mcp-authorize-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.handdrawn-lab .mcp-authorize-actions button { min-height: 43px; border: var(--paper-border); border-radius: 10px 13px 9px 12px; background: var(--brand-green); box-shadow: 2px 3px 0 #201f1b35; color: var(--ink); cursor: pointer; padding: 0 14px; font-weight: 800; }
+.handdrawn-lab .mcp-authorize-actions button + button { background: var(--note-coral); }
 
 .handdrawn-lab .resource-profile-pilot-editorial .resource-back {
   min-height: 44px;

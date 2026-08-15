@@ -3,7 +3,19 @@
   "name": "setup-vencedor-worker",
   "main": "src/index.ts",
   "compatibility_date": "2026-08-11",
+  "vars": {
+    "EMAIL_FROM": "Setup Vencedor <acesso@setupvencedor.com.br>",
+    "APP_URL": "https://setupvencedor.com.br"
+  },
   "ai": {
     "binding": "AI"
-  }
+  },
+  "workers_dev": true,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "setupvencedor.com.br/.well-known/*", "zone_id": "aedad462202c3e59e79b8916abe070fd" },
+    { "pattern": "setupvencedor.com.br/api/*", "zone_id": "aedad462202c3e59e79b8916abe070fd" },
+    { "pattern": "www.setupvencedor.com.br/api/*", "zone_id": "aedad462202c3e59e79b8916abe070fd" },
+    { "pattern": "www.setupvencedor.com.br/.well-known/*", "zone_id": "aedad462202c3e59e79b8916abe070fd" }
+  ]
 }

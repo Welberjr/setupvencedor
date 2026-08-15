@@ -22,6 +22,7 @@ import { getSupabaseClient } from '../lib/supabase/client'
 import { TicketForm } from '../features/support/TicketForm'
 import { ActivateInvitePage } from '../features/auth/ActivateInvitePage'
 import { ResetPasswordPage } from '../features/auth/ResetPasswordPage'
+import { McpAuthorizePage } from '../features/auth/McpAuthorizePage'
 import { InviteForm } from '../features/admin/InviteForm'
 import { PeopleDirectory } from '../features/admin/PeopleDirectory'
 import { hasAnyRole, type Role } from '../lib/roles'
@@ -31,9 +32,10 @@ import type { VisualMode } from '../features/handdrawn/visual-mode'
 import { ExploreHero } from '../features/handdrawn/ExploreHero'
 import { WorkspaceAreaHero } from '../features/handdrawn/WorkspaceAreaHero'
 import { WorkspaceNamePrompt } from '../features/profile/WorkspaceNamePrompt'
+import { SetupAgentPage } from '../features/mcp/SetupAgentPage'
 
 type Session = { user: { id: string; email: string; displayName?: string }; roles?: Role[] } | null
-type Page = 'explore' | 'assistant' | 'favorites' | 'support' | 'admin'
+type Page = 'explore' | 'assistant' | 'setup-agent' | 'favorites' | 'support' | 'admin'
 
 type CatalogRow = {
   id: string; slug: string; title: string; item_type: string; summary: string; own_content: string; official_url: string; instructions: string
@@ -47,11 +49,12 @@ function toCatalogItem(row: CatalogRow): CatalogItem {
 }
 
 const navItems: Array<{ id: Page; label: string; icon: CommandIconName }> = [
-  { id: 'explore', label: 'Explorar', icon: 'explore' }, { id: 'assistant', label: 'Assistente', icon: 'assistant' }, { id: 'favorites', label: 'Favoritos', icon: 'favorites' }, { id: 'support', label: 'Suporte', icon: 'support' },
+  { id: 'explore', label: 'Explorar', icon: 'explore' }, { id: 'assistant', label: 'Assistente', icon: 'assistant' }, { id: 'setup-agent', label: 'Setup Agent', icon: 'agent' }, { id: 'favorites', label: 'Favoritos', icon: 'favorites' }, { id: 'support', label: 'Suporte', icon: 'support' },
 ]
 export function App({ session = null, visualMode = 'command-center', showLabBadge = false }: { session?: Session; visualMode?: VisualMode; showLabBadge?: boolean }) {
   if (window.location.pathname === '/ativar') return <ActivateInvitePage visualMode={visualMode} />
   if (window.location.pathname === '/redefinir-senha') return <ResetPasswordPage visualMode={visualMode} />
+  if (window.location.pathname === '/mcp/autorizar') return <McpAuthorizePage />
   if (!session && window.location.pathname === '/boas-vindas') return <main className={`app-shell auth-shell ${visualMode}`}><section className="public-confirmation"><p className="eyebrow">SETUP VENCEDOR</p><h1>Seu acesso está confirmado.</h1><p>Agora você pode entrar no acervo e, se quiser acompanhar novidades e tirar dúvidas, participar da nossa comunidade.</p><a href="https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr" rel="noreferrer" target="_blank">Entrar na comunidade do WhatsApp ↗</a><a className="public-confirmation-login" href="/">Entrar no acervo</a></section></main>
   if (!session) return <main className={`app-shell auth-shell ${visualMode}`}><PublicAccessPage onLogin={async (email, password) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signInWithPassword({ email, password }); if (error) throw error }} onSignUp={async ({ fullName, email, phone, password }) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: fullName, phone: phone || undefined }, emailRedirectTo: `${window.location.origin}/boas-vindas` } }); if (error) throw error }} onForgotPassword={async (email) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/redefinir-senha` }); if (error) throw error }} /></main>
   const authenticatedSession = session
@@ -227,6 +230,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
           {assistantItems.length ? renderCatalog(assistantItems, { gridClassName: 'assistant-catalog-grid', pageSize: 10 }) : <p className="assistant-empty">Nenhum recurso do acervo corresponde a essa necessidade ainda.</p>}
         </section> : null}
       </section> : null}
+      {page === 'setup-agent' ? <SetupAgentPage /> : null}
       {page === 'favorites' ? <section className="inner-page page-shell page-favorites">
         {visualMode === 'handdrawn-lab' ? <WorkspaceAreaHero area="favorites" description={favoriteItems.length ? 'Recursos salvos para você voltar ao que importa.' : 'Salve recursos para montar sua própria trilha de trabalho.'} /> : <div className="page-heading"><h1 className="page-title">Seus atalhos favoritos.</h1><p>{favoriteItems.length ? 'Recursos salvos para você voltar ao que importa.' : 'Salve recursos para montar sua própria trilha de trabalho.'}</p></div>}
   {favoriteItems.length ? renderCatalog(favoriteItems) : <div className="favorites-empty-zone"><p className="empty-state">Ainda não há recursos salvos. Explore o acervo e favorite o que fizer sentido para você.</p></div>}

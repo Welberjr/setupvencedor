@@ -67,6 +67,15 @@ it('shows the dedicated assistant composer without catalog cards before a reques
   expect(screen.queryByText(/RECOMENDAÇÃO INTELIGENTE/i)).not.toBeInTheDocument()
 })
 
+it('keeps Setup Agent available in the primary navigation for MCP installation', async () => {
+  const user = userEvent.setup()
+  render(<App session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
+
+  await user.click(screen.getByRole('button', { name: 'Setup Agent' }))
+
+  expect(screen.getByRole('heading', { name: /conecte seu agente ao acervo/i })).toBeInTheDocument()
+})
+
 it('uses assistant copy without dash separators', async () => {
   const user = userEvent.setup()
   render(<App session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
