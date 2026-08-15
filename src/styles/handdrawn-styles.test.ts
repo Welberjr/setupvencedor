@@ -122,3 +122,66 @@ it('frames the approved navigation icons only inside the handdrawn laboratory', 
 
   style.remove()
 })
+
+it('keeps internal illustrated heroes compact without shrinking the Explore cover', () => {
+  const style = mountStyle(`${readStyle('src/styles/handdrawn-tokens.css')}\n${readStyle('src/styles/handdrawn-explore.css')}\n${readStyle('src/styles/handdrawn-pages.css')}`)
+  const laboratory = document.createElement('main')
+  laboratory.className = 'handdrawn-lab'
+  laboratory.innerHTML = `
+    <section class="explore-page"><section class="illustrated-hero"></section></section>
+    <section class="inner-page"><section class="illustrated-hero"><figure class="illustrated-hero-artwork"></figure></section></section>
+  `
+  document.body.append(laboratory)
+
+  const exploreHero = getComputedStyle(laboratory.querySelector('.explore-page .illustrated-hero')!)
+  const innerHero = getComputedStyle(laboratory.querySelector('.inner-page .illustrated-hero')!)
+  const innerArtwork = getComputedStyle(laboratory.querySelector('.inner-page .illustrated-hero-artwork')!)
+
+  expect(innerHero.maxWidth).toBe('1400px')
+  expect(innerHero.padding).toBe('40px')
+  expect(innerArtwork.maxWidth).toBe('640px')
+  expect(exploreHero.maxWidth).not.toBe('1400px')
+
+  style.remove()
+  laboratory.remove()
+})
+
+it('makes the laboratory brand, workspace label and signed-in identity legible', () => {
+  const style = mountStyle(`${readStyle('src/styles/handdrawn-tokens.css')}\n${readStyle('src/styles/handdrawn-shell.css')}`)
+  const official = document.createElement('main')
+  const laboratory = document.createElement('main')
+  laboratory.className = 'handdrawn-lab'
+  const shell = `
+    <aside class="command-rail"><a class="brand"><span class="brand-mark"></span><span>Setup Vencedor</span></a></aside>
+    <header class="topbar"><div><p class="eyebrow">WORKSPACE / BIBLIOTECA</p><p class="topbar-title">A central de decisões técnicas da sua equipe.</p></div><div class="identity"><span class="avatar">W</span><span>welber@example.com</span></div></header>
+  `
+  official.innerHTML = shell
+  laboratory.innerHTML = shell
+  document.body.append(official, laboratory)
+
+  const brand = getComputedStyle(laboratory.querySelector('.brand')!)
+  const mark = getComputedStyle(laboratory.querySelector('.brand-mark')!)
+  const eyebrow = getComputedStyle(laboratory.querySelector('.topbar .eyebrow')!)
+  const title = getComputedStyle(laboratory.querySelector('.topbar-title')!)
+  const identity = getComputedStyle(laboratory.querySelector('.identity')!)
+  const avatar = getComputedStyle(laboratory.querySelector('.avatar')!)
+  const rules = Array.from(style.sheet?.cssRules ?? []).filter((rule): rule is CSSStyleRule => rule instanceof CSSStyleRule)
+  const identityRule = rules.find((rule) => rule.selectorText === '.handdrawn-lab .identity')
+  const avatarRule = rules.find((rule) => rule.selectorText === '.handdrawn-lab .avatar')
+
+  expect(brand.flexDirection).toBe('column')
+  expect(brand.textAlign).toBe('center')
+  expect(brand.color).toBe('var(--ink)')
+  expect(mark.width).toBe('48px')
+  expect(eyebrow.color).toBe('rgb(78, 88, 105)')
+  expect(title.color).toBe('var(--ink-muted)')
+  expect(identityRule?.style.background).toBe('var(--paper-raised)')
+  expect(identity.color).toBe('var(--ink)')
+  expect(avatarRule?.style.background).toBe('var(--brand-green)')
+  expect(avatar.color).toBe('var(--ink)')
+  expect(getComputedStyle(official.querySelector('.brand')!).flexDirection).not.toBe('column')
+
+  style.remove()
+  official.remove()
+  laboratory.remove()
+})

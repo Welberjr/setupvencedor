@@ -6,6 +6,28 @@
   color: var(--ink);
 }
 
+.handdrawn-lab .brand {
+  width: 100%;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.handdrawn-lab .brand-mark {
+  width: 48px;
+  height: 48px;
+}
+
+.handdrawn-lab .main-nav {
+  margin-top: 42px;
+}
+
 .handdrawn-lab .workspace {
   min-width: 0;
   background: radial-gradient(#c8b99155 0.8px, transparent 0.8px) 0 0 / 9px 9px, var(--paper);
@@ -15,6 +37,16 @@
   border-bottom: 2px dashed #b78056;
   background: #fffaf0cc;
   color: var(--ink);
+}
+
+.handdrawn-lab .topbar .eyebrow {
+  color: #4e5869;
+  font-weight: 800;
+}
+
+.handdrawn-lab .topbar-title {
+  color: var(--ink-muted);
+  font-weight: 600;
 }
 
 .handdrawn-lab .main-nav button {
@@ -75,10 +107,31 @@
 }
 
 .handdrawn-lab .identity {
+  max-width: min(330px, 36vw);
+  padding: 5px 9px 5px 5px;
   border: var(--paper-border);
+  border-radius: 13px 9px 12px 10px;
   background: var(--paper-raised);
   box-shadow: 2px 3px 0 #201f1b35;
   color: var(--ink);
+  font-weight: 700;
+}
+
+.handdrawn-lab .identity > span:last-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.handdrawn-lab .avatar {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border: 2px solid #7aaa16;
+  background: var(--brand-green);
+  color: var(--ink);
+  font-weight: 800;
 }
 
 .handdrawn-lab .handdrawn-lab-badge {
