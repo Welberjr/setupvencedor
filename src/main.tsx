@@ -79,7 +79,7 @@ function usePwaUpdate() {
 
 function Bootstrap() {
   usePwaUpdate()
-  const [session, setSession] = useState<{ user: { id: string; email: string }; roles: Role[] } | null>(null)
+  const [session, setSession] = useState<{ user: { id: string; email: string; displayName?: string }; roles: Role[] } | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     const supabase = getSupabaseClient()
@@ -88,9 +88,12 @@ function Bootstrap() {
     const finishLoading = () => { if (active) setIsLoading(false) }
     const hydrate = async (next: SupabaseSession | null) => {
       if (!next) { setSession(null); return }
-      const { data: roles, error } = await supabase.from('user_roles').select('role').eq('user_id', next.user.id)
-      if (error) throw error
-      setSession({ user: { id: next.user.id, email: next.user.email ?? '' }, roles: (roles ?? []).map((row) => row.role as Role) })
+      const [{ data: roles, error: rolesError }, { data: profile, error: profileError }] = await Promise.all([
+        supabase.from('user_roles').select('role').eq('user_id', next.user.id),
+        supabase.from('profiles').select('display_name').eq('id', next.user.id).maybeSingle(),
+      ])
+      if (rolesError || profileError) throw rolesError ?? profileError
+      setSession({ user: { id: next.user.id, email: next.user.email ?? '', displayName: profile?.display_name ?? '' }, roles: (roles ?? []).map((row) => row.role as Role) })
     }
     const loadingTimeout = window.setTimeout(finishLoading, 300)
     const { data: listener } = supabase.auth.onAuthStateChange((_event, next) => {

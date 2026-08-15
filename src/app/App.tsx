@@ -31,8 +31,9 @@ import type { VisualMode } from '../features/handdrawn/visual-mode'
 import { ExploreHero } from '../features/handdrawn/ExploreHero'
 import { WorkspaceAreaHero } from '../features/handdrawn/WorkspaceAreaHero'
 import { AuthArtwork } from '../features/handdrawn/AuthArtwork'
+import { WorkspaceNamePrompt } from '../features/profile/WorkspaceNamePrompt'
 
-type Session = { user: { id: string; email: string }; roles?: Role[] } | null
+type Session = { user: { id: string; email: string; displayName?: string }; roles?: Role[] } | null
 type Page = 'explore' | 'assistant' | 'favorites' | 'support' | 'admin'
 
 type CatalogRow = {
@@ -66,6 +67,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   const [resourceSlug, setResourceSlug] = useState(() => readResourceSlug(window.location.pathname))
   const [catalogPage, setCatalogPage] = useState(1)
   const [accessRefreshKey, setAccessRefreshKey] = useState(0)
+  const [displayName, setDisplayName] = useState(authenticatedSession.user.displayName?.trim() ?? '')
   const catalogPageSize = useCatalogPageSize()
 
   useEffect(() => {
@@ -139,6 +141,15 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   }
   const selectCategory = (category: string | null) => { setSelectedCategory(category); setPage('explore'); setCatalogPage(1); setIsCategoryMenuOpen(false) }
   const canAdmin = hasAnyRole(authenticatedSession.roles ?? [], ['admin', 'manager', 'editor'])
+  const accountName = displayName || authenticatedSession.user.email
+
+  async function saveDisplayName(nextDisplayName: string) {
+    const supabase = getSupabaseClient()
+    if (!supabase) throw new Error('supabase_not_configured')
+    const { error } = await supabase.from('profiles').update({ display_name: nextDisplayName }).eq('id', authenticatedSession.user.id)
+    if (error) throw error
+    setDisplayName(nextDisplayName)
+  }
 
   return <main className={`app-shell ${visualMode}`}>
     <aside className="command-rail">
@@ -156,13 +167,13 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
         {canAdmin ? <button aria-label="Administração" className={page === 'admin' ? 'active' : ''} onClick={() => switchPage('admin')} type="button"><CommandIcon name="admin" /><span>Administração</span></button> : null}
       </nav>
       <div aria-label="Conta da área de trabalho" className="workspace-account">
-        <div className="identity"><span className="avatar">{authenticatedSession.user.email.slice(0, 1).toUpperCase()}</span><span>{authenticatedSession.user.email}</span></div>
+        <div className="identity" title={authenticatedSession.user.email}><span className="avatar">{accountName.slice(0, 1).toUpperCase()}</span><span>{accountName}</span></div>
         <PwaInstallPrompt />
       </div>
-      <div className="rail-footer"><span className="online-dot" /> Base privada ativa</div>
     </aside>
     <section className="workspace">
       {visualMode === 'handdrawn-lab' && showLabBadge ? <HanddrawnLabBadge /> : null}
+      {visualMode === 'handdrawn-lab' && !displayName ? <WorkspaceNamePrompt onSave={saveDisplayName} /> : null}
       {resourceSlug ? resourceItem && resourceGuide ? <ResourceProfilePage guide={resourceGuide} isFavorite={favoriteIds.has(resourceItem.id)} item={resourceItem} onBack={closeResourceProfile} onToggleFavorite={() => toggleFavorite(resourceItem.id)} /> : <section className="resource-profile page-shell"><p role="status">Carregando a ficha do recurso…</p></section> : <>
       {page === 'explore' ? <section className="explore-page page-shell">
         {visualMode === 'handdrawn-lab' ? <ExploreHero totalItems={catalog.length} /> : <div className="page-heading command-hero">

@@ -129,14 +129,18 @@
   margin-top: auto;
   padding: 12px 0 0;
   border-top: 2px dashed #b78056;
+  min-width: 0;
 }
 
 .handdrawn-lab .workspace-account .pwa-install {
+  width: 100%;
+  min-width: 0;
   align-items: stretch;
 }
 
 .handdrawn-lab .workspace-account .pwa-install-btn {
   width: 100%;
+  box-sizing: border-box;
   border: var(--paper-border);
   background: var(--note-blue);
   color: var(--ink);
@@ -147,9 +151,68 @@
   color: #174f74;
 }
 
-.handdrawn-lab .rail-footer {
-  margin-top: 16px;
+.handdrawn-lab .workspace-name-backdrop {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: #201f1b55;
+}
+
+.handdrawn-lab .workspace-name-dialog {
+  display: grid;
+  width: min(100%, 440px);
+  gap: 16px;
+  padding: 28px;
+  border: var(--paper-border);
+  border-radius: 18px 22px 16px 20px;
+  background: var(--paper-raised);
+  box-shadow: 8px 10px 0 #201f1b40;
+  color: var(--ink);
+}
+
+.handdrawn-lab .workspace-name-dialog h2,
+.handdrawn-lab .workspace-name-dialog p {
+  margin: 0;
+}
+
+.handdrawn-lab .workspace-name-dialog h2 {
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+  font-size: clamp(27px, 4vw, 36px);
+  line-height: 1.02;
+}
+
+.handdrawn-lab .workspace-name-dialog > p:not(.eyebrow) {
   color: var(--ink-muted);
+  line-height: 1.55;
+}
+
+.handdrawn-lab .workspace-name-dialog label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.handdrawn-lab .workspace-name-dialog input {
+  min-height: 46px;
+  padding: 0 12px;
+  border: var(--paper-border);
+  border-radius: 10px 14px 11px 13px;
+  background: #fffaf0;
+  color: var(--ink);
+  font: inherit;
+}
+
+.handdrawn-lab .workspace-name-dialog .primary {
+  min-height: 48px;
+  border: var(--paper-border);
+  border-radius: 11px 15px 10px 13px;
+  background: var(--brand-green);
+  color: var(--ink);
+  box-shadow: 3px 4px 0 #201f1b35;
 }
 
 .handdrawn-lab .handdrawn-lab-badge {

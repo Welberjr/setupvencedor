@@ -132,6 +132,21 @@ it('puts workspace account actions in the rail and lets the acervo start without
   expect(screen.getByText('BEM-VINDO AO ACERVO')).toBeInTheDocument()
 })
 
+it('shows the chosen workspace name and keeps the email available as a tooltip', () => {
+  render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'welber.especialistadigital@gmail.com', displayName: 'Welber' } }} />)
+
+  expect(screen.getByLabelText('Conta da área de trabalho')).toHaveTextContent('Welber')
+  expect(screen.getByTitle('welber.especialistadigital@gmail.com')).toHaveTextContent('Welber')
+  expect(screen.queryByText('Base privada ativa')).not.toBeInTheDocument()
+})
+
+it('asks for a workspace name when a handdrawn session has none', () => {
+  render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
+
+  expect(screen.getByRole('dialog', { name: 'Como você quer aparecer no acervo?' })).toBeInTheDocument()
+  expect(screen.getByLabelText('Seu nome no acervo')).toBeInTheDocument()
+})
+
 it('gives every signed-in workspace area its own handdrawn illustration', async () => {
   const user = userEvent.setup()
   render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' }, roles: ['admin'] }} />)

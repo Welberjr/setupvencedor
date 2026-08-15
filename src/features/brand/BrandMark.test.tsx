@@ -15,3 +15,10 @@ it('renders a faceted green detail arrow', () => {
   expect(screen.getByTestId('detail-arrow-light-face')).toBeInTheDocument()
   expect(screen.getByTestId('detail-arrow-shadow-face')).toBeInTheDocument()
 })
+
+it('uses distinct handdrawn symbols for discovery and guided help', () => {
+  render(<><CommandIcon name="explore" /><CommandIcon name="assistant" /></>)
+
+  expect(screen.getByTestId('command-icon-explore').querySelector('[data-testid="explore-library-lens"]')).toBeInTheDocument()
+  expect(screen.getByTestId('command-icon-assistant').querySelector('[data-testid="assistant-idea-bubble"]')).toBeInTheDocument()
+})
