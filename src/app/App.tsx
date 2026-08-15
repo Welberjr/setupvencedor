@@ -27,6 +27,8 @@ import { InviteForm } from '../features/admin/InviteForm'
 import { PeopleDirectory } from '../features/admin/PeopleDirectory'
 import { hasAnyRole, type Role } from '../lib/roles'
 import { PwaInstallPrompt } from '../features/pwa/PwaInstallPrompt'
+import { HanddrawnLabBadge } from '../features/handdrawn/HanddrawnLabBadge'
+import type { VisualMode } from '../features/handdrawn/visual-mode'
 
 type Session = { user: { id: string; email: string }; roles?: Role[] } | null
 type Page = 'explore' | 'assistant' | 'favorites' | 'support' | 'admin'
@@ -45,10 +47,10 @@ function toCatalogItem(row: CatalogRow): CatalogItem {
 const navItems: Array<{ id: Page; label: string; icon: CommandIconName }> = [
   { id: 'explore', label: 'Explorar', icon: 'explore' }, { id: 'assistant', label: 'Assistente', icon: 'assistant' }, { id: 'favorites', label: 'Favoritos', icon: 'favorites' }, { id: 'support', label: 'Suporte', icon: 'support' },
 ]
-export function App({ session = null }: { session?: Session }) {
+export function App({ session = null, visualMode = 'command-center' }: { session?: Session; visualMode?: VisualMode }) {
   if (window.location.pathname === '/ativar') return <ActivateInvitePage />
   if (window.location.pathname === '/redefinir-senha') return <ResetPasswordPage />
-  if (!session) return <main className="app-shell auth-shell"><LoginForm onLogin={async (email, password) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signInWithPassword({ email, password }); if (error) throw error }} onForgotPassword={async (email) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/redefinir-senha` }); if (error) throw error }} /></main>
+  if (!session) return <main className={`app-shell auth-shell ${visualMode}`}><LoginForm onLogin={async (email, password) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signInWithPassword({ email, password }); if (error) throw error }} onForgotPassword={async (email) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/redefinir-senha` }); if (error) throw error }} /></main>
   const authenticatedSession = session
 
   const [exploreQuery, setExploreQuery] = useState('')
@@ -133,7 +135,7 @@ export function App({ session = null }: { session?: Session }) {
   const selectCategory = (category: string | null) => { setSelectedCategory(category); setPage('explore'); setCatalogPage(1); setIsCategoryMenuOpen(false) }
   const canAdmin = hasAnyRole(authenticatedSession.roles ?? [], ['admin', 'manager', 'editor'])
 
-  return <main className="app-shell">
+  return <main className={`app-shell ${visualMode}`}>
     <aside className="command-rail">
       <a className="brand" href="/"><BrandMark /><span>Setup<br />Vencedor</span></a>
       <nav aria-label="Principal" className="main-nav">
@@ -156,6 +158,7 @@ export function App({ session = null }: { session?: Session }) {
           <p className="eyebrow">WORKSPACE / BIBLIOTECA</p>
           <p className="topbar-title">A central de decisões técnicas da sua equipe.</p>
         </div>
+        {visualMode === 'handdrawn-lab' ? <HanddrawnLabBadge /> : null}
         <div className="topbar-tools">
           <PwaInstallPrompt />
           <div className="identity"><span className="avatar">{authenticatedSession.user.email.slice(0, 1).toUpperCase()}</span><span>{authenticatedSession.user.email}</span></div>

@@ -4,9 +4,11 @@ import { App } from './app/App'
 import type { Session as SupabaseSession } from '@supabase/supabase-js'
 import { getSupabaseClient } from './lib/supabase/client'
 import type { Role } from './lib/roles'
+import { readVisualMode } from './features/handdrawn/visual-mode'
 import './styles.css'
 
 const SW_UPDATE_INTERVAL_MS = 5 * 60 * 1000
+const visualMode = readVisualMode(import.meta.env.VITE_VISUAL_MODE)
 
 function usePwaUpdate() {
   useEffect(() => {
@@ -96,7 +98,7 @@ function Bootstrap() {
     return () => { active = false; window.clearTimeout(loadingTimeout); listener.subscription.unsubscribe() }
   }, [])
   if (isLoading) return null
-  return <App session={session} />
+  return <App session={session} visualMode={visualMode} />
 }
 
 createRoot(document.getElementById('root')!).render(

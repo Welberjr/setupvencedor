@@ -82,3 +82,18 @@ it('does not show a keyboard shortcut hint in the catalog search', () => {
   expect(screen.getByLabelText('Buscar no acervo')).toBeInTheDocument()
   expect(screen.queryByText('⌘ K')).not.toBeInTheDocument()
 })
+
+it('keeps the official shell unchanged by default', () => {
+  const { container } = render(<App session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
+
+  expect(container.querySelector('.app-shell')).toHaveClass('command-center')
+  expect(screen.queryByText('LABORATÓRIO VISUAL · DADOS REAIS')).not.toBeInTheDocument()
+})
+
+it('scopes the handdrawn lab and warns that actions use real data', () => {
+  const { container } = render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
+
+  expect(container.querySelector('.app-shell')).toHaveClass('handdrawn-lab')
+  expect(screen.getByText('LABORATÓRIO VISUAL · DADOS REAIS')).toBeInTheDocument()
+  expect(screen.getByRole('link', { name: 'Comparar com a plataforma oficial' })).toHaveAttribute('href', 'https://www.setupvencedor.com.br/')
+})
