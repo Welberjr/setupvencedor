@@ -6,6 +6,10 @@ import { getSupabaseClient } from './lib/supabase/client'
 import type { Role } from './lib/roles'
 import { readVisualMode } from './features/handdrawn/visual-mode'
 import './styles.css'
+import './styles/handdrawn-tokens.css'
+import './styles/handdrawn-shell.css'
+import './styles/handdrawn-explore.css'
+import './styles/handdrawn-responsive.css'
 
 const SW_UPDATE_INTERVAL_MS = 5 * 60 * 1000
 const visualMode = readVisualMode(import.meta.env.VITE_VISUAL_MODE)

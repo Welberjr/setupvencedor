@@ -1,0 +1,16 @@
+.handdrawn-lab {
+  --paper: #f8f0dc;
+  --paper-raised: #fffaf0;
+  --ink: #201f1b;
+  --ink-muted: #575149;
+  --brand-green: #caff3d;
+  --note-blue: #c9e6ff;
+  --note-coral: #ffd1ca;
+  --note-lilac: #e9dcff;
+  --note-green: #ddf4d2;
+  --pencil-blue: #2874a5;
+  --paper-border: 2px solid var(--ink);
+  --sketch-shadow: 4px 5px 0 #201f1b3d;
+  color: var(--ink);
+  background: var(--paper);
+}

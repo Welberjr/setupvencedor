@@ -1,0 +1,60 @@
+.handdrawn-lab .command-rail {
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-right-color: var(--ink);
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+
+.handdrawn-lab .workspace {
+  min-width: 0;
+  background: radial-gradient(#c8b99155 0.8px, transparent 0.8px) 0 0 / 9px 9px, var(--paper);
+}
+
+.handdrawn-lab .topbar {
+  border-bottom: 2px dashed #b78056;
+  background: #fffaf0cc;
+  color: var(--ink);
+}
+
+.handdrawn-lab .main-nav button {
+  min-height: 48px;
+  border: 2px solid transparent;
+  border-radius: 11px 16px 12px 14px;
+  color: var(--ink-muted);
+}
+
+.handdrawn-lab .main-nav button.active {
+  border-color: var(--ink);
+  background: var(--brand-green);
+  box-shadow: var(--sketch-shadow);
+  color: var(--ink);
+}
+
+.handdrawn-lab .identity {
+  border: var(--paper-border);
+  background: var(--paper-raised);
+  box-shadow: 2px 3px 0 #201f1b35;
+  color: var(--ink);
+}
+
+.handdrawn-lab .handdrawn-lab-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 2px dashed #9d5e2e;
+  border-radius: 12px;
+  background: var(--note-coral);
+  color: var(--ink);
+}
+
+.handdrawn-lab .handdrawn-lab-badge a {
+  color: #174f74;
+  font-weight: 800;
+}
+
+.handdrawn-lab :is(button, a, input, select, textarea):focus-visible {
+  outline: 3px solid #174f74;
+  outline-offset: 3px;
+}
