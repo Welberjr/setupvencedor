@@ -116,6 +116,12 @@
   color: #777067;
 }
 
+.handdrawn-lab .assistant-context-hints { margin-top: 12px; }
+.handdrawn-lab .assistant-context-hints p { margin: 0 0 8px; color: var(--ink-muted); font-size: 12px; line-height: 1.45; }
+.handdrawn-lab .assistant-context-hints > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.handdrawn-lab .assistant-context-hints button { border: 1px dashed var(--ink-soft); border-radius: 999px; background: var(--paper-warm); color: var(--ink); cursor: pointer; padding: 6px 10px; font: 700 11px var(--font-mono); }
+.handdrawn-lab .assistant-context-hints button:hover { background: var(--note-blue); }
+
 .handdrawn-lab .voice-button,
 .handdrawn-lab .recording-button,
 .handdrawn-lab .advisor-submit,

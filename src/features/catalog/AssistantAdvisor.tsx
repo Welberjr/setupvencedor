@@ -9,6 +9,7 @@ export type AssistantResponse = { query: string; transcript?: string; mode: 'ai'
 type AssistantAdvisorProps = { onResult: (result: AssistantResponse) => void }
 
 const maxRecordingSeconds = 120
+const contextHints = ['Codex', 'Claude Code', 'Começar do zero', 'Melhorar uma existente']
 
 function messageFor(error: unknown): string {
   const code = error instanceof Error ? error.message : 'assistant_not_available'
@@ -71,10 +72,18 @@ export function AssistantAdvisor({ onResult }: AssistantAdvisorProps) {
 
   function stopRecording() { if (recorderRef.current?.state === 'recording') recorderRef.current.stop() }
 
+  function addContextHint(hint: string) {
+    setQuery((current) => current.toLocaleLowerCase('pt-BR').includes(hint.toLocaleLowerCase('pt-BR')) ? current : `${current.trim()} ${hint}`.trim())
+  }
+
   return <section className="assistant-advisor" aria-labelledby="assistant-title">
     <div className="assistant-composer">
       <label htmlFor="assistant-query">Conte o resultado que você quer alcançar</label>
       <textarea id="assistant-query" disabled={loading || recording} maxLength={1500} onChange={(event) => setQuery(event.target.value)} placeholder="Ex.: preciso testar uma aplicação com IA, validar a interface e publicar na Cloudflare." value={query} />
+      <div className="assistant-context-hints">
+        <p>Quer uma indicação mais certeira? Escolha seu cliente e o ponto de partida.</p>
+        <div>{contextHints.map((hint) => <button key={hint} disabled={loading || recording} onClick={() => addContextHint(hint)} type="button">{hint}</button>)}</div>
+      </div>
       <div className="assistant-composer-actions">
         {recording ? <button className="recording-button" onClick={stopRecording} type="button"><Square size={17} /> Parar · {recordingSeconds}s / 120s</button> : <button className="voice-button" disabled={loading} onClick={() => void startRecording()} type="button"><Mic size={17} /> Explicar por áudio</button>}
         <button className="advisor-submit" disabled={loading || recording} onClick={() => void send()} type="button"><Send size={17} /> {loading ? 'Analisando…' : 'Encontrar caminhos'}</button>
