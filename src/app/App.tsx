@@ -131,7 +131,12 @@ export function App({ session = null, visualMode = 'command-center' }: { session
     const pageWindow = getPageWindow(items, catalogPage, options?.pageSize ?? catalogPageSize)
     return <><div className={`catalog-grid${options?.gridClassName ? ` ${options.gridClassName}` : ''}`}>{pageWindow.items.map((item) => <article className={`catalog-card type-${item.type.toLowerCase().replaceAll(' ', '-')}`} key={item.id}><div className="card-topline"><p className="eyebrow">{item.type}</p>{!isRedundantCategoryLabel(item.type, item.category) && <span>{item.category}</span>}</div><h2>{item.title}</h2><p>{createCardSummary(item)}</p><div className="card-actions"><button aria-label={`Ver detalhes de ${item.title}`} className="details-button" onClick={() => openItem(item)} type="button">Ver detalhes <CommandIcon name="arrow" size={22} /></button><FavoriteButton title={item.title} isFavorite={favoriteIds.has(item.id)} onToggle={() => toggleFavorite(item.id)} /></div></article>)}</div><CatalogPagination currentPage={pageWindow.currentPage} onPageChange={setCatalogPage} totalPages={pageWindow.totalPages} /></>
   }
-  const switchPage = (nextPage: Page) => { setPage(nextPage); setCatalogPage(1); setIsCategoryMenuOpen(false) }
+  const switchPage = (nextPage: Page) => {
+    setPage(nextPage)
+    setCatalogPage(1)
+    setIsCategoryMenuOpen(false)
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }
   const selectCategory = (category: string | null) => { setSelectedCategory(category); setPage('explore'); setCatalogPage(1); setIsCategoryMenuOpen(false) }
   const canAdmin = hasAnyRole(authenticatedSession.roles ?? [], ['admin', 'manager', 'editor'])
 

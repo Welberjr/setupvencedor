@@ -1,9 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { beforeEach, expect, it } from 'vitest'
+import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { App } from './App'
 
-beforeEach(() => window.history.replaceState({}, '', '/'))
+beforeEach(() => {
+  window.history.replaceState({}, '', '/')
+  vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined)
+})
+afterEach(() => vi.restoreAllMocks())
 
 it('renders the protected application shell after a session is supplied', () => {
   render(<App session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
@@ -140,4 +144,14 @@ it('turns the private login into a handdrawn welcome page only in the lab', () =
   rerender(<App visualMode="handdrawn-lab" />)
   expect(screen.getByRole('img', { name: /Escudo desenhado/i })).toHaveAttribute('src', '/illustrations/handdrawn/categories/quality-shield.webp')
   expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument()
+})
+
+it('returns to the top when the user changes workspace area', async () => {
+  const user = userEvent.setup()
+  const scrollTo = vi.mocked(window.scrollTo)
+  render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
+
+  await user.click(screen.getByRole('button', { name: 'Assistente' }))
+
+  expect(scrollTo).toHaveBeenLastCalledWith({ top: 0, left: 0, behavior: 'auto' })
 })

@@ -108,3 +108,17 @@ it('defines visible focus, touch targets, mobile card stability and motion reduc
 
   style.remove()
 })
+
+it('frames the approved navigation icons only inside the handdrawn laboratory', () => {
+  const style = mountStyle(`${readStyle('src/styles/handdrawn-tokens.css')}\n${readStyle('src/styles/handdrawn-shell.css')}`)
+  const rules = Array.from(style.sheet?.cssRules ?? []).filter((rule): rule is CSSStyleRule => rule instanceof CSSStyleRule)
+  const iconRule = rules.find((rule) => rule.selectorText === '.handdrawn-lab .main-nav .command-icon')
+  const assistantRule = rules.find((rule) => rule.selectorText === '.handdrawn-lab .main-nav .command-icon-assistant')
+
+  expect(iconRule?.style.border).toBe('2px solid var(--ink)')
+  expect(iconRule?.style.background).toBe('var(--note-blue)')
+  expect(assistantRule?.style.background).toBe('var(--note-lilac)')
+  expect(rules.some((rule) => rule.selectorText === '.main-nav .command-icon')).toBe(false)
+
+  style.remove()
+})

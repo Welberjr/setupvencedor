@@ -31,6 +31,49 @@
   color: var(--ink);
 }
 
+.handdrawn-lab .main-nav .command-icon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  padding: 4px;
+  overflow: visible;
+  border: 2px solid var(--ink);
+  border-radius: 10px 13px 9px 12px;
+  background: var(--note-blue);
+  box-shadow: 2px 3px 0 #201f1b35;
+  color: #174f74;
+  transform: rotate(-1.5deg);
+}
+
+.handdrawn-lab .main-nav .command-icon-assistant {
+  background: var(--note-lilac);
+  color: #6c4cab;
+  transform: rotate(1.4deg);
+}
+
+.handdrawn-lab .main-nav .command-icon-favorites {
+  background: var(--note-coral);
+  color: #a63f4c;
+}
+
+.handdrawn-lab .main-nav .command-icon-support {
+  background: var(--note-green);
+  color: #3d7b45;
+  transform: rotate(1deg);
+}
+
+.handdrawn-lab .main-nav .command-icon-admin {
+  background: #ffe8a8;
+  color: #8a5c14;
+  transform: rotate(-1deg);
+}
+
+.handdrawn-lab .main-nav button.active .command-icon {
+  background: var(--paper-raised);
+  color: var(--ink);
+  transform: rotate(0deg) translateY(-1px);
+}
+
 .handdrawn-lab .identity {
   border: var(--paper-border);
   background: var(--paper-raised);

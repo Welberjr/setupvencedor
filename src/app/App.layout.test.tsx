@@ -1,7 +1,15 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { expect, it } from 'vitest'
+import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { App } from './App'
+
+beforeEach(() => {
+  vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined)
+})
+
+afterEach(() => {
+  vi.restoreAllMocks()
+})
 
 it('uses a centered, label-free heading in the assistant', async () => {
   const user = userEvent.setup()
