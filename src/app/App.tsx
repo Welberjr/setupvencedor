@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Search } from 'lucide-react'
+import { ChevronDown, LogOut, Search } from 'lucide-react'
 import { BrandMark } from '../features/brand/BrandMark'
 import { CommandIcon, type CommandIconName } from '../features/brand/CommandIcon'
 import { FavoriteButton } from '../features/catalog/FavoriteButton'
@@ -68,6 +68,8 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   const [catalogPage, setCatalogPage] = useState(1)
   const [accessRefreshKey, setAccessRefreshKey] = useState(0)
   const [displayName, setDisplayName] = useState(authenticatedSession.user.displayName?.trim() ?? '')
+  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false)
+  const [accountStatus, setAccountStatus] = useState('')
   const catalogPageSize = useCatalogPageSize()
 
   useEffect(() => {
@@ -151,6 +153,13 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
     setDisplayName(nextDisplayName)
   }
 
+  async function signOut() {
+    const supabase = getSupabaseClient()
+    if (!supabase) { setAccountStatus('Não foi possível encerrar a sessão agora.'); return }
+    const { error } = await supabase.auth.signOut()
+    if (error) setAccountStatus('Não foi possível encerrar a sessão agora.')
+  }
+
   return <main className={`app-shell ${visualMode}`}>
     <aside className="command-rail">
       <a className="brand" href="/"><BrandMark /><span>Setup<br />Vencedor</span></a>
@@ -167,7 +176,8 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
         {canAdmin ? <button aria-label="Administração" className={page === 'admin' ? 'active' : ''} onClick={() => switchPage('admin')} type="button"><CommandIcon name="admin" /><span>Administração</span></button> : null}
       </nav>
       <div aria-label="Conta da área de trabalho" className="workspace-account">
-        <div className="identity" title={authenticatedSession.user.email}><span className="avatar">{accountName.slice(0, 1).toUpperCase()}</span><span>{accountName}</span></div>
+        {isAccountMenuOpen ? <div aria-label="Menu da conta" className="account-menu" id="workspace-account-menu" role="menu"><p>Conta conectada</p><strong>{authenticatedSession.user.email}</strong><button onClick={() => void signOut()} role="menuitem" type="button"><LogOut aria-hidden="true" size={16} />Sair</button>{accountStatus ? <small role="status">{accountStatus}</small> : null}</div> : null}
+        <button aria-controls="workspace-account-menu" aria-expanded={isAccountMenuOpen} aria-haspopup="menu" aria-label="Abrir menu da conta" className="identity account-trigger" onClick={() => { setAccountStatus(''); setIsAccountMenuOpen((open) => !open) }} title={authenticatedSession.user.email} type="button"><span className="avatar">{accountName.slice(0, 1).toUpperCase()}</span><span>{accountName}</span><ChevronDown aria-hidden="true" className={isAccountMenuOpen ? 'account-chevron open' : 'account-chevron'} size={15} /></button>
         <PwaInstallPrompt />
       </div>
     </aside>

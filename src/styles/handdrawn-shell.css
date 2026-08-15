@@ -96,7 +96,7 @@
 
 .handdrawn-lab .identity {
   width: 100%;
-  max-width: none;
+  max-width: 210px;
   padding: 5px 9px 5px 5px;
   border: var(--paper-border);
   border-radius: 13px 9px 12px 10px;
@@ -105,6 +105,28 @@
   color: var(--ink);
   font-weight: 700;
 }
+
+.handdrawn-lab .account-trigger {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.handdrawn-lab .account-trigger:hover {
+  background: var(--note-green);
+  transform: translateY(-1px) rotate(-0.2deg);
+}
+
+.handdrawn-lab .account-chevron {
+  flex: 0 0 auto;
+  margin-left: auto;
+  transition: transform 160ms ease;
+}
+
+.handdrawn-lab .account-chevron.open { transform: rotate(180deg); }
 
 .handdrawn-lab .identity > span:last-child {
   min-width: 0;
@@ -125,15 +147,57 @@
 
 .handdrawn-lab .workspace-account {
   display: grid;
+  justify-items: center;
   gap: 10px;
   margin-top: auto;
   padding: 12px 0 0;
   border-top: 2px dashed #b78056;
   min-width: 0;
+  position: relative;
 }
 
+.handdrawn-lab .account-menu {
+  position: absolute;
+  z-index: 8;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  display: grid;
+  width: min(210px, 100%);
+  gap: 8px;
+  box-sizing: border-box;
+  padding: 13px;
+  border: var(--paper-border);
+  border-radius: 14px 10px 15px 12px;
+  background: #fffaf0;
+  box-shadow: var(--sketch-shadow);
+  color: var(--ink);
+  transform: translateX(-50%) rotate(-0.35deg);
+}
+
+.handdrawn-lab .account-menu p,
+.handdrawn-lab .account-menu strong,
+.handdrawn-lab .account-menu small { margin: 0; }
+.handdrawn-lab .account-menu p { color: var(--ink-muted); font: 700 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.handdrawn-lab .account-menu strong { overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.handdrawn-lab .account-menu button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  border: var(--paper-border);
+  border-radius: 9px 12px 10px 11px;
+  background: var(--note-coral);
+  box-shadow: 2px 3px 0 #201f1b35;
+  color: var(--ink);
+  cursor: pointer;
+  font: 800 12px var(--font-mono);
+}
+.handdrawn-lab .account-menu button:hover { background: #ffb6ab; transform: translateY(-1px); }
+.handdrawn-lab .account-menu small { color: #9b3434; font-size: 11px; line-height: 1.35; }
+
 .handdrawn-lab .workspace-account .pwa-install {
-  width: 100%;
+  width: min(210px, 100%);
   min-width: 0;
   align-items: stretch;
 }

@@ -140,6 +140,16 @@ it('shows the chosen workspace name and keeps the email available as a tooltip',
   expect(screen.queryByText('Base privada ativa')).not.toBeInTheDocument()
 })
 
+it('opens the centered account menu with a clear sign-out action', async () => {
+  const user = userEvent.setup()
+  render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'welber.especialistadigital@gmail.com', displayName: 'Welber' } }} />)
+
+  await user.click(screen.getByRole('button', { name: 'Abrir menu da conta' }))
+
+  expect(screen.getByRole('menu', { name: 'Menu da conta' })).toHaveTextContent('welber.especialistadigital@gmail.com')
+  expect(screen.getByRole('menuitem', { name: 'Sair' })).toBeInTheDocument()
+})
+
 it('asks for a workspace name when a handdrawn session has none', () => {
   render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
 
