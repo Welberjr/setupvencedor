@@ -3,11 +3,20 @@
   .handdrawn-lab .command-rail { position: sticky; top: 0; z-index: 30; width: 100%; border-right: 0; border-bottom: var(--paper-border); }
   .handdrawn-lab .main-nav button, .handdrawn-lab button, .handdrawn-lab a { min-height: 44px; }
   .handdrawn-lab .topbar { align-items: flex-start; flex-direction: column; }
+  .handdrawn-lab .illustrated-hero { grid-template-columns: 1fr; }
+  .handdrawn-lab .illustrated-hero h1 { max-width: 14ch; }
+  .handdrawn-lab .illustrated-hero-artwork { width: min(620px, 100%); margin-inline: auto; }
+  .handdrawn-lab .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 540px) {
   .handdrawn-lab .workspace { overflow-x: clip; }
   .handdrawn-lab .handdrawn-lab-badge { align-items: flex-start; flex-direction: column; }
+  .handdrawn-lab .illustrated-hero { padding: 22px 18px; border-radius: 16px 12px 18px 14px; }
+  .handdrawn-lab .illustrated-hero h1 { font-size: clamp(35px, 11vw, 48px); }
+  .handdrawn-lab .handdrawn-count-note { transform: none; }
+  .handdrawn-lab .catalog-grid { grid-template-columns: 1fr; }
+  .handdrawn-lab .catalog-card, .handdrawn-lab .catalog-card:nth-child(n) { transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,1 +1,240 @@
-/* Phase 1 Explore rules are added after the shared shell is verified. */
+.handdrawn-lab .illustrated-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(24px, 4vw, 52px);
+  overflow: hidden;
+  border: var(--paper-border);
+  border-radius: 22px 17px 25px 19px;
+  background: var(--paper-raised);
+  box-shadow: var(--sketch-shadow);
+}
+
+.handdrawn-lab .illustrated-hero::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 26px;
+  top: -5px;
+  left: 45%;
+  background: #c9e6ffb8;
+  transform: rotate(-2deg);
+}
+
+.handdrawn-lab .illustrated-hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.handdrawn-lab .illustrated-eyebrow {
+  width: fit-content;
+  margin: 0 0 14px;
+  padding: 6px 11px 5px;
+  border: 2px solid var(--ink);
+  border-radius: 999px 830px 920px 760px;
+  background: var(--brand-green);
+  color: var(--ink);
+  font: 800 11px/1.1 'DM Mono', monospace;
+  letter-spacing: 0.09em;
+}
+
+.handdrawn-lab .illustrated-hero h1 {
+  max-width: 11ch;
+  margin: 0;
+  color: var(--ink);
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+  font-size: clamp(38px, 5vw, 68px);
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+}
+
+.handdrawn-lab .illustrated-description {
+  max-width: 610px;
+  margin: 20px 0 0;
+  color: var(--ink-muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.handdrawn-lab .handdrawn-count-note {
+  display: grid;
+  width: fit-content;
+  gap: 5px;
+  margin-top: 24px;
+  padding: 12px 16px;
+  border: 2px dashed #7d5a31;
+  border-radius: 9px 15px 10px 13px;
+  background: var(--note-lilac);
+  box-shadow: 3px 4px 0 #201f1b2b;
+  transform: rotate(-1deg);
+}
+
+.handdrawn-lab .handdrawn-count-note small {
+  color: #6b4b83;
+  font: 800 10px 'DM Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+.handdrawn-lab .handdrawn-count-note strong {
+  color: var(--ink);
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+  font-size: 17px;
+}
+
+.handdrawn-lab .illustrated-hero-artwork {
+  position: relative;
+  margin: 0;
+  padding: 12px;
+  border: 2px dashed #b78056;
+  border-radius: 48% 52% 49% 51%;
+  background: #f8f0dc;
+  transform: rotate(0.7deg);
+}
+
+.handdrawn-lab .illustrated-hero-artwork img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 48% 52% 49% 51%;
+  mix-blend-mode: multiply;
+}
+
+.handdrawn-lab .explore-search {
+  border: var(--paper-border);
+  background: var(--paper-raised);
+  box-shadow: var(--sketch-shadow);
+  color: var(--pencil-blue);
+}
+
+.handdrawn-lab .explore-search input {
+  color: var(--ink);
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+  font-size: 17px;
+}
+
+.handdrawn-lab .explore-search input::placeholder {
+  color: #756e65;
+}
+
+.handdrawn-lab .explore-submenu {
+  border: var(--paper-border);
+  background: var(--paper-raised);
+  box-shadow: var(--sketch-shadow);
+}
+
+.handdrawn-lab .explore-submenu button {
+  color: var(--ink-muted);
+}
+
+.handdrawn-lab .explore-submenu button.selected {
+  border: var(--paper-border);
+  background: var(--brand-green);
+  color: var(--ink);
+}
+
+.handdrawn-lab .section-heading h2 {
+  color: var(--ink);
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+}
+
+.handdrawn-lab .section-heading > span {
+  color: var(--ink-muted);
+}
+
+.handdrawn-lab .catalog-card {
+  border: var(--paper-border);
+  border-radius: 12px 18px 13px 16px;
+  background: var(--note-blue);
+  box-shadow: var(--sketch-shadow);
+  color: var(--ink);
+}
+
+.handdrawn-lab .catalog-card::before {
+  width: 8px;
+  background: #2874a5;
+}
+
+.handdrawn-lab .catalog-card:nth-child(3n + 2) {
+  background: var(--note-lilac);
+  transform: rotate(0.35deg);
+}
+
+.handdrawn-lab .catalog-card:nth-child(3n) {
+  background: var(--note-green);
+  transform: rotate(-0.35deg);
+}
+
+.handdrawn-lab .catalog-card h2 {
+  color: var(--ink);
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+  letter-spacing: -0.045em;
+}
+
+.handdrawn-lab .catalog-card > p,
+.handdrawn-lab .card-topline > span {
+  color: var(--ink-muted);
+}
+
+.handdrawn-lab .catalog-card .tag-row span {
+  border: 1px solid #201f1b4d;
+  background: #fffaf080;
+  color: var(--ink-muted);
+}
+
+.handdrawn-lab .catalog-card:is(:hover, :focus-within) {
+  transform: translateY(-4px) rotate(-0.25deg);
+  box-shadow: 7px 9px 0 #201f1b45;
+}
+
+.handdrawn-lab .catalog-card .details-button {
+  min-height: 44px;
+  padding: 8px 11px;
+  border: var(--paper-border);
+  border-radius: 8px 12px 9px 11px;
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+
+.handdrawn-lab .catalog-card .details-button .command-icon-arrow {
+  color: #4f7d13;
+  filter: none;
+}
+
+.handdrawn-lab .favorite {
+  min-height: 44px;
+  border: var(--paper-border);
+  background: var(--note-coral);
+  color: var(--ink);
+}
+
+.handdrawn-lab .favorite.active {
+  background: var(--brand-green);
+  color: var(--ink);
+}
+
+.handdrawn-lab .catalog-pagination {
+  color: var(--ink);
+}
+
+.handdrawn-lab .catalog-pagination button {
+  min-width: 44px;
+  min-height: 44px;
+  border: var(--paper-border);
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+
+.handdrawn-lab .catalog-pagination button:hover:not(:disabled),
+.handdrawn-lab .catalog-pagination .page-numbers button.active {
+  border-color: var(--ink);
+  background: var(--brand-green);
+  color: var(--ink);
+  box-shadow: 2px 3px 0 #201f1b35;
+}
+
+.handdrawn-lab .catalog-pagination button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
