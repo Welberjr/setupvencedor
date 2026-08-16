@@ -50,7 +50,7 @@ export function PublicAccessPage({ onLogin, onSignUp, onForgotPassword }: Public
       }
     } catch (error) {
       const source = error instanceof Error ? error.message.toLowerCase() : ''
-      setMessage(source.includes('captcha') ? 'Não foi possível validar a verificação de segurança. Tente novamente.' : source.includes('already registered') || source.includes('already been registered') ? 'Este e-mail já possui acesso. Entre com sua senha.' : mode === 'signup' ? 'Não foi possível criar seu acesso agora. Tente novamente em instantes.' : mode === 'login' ? 'E-mail ou senha incorretos.' : 'Não foi possível enviar a recuperação agora. Tente novamente em instantes.')
+      setMessage(source.includes('captcha') ? 'Não foi possível validar a verificação de segurança. Tente novamente.' : source.includes('rate limit') || source.includes('too many requests') ? 'Aguarde alguns minutos antes de pedir outro e-mail de confirmação.' : source.includes('already registered') || source.includes('already been registered') ? 'Este e-mail já possui acesso. Entre com sua senha.' : mode === 'signup' ? 'Não foi possível criar seu acesso agora. Tente novamente em instantes.' : mode === 'login' ? 'E-mail ou senha incorretos.' : 'Não foi possível enviar a recuperação agora. Tente novamente em instantes.')
     } finally { setIsSending(false) }
   }
 

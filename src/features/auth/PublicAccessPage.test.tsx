@@ -82,3 +82,18 @@ it('sends the verified Turnstile token when entering or recovering a public acco
   await user.click(screen.getByRole('button', { name: 'Enviar link de recuperação' }))
   expect(onForgotPassword).toHaveBeenCalledWith('ana@example.com', 'verified-token')
 })
+
+it('explains a temporary email sending limit without exposing provider details', async () => {
+  const user = userEvent.setup()
+  const onSignUp = vi.fn().mockRejectedValue(new Error('email rate limit exceeded'))
+  render(<PublicAccessPage onLogin={vi.fn()} onSignUp={onSignUp} />)
+
+  await user.type(screen.getByLabelText('Nome completo'), 'Ana Pessoa')
+  await user.type(screen.getByLabelText('E-mail'), 'ana@example.com')
+  await user.type(screen.getByLabelText('Senha'), 'senha123')
+  await user.click(screen.getByRole('checkbox', { name: /aceito os termos de uso/i }))
+  await user.click(screen.getByRole('button', { name: 'Concluir verificação de segurança' }))
+  await user.click(screen.getByRole('button', { name: 'Criar meu acesso grátis' }))
+
+  expect(screen.getByText('Aguarde alguns minutos antes de pedir outro e-mail de confirmação.')).toBeInTheDocument()
+})
