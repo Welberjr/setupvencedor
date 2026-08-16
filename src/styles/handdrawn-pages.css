@@ -304,6 +304,11 @@
   background: radial-gradient(#c8b99155 0.8px, transparent 0.8px) 0 0 / 9px 9px, var(--paper);
 }
 
+.handdrawn-lab.auth-shell.public-access-shell {
+  grid-template-columns: minmax(0, 1fr);
+  padding: clamp(24px, 4vw, 56px);
+}
+
 .handdrawn-lab .handdrawn-auth-artwork {
   display: grid;
   gap: 18px;
@@ -349,8 +354,9 @@
 
 .handdrawn-lab .public-access {
   display: grid;
-  grid-template-columns: minmax(300px, 1.12fr) minmax(320px, .88fr);
-  width: min(1120px, 100%);
+  grid-template-columns: minmax(420px, 1.08fr) minmax(380px, .92fr);
+  width: min(1220px, 100%);
+  min-height: min(760px, calc(100vh - 112px));
   overflow: hidden;
   border: var(--paper-border);
   border-radius: 24px 18px 28px 20px;
@@ -358,7 +364,7 @@
   box-shadow: 9px 10px 0 #201f1b40;
   color: var(--ink);
 }
-.handdrawn-lab .public-access-story { position: relative; min-height: 650px; overflow: hidden; padding: clamp(28px, 5vw, 62px); background: linear-gradient(135deg, #d8edff, #f8f0dc 55%, #ddf4d2); }
+.handdrawn-lab .public-access-story { position: relative; min-height: 650px; overflow: hidden; padding: clamp(32px, 5vw, 70px); background: linear-gradient(135deg, #d8edff, #f8f0dc 55%, #ddf4d2); }
 .handdrawn-lab .public-access-story::before { content: ''; position: absolute; width: 450px; height: 450px; right: -170px; bottom: -180px; border: 2px dashed #2074a9; border-radius: 48% 52% 45% 55%; background: #fff8e877; transform: rotate(-12deg); }
 .handdrawn-lab .public-access-story > * { position: relative; z-index: 1; }
 .handdrawn-lab .public-access-sv { display: grid; place-items: center; width: 72px; aspect-ratio: 1; border: var(--paper-border); border-radius: 50% 48% 52% 46%; background: #151812; box-shadow: 3px 4px 0 #201f1b33; color: var(--brand-green); font: 900 25px/.9 'Comic Sans MS', 'Segoe Print', cursive; transform: rotate(-5deg); }
@@ -368,7 +374,7 @@
 .handdrawn-lab .public-access-doodle { display: flex; align-items: center; gap: 13px; margin-top: 46px; color: #2074a9; font: 900 35px/1 'Comic Sans MS', 'Segoe Print', cursive; }
 .handdrawn-lab .public-access-doodle b { display: grid; place-items: center; width: 54px; height: 54px; border: var(--paper-border); border-radius: 50% 46% 51% 48%; background: #fffaf0; box-shadow: 3px 4px 0 #201f1b2d; font-size: 21px; }
 .handdrawn-lab .public-access-doodle i { font-style: normal; transform: rotate(-15deg); }
-.handdrawn-lab .public-access-form { display: grid; align-content: center; gap: 13px; padding: clamp(28px, 5vw, 58px); background: #fffaf0; }
+.handdrawn-lab .public-access-form { display: grid; align-content: center; gap: 15px; padding: clamp(36px, 5vw, 74px); background: #fffaf0; }
 .handdrawn-lab .public-access-form h2 { margin: 4px 0 2px; font: 900 clamp(31px, 4vw, 46px)/.98 'Comic Sans MS', 'Segoe Print', cursive; letter-spacing: -.06em; }
 .handdrawn-lab .public-access-lead { margin: 0 0 11px; color: var(--ink-muted); font-size: 14px; line-height: 1.55; }
 .handdrawn-lab .public-access-form label { display: grid; gap: 7px; color: var(--ink-muted); font-size: 12px; font-weight: 800; }
@@ -417,7 +423,8 @@
   .handdrawn-lab.auth-shell { grid-template-columns: 1fr; align-content: start; }
   .handdrawn-lab .handdrawn-auth-artwork { width: min(680px, 100%); margin-inline: auto; }
   .handdrawn-lab .auth-form { width: min(680px, 100%); margin-inline: auto; }
-  .handdrawn-lab .public-access { grid-template-columns: 1fr; width: min(680px, 100%); }
+  .handdrawn-lab.auth-shell.public-access-shell { padding: 22px; }
+  .handdrawn-lab .public-access { grid-template-columns: 1fr; width: min(720px, 100%); min-height: 0; }
   .handdrawn-lab .public-access-story { min-height: 0; }
 }
 

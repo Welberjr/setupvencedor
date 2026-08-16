@@ -156,11 +156,11 @@ max_indexes = 5
 enabled = true
 # The base URL of your website. Used as an allow-list for redirects and for constructing URLs used
 # in emails.
-site_url = "https://setupvencedor.com.br"
+site_url = "https://setup-vencedor-staging.pages.dev"
 # The public URL that Auth serves on. Defaults to the API external URL with `/auth/v1` appended.
 # external_url = ""
 # A list of *exact* URLs that auth providers are permitted to redirect to post authentication.
-additional_redirect_urls = ["http://127.0.0.1:3000", "https://setupvencedor.com.br", "https://setupvencedor.com.br/boas-vindas", "https://www.setupvencedor.com.br", "https://www.setupvencedor.com.br/boas-vindas"]
+additional_redirect_urls = ["http://127.0.0.1:3000", "http://localhost:3000", "https://setup-vencedor-staging.pages.dev", "https://setup-vencedor-staging.pages.dev/boas-vindas", "https://setup-vencedor-staging.pages.dev/redefinir-senha"]
 # How long tokens are valid for, in seconds. Defaults to 3600 (1 hour), maximum 604,800 (1 week).
 jwt_expiry = 3600
 # JWT issuer URL. If not set, defaults to auth.external_url.
@@ -243,13 +243,13 @@ otp_expiry = 3600
 # admin_email = "admin@email.com"
 # sender_name = "Admin"
 
-# O provedor padrão do plano gratuito não permite personalizar modelos de e-mail.
-# A experiência de boas-vindas e o convite para a comunidade são exibidos na
-# tela de confirmação do aplicativo. Quando houver SMTP próprio, este modelo
-# poderá ser habilitado novamente.
-# [auth.email.template.confirmation]
-# subject = "Confirme seu acesso gratuito ao Setup Vencedor"
-# content_path = "./supabase/templates/confirmation.html"
+[auth.email.template.confirmation]
+subject = "Confirme seu acesso ao Setup Vencedor"
+content_path = "./templates/confirmation.html"
+
+[auth.email.template.recovery]
+subject = "Redefina sua senha do Setup Vencedor"
+content_path = "./templates/recovery.html"
 
 # Uncomment to customize notification email template
 # [auth.email.notification.password_changed]

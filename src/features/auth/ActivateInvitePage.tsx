@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { workerUrl } from '../../lib/api/worker'
 import { AuthArtwork } from '../handdrawn/AuthArtwork'
 import type { VisualMode } from '../handdrawn/visual-mode'
+import { invitationErrorMessage } from './invite-error-message'
 
 type InvitePreview = { delivery: 'email' | 'direct_link'; email: string | null; recipientName: string | null }
 
@@ -29,9 +30,12 @@ export function ActivateInvitePage({ visualMode = 'command-center' }: { visualMo
     setPending(true); setMessage('')
     try {
       const response = await fetch(workerUrl('/v1/invitations/activate'), { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ token, password, email: invite?.delivery === 'direct_link' ? email : undefined, recipientName: name }) })
-      if (!response.ok) throw new Error()
+      if (!response.ok) {
+        const body = await response.json().catch(() => null) as { error?: string } | null
+        throw new Error(body?.error ?? '')
+      }
       window.location.assign('/')
-    } catch { setMessage('Não foi possível concluir seu acesso. Solicite um novo convite.') } finally { setPending(false) }
+    } catch (error) { setMessage(invitationErrorMessage(error instanceof Error ? error.message : null)) } finally { setPending(false) }
   }
 
   const directLink = invite?.delivery === 'direct_link'
