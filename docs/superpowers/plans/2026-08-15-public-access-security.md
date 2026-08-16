@@ -31,24 +31,24 @@
 
 **Interfaces:** `PublicAccessSubmission` includes `captchaToken`, `termsAccepted: true`, and `termsVersion: '2026-08-15'`; login, signup and recovery callbacks all receive `captchaToken`.
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```tsx
 expect(screen.getByText(/aceite os termos/i)).toBeInTheDocument()
 expect(onLogin).toHaveBeenCalledWith('ana@example.com', 'senha123', 'verified-token')
 ```
 
-- [ ] **Step 2: Run red tests**
+- [x] **Step 2: Run red tests**
 
 Run: `npm test -- src/features/auth/PublicAccessPage.test.tsx src/app/App.test.tsx`
 
 Expected: FAIL because consent and CAPTCHA data do not exist.
 
-- [ ] **Step 3: Add the minimal typed UI and Auth calls**
+- [x] **Step 3: Add the minimal typed UI and Auth calls**
 
 Render mandatory consent in signup mode; block submission without it or a token. Pass `options.captchaToken` to `signUp`, `signInWithPassword`, and `resetPasswordForEmail`; store consent version in signup `data` only.
 
-- [ ] **Step 4: Run green tests and commit**
+- [x] **Step 4: Run green tests and commit**
 
 Run: `npm test -- src/features/auth/PublicAccessPage.test.tsx src/app/App.test.tsx`
 
@@ -65,23 +65,23 @@ Commit: `git commit -am "feat: require consent and captcha for public auth"`
 
 **Interfaces:** `TurnstileChallenge({ action, onTokenChange })` uses only `VITE_TURNSTILE_SITE_KEY`, returns a token on success, and clears it on expiry/error.
 
-- [ ] **Step 1: Write red component tests**
+- [x] **Step 1: Write red component tests**
 
 ```tsx
 expect(render(<TurnstileChallenge action="signup" onTokenChange={vi.fn()} />).container).toBeEmptyDOMElement()
 ```
 
-- [ ] **Step 2: Run red test**
+- [x] **Step 2: Run red test**
 
 Run: `npm test -- src/features/auth/TurnstileChallenge.test.tsx`
 
 Expected: FAIL because the component does not exist.
 
-- [ ] **Step 3: Implement and test green**
+- [x] **Step 3: Implement and test green**
 
 Load Cloudflare's explicit widget script once, use `signup`, `login`, and `recovery` actions, and never put its secret in source. Run `npm test -- src/features/auth/TurnstileChallenge.test.tsx src/features/auth/PublicAccessPage.test.tsx`.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 Commit: `git commit -am "feat: add Turnstile challenge to public auth"`
 
@@ -93,7 +93,7 @@ Commit: `git commit -am "feat: add Turnstile challenge to public auth"`
 
 **Interfaces:** `legal_acceptances(user_id, document_key, document_version, accepted_at)` is written only by the Auth trigger. `audit_events` gains `public_signup.created` and `public_signup.confirmed` events with no secret payloads.
 
-- [ ] **Step 1: Create migration and failing pgTAP test**
+- [x] **Step 1: Create migration and failing pgTAP test**
 
 Run: `npx supabase migration new public_access_consent_audit`
 
@@ -105,11 +105,11 @@ Run: `npx supabase test db --linked --file supabase/tests/public_access_security
 
 Expected: FAIL because the table/policies do not exist.
 
-- [ ] **Step 3: Add minimum RLS-safe migration**
+- [x] **Step 3: Add minimum RLS-safe migration**
 
 Create the table with RLS, revoke `anon`, grant authenticated `select` only with `(select auth.uid()) = user_id`, and update the existing security-definer Auth triggers to record consent and audit events internally. Do not change invitation role behavior.
 
-- [ ] **Step 4: Push and verify, then commit**
+- [x] **Step 4: Push and verify, then commit**
 
 Run: `npx supabase db push --linked --include-all` and `npx supabase migration list --linked`.
 

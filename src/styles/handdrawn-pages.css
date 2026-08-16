@@ -381,6 +381,10 @@
 .handdrawn-lab .public-access-form label small { color: #777067; font-weight: 600; }
 .handdrawn-lab .public-access-form input { width: 100%; min-height: 42px; border: 2px solid #201f1b73; border-radius: 10px 13px 9px 12px; background: #fffdf7; color: var(--ink); padding: 0 12px; }
 .handdrawn-lab .public-access-form input:focus { border-color: var(--ink); outline: 3px solid #caff3d80; }
+.handdrawn-lab .public-access-consent { display: flex; align-items: flex-start; gap: 8px; color: var(--ink-muted); font-size: 11px; font-weight: 650; line-height: 1.35; }
+.handdrawn-lab .public-access-consent input { flex: 0 0 auto; width: 18px; min-height: 18px; margin: 0; padding: 0; accent-color: var(--brand-green); }
+.handdrawn-lab .public-access-consent a { color: #07567a; font-weight: 900; text-decoration-thickness: 2px; text-underline-offset: 2px; }
+.handdrawn-lab .turnstile-challenge { min-height: 65px; }
 .handdrawn-lab .public-access-message { margin: 3px 0; padding: 10px 12px; border: 2px dashed #9d5e2e; border-radius: 9px 13px 10px 14px; background: var(--note-coral); color: var(--ink); font-size: 12px; font-weight: 700; }
 .handdrawn-lab .public-access-submit { width: 100%; margin-top: 4px; font-family: 'Comic Sans MS', 'Segoe Print', cursive; }
 .handdrawn-lab .public-access-switch { text-align: center; }
