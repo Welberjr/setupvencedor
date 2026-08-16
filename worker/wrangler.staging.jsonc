@@ -4,7 +4,7 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-08-11",
   "vars": {
-    "EMAIL_FROM": "Setup Vencedor Staging <onboarding@resend.dev>",
+    "EMAIL_FROM": "Setup Vencedor Staging <acesso@setupvencedor.com.br>",
     "APP_URL": "https://staging.setupvencedor.com.br",
     "MCP_PUBLIC_ORIGIN": "https://staging.setupvencedor.com.br"
   },

@@ -8,6 +8,7 @@ it('routes the staging API and OAuth discovery through the staging hostname', ()
   const config = readFileSync(configPath, 'utf8')
 
   expect(config).toContain('"MCP_PUBLIC_ORIGIN": "https://staging.setupvencedor.com.br"')
+  expect(config).toContain('"EMAIL_FROM": "Setup Vencedor Staging <acesso@setupvencedor.com.br>"')
   expect(config).toContain('"pattern": "staging.setupvencedor.com.br/api/*"')
   expect(config).toContain('"pattern": "staging.setupvencedor.com.br/v1/*"')
   expect(config).toContain('"pattern": "staging.setupvencedor.com.br/.well-known/*"')
