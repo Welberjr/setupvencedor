@@ -1,6 +1,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import type { Env } from './env'
 import { createInviteToken, normalizeEmail, sha256, validateInviteInput, type InviteInput } from './invitations'
+import { renderInvitationEmail } from './email-template'
 import { mcpResponse } from './mcp'
 import { AssistantError, handleAssistantRequest } from './assistant'
 import { parsePeoplePagination, type PeoplePagination } from './admin-people'
@@ -110,10 +111,6 @@ function tokenFrom(request: Request): string | null {
   return value?.startsWith('Bearer ') ? value.slice(7) : null
 }
 
-function escapeHtml(value: string): string {
-  return value.replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character] ?? character)
-}
-
 function activationUrl(env: Env, token: string): string | undefined {
   return env.APP_URL ? `${env.APP_URL.replace(/\/$/, '')}/ativar?token=${encodeURIComponent(token)}` : undefined
 }
@@ -136,7 +133,6 @@ async function requireAdmin(request: Request, env: Env): Promise<AdminContext> {
 async function sendInviteEmail(env: Env, recipient: Pick<InvitationRow, 'email_normalized' | 'recipient_name'>, token: string): Promise<boolean> {
   if (!env.RESEND_API_KEY || !env.EMAIL_FROM || !env.APP_URL || !recipient.email_normalized) return false
   const url = activationUrl(env, token)
-  const greeting = recipient.recipient_name ? `Olá, ${escapeHtml(recipient.recipient_name)}.` : 'Olá.'
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
@@ -144,7 +140,7 @@ async function sendInviteEmail(env: Env, recipient: Pick<InvitationRow, 'email_n
       from: env.EMAIL_FROM,
       to: recipient.email_normalized,
       subject: 'Seu convite para a Comunidade Setup Vencedor',
-      html: `<main style="background:#f8f0dd;color:#201f1b;padding:32px 16px;text-align:center;font-family:Arial,sans-serif"><img src="https://setupvencedor.com.br/brand/setup-vencedor-sv-approved.png" width="54" height="54" alt="Setup Vencedor" style="display:block;margin:0 auto 16px;border-radius:14px"><p style="margin:0 0 12px;color:#2474a9;font-size:11px;font-weight:700;letter-spacing:1.4px">SETUP VENCEDOR</p><h1 style="margin:0 0 16px;font-size:30px">Há um lugar reservado para você.</h1><p style="margin:0 auto 22px;max-width:480px;line-height:1.55">${greeting} Crie sua senha para entrar na Comunidade Setup Vencedor.</p><p><a href="${url}" style="display:inline-block;background:#b8ff38;color:#201f1b;padding:14px 20px;border:2px solid #201f1b;border-radius:10px;text-decoration:none;font-weight:700">Aceitar convite</a></p><p style="margin:22px auto 0;max-width:480px;color:#655d53;font-size:13px;line-height:1.5">Este convite é pessoal, expira em 72 horas e vale somente para ${escapeHtml(recipient.email_normalized)}.</p></main>`,
+      html: renderInvitationEmail({ recipientName: recipient.recipient_name, email: recipient.email_normalized, activationUrl: url }),
     }),
   })
   return response.ok
