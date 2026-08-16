@@ -141,11 +141,12 @@ it('keeps all primary Explore actions available in the handdrawn lab', async () 
   expect(screen.getAllByRole('button', { name: /Ver detalhes/i }).length).toBeGreaterThan(0)
 })
 
-it('puts workspace account actions in the rail and lets the acervo start without a topbar', () => {
+it('keeps an unnamed workspace account neutral instead of exposing the email in the rail', () => {
   const { container } = render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'welber.especialistadigital@gmail.com' } }} />)
 
   expect(container.querySelector('.topbar')).not.toBeInTheDocument()
-  expect(screen.getByLabelText('Conta da área de trabalho')).toHaveTextContent('welber.especialistadigital@gmail.com')
+  expect(screen.getByLabelText('Conta da área de trabalho')).toHaveTextContent('Seu perfil')
+  expect(screen.getByLabelText('Conta da área de trabalho')).not.toHaveTextContent('welber.especialistadigital@gmail.com')
   expect(screen.getByRole('button', { name: 'Instalar app' })).toBeInTheDocument()
   expect(screen.getByText('BEM-VINDO AO ACERVO')).toBeInTheDocument()
 })
@@ -164,7 +165,8 @@ it('opens the centered account menu with a clear sign-out action', async () => {
 
   await user.click(screen.getByRole('button', { name: 'Abrir menu da conta' }))
 
-  expect(screen.getByRole('menu', { name: 'Menu da conta' })).toHaveTextContent('welber.especialistadigital@gmail.com')
+  expect(screen.getByRole('menu', { name: 'Menu da conta' })).toHaveTextContent('Conta conectada')
+  expect(screen.getByRole('menu', { name: 'Menu da conta' })).not.toHaveTextContent('Comunidade WhatsApp')
   expect(screen.getByRole('menuitem', { name: 'Sair' })).toBeInTheDocument()
 })
 

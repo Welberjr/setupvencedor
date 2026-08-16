@@ -32,6 +32,7 @@ import type { VisualMode } from '../features/handdrawn/visual-mode'
 import { ExploreHero } from '../features/handdrawn/ExploreHero'
 import { WorkspaceAreaHero } from '../features/handdrawn/WorkspaceAreaHero'
 import { WorkspaceNamePrompt } from '../features/profile/WorkspaceNamePrompt'
+import { CommunityWelcomePrompt } from '../features/profile/CommunityWelcomePrompt'
 import { SetupAgentPage } from '../features/mcp/SetupAgentPage'
 import { authCallbackErrorMessage } from '../features/auth/auth-callback-error'
 
@@ -58,7 +59,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   if (window.location.pathname === '/mcp/autorizar') return <McpAuthorizePage />
   if (!session && window.location.pathname === '/boas-vindas') {
     const callbackError = authCallbackErrorMessage(window.location.hash)
-    return <main className={`app-shell auth-shell ${visualMode}`}><section className="public-confirmation"><p className="eyebrow">SETUP VENCEDOR</p><h1>{callbackError ? 'Vamos resolver seu acesso.' : 'Seu acesso está confirmado.'}</h1><p>{callbackError ?? 'Agora você pode entrar no acervo e, se quiser acompanhar novidades e tirar dúvidas, participar da nossa comunidade.'}</p>{callbackError ? <a className="public-confirmation-login" href="/">Voltar para o acesso</a> : <><a href="https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr" rel="noreferrer" target="_blank">Entrar na comunidade do WhatsApp ↗</a><a className="public-confirmation-login" href="/">Entrar no acervo</a></>}</section></main>
+    return <main className={`app-shell auth-shell confirmation-shell ${visualMode}`}><section className="public-confirmation"><p className="eyebrow">SETUP VENCEDOR</p><h1>{callbackError ? 'Vamos resolver seu acesso.' : 'Seu acesso está confirmado.'}</h1><p>{callbackError ?? 'Agora você pode entrar no acervo e, se quiser acompanhar novidades e tirar dúvidas, participar da nossa comunidade.'}</p>{callbackError ? <a className="public-confirmation-login" href="/">Voltar para o acesso</a> : <><a href="https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr" rel="noreferrer" target="_blank">Entrar na comunidade do WhatsApp ↗</a><a className="public-confirmation-login" href="/">Entrar no acervo</a></>}</section></main>
   }
   if (!session) return <main className={`app-shell auth-shell public-access-shell ${visualMode}`}><PublicAccessPage onLogin={async (email, password, captchaToken) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signInWithPassword({ email, password, options: { captchaToken } }); if (error) throw error }} onSignUp={async ({ fullName, email, phone, password, captchaToken, termsAccepted, termsVersion }) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.signUp({ email, password, options: { captchaToken, data: { full_name: fullName, phone: phone || undefined, terms_accepted: termsAccepted, terms_version: termsVersion }, emailRedirectTo: `${window.location.origin}/boas-vindas` } }); if (error) throw error }} onForgotPassword={async (email, captchaToken) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { error } = await supabase.auth.resetPasswordForEmail(email, { captchaToken, redirectTo: `${window.location.origin}/redefinir-senha` }); if (error) throw error }} /></main>
   const authenticatedSession = session
@@ -78,6 +79,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   const [displayName, setDisplayName] = useState(authenticatedSession.user.displayName?.trim() ?? '')
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false)
   const [accountStatus, setAccountStatus] = useState('')
+  const [isCommunityWelcomeOpen, setIsCommunityWelcomeOpen] = useState(false)
   const catalogPageSize = useCatalogPageSize()
 
   useEffect(() => {
@@ -156,7 +158,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   }
   const selectCategory = (category: string | null) => { setSelectedCategory(category); setPage('explore'); setCatalogPage(1); setIsCategoryMenuOpen(false) }
   const canAdmin = hasAnyRole(authenticatedSession.roles ?? [], ['admin', 'manager', 'editor'])
-  const accountName = displayName || authenticatedSession.user.email
+  const accountName = displayName || 'Seu perfil'
 
   async function saveDisplayName(nextDisplayName: string) {
     const supabase = getSupabaseClient()
@@ -164,6 +166,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
     const { error } = await supabase.from('profiles').update({ display_name: nextDisplayName }).eq('id', authenticatedSession.user.id)
     if (error) throw error
     setDisplayName(nextDisplayName)
+    setIsCommunityWelcomeOpen(true)
   }
 
   async function signOut() {
@@ -189,15 +192,16 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
         {canAdmin ? <button aria-label="Administração" className={page === 'admin' ? 'active' : ''} onClick={() => switchPage('admin')} type="button"><CommandIcon name="admin" /><span>Administração</span></button> : null}
       </nav>
       <div aria-label="Conta da área de trabalho" className="workspace-account">
-        {isAccountMenuOpen ? <div aria-label="Menu da conta" className="account-menu" id="workspace-account-menu" role="menu"><p>Conta conectada</p><strong>{authenticatedSession.user.email}</strong><a href="https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr" rel="noreferrer" role="menuitem" target="_blank">Comunidade WhatsApp ↗</a><button onClick={() => void signOut()} role="menuitem" type="button"><LogOut aria-hidden="true" size={16} />Sair</button>{accountStatus ? <small role="status">{accountStatus}</small> : null}</div> : null}
-        <button aria-controls="workspace-account-menu" aria-expanded={isAccountMenuOpen} aria-haspopup="menu" aria-label="Abrir menu da conta" className="identity account-trigger" onClick={() => { setAccountStatus(''); setIsAccountMenuOpen((open) => !open) }} title={authenticatedSession.user.email} type="button"><span className="avatar">{accountName.slice(0, 1).toUpperCase()}</span><span>{accountName}</span><ChevronDown aria-hidden="true" className={isAccountMenuOpen ? 'account-chevron open' : 'account-chevron'} size={15} /></button>
-        <a className="community-rail-link" href="https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr" rel="noreferrer" target="_blank">Comunidade WhatsApp <span>↗</span></a>
+        {isAccountMenuOpen ? <div aria-label="Menu da conta" className="account-menu" id="workspace-account-menu" role="menu"><p>Conta conectada</p><strong>{displayName || 'Seu perfil'}</strong><button onClick={() => void signOut()} role="menuitem" type="button"><LogOut aria-hidden="true" size={16} />Sair</button>{accountStatus ? <small role="status">{accountStatus}</small> : null}</div> : null}
+        <button aria-controls="workspace-account-menu" aria-expanded={isAccountMenuOpen} aria-haspopup="menu" aria-label="Abrir menu da conta" className="identity account-trigger" onClick={() => { setAccountStatus(''); setIsAccountMenuOpen((open) => !open) }} title={displayName ? authenticatedSession.user.email : undefined} type="button"><span className="avatar">{accountName.slice(0, 1).toUpperCase()}</span><span>{accountName}</span><ChevronDown aria-hidden="true" className={isAccountMenuOpen ? 'account-chevron open' : 'account-chevron'} size={15} /></button>
+        <a aria-label="Entrar na Comunidade WhatsApp" className="community-rail-link" href="https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr" rel="noreferrer" target="_blank"><span className="community-rail-mark" aria-hidden="true">◔</span> Comunidade WhatsApp <span aria-hidden="true">↗</span></a>
         <PwaInstallPrompt />
       </div>
     </aside>
     <section className="workspace">
       {visualMode === 'handdrawn-lab' && showLabBadge ? <HanddrawnLabBadge /> : null}
       {visualMode === 'handdrawn-lab' && !displayName ? <WorkspaceNamePrompt onSave={saveDisplayName} /> : null}
+      {visualMode === 'handdrawn-lab' && isCommunityWelcomeOpen ? <CommunityWelcomePrompt onClose={() => setIsCommunityWelcomeOpen(false)} /> : null}
       {resourceSlug ? resourceItem && resourceGuide ? <ResourceProfilePage guide={resourceGuide} isFavorite={favoriteIds.has(resourceItem.id)} item={resourceItem} onBack={closeResourceProfile} onToggleFavorite={() => toggleFavorite(resourceItem.id)} /> : <section className="resource-profile page-shell"><p role="status">Carregando a ficha do recurso…</p></section> : <>
       {page === 'explore' ? <section className="explore-page page-shell">
         {visualMode === 'handdrawn-lab' ? <ExploreHero totalItems={catalog.length} /> : <div className="page-heading command-hero">
@@ -212,8 +216,11 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
         {visualMode === 'handdrawn-lab' ? <WorkspaceAreaHero area="assistant" description="Explique com suas palavras ou por voz. Você receberá uma trilha com os recursos certos para começar." /> : <div className="page-heading"><h1 className="page-title">O que você precisa construir?</h1><p>Explique com suas palavras ou por voz. Você receberá uma trilha com os recursos certos para começar.</p></div>}
         <AssistantAdvisor onResult={(result) => { setAssistantResponse(result); setCopiedAssistantPrompt(null); setCatalogPage(1) }} />
         {assistantResponse ? <section className="assistant-answer">
-          <p className="assistant-mode">TRILHA PARA {assistantResponse.client.label.toUpperCase()}</p>
-          <h2>{assistantResponse.summary}</h2>
+          <div className="assistant-paper">
+            <p className="assistant-mode">TRILHA PARA {assistantResponse.client.label.toUpperCase()}</p>
+            <h2>{assistantResponse.summary}</h2>
+            <p className="assistant-paper-note">Uma folha de ação com os próximos passos, fontes e prompts prontos para copiar.</p>
+          </div>
           {assistantResponse.transcript ? <p className="assistant-transcript">Transcrição: “{assistantResponse.transcript}”</p> : null}
           <ol className={`assistant-reasons${assistantResponse.recommendations.length % 2 ? ' assistant-reasons-odd' : ''}`}>
             {assistantResponse.recommendations.map((recommendation, index) => {

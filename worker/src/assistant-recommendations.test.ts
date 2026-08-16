@@ -78,3 +78,12 @@ it('keeps recommendations grounded in the catalog without calling a generative m
 
   expect(source).not.toContain('api.openai.com')
 })
+
+it('keeps the fallback paper heading independent from a long user request', () => {
+  const longQuery = 'Como posso montar uma estrutura completa para criar aplicativos, gerar criativos e publicar automaticamente no Instagram usando Codex ou Cloud Code, com MCP, validação e uma sequência segura de testes?'
+
+  const guidance = createFallbackGuidance(longQuery, [visualDirection], { id: 'codex', label: 'Codex' })
+
+  expect(guidance.summary).toBe('Comece no Codex por Direção visual para interfaces.')
+  expect(guidance.summary).not.toContain(longQuery)
+})

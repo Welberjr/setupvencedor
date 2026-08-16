@@ -206,7 +206,7 @@ export function createFallbackGuidance(query: string, candidates: AssistantCandi
   const primary = candidates[0]
   return {
     mode: 'fallback',
-    summary: primary ? `Para ${client.label}, o melhor ponto de partida é ${primary.title}. Ele conversa com “${query}” e já vem com uma forma concreta de começar.` : `Ainda não encontrei um recurso do acervo para “${query}” no ${client.label}. Tente descrever a tecnologia, o resultado e as restrições do seu caso.`,
+    summary: primary ? `Comece no ${client.label} por ${primary.title}.` : `Ainda não encontrei uma trilha clara para este pedido no ${client.label}.`,
     recommendations,
   }
 }

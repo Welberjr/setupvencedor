@@ -184,19 +184,7 @@
 .handdrawn-lab .account-menu strong,
 .handdrawn-lab .account-menu small { margin: 0; }
 .handdrawn-lab .account-menu p { color: var(--ink-muted); font: 700 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
-.handdrawn-lab .account-menu strong { overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
-.handdrawn-lab .account-menu a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  border: 2px dashed #2074a9;
-  border-radius: 9px 12px 10px 11px;
-  background: var(--note-blue);
-  color: var(--ink);
-  font: 800 11px var(--font-mono);
-  text-decoration: none;
-}
+.handdrawn-lab .account-menu strong { overflow: hidden; font-size: 13px; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
 .handdrawn-lab .account-menu button {
   display: flex;
   align-items: center;
@@ -236,7 +224,7 @@
 .handdrawn-lab .community-rail-link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 7px;
   width: 100%;
   min-height: 38px;
@@ -244,13 +232,21 @@
   padding: 8px 10px;
   border: 2px dashed #2074a9;
   border-radius: 10px 13px 9px 12px;
-  background: var(--note-blue);
+  background: linear-gradient(115deg, #bfe6ff, var(--note-blue) 48%, #e4f7d7);
   color: var(--ink);
-  font: 800 10px 'DM Mono', monospace;
+  font: 900 11px 'DM Mono', monospace;
   letter-spacing: .02em;
   text-decoration: none;
+  box-shadow: 2px 3px 0 #201f1b35, 0 0 0 0 #49baf055;
+  animation: community-invite-glow 2.3s ease-in-out infinite;
 }
-.handdrawn-lab .community-rail-link:hover { background: #bce3ff; transform: rotate(-.3deg); }
+.handdrawn-lab .community-rail-link:hover { background: #bce3ff; transform: rotate(-.3deg) translateY(-1px); }
+.handdrawn-lab .community-rail-mark { display: grid; place-items: center; width: 20px; height: 20px; border: 1px solid #2074a9; border-radius: 50% 47% 53% 46%; background: #e7fff1; color: #1d8558; font-size: 17px; line-height: 1; }
+
+@keyframes community-invite-glow {
+  0%, 100% { box-shadow: 2px 3px 0 #201f1b35, 0 0 0 0 #49baf000; }
+  50% { box-shadow: 2px 3px 0 #201f1b35, 0 0 0 6px #49baf044, 0 0 22px #49baf099; }
+}
 
 .handdrawn-lab .workspace-name-backdrop {
   position: fixed;
@@ -264,6 +260,7 @@
 
 .handdrawn-lab .workspace-name-dialog {
   display: grid;
+  justify-items: center;
   width: min(100%, 440px);
   gap: 16px;
   padding: 28px;
@@ -272,6 +269,7 @@
   background: var(--paper-raised);
   box-shadow: 8px 10px 0 #201f1b40;
   color: var(--ink);
+  text-align: center;
 }
 
 .handdrawn-lab .workspace-name-dialog h2,
@@ -292,9 +290,11 @@
 
 .handdrawn-lab .workspace-name-dialog label {
   display: grid;
+  width: 100%;
   gap: 8px;
   color: var(--ink);
   font-weight: 800;
+  text-align: left;
 }
 
 .handdrawn-lab .workspace-name-dialog input {
