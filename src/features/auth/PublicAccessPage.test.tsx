@@ -15,6 +15,7 @@ it('makes the free signup path mobile-friendly and collects only the required co
   expect(screen.getByLabelText('Nome completo')).toBeRequired()
   expect(screen.getByLabelText('E-mail')).toBeRequired()
   expect(screen.getByLabelText('Telefone')).not.toBeRequired()
+  expect(screen.getByText('Use pelo menos 8 caracteres, com letras e números.')).toBeInTheDocument()
   expect(screen.getByRole('link', { name: /Comunidade no WhatsApp/i })).toHaveAttribute('href', 'https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr')
 
   await user.click(screen.getByRole('button', { name: 'Já tenho uma conta' }))

@@ -217,9 +217,17 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
         <AssistantAdvisor onResult={(result) => { setAssistantResponse(result); setCopiedAssistantPrompt(null); setCatalogPage(1) }} />
         {assistantResponse ? <section className="assistant-answer">
           <div className="assistant-paper">
-            <p className="assistant-mode">TRILHA PARA {assistantResponse.client.label.toUpperCase()}</p>
-            <h2>{assistantResponse.summary}</h2>
-            <p className="assistant-paper-note">Uma folha de ação com os próximos passos, fontes e prompts prontos para copiar.</p>
+            <div className="assistant-paper-intro">
+              <p className="assistant-mode">TRILHA PARA {assistantResponse.client.label.toUpperCase()}</p>
+              <h2>Sua rota desenhada.</h2>
+              <p className="assistant-route-summary">{assistantResponse.summary}</p>
+              <p className="assistant-paper-note">Uma explicação curta para você escolher, copiar e testar sem se perder.</p>
+            </div>
+            <ol aria-label="Como seguir esta rota" className="assistant-paper-moves">
+              <li><b>1</b><span>Escolha</span><small>Comece pelo recurso que conversa direto com o seu objetivo.</small></li>
+              <li><b>2</b><span>Copie</span><small>Use o prompt pronto para pedir a primeira execução ao seu agente.</small></li>
+              <li><b>3</b><span>Teste</span><small>Valide em uma tarefa pequena antes de levar para o projeto principal.</small></li>
+            </ol>
           </div>
           {assistantResponse.transcript ? <p className="assistant-transcript">Transcrição: “{assistantResponse.transcript}”</p> : null}
           <ol className={`assistant-reasons${assistantResponse.recommendations.length % 2 ? ' assistant-reasons-odd' : ''}`}>
