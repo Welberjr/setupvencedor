@@ -14,7 +14,7 @@ it('allows the handdrawn laboratory to call the administrative worker', async ()
 })
 
 it('allows the dedicated Setup Vencedor staging site to call its worker', async () => {
-  const origin = 'https://staging.setup-vencedor-staging.pages.dev'
+  const origin = 'https://setup-vencedor-staging.pages.dev'
   const response = await worker.fetch(new Request('https://setup-vencedor-worker-staging.example/v1/admin/people', {
     headers: { origin },
     method: 'OPTIONS',

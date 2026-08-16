@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { appOrigin } from '../../lib/app-origin'
+import { workerOrigin } from '../../lib/app-origin'
 import { createSetupAgentContent, setupAgentTools } from './setup-agent-content'
 
 export function SetupAgentPage() {
   const [message, setMessage] = useState('')
-  const content = createSetupAgentContent(appOrigin())
+  const content = createSetupAgentContent(workerOrigin())
 
   async function copy(label: string, value: string) {
     try {
