@@ -176,6 +176,19 @@ it('keeps the community link available inside the signed-in workspace', () => {
   expect(screen.getByRole('link', { name: /Comunidade WhatsApp/ })).toHaveAttribute('href', 'https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr')
 })
 
+it('opens a compact mobile menu that groups navigation, account and community', async () => {
+  const user = userEvent.setup()
+  const { container } = render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com', displayName: 'Dev' } }} />)
+
+  const trigger = screen.getByRole('button', { name: 'Abrir menu principal' })
+  expect(trigger).toHaveAttribute('aria-expanded', 'false')
+
+  await user.click(trigger)
+
+  expect(screen.getByRole('button', { name: 'Fechar menu principal' })).toHaveAttribute('aria-expanded', 'true')
+  expect(container.querySelector('.command-rail')).toHaveClass('mobile-menu-open')
+})
+
 it('asks for a workspace name when a handdrawn session has none', () => {
   render(<App visualMode="handdrawn-lab" session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
 

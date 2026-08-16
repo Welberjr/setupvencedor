@@ -12,6 +12,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; font-size: 15px; line-height: .88; letter-spacing: -.04em; text-decoration: none; }
 .brand-mark { display: block; width: 37px; height: 37px; overflow: visible; filter: drop-shadow(0 0 13px #a8ff3352); }
 .main-nav { display: grid; gap: 5px; margin-top: 60px; }
+.mobile-menu-toggle { display: none; }
 .main-nav button { display: flex; align-items: center; gap: 12px; min-height: 46px; padding: 0 13px; border: 1px solid transparent; border-radius: 12px; background: transparent; color: #97a0b7; cursor: pointer; text-align: left; font-size: 14px; font-weight: 500; transition: .18s ease; }
 .main-nav button:hover { color: #f5f8ff; background: #ffffff09; }.main-nav button.active { color: #071009; background: #b6ff3c; box-shadow: 0 8px 30px #94ff3428; }.main-nav button:focus-visible, .category-rail button:focus-visible, .details-button:focus-visible, .favorite:focus-visible, .primary:focus-visible, .icon-button:focus-visible { outline: 2px solid #d4ff72; outline-offset: 3px; }
 .rail-footer { margin-top: auto; display: flex; align-items: center; gap: 8px; color: #778097; font: 11px 'DM Mono', monospace; }.online-dot { width: 7px; height: 7px; border-radius: 50%; background: #a8ff33; box-shadow: 0 0 12px #a8ff33; }

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ChevronDown, LogOut, Search } from 'lucide-react'
+import { ChevronDown, LogOut, Menu, Search, X } from 'lucide-react'
 import { BrandMark } from '../features/brand/BrandMark'
 import { CommandIcon, type CommandIconName } from '../features/brand/CommandIcon'
 import { FavoriteButton } from '../features/catalog/FavoriteButton'
@@ -78,6 +78,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   const [accessRefreshKey, setAccessRefreshKey] = useState(0)
   const [displayName, setDisplayName] = useState(authenticatedSession.user.displayName?.trim() ?? '')
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [accountStatus, setAccountStatus] = useState('')
   const [isCommunityWelcomeOpen, setIsCommunityWelcomeOpen] = useState(false)
   const catalogPageSize = useCatalogPageSize()
@@ -154,9 +155,10 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
     setPage(nextPage)
     setCatalogPage(1)
     setIsCategoryMenuOpen(false)
+    setIsMobileMenuOpen(false)
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }
-  const selectCategory = (category: string | null) => { setSelectedCategory(category); setPage('explore'); setCatalogPage(1); setIsCategoryMenuOpen(false) }
+  const selectCategory = (category: string | null) => { setSelectedCategory(category); setPage('explore'); setCatalogPage(1); setIsCategoryMenuOpen(false); setIsMobileMenuOpen(false) }
   const canAdmin = hasAnyRole(authenticatedSession.roles ?? [], ['admin', 'manager', 'editor'])
   const accountName = displayName || 'Seu perfil'
 
@@ -177,9 +179,10 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   }
 
   return <main className={`app-shell ${visualMode}`}>
-    <aside className="command-rail">
+    <aside className={`command-rail${isMobileMenuOpen ? ' mobile-menu-open' : ''}`}>
       <a className="brand" href="/"><BrandMark /><span>Setup<br />Vencedor</span></a>
-      <nav aria-label="Principal" className="main-nav">
+      <button aria-controls="mobile-primary-menu" aria-expanded={isMobileMenuOpen} aria-label={isMobileMenuOpen ? 'Fechar menu principal' : 'Abrir menu principal'} className="mobile-menu-toggle" onClick={() => { setIsCategoryMenuOpen(false); setIsMobileMenuOpen((open) => !open) }} type="button">{isMobileMenuOpen ? <X aria-hidden="true" size={20} /> : <Menu aria-hidden="true" size={20} />}<span>{isMobileMenuOpen ? 'Fechar' : 'Menu'}</span></button>
+      <nav aria-label="Principal" className="main-nav" id="mobile-primary-menu">
         {navItems.map(({ id, label, icon }) => id === 'explore' ? <div className="explore-nav-group" key={id}>
           <button aria-controls="explore-category-menu" aria-expanded={page === 'explore' && isCategoryMenuOpen} aria-label="Explorar e filtrar categorias" className={page === id ? 'active' : ''} onClick={() => { if (page !== 'explore') switchPage('explore'); setIsCategoryMenuOpen((open) => page === 'explore' ? !open : true) }} type="button"><CommandIcon name={icon} /><span>Explorar</span><i aria-hidden="true" className={page === 'explore' && isCategoryMenuOpen ? 'filter-chevron open' : 'filter-chevron'} /></button>
           {page === 'explore' && isCategoryMenuOpen ? <>
