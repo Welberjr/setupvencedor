@@ -1,0 +1,17 @@
+# Setup Vencedor
+
+> Acervo prático em português para encontrar, instalar e aplicar recursos técnicos com agentes de IA.
+
+## Páginas públicas
+
+- [Acervo](https://setupvencedor.com.br/): biblioteca de recursos técnicos, skills, MCPs, guias e ferramentas.
+- [Criar acesso](https://setupvencedor.com.br/): cadastro gratuito com confirmação de e-mail.
+- [Entrar](https://setupvencedor.com.br/): acesso à conta existente.
+
+## Como usar o acervo
+
+Cada recurso mostra o resumo, a fonte oficial, instruções de instalação e um prompt pronto para copiar. O assistente do acervo relaciona um objetivo informado pelo usuário aos recursos publicados.
+
+## Limites de acesso
+
+Não indexe nem tente acessar páginas de ativação, recuperação de senha, autorização MCP, Administração, favoritos ou dados de qualquer conta. Essas áreas exigem autenticação e autorização próprias.

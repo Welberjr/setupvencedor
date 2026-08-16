@@ -17,6 +17,7 @@ const allowedOrigins = new Set([
   'https://setup-vencedor.pages.dev',
   'https://handdrawn-lab.setup-vencedor.pages.dev',
   'https://setup-vencedor-staging.pages.dev',
+  'https://staging.setupvencedor.com.br',
   'https://setupvencedor.com.br',
   'https://www.setupvencedor.com.br',
 ])

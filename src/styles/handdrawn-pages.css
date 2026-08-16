@@ -413,6 +413,7 @@
 .handdrawn-lab .public-access-doodle b { display: grid; place-items: center; width: 48px; height: 48px; border: var(--paper-border); border-radius: 50% 46% 51% 48%; background: #fffaf0; box-shadow: 3px 4px 0 #201f1b2d; font-size: 19px; }
 .handdrawn-lab .public-access-doodle i { font-style: normal; transform: rotate(-15deg); }
 .handdrawn-lab .public-access-form { display: grid; align-content: center; gap: 10px; padding: clamp(28px, 2.8vw, 42px); background: #fffaf0; }
+.handdrawn-lab .public-access-form > .eyebrow { color: #5a6070; }
 .handdrawn-lab .public-access-form h2 { margin: 2px 0; font: 900 clamp(30px, 3.3vw, 40px)/.96 'Comic Sans MS', 'Segoe Print', cursive; letter-spacing: -.06em; }
 .handdrawn-lab .public-access-lead { margin: 0 0 4px; color: var(--ink-muted); font-size: 14px; line-height: 1.45; }
 .handdrawn-lab .public-access-form label { display: grid; gap: 4px; color: var(--ink-muted); font-size: 12px; font-weight: 800; }

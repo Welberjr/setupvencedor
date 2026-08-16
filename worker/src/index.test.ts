@@ -23,6 +23,16 @@ it('allows the dedicated Setup Vencedor staging site to call its worker', async 
   expect(response.headers.get('access-control-allow-origin')).toBe(origin)
 })
 
+it('allows the canonical staging domain to call its worker', async () => {
+  const origin = 'https://staging.setupvencedor.com.br'
+  const response = await worker.fetch(new Request('https://setup-vencedor-worker-staging.example/v1/admin/people', {
+    headers: { origin },
+    method: 'OPTIONS',
+  }), {} as never)
+
+  expect(response.headers.get('access-control-allow-origin')).toBe(origin)
+})
+
 it('does not grant worker access to an unknown web origin', async () => {
   const response = await worker.fetch(new Request('https://setup-vencedor-worker.example/v1/admin/people', {
     headers: { origin: 'https://unknown.example' },

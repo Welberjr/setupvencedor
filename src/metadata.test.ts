@@ -30,3 +30,9 @@ it('keeps a safe visual shell if the main stylesheet cannot be loaded', () => {
   expect(html).toContain('img { display: block; max-width: 100%; height: auto; }')
   expect(html).toContain('.app-shell { min-height: 100vh; background: #fff8ec; }')
 })
+
+it('uses the light paper palette in the browser chrome too', () => {
+  const html = readFileSync('index.html', 'utf8')
+
+  expect(html).toContain('<meta name="theme-color" content="#fff7e5" />')
+})

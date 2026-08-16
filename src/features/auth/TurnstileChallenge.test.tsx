@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 
 type WidgetOptions = {
@@ -32,6 +32,7 @@ it('renders an action-specific widget and clears an expired token', async () => 
   const mounted = render(<TurnstileChallenge action="recovery" onTokenChange={onTokenChange} />)
 
   await waitFor(() => expect(renderWidget).toHaveBeenCalledTimes(1))
+  expect(screen.getByRole('group', { name: 'Verificação de segurança' })).toBeInTheDocument()
   const [, options] = renderWidget.mock.calls[0]!
   expect(options.action).toBe('recovery')
   options.callback('verified-token')

@@ -82,5 +82,5 @@ export function TurnstileChallenge({ action, onTokenChange }: TurnstileChallenge
 
   if (!siteKey) return null
 
-  return <div aria-label="Verificação de segurança" className="turnstile-challenge" ref={containerRef} />
+  return <div aria-label="Verificação de segurança" className="turnstile-challenge" ref={containerRef} role="group" />
 }

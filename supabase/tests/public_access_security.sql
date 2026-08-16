@@ -1,6 +1,6 @@
 begin;
 
-select plan(6);
+select plan(16);
 
 insert into auth.users (
   id, instance_id, aud, role, email, encrypted_password,
@@ -50,6 +50,57 @@ select throws_ok(
   'members cannot forge audit events'
 );
 reset role;
+
+select ok(
+  not has_function_privilege('anon', 'public.create_public_profile()', 'execute'),
+  'anonymous users cannot execute the signup trigger function directly'
+);
+
+select ok(
+  not has_function_privilege('authenticated', 'public.create_public_profile()', 'execute'),
+  'members cannot execute the signup trigger function directly'
+);
+
+select ok(
+  not has_function_privilege('anon', 'public.activate_confirmed_profile()', 'execute'),
+  'anonymous users cannot execute the confirmation trigger function directly'
+);
+
+select ok(
+  not has_function_privilege('authenticated', 'public.activate_confirmed_profile()', 'execute'),
+  'members cannot execute the confirmation trigger function directly'
+);
+
+select ok(
+  not has_function_privilege('anon', 'public.claim_invitation(text, text, text)', 'execute'),
+  'anonymous users cannot claim invitations directly'
+);
+
+select ok(
+  not has_function_privilege('authenticated', 'public.claim_invitation(text, text, text)', 'execute'),
+  'members cannot claim invitations directly'
+);
+
+select ok(
+  has_function_privilege('service_role', 'public.claim_invitation(text, text, text)', 'execute'),
+  'only the service role can claim invitations'
+);
+
+select is(
+  (select prosecdef from pg_proc where oid = 'public.record_profile_activity()'::regprocedure),
+  false,
+  'activity tracking uses the caller permissions instead of bypassing RLS'
+);
+
+select ok(
+  has_function_privilege('authenticated', 'public.record_profile_activity()', 'execute'),
+  'members can register their own activity'
+);
+
+select ok(
+  not has_function_privilege('anon', 'public.record_profile_activity()', 'execute'),
+  'anonymous users cannot register profile activity'
+);
 
 select * from finish();
 

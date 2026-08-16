@@ -15,6 +15,10 @@ function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
 }
 
+function isStrongPassword(value: string) {
+  return value.length >= 12 && /[a-z]/.test(value) && /[A-Z]/.test(value) && /\d/.test(value) && /[^A-Za-z0-9]/.test(value)
+}
+
 export function PublicAccessPage({ onLogin, onSignUp, onForgotPassword }: PublicAccessPageProps) {
   const [mode, setMode] = useState<'signup' | 'login' | 'recovery'>('signup')
   const [fullName, setFullName] = useState('')
@@ -31,8 +35,7 @@ export function PublicAccessPage({ onLogin, onSignUp, onForgotPassword }: Public
     const normalizedEmail = email.trim().toLowerCase()
     if (!isEmail(normalizedEmail)) return setMessage('Informe um e-mail válido.')
     if (mode === 'signup' && fullName.trim().length < 2) return setMessage('Informe seu nome completo.')
-    if (mode === 'signup' && password.length < 8) return setMessage('Crie uma senha com pelo menos 8 caracteres.')
-    if (mode === 'signup' && (!/[A-Za-z]/.test(password) || !/\d/.test(password))) return setMessage('Use letras e números na sua senha.')
+    if (mode === 'signup' && !isStrongPassword(password)) return setMessage('Use 12 ou mais caracteres, com maiúscula, minúscula, número e símbolo.')
     if (mode === 'login' && !password) return setMessage('Informe sua senha.')
     if (mode === 'signup' && !termsAccepted) return setMessage('Aceite os Termos de Uso e a Política de Privacidade para criar seu acesso.')
     if (!captchaToken) return setMessage('Conclua a verificação de segurança antes de continuar.')
@@ -66,10 +69,10 @@ export function PublicAccessPage({ onLogin, onSignUp, onForgotPassword }: Public
       <p className="eyebrow">SETUP VENCEDOR · ACESSO LIVRE</p>
       <h2 id="public-access-title">{mode === 'signup' ? 'Entre sem pagar nada.' : mode === 'login' ? 'Que bom ter você de volta.' : 'Vamos recuperar seu acesso.'}</h2>
       <p className="public-access-lead">{mode === 'signup' ? 'Acesso 100% gratuito. Sem cartão, sem teste escondido e sem pegadinha.' : mode === 'login' ? 'Use o e-mail e a senha que você cadastrou.' : 'Confirme seu e-mail e receba um link seguro para definir uma nova senha.'}</p>
-      {mode === 'signup' ? <label>Nome completo<input aria-label="Nome completo" autoComplete="name" required value={fullName} onChange={(event) => setFullName(event.target.value)} /></label> : null}
-      <label>E-mail<input aria-label="E-mail" autoComplete="email" required type="email" value={email} onChange={(event) => setEmail(event.target.value)} /></label>
-      {mode === 'signup' ? <label>Telefone <small>opcional</small><input aria-label="Telefone" autoComplete="tel" inputMode="tel" value={phone} onChange={(event) => setPhone(event.target.value)} /></label> : null}
-      {mode !== 'recovery' ? <label>Senha<input aria-label="Senha" autoComplete={mode === 'signup' ? 'new-password' : 'current-password'} minLength={mode === 'signup' ? 8 : undefined} required type="password" value={password} onChange={(event) => setPassword(event.target.value)} />{mode === 'signup' ? <small className="public-password-rule">Use pelo menos 8 caracteres, com letras e números.</small> : null}</label> : null}
+      {mode === 'signup' ? <label>Nome completo<input aria-label="Nome completo" autoComplete="name" name="fullName" required value={fullName} onChange={(event) => setFullName(event.target.value)} /></label> : null}
+      <label>E-mail<input aria-label="E-mail" autoComplete="email" name="email" required type="email" value={email} onChange={(event) => setEmail(event.target.value)} /></label>
+      {mode === 'signup' ? <label>Telefone <small>opcional</small><input aria-label="Telefone" autoComplete="tel" inputMode="tel" name="phone" value={phone} onChange={(event) => setPhone(event.target.value)} /></label> : null}
+      {mode !== 'recovery' ? <label>Senha<input aria-label="Senha" autoComplete={mode === 'signup' ? 'new-password' : 'current-password'} minLength={mode === 'signup' ? 12 : undefined} name="password" required type="password" value={password} onChange={(event) => setPassword(event.target.value)} />{mode === 'signup' ? <small className="public-password-rule">Use 12 ou mais caracteres, com maiúscula, minúscula, número e símbolo.</small> : null}</label> : null}
       {mode === 'signup' ? <label className="public-access-consent"><input aria-label="Aceito os Termos de Uso e a Política de Privacidade" checked={termsAccepted} onChange={(event) => setTermsAccepted(event.target.checked)} required type="checkbox" /><span>Li e aceito os <a href="https://www.setupvencedor.com.br/termos" rel="noreferrer" target="_blank">Termos de Uso</a> e a <a href="https://www.setupvencedor.com.br/privacidade" rel="noreferrer" target="_blank">Política de Privacidade</a>.</span></label> : null}
       <TurnstileChallenge action={mode} onTokenChange={setCaptchaToken} />
       {message ? <p aria-live="polite" className="public-access-message">{message}</p> : null}

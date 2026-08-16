@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "workspaces": ["worker"],
+  "workspaces": [
+    "worker"
+  ],
   "scripts": {
     "prebuild": "node scripts/validate-public-auth-env.mjs",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/revision-service-worker.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
@@ -29,6 +31,7 @@
     "zod": "4.3.6"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
     "@playwright/test": "1.62.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",
@@ -39,8 +42,9 @@
     "@vitejs/plugin-react": "6.0.5",
     "autoprefixer": "10.4.22",
     "eslint": "9.39.1",
+    "globals": "^16.5.0",
     "jsdom": "27.2.0",
-    "postcss": "8.5.6",
+    "postcss": "^8.5.26",
     "tailwindcss": "4.1.17",
     "typescript": "7.0.2",
     "vite": "8.2.1",
