@@ -143,8 +143,8 @@ async function sendInviteEmail(env: Env, recipient: Pick<InvitationRow, 'email_n
     body: JSON.stringify({
       from: env.EMAIL_FROM,
       to: recipient.email_normalized,
-      subject: 'Seu acesso ao Setup Vencedor',
-      html: `<main style="background:#080b12;color:#f4f7ff;padding:40px;font-family:Arial,sans-serif"><p style="color:#a8ff33;letter-spacing:.12em;font-size:12px">SETUP VENCEDOR</p><h1 style="font-size:30px">Seu acesso está pronto.</h1><p>${greeting} Defina sua senha para entrar na biblioteca privada da equipe.</p><p><a href="${url}" style="display:inline-block;background:#a8ff33;color:#07100a;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:700">Criar meu acesso</a></p><p style="color:#aeb8cb;font-size:13px">Este link expira em 72 horas e só pode ser usado pelo e-mail ${escapeHtml(recipient.email_normalized)}.</p></main>`,
+      subject: 'Seu convite para a Comunidade Setup Vencedor',
+      html: `<main style="background:#f8f0dd;color:#201f1b;padding:32px 16px;text-align:center;font-family:Arial,sans-serif"><img src="https://setupvencedor.com.br/brand/setup-vencedor-sv-approved.png" width="54" height="54" alt="Setup Vencedor" style="display:block;margin:0 auto 16px;border-radius:14px"><p style="margin:0 0 12px;color:#2474a9;font-size:11px;font-weight:700;letter-spacing:1.4px">SETUP VENCEDOR</p><h1 style="margin:0 0 16px;font-size:30px">Há um lugar reservado para você.</h1><p style="margin:0 auto 22px;max-width:480px;line-height:1.55">${greeting} Crie sua senha para entrar na Comunidade Setup Vencedor.</p><p><a href="${url}" style="display:inline-block;background:#b8ff38;color:#201f1b;padding:14px 20px;border:2px solid #201f1b;border-radius:10px;text-decoration:none;font-weight:700">Aceitar convite</a></p><p style="margin:22px auto 0;max-width:480px;color:#655d53;font-size:13px;line-height:1.5">Este convite é pessoal, expira em 72 horas e vale somente para ${escapeHtml(recipient.email_normalized)}.</p></main>`,
     }),
   })
   return response.ok
