@@ -270,3 +270,11 @@ it('gives the laboratory invitation form room around its choices and fields', ()
   style.remove()
   laboratory.remove()
 })
+
+it('keeps the desktop public signup card within a single common viewport', () => {
+  const stylesheet = readStyle('src/styles/handdrawn-pages.css')
+
+  expect(stylesheet).toMatch(/\.public-access \{[\s\S]*?min-height: min\(700px, calc\(100vh - 36px\)\);/)
+  expect(stylesheet).toMatch(/\.public-access-form \{[\s\S]*?gap: 10px;[\s\S]*?padding: clamp\(28px, 2\.8vw, 42px\);/)
+  expect(stylesheet).toMatch(/\.public-access-story \{[^}]*min-height: 0;/)
+})
