@@ -15,6 +15,7 @@
   "preview_urls": false,
   "routes": [
     { "pattern": "staging.setupvencedor.com.br/api/*", "zone_id": "aedad462202c3e59e79b8916abe070fd" },
+    { "pattern": "staging.setupvencedor.com.br/v1/*", "zone_id": "aedad462202c3e59e79b8916abe070fd" },
     { "pattern": "staging.setupvencedor.com.br/.well-known/*", "zone_id": "aedad462202c3e59e79b8916abe070fd" }
   ]
 }
