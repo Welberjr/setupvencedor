@@ -19,7 +19,9 @@ import { sampleCatalog } from '../features/catalog/catalog-data'
 import type { CatalogItem } from '../features/catalog/types'
 import { PublicAccessPage } from '../features/auth/PublicAccessPage'
 import { getSupabaseClient } from '../lib/supabase/client'
-import { TicketForm } from '../features/support/TicketForm'
+import { TicketForm, type TicketInput } from '../features/support/TicketForm'
+import { SupportDesk, type SupportDeskTicket } from '../features/support/SupportDesk'
+import type { TicketStatus } from '../features/support/status'
 import { ActivateInvitePage } from '../features/auth/ActivateInvitePage'
 import { ResetPasswordPage } from '../features/auth/ResetPasswordPage'
 import { McpAuthorizePage } from '../features/auth/McpAuthorizePage'
@@ -43,6 +45,15 @@ type CatalogRow = {
   id: string; slug: string; title: string; item_type: string; summary: string; own_content: string; official_url: string; instructions: string
   status: CatalogItem['status']; visibility: CatalogItem['visibility']; categories: { name: string } | null
   catalog_item_topics: Array<{ topics: { name: string } | null }>; catalog_item_tags: Array<{ tags: { name: string } | null }>; catalog_item_sources: Array<{ source_url: string }>; catalog_item_guides?: CatalogGuideRow[]
+}
+
+type SupportTicketRow = {
+  id: string
+  subject: string
+  type: string
+  status: TicketStatus
+  created_at: string
+  last_activity_at: string
 }
 
 function toCatalogItem(row: CatalogRow): CatalogItem {
@@ -81,6 +92,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [accountStatus, setAccountStatus] = useState('')
   const [isCommunityWelcomeOpen, setIsCommunityWelcomeOpen] = useState(false)
+  const [supportTickets, setSupportTickets] = useState<SupportDeskTicket[]>([])
   const catalogPageSize = useCatalogPageSize()
 
   useEffect(() => {
@@ -112,6 +124,16 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
     }
     void loadCatalog(); return () => { active = false }
   }, [authenticatedSession.user.id])
+
+  async function loadSupportTickets() {
+    const supabase = getSupabaseClient()
+    if (!supabase) return
+    const { data, error } = await supabase.from('support_tickets').select('id,subject,type,status,created_at,last_activity_at').order('last_activity_at', { ascending: false })
+    if (error) return
+    setSupportTickets((data as SupportTicketRow[]).map((ticket) => ({ id: ticket.id, subject: ticket.subject, type: ticket.type, status: ticket.status, createdAt: ticket.created_at, lastActivityAt: ticket.last_activity_at })))
+  }
+
+  useEffect(() => { void loadSupportTickets() }, [authenticatedSession.user.id])
 
   const categories = useMemo(() => [...new Set(catalog.map((item) => item.category))].sort((first, second) => first.localeCompare(second)), [catalog])
   const results = useMemo(() => {
@@ -176,6 +198,43 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
     if (!supabase) { setAccountStatus('Não foi possível encerrar a sessão agora.'); return }
     const { error } = await supabase.auth.signOut()
     if (error) setAccountStatus('Não foi possível encerrar a sessão agora.')
+  }
+
+  async function createSupportTicket(ticket: TicketInput) {
+    const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured')
+    const { data: created, error } = await supabase.from('support_tickets').insert({ requester_id: authenticatedSession.user.id, subject: ticket.subject, type: ticket.type }).select('id').single()
+    if (error || !created) throw error ?? new Error('ticket_not_created')
+    const { error: messageError } = await supabase.from('support_messages').insert({ ticket_id: created.id, author_id: authenticatedSession.user.id, body: ticket.body, body_rich: ticket.bodyRich })
+    if (messageError) throw messageError
+    if (ticket.attachment) {
+      const extension = ticket.attachment.type === 'image/png' ? 'png' : ticket.attachment.type === 'image/webp' ? 'webp' : 'jpg'
+      const objectPath = `${authenticatedSession.user.id}/${created.id}/${crypto.randomUUID()}.${extension}`
+      const { error: uploadError } = await supabase.storage.from('support-attachments').upload(objectPath, ticket.attachment, { contentType: ticket.attachment.type, upsert: false })
+      if (uploadError) throw uploadError
+      const { error: attachmentError } = await supabase.from('support_attachments').insert({ ticket_id: created.id, uploaded_by: authenticatedSession.user.id, storage_path: objectPath, file_name: ticket.attachment.name, mime_type: ticket.attachment.type, byte_size: ticket.attachment.size })
+      if (attachmentError) { await supabase.storage.from('support-attachments').remove([objectPath]); throw attachmentError }
+    }
+    await loadSupportTickets()
+  }
+
+  async function changeSupportStatus(ticketId: string, status: TicketStatus) {
+    const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured')
+    const { error } = await supabase.from('support_tickets').update({ status }).eq('id', ticketId)
+    if (error) throw error
+    await loadSupportTickets()
+  }
+
+  async function addSupportInternalNote(ticketId: string, body: string) {
+    const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured')
+    const { error } = await supabase.from('support_internal_notes').insert({ ticket_id: ticketId, author_id: authenticatedSession.user.id, body })
+    if (error) throw error
+  }
+
+  async function addSupportReply(ticketId: string, body: string) {
+    const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured')
+    const { error } = await supabase.from('support_messages').insert({ ticket_id: ticketId, author_id: authenticatedSession.user.id, body, body_rich: body })
+    if (error) throw error
+    await loadSupportTickets()
   }
 
   return <main className={`app-shell ${visualMode}`}>
@@ -259,7 +318,8 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
       </section> : null}
       {page === 'support' ? <section className="inner-page page-shell support-page">
         {visualMode === 'handdrawn-lab' ? <WorkspaceAreaHero area="support" description="Abra um chamado de acesso, dúvida, bug ou sugestão. A equipe responsável acompanha por status." /> : <div className="page-heading"><h1 className="page-title">Como podemos ajudar?</h1><p>Abra um chamado de acesso, dúvida, bug ou sugestão. A equipe responsável acompanha por status.</p></div>}
-        <TicketForm onCreate={async (ticket) => { const supabase = getSupabaseClient(); if (!supabase) throw new Error('supabase_not_configured'); const { data: created, error } = await supabase.from('support_tickets').insert({ requester_id: authenticatedSession.user.id, subject: ticket.subject, type: ticket.type }).select('id').single(); if (error || !created) throw error ?? new Error('ticket_not_created'); const { error: messageError } = await supabase.from('support_messages').insert({ ticket_id: created.id, author_id: authenticatedSession.user.id, body: ticket.body, body_rich: ticket.bodyRich }); if (messageError) throw messageError; if (ticket.attachment) { const extension = ticket.attachment.type === 'image/png' ? 'png' : ticket.attachment.type === 'image/webp' ? 'webp' : 'jpg'; const objectPath = `${authenticatedSession.user.id}/${created.id}/${crypto.randomUUID()}.${extension}`; const { error: uploadError } = await supabase.storage.from('support-attachments').upload(objectPath, ticket.attachment, { contentType: ticket.attachment.type, upsert: false }); if (uploadError) throw uploadError; const { error: attachmentError } = await supabase.from('support_attachments').insert({ ticket_id: created.id, uploaded_by: authenticatedSession.user.id, storage_path: objectPath, file_name: ticket.attachment.name, mime_type: ticket.attachment.type, byte_size: ticket.attachment.size }); if (attachmentError) { await supabase.storage.from('support-attachments').remove([objectPath]); throw attachmentError } } }} />
+        <SupportDesk currentUserId={authenticatedSession.user.id} onAddInternalNote={addSupportInternalNote} onChangeStatus={changeSupportStatus} onReply={addSupportReply} roles={authenticatedSession.roles ?? ['member']} tickets={supportTickets} />
+        <TicketForm onCreate={createSupportTicket} />
       </section> : null}
       {page === 'admin' && canAdmin ? <section className="inner-page page-shell admin-page">
         {visualMode === 'handdrawn-lab' ? <WorkspaceAreaHero area="admin" description="Gerencie acessos, convites e os recursos disponíveis para toda a equipe." /> : <div className="page-heading"><h1 className="page-title">Controle da sua biblioteca.</h1><p>Gerencie acessos, convites e os recursos disponíveis para toda a equipe.</p></div>}

@@ -72,3 +72,11 @@ it('centers and lowers the empty favorites state inside the available workspace'
   expect(styles).toContain('.page-favorites .empty-state {')
   expect(styles).toContain('margin: 0')
 })
+
+it('keeps support ticket controls grouped and usable on narrow screens', () => {
+  const styles = readFileSync('src/styles.css', 'utf8')
+
+  expect(styles).toContain('.support-desk {')
+  expect(styles).toContain('.support-ticket-actions {')
+  expect(styles).toContain('@media (max-width: 620px)')
+})

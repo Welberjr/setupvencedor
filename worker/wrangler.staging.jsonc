@@ -6,11 +6,15 @@
   "vars": {
     "EMAIL_FROM": "Setup Vencedor Staging <onboarding@resend.dev>",
     "APP_URL": "https://staging.setupvencedor.com.br",
-    "MCP_PUBLIC_ORIGIN": "https://setup-vencedor-worker-staging.filmesecia-df.workers.dev"
+    "MCP_PUBLIC_ORIGIN": "https://staging.setupvencedor.com.br"
   },
   "ai": {
     "binding": "AI"
   },
   "workers_dev": true,
-  "preview_urls": false
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "staging.setupvencedor.com.br/api/*", "zone_id": "aedad462202c3e59e79b8916abe070fd" },
+    { "pattern": "staging.setupvencedor.com.br/.well-known/*", "zone_id": "aedad462202c3e59e79b8916abe070fd" }
+  ]
 }

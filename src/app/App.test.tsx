@@ -94,6 +94,15 @@ it('keeps the assistant response summary in a concise visual heading', async () 
   expect(screen.queryByRole('heading', { name: /Para um assistente pessoal/i })).not.toBeInTheDocument()
 })
 
+it('shows the support desk to managers from the support area', async () => {
+  const user = userEvent.setup()
+  render(<App session={{ user: { id: 'manager-1', email: 'manager@example.com' }, roles: ['manager'] }} />)
+
+  await user.click(screen.getByRole('button', { name: 'Suporte' }))
+
+  expect(screen.getByRole('heading', { name: 'Central de atendimento' })).toBeInTheDocument()
+})
+
 it('shows catalog pagination with the current page status', () => {
   render(<App session={{ user: { id: 'u1', email: 'dev@example.com' } }} />)
 
