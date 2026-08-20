@@ -4,6 +4,11 @@ import { getSupabaseClient } from '../../lib/supabase/client'
 
 type Person = { id: string; email_normalized: string; full_name: string; phone: string | null; job_title: string | null; state: 'active' | 'disabled'; created_at: string; last_seen_at: string | null; roles: string[] }
 type Invitation = { id: string; delivery: 'email' | 'direct_link'; email_normalized: string | null; recipient_name: string | null; job_title: string | null; roles: string[]; state: 'pending' | 'claimed'; expires_at: string }
+type ActivityEvent = { id: string; event_type: string; search_term: string | null; created_at: string; catalog_items: { title: string } | null }
+
+const activityLabel: Record<string, string> = {
+  session_started: 'Entrou na plataforma', catalog_search: 'Buscou no acervo', resource_opened: 'Abriu um recurso', resource_source_opened: 'Abriu uma fonte oficial', favorite_added: 'Adicionou aos favoritos', favorite_removed: 'Removeu dos favoritos', assistant_requested: 'Consultou o Assistente',
+}
 
 function directoryLoadMessage(status?: number): string {
   if (status === 401) return 'Sua sessão expirou. Entre novamente para consultar os acessos.'
@@ -26,6 +31,8 @@ export function PeopleDirectory({ refreshKey, currentUserId }: { refreshKey: num
   const [invitationsTotal, setInvitationsTotal] = useState(0)
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState<10 | 20>(10)
+  const [activityByPerson, setActivityByPerson] = useState<Record<string, ActivityEvent[]>>({})
+  const [activityLoadingFor, setActivityLoadingFor] = useState<string | null>(null)
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -58,6 +65,17 @@ export function PeopleDirectory({ refreshKey, currentUserId }: { refreshKey: num
     } catch { setMessage('Não foi possível concluir esta ação.') }
   }
 
+  async function toggleActivity(personId: string) {
+    if (activityByPerson[personId]) { setActivityByPerson((current) => { const next = { ...current }; delete next[personId]; return next }); return }
+    setActivityLoadingFor(personId)
+    try {
+      const response = await authorizedFetch(`/v1/admin/people/${personId}/activity`)
+      if (!response.ok) throw new Error()
+      const data = await response.json() as { events: ActivityEvent[] }
+      setActivityByPerson((current) => ({ ...current, [personId]: data.events }))
+    } catch { setMessage('Não foi possível carregar o histórico desta pessoa agora.') } finally { setActivityLoadingFor(null) }
+  }
+
   const totalPages = Math.max(1, Math.ceil(Math.max(peopleTotal, invitationsTotal) / pageSize))
   const formatLastAccess = (value: string | null) => value ? `Último acesso: ${new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(value))}` : 'Ainda não acessou'
 
@@ -65,7 +83,7 @@ export function PeopleDirectory({ refreshKey, currentUserId }: { refreshKey: num
     <div className="directory-heading"><div><p className="eyebrow">GESTÃO DE ACESSOS</p><h2 id="people-title">Pessoas e convites.</h2><p className="directory-total"><strong>{peopleTotal} pessoas</strong><span> · {invitationsTotal} convites</span></p></div><div className="directory-controls"><label className="people-search"><span className="sr-only">Buscar pessoa</span><input onChange={(event) => setQuery(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter') void load(query, 1, pageSize) }} placeholder="Buscar por nome ou e-mail" value={query} /><button onClick={() => void load(query, 1, pageSize)} type="button">Buscar</button></label><label className="directory-page-size">Por página<select aria-label="Pessoas por página" onChange={(event) => void load(query, 1, Number(event.target.value) as 10 | 20)} value={pageSize}><option value={10}>10</option><option value={20}>20</option></select></label></div></div>
     {message ? <p aria-live="polite" className="form-message">{message}</p> : null}
     <div className="directory-columns">
-      <div className="directory-panel"><div className="directory-panel-title"><h3>Acessos</h3><span>{peopleTotal}</span></div>{loading ? <p>Carregando…</p> : people.length ? <ul className="access-list">{people.map((person) => <li key={person.id}><div className="person-avatar">{person.full_name.slice(0, 1).toUpperCase()}</div><div className="person-summary"><strong>{person.full_name}</strong><span>{person.email_normalized}</span><small>{person.phone || 'Sem telefone'} · {formatLastAccess(person.last_seen_at)}</small><small>{person.roles.join(' · ') || 'Membro'}{person.job_title ? ` · ${person.job_title}` : ''}</small></div><div className="person-actions">{person.id === currentUserId ? <small>Você</small> : <>{person.state === 'active' ? <button onClick={() => void action(`/v1/admin/people/${person.id}/access`, 'POST', 'Acesso bloqueado e sessões encerradas.', { state: 'disabled' })} type="button">Bloquear</button> : <button onClick={() => void action(`/v1/admin/people/${person.id}/access`, 'POST', 'Acesso reativado.', { state: 'active' })} type="button">Reativar</button>}<button className="danger" onClick={() => { if (window.confirm(`Excluir ${person.full_name}? Esta ação não pode ser desfeita.`)) void action(`/v1/admin/people/${person.id}`, 'DELETE', 'Pessoa excluída.')}} type="button">Excluir</button></>}</div></li>)}</ul> : <p>Nenhuma pessoa encontrada.</p>}</div>
+      <div className="directory-panel"><div className="directory-panel-title"><h3>Acessos</h3><span>{peopleTotal}</span></div>{loading ? <p>Carregando…</p> : people.length ? <ul className="access-list">{people.map((person) => <li key={person.id}><div className="person-avatar">{person.full_name.slice(0, 1).toUpperCase()}</div><div className="person-summary"><strong>{person.full_name}</strong><span>{person.email_normalized}</span><small>{person.phone || 'Sem telefone'} · {formatLastAccess(person.last_seen_at)}</small><small>{person.roles.join(' · ') || 'Membro'}{person.job_title ? ` · ${person.job_title}` : ''}</small>{activityByPerson[person.id] ? <ol className="person-activity">{activityByPerson[person.id].length ? activityByPerson[person.id].map((event) => <li key={event.id}><span>{activityLabel[event.event_type] ?? event.event_type}{event.search_term ? `: ${event.search_term}` : event.catalog_items?.title ? `: ${event.catalog_items.title}` : ''}</span><time>{new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(event.created_at))}</time></li>) : <li>Sem eventos registrados ainda.</li>}</ol> : null}</div><div className="person-actions"><button onClick={() => void toggleActivity(person.id)} type="button">{activityLoadingFor === person.id ? 'Carregando…' : activityByPerson[person.id] ? 'Ocultar histórico' : 'Ver atividade'}</button>{person.id === currentUserId ? <small>Você</small> : <>{person.state === 'active' ? <button onClick={() => void action(`/v1/admin/people/${person.id}/access`, 'POST', 'Acesso bloqueado e sessões encerradas.', { state: 'disabled' })} type="button">Bloquear</button> : <button onClick={() => void action(`/v1/admin/people/${person.id}/access`, 'POST', 'Acesso reativado.', { state: 'active' })} type="button">Reativar</button>}<button className="danger" onClick={() => { if (window.confirm(`Excluir ${person.full_name}? Esta ação não pode ser desfeita.`)) void action(`/v1/admin/people/${person.id}`, 'DELETE', 'Pessoa excluída.')}} type="button">Excluir</button></>}</div></li>)}</ul> : <p>Nenhuma pessoa encontrada.</p>}</div>
       <div className="directory-panel"><div className="directory-panel-title"><h3>Convites pendentes</h3><span>{invitationsTotal}</span></div>{loading ? <p>Carregando…</p> : invitations.length ? <ul className="access-list invitation-list">{invitations.map((invite) => <li key={invite.id}><div className="person-avatar pending">{invite.delivery === 'email' ? '@' : '↗'}</div><div className="person-summary"><strong>{invite.recipient_name || 'Nome será informado na ativação'}</strong><span>{invite.email_normalized || 'Link direto de uso único'}</span><small>{invite.roles.join(' · ')} · expira em {new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(invite.expires_at))}</small></div><div className="person-actions">{invite.delivery === 'email' ? <button onClick={() => void action(`/v1/admin/invitations/${invite.id}/resend`, 'POST', 'Novo convite enviado por e-mail.')} type="button">Reenviar</button> : <button onClick={() => void action(`/v1/admin/invitations/${invite.id}/regenerate`, 'POST')} type="button">Novo link</button>}<button className="danger" onClick={() => void action(`/v1/admin/invitations/${invite.id}/revoke`, 'POST', 'Convite revogado.')} type="button">Revogar</button></div></li>)}</ul> : <p>Nenhum convite pendente.</p>}</div>
     </div>
     <nav aria-label="Paginação de pessoas" className="directory-pagination"><button disabled={loading || page <= 1} onClick={() => void load(query, page - 1, pageSize)} type="button">← Anterior</button><span>Página {page} de {totalPages}</span><button disabled={loading || page >= totalPages} onClick={() => void load(query, page + 1, pageSize)} type="button">Próxima →</button></nav>

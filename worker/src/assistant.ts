@@ -129,7 +129,11 @@ async function authenticate(request: Request, env: Env): Promise<{ supabase: Sup
 }
 
 async function recordUsage(supabase: SupabaseClient, userId: string, requestKind: 'text' | 'audio', outcome: 'success' | 'fallback' | 'rate_limited' | 'rejected' | 'failed') {
-  await supabase.from('assistant_usage_events').insert({ user_id: userId, request_kind: requestKind, outcome })
+  await Promise.all([
+    supabase.from('assistant_usage_events').insert({ user_id: userId, request_kind: requestKind, outcome }),
+    supabase.from('activity_events').insert({ user_id: userId, event_type: 'assistant_requested' }),
+    supabase.from('profiles').update({ last_seen_at: new Date().toISOString() }).eq('id', userId),
+  ])
 }
 
 async function enforceRateLimit(supabase: SupabaseClient, userId: string, requestKind: 'text' | 'audio') {

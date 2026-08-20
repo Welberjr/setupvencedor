@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ChevronDown, LogOut, Menu, Search, X } from 'lucide-react'
 import { BrandMark } from '../features/brand/BrandMark'
 import { CommandIcon, type CommandIconName } from '../features/brand/CommandIcon'
@@ -27,6 +27,8 @@ import { ResetPasswordPage } from '../features/auth/ResetPasswordPage'
 import { McpAuthorizePage } from '../features/auth/McpAuthorizePage'
 import { InviteForm } from '../features/admin/InviteForm'
 import { PeopleDirectory } from '../features/admin/PeopleDirectory'
+import { ActivityAnalytics } from '../features/admin/ActivityAnalytics'
+import { trackActivity } from '../lib/activity'
 import { hasAnyRole, type Role } from '../lib/roles'
 import { PwaInstallPrompt } from '../features/pwa/PwaInstallPrompt'
 import { HanddrawnLabBadge } from '../features/handdrawn/HanddrawnLabBadge'
@@ -93,6 +95,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   const [accountStatus, setAccountStatus] = useState('')
   const [isCommunityWelcomeOpen, setIsCommunityWelcomeOpen] = useState(false)
   const [supportTickets, setSupportTickets] = useState<SupportDeskTicket[]>([])
+  const lastTrackedSearchRef = useRef('')
   const catalogPageSize = useCatalogPageSize()
 
   useEffect(() => {
@@ -145,6 +148,17 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
   const resourceItem = useMemo(() => resourceSlug ? catalog.find((item) => item.slug === resourceSlug) ?? null : null, [catalog, resourceSlug])
   const resourceGuide = useMemo(() => resourceItem ? resourceItem.guide ?? createFallbackCatalogGuide(resourceItem) : null, [resourceItem])
 
+  useEffect(() => {
+    const searchTerm = exploreQuery.replace(/\s+/g, ' ').trim()
+    if (searchTerm.length < 2 || searchTerm === lastTrackedSearchRef.current) return
+    const timeout = window.setTimeout(() => {
+      if (searchTerm === lastTrackedSearchRef.current) return
+      lastTrackedSearchRef.current = searchTerm
+      void trackActivity('catalog_search', { searchTerm })
+    }, 700)
+    return () => window.clearTimeout(timeout)
+  }, [exploreQuery])
+
   async function toggleFavorite(itemId: string) {
     const supabase = getSupabaseClient(); if (!supabase) return
     const wasFavorite = favoriteIds.has(itemId)
@@ -152,6 +166,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
     const request = wasFavorite ? supabase.from('favorites').delete().eq('user_id', authenticatedSession.user.id).eq('catalog_item_id', itemId) : supabase.from('favorites').insert({ user_id: authenticatedSession.user.id, catalog_item_id: itemId })
     const { error } = await request
     if (error) { setFavoriteIds((current) => { const next = new Set(current); wasFavorite ? next.add(itemId) : next.delete(itemId); return next }); setCatalogStatus('Não foi possível atualizar seus favoritos. Tente novamente.') }
+    else void trackActivity(wasFavorite ? 'favorite_removed' : 'favorite_added', { catalogItemId: itemId })
   }
 
   function openItem(item: CatalogItem) {
@@ -323,7 +338,7 @@ export function App({ session = null, visualMode = 'command-center', showLabBadg
       </section> : null}
       {page === 'admin' && canAdmin ? <section className="inner-page page-shell admin-page">
         {visualMode === 'handdrawn-lab' ? <WorkspaceAreaHero area="admin" description="Gerencie acessos, convites e os recursos disponíveis para toda a equipe." /> : <div className="page-heading"><h1 className="page-title">Controle da sua biblioteca.</h1><p>Gerencie acessos, convites e os recursos disponíveis para toda a equipe.</p></div>}
-        <div className="admin-grid"><article className="metric-card"><p>RECURSOS PUBLICADOS</p><strong>{catalog.length}</strong><span>Disponíveis para a equipe</span></article><article className="metric-card"><p>PAPÉIS ATIVOS</p><strong>{(authenticatedSession.roles ?? []).length || 1}</strong><span>{(authenticatedSession.roles ?? []).join(' / ') || 'membro'}</span></article><article className="metric-card"><p>FAVORITOS DA SESSÃO</p><strong>{favoriteIds.size}</strong><span>Atalhos pessoais salvos</span></article></div>{hasAnyRole(authenticatedSession.roles ?? [], ['admin']) ? <><InviteForm onCreated={() => setAccessRefreshKey((current) => current + 1)} /><PeopleDirectory currentUserId={authenticatedSession.user.id} refreshKey={accessRefreshKey} /></> : null}
+        <div className="admin-grid"><article className="metric-card"><p>RECURSOS PUBLICADOS</p><strong>{catalog.length}</strong><span>Disponíveis para a equipe</span></article><article className="metric-card"><p>PAPÉIS ATIVOS</p><strong>{(authenticatedSession.roles ?? []).length || 1}</strong><span>{(authenticatedSession.roles ?? []).join(' / ') || 'membro'}</span></article><article className="metric-card"><p>FAVORITOS DA SESSÃO</p><strong>{favoriteIds.size}</strong><span>Atalhos pessoais salvos</span></article></div>{hasAnyRole(authenticatedSession.roles ?? [], ['admin']) ? <><ActivityAnalytics /><InviteForm onCreated={() => setAccessRefreshKey((current) => current + 1)} /><PeopleDirectory currentUserId={authenticatedSession.user.id} refreshKey={accessRefreshKey} /></> : null}
       </section> : null}
       </>}
     </section>

@@ -4,6 +4,7 @@ import { createInviteToken, normalizeEmail, sha256, validateInviteInput, type In
 import { renderInvitationEmail } from './email-template'
 import { mcpResponse } from './mcp'
 import { AssistantError, handleAssistantRequest } from './assistant'
+import { ActivityError, loadActivityAnalytics, loadPersonActivity, parsePeriodDays, recordActivityRequest } from './activity'
 import { parsePeoplePagination, type PeoplePagination } from './admin-people'
 import { createMcpAccessToken, hashSecret, oauthMetadata, protectedResourceMetadata, publicOrigin, verifyPkce } from './oauth'
 
@@ -248,6 +249,16 @@ export default {
       }
     }
 
+    if (request.method === 'POST' && path === '/v1/activity') {
+      try {
+        await recordActivityRequest(request, env)
+        return json({ ok: true }, request, { status: 201 })
+      } catch (error) {
+        if (error instanceof ActivityError) return json({ error: error.code }, request, { status: error.status })
+        return json({ error: 'activity_not_recorded' }, request, { status: 503 })
+      }
+    }
+
     if (request.method === 'POST' && path === '/v1/invitations') {
       try {
         const context = await requireAdmin(request, env)
@@ -303,6 +314,13 @@ export default {
         const url = new URL(request.url)
         return json(await listPeople(context, url.searchParams.get('query') ?? '', parsePeoplePagination(url.searchParams)), request)
       }
+
+      if (request.method === 'GET' && path === '/v1/admin/analytics') {
+        return json(await loadActivityAnalytics(context.supabase, parsePeriodDays(new URL(request.url).searchParams.get('days'))), request)
+      }
+
+      const activityUserId = routeId(path, /^\/v1\/admin\/people\/([^/]+)\/activity$/)
+      if (request.method === 'GET' && activityUserId) return json({ events: await loadPersonActivity(context.supabase, activityUserId) }, request)
 
       const resendId = routeId(path, /^\/v1\/admin\/invitations\/([^/]+)\/resend$/)
       if (request.method === 'POST' && resendId) {

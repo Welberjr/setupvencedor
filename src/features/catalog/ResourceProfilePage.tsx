@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CommandIcon } from '../brand/CommandIcon'
 import { FavoriteButton } from './FavoriteButton'
 import type { CatalogGuide } from './catalog-guide'
 import { createResourceEditorial } from './resource-editorial'
 import type { CatalogItem } from './types'
+import { trackActivity } from '../../lib/activity'
 
 type ResourceProfilePageProps = {
   item: CatalogItem
@@ -28,6 +29,8 @@ export function ResourceProfilePage({ item, guide, isFavorite, onBack, onToggleF
     ? `FONTES VERIFICADAS · FONTE VERIFICADA EM ${sourceDateLabel(guide.sourceCheckedAt)}`
     : 'FONTES PÚBLICAS CADASTRADAS · CONFIRA ANTES DE USAR'
 
+  useEffect(() => { void trackActivity('resource_opened', { catalogItemId: item.id }) }, [item.id])
+
   async function copyOfficialSource() {
     await navigator.clipboard?.writeText(item.officialUrl)
     setHasCopiedSource(true)
@@ -41,7 +44,7 @@ export function ResourceProfilePage({ item, guide, isFavorite, onBack, onToggleF
   return <section className="resource-profile page-shell resource-profile-pilot resource-profile-pilot-editorial">
     <button className="resource-back" onClick={onBack} type="button"><CommandIcon name="arrow" size={20} /> Voltar ao acervo</button>
     <section className="resource-primary-actions" aria-label="Ações principais do recurso">
-      <a className="resource-source-action" href={item.officialUrl} rel="noreferrer" target="_blank">Abrir fonte oficial <span aria-hidden="true">↗</span></a>
+      <a className="resource-source-action" href={item.officialUrl} onClick={() => void trackActivity('resource_source_opened', { catalogItemId: item.id })} rel="noreferrer" target="_blank">Abrir fonte oficial <span aria-hidden="true">↗</span></a>
       <button className="source-copy-button" onClick={() => void copyOfficialSource()} type="button">{hasCopiedSource ? 'Link copiado' : 'Copiar link da fonte oficial'}</button>
       <FavoriteButton isFavorite={isFavorite} onToggle={onToggleFavorite} title={item.title} />
     </section>
@@ -70,7 +73,7 @@ export function ResourceProfilePage({ item, guide, isFavorite, onBack, onToggleF
       </section>
       <section className="handdrawn-guide-sources" aria-label={`Fontes de ${item.title}`}>
         <div><p>{sourceLabel}</p><span>{guide.sourceNote}</span></div>
-        <ul>{sources.map((source, index) => <li key={source}><a href={source} rel="noreferrer" target="_blank">{index === 0 ? 'Fonte oficial principal' : `Fonte complementar ${index}`} <span aria-hidden="true">↗</span></a></li>)}</ul>
+        <ul>{sources.map((source, index) => <li key={source}><a href={source} onClick={() => void trackActivity('resource_source_opened', { catalogItemId: item.id })} rel="noreferrer" target="_blank">{index === 0 ? 'Fonte oficial principal' : `Fonte complementar ${index}`} <span aria-hidden="true">↗</span></a></li>)}</ul>
       </section>
     </section>
   </section>

@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { App } from './app/App'
 import type { Session as SupabaseSession } from '@supabase/supabase-js'
 import { getSupabaseClient } from './lib/supabase/client'
+import { trackActivity } from './lib/activity'
 import type { Role } from './lib/roles'
 import { readVisualMode } from './features/handdrawn/visual-mode'
 import './styles.css'
@@ -94,7 +95,7 @@ function Bootstrap() {
       ])
       if (rolesError || profileError) throw rolesError ?? profileError
       setSession({ user: { id: next.user.id, email: next.user.email ?? '', displayName: profile?.display_name ?? '' }, roles: (roles ?? []).map((row) => row.role as Role) })
-      void supabase.rpc('record_profile_activity')
+      void trackActivity('session_started')
     }
     const loadingTimeout = window.setTimeout(finishLoading, 300)
     const { data: listener } = supabase.auth.onAuthStateChange((_event, next) => {
