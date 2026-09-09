@@ -6,7 +6,7 @@ type OAuthEnv = {
 
 type AccessClaims = { sub: string; client_id: string; scope: string; aud: string; exp: number; iat: number }
 
-type TokenRequest = Partial<Record<'grant_type' | 'code' | 'redirect_uri' | 'client_id' | 'code_verifier', string>>
+type TokenRequest = Partial<Record<'grant_type' | 'code' | 'redirect_uri' | 'client_id' | 'code_verifier' | 'refresh_token' | 'resource' | 'scope', string>>
 
 export async function readTokenRequest(request: Request): Promise<TokenRequest> {
   const contentType = request.headers.get('content-type')?.split(';')[0].trim().toLowerCase()
@@ -24,7 +24,7 @@ export async function readTokenRequest(request: Request): Promise<TokenRequest> 
   }
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('invalid_request')
   const result: TokenRequest = {}
-  for (const key of ['grant_type', 'code', 'redirect_uri', 'client_id', 'code_verifier'] as const) {
+  for (const key of ['grant_type', 'code', 'redirect_uri', 'client_id', 'code_verifier', 'refresh_token', 'resource', 'scope'] as const) {
     const field = (value as Record<string, unknown>)[key]
     if (field !== undefined && typeof field !== 'string') throw new Error('invalid_request')
     result[key] = field
@@ -78,7 +78,7 @@ export function publicOrigin(env: OAuthEnv): string {
 
 export function oauthMetadata(env: OAuthEnv) {
   const issuer = publicOrigin(env)
-  return { issuer, authorization_endpoint: `${issuer}/api/oauth/authorize`, token_endpoint: `${issuer}/api/oauth/token`, registration_endpoint: `${issuer}/api/oauth/register`, response_types_supported: ['code'], grant_types_supported: ['authorization_code'], code_challenge_methods_supported: ['S256'], token_endpoint_auth_methods_supported: ['none'] }
+  return { issuer, authorization_endpoint: `${issuer}/api/oauth/authorize`, token_endpoint: `${issuer}/api/oauth/token`, registration_endpoint: `${issuer}/api/oauth/register`, response_types_supported: ['code'], grant_types_supported: ['authorization_code', 'refresh_token'], code_challenge_methods_supported: ['S256'], token_endpoint_auth_methods_supported: ['none'] }
 }
 
 export function protectedResourceMetadata(env: OAuthEnv) {

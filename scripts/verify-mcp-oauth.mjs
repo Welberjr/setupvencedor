@@ -12,6 +12,12 @@ const server=http.createServer(async(req,res)=>{
     const response=await fetch(origin+'/api/oauth/token',{method:'POST',body:new URLSearchParams({grant_type:'authorization_code',code:url.searchParams.get('code'),client_id:clientId,redirect_uri:redirectUri,code_verifier:verifier})});
     const auth=await response.json();
     if(!response.ok||!auth.access_token)throw new Error(`Token exchange failed: ${response.status}`);
+    const firstRefreshToken=auth.refresh_token;
+    if(!firstRefreshToken)throw new Error('Missing refresh token');
+    const refreshResponse=await fetch(origin+'/api/oauth/token',{method:'POST',body:new URLSearchParams({grant_type:'refresh_token',refresh_token:firstRefreshToken,client_id:clientId,resource:origin+'/api/mcp'})});
+    const refreshed=await refreshResponse.json();
+    if(!refreshResponse.ok||!refreshed.access_token||refreshed.refresh_token===firstRefreshToken)throw new Error('Refresh rotation failed');
+    auth.access_token=refreshed.access_token;
     const rpc=async(id,method,params)=>{
       const r=await fetch(origin+'/api/mcp',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+auth.access_token},body:JSON.stringify({jsonrpc:'2.0',...(id===null?{}:{id}),method,...(params?{params}:{})})});
       return r.status===202?{status:202}:r.json();
@@ -21,7 +27,10 @@ const server=http.createServer(async(req,res)=>{
     const listing=await rpc(2,'tools/list');
     const search=await rpc(3,'tools/call',{name:'search_resources',arguments:{query:'design'}});
     const resources=search.result?.content?.[0]?.text?JSON.parse(search.result.content[0].text):[];
-    console.log(JSON.stringify({authenticated:true,expires_in:auth.expires_in,server:init.result?.serverInfo,notification,tools:listing.result?.tools?.map(t=>t.name),resources:resources.map(r=>({slug:r.slug,title:r.title})),error:search.error??null}));
+    const replay=await fetch(origin+'/api/oauth/token',{method:'POST',body:new URLSearchParams({grant_type:'refresh_token',refresh_token:firstRefreshToken,client_id:clientId})});
+    const afterReplay=await fetch(origin+'/api/mcp',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+auth.access_token},body:JSON.stringify({jsonrpc:'2.0',id:4,method:'tools/list'})});
+    if(replay.status!==400||afterReplay.status!==401)throw new Error('Replay revocation failed');
+    console.log(JSON.stringify({authenticated:true,refreshRotated:true,replayRejected:replay.status,revokedSessionRejected:afterReplay.status,expires_in:auth.expires_in,server:init.result?.serverInfo,notification,tools:listing.result?.tools?.map(t=>t.name),resources:resources.map(r=>({slug:r.slug,title:r.title})),error:search.error??null}));
     res.writeHead(200,{'content-type':'text/plain; charset=utf-8'}).end('Setup Agent conectado. Leitura do acervo verificada.');
     server.close();
   }catch(e){console.error(e.message);res.writeHead(500).end('Verification failed');server.close();process.exitCode=1;}

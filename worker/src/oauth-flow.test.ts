@@ -32,6 +32,11 @@ it.each(['form', 'json'])('exchanges a %s authorization code once and rejects a 
   const challenge = Buffer.from(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier))).toString('base64url')
   let consumed = false
   const database = vi.fn(async (_url: unknown, init?: RequestInit) => {
+    const path = String(_url)
+    if (path.includes('/profiles')) return Response.json({ id: 'user-test' })
+    if (path.includes('/mcp_oauth_clients')) return Response.json({ client_id: fields.client_id })
+    if (path.includes('/mcp_consents')) return Response.json({ id: 'consent', scope: 'mcp:read' })
+    if (path.includes('/mcp_refresh_tokens') && init?.method === 'POST') return new Response(null, { status: 201 })
     if (init?.method === 'PATCH') {
       consumed = true
       return Response.json({ id: 'code-row' })
@@ -66,6 +71,7 @@ it.each([
 })
 
 it('accepts the authenticated MCP initialized notification without a JSON-RPC response', async () => {
+  vi.stubGlobal('fetch', vi.fn(async () => Response.json({ id: 'active-row', client_id: fields.client_id, scope: 'mcp:read' })))
   const token = await createMcpAccessToken({ userId: 'user-test', clientId: fields.client_id, scopes: ['mcp:read'] }, env)
   const response = await worker.fetch(new Request('https://setupvencedor.com.br/api/mcp', { method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', method: 'notifications/initialized' }) }), env)
   expect(response.status).toBe(202)

@@ -5,7 +5,8 @@ import { renderInvitationEmail } from './email-template'
 import { mcpResponse } from './mcp'
 import { AssistantError, handleAssistantRequest } from './assistant'
 import { parsePeoplePagination, type PeoplePagination } from './admin-people'
-import { authorizationUiOrigin, createMcpAccessToken, hashSecret, oauthMetadata, protectedResourceMetadata, publicOrigin, readTokenRequest, verifyPkce } from './oauth'
+import { authorizationUiOrigin, hashSecret, oauthMetadata, protectedResourceMetadata, publicOrigin, readTokenRequest, verifyPkce } from './oauth'
+import { activeMcpGrant, issueMcpTokens, refreshMcpTokens } from './mcp-refresh'
 
 type ActivateInput = { token: string; password: string; email?: string; recipientName?: string }
 type AdminContext = { supabase: SupabaseClient; userId: string }
@@ -74,6 +75,8 @@ async function approveMcpAuthorization(request: Request, env: Env): Promise<Resp
   if (!profile) return json({ error: 'forbidden' }, request, { status: 403 })
   if (!client || !(client.redirect_uris as string[]).includes(input.redirect_uri)) return json({ error: 'invalid_authorization_request' }, request, { status: 400 })
   if (!input.approved) return oauthError('access_denied', request, input.redirect_uri, input.state)
+  const { error: consentError } = await supabase.from('mcp_consents').upsert({ client_id: input.client_id, user_id: userResult.user.id, resource: `${publicOrigin(env)}/api/mcp`, scope: 'mcp:read', granted_at: new Date().toISOString(), revoked_at: null }, { onConflict: 'client_id,user_id,resource' })
+  if (consentError) return json({ error: 'authorization_unavailable' }, request, { status: 503 })
   const code = [...crypto.getRandomValues(new Uint8Array(32))].map((value) => value.toString(16).padStart(2, '0')).join('')
   const { error } = await supabase.from('mcp_authorization_codes').insert({ code_hash: await hashSecret(code), client_id: input.client_id, user_id: userResult.user.id, redirect_uri: input.redirect_uri, code_challenge: input.code_challenge, scope: 'mcp:read', resource: `${publicOrigin(env)}/api/mcp`, expires_at: new Date(Date.now() + 5 * 60 * 1000).toISOString() })
   if (error) return json({ error: 'authorization_unavailable' }, request, { status: 503 })
@@ -87,15 +90,23 @@ async function exchangeMcpToken(request: Request, env: Env): Promise<Response> {
   let input: Awaited<ReturnType<typeof readTokenRequest>>
   try { input = await readTokenRequest(request) } catch { return oauthError('invalid_request', request) }
   if (!input.grant_type) return oauthError('invalid_request', request)
+  if (input.grant_type === 'refresh_token') {
+    const db = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY)
+    try { return json(await refreshMcpTokens(db, input, env), request) } catch (error) {
+      const message = error instanceof Error ? error.message : 'token_unavailable'
+      const recognized = ['invalid_request', 'invalid_grant', 'invalid_scope', 'invalid_target'].includes(message)
+      return json({ error: recognized ? message : 'temporarily_unavailable' }, request, { status: recognized ? 400 : 503 })
+    }
+  }
   if (input.grant_type !== 'authorization_code') return oauthError('unsupported_grant_type', request)
   if (!input.code || !input.client_id || !input.redirect_uri || !input.code_verifier) return oauthError('invalid_request', request)
   const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY)
   const { data: row } = await supabase.from('mcp_authorization_codes').select('id,client_id,user_id,redirect_uri,code_challenge,scope,resource,expires_at,consumed_at').eq('code_hash', await hashSecret(input.code)).maybeSingle()
   if (!row || row.client_id !== input.client_id || row.redirect_uri !== input.redirect_uri || row.consumed_at || new Date(row.expires_at).getTime() <= Date.now() || !await verifyPkce(input.code_verifier, row.code_challenge)) return json({ error: 'invalid_grant' }, request, { status: 400 })
+  if (row.resource !== `${publicOrigin(env)}/api/mcp` || !await activeMcpGrant(supabase, row)) return oauthError('invalid_grant', request)
   const { data: consumed } = await supabase.from('mcp_authorization_codes').update({ consumed_at: new Date().toISOString() }).eq('id', row.id).is('consumed_at', null).select('id').maybeSingle()
   if (!consumed) return json({ error: 'invalid_grant' }, request, { status: 400 })
-  const accessToken = await createMcpAccessToken({ userId: row.user_id, clientId: row.client_id, scopes: row.scope.split(' '), resource: row.resource }, env)
-  return json({ access_token: accessToken, token_type: 'Bearer', expires_in: Number(env.MCP_ACCESS_TOKEN_TTL_SECONDS ?? 900), scope: row.scope, resource: row.resource }, request)
+  try { return json(await issueMcpTokens(supabase, { user_id: row.user_id, client_id: row.client_id, scope: row.scope, resource: row.resource }, env), request) } catch { return json({ error: 'temporarily_unavailable' }, request, { status: 503 }) }
 }
 
 function json(data: unknown, request: Request, init: ResponseInit = {}): Response {
