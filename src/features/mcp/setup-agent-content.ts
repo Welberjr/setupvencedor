@@ -1,5 +1,7 @@
 export function createSetupAgentContent(origin: string) {
-  const endpoint = `${origin.replace(/\/$/, '')}/api/mcp`
+  const normalizedOrigin = origin.replace(/\/$/, '')
+  const productionOrigins = ['https://setupvencedor.com.br', 'https://www.setupvencedor.com.br', 'https://setup-vencedor-worker.filmesecia-df.workers.dev']
+  const endpoint = `${productionOrigins.includes(normalizedOrigin) ? 'https://setupvencedor.com.br' : normalizedOrigin}/api/mcp`
   const installPrompt = `Adicione o servidor MCP remoto "setup-agent" usando transporte streamable-http nesta URL: ${endpoint}
 
 Conclua a autorização OAuth no navegador usando a sua conta do Setup Vencedor.
@@ -10,8 +12,8 @@ Antes de criar uma skill, plugin, MCP, ferramenta, tutorial ou curso, consulte p
     endpoint,
     installPrompt,
     manualConfigs: [
-      { label: 'Codex', language: 'Configuração MCP', code: JSON.stringify({ mcpServers: { 'setup-agent': { transport: 'streamable-http', url: endpoint } } }, null, 2) },
-      { label: 'Claude Code', language: 'Terminal', code: `claude mcp add setup-agent --transport streamable-http ${endpoint}` },
+      { label: 'Codex', language: 'Terminal', code: `codex mcp add setup-agent --url ${endpoint}\ncodex mcp login setup-agent` },
+      { label: 'Claude Code', language: 'Terminal', code: `claude mcp add --transport http setup-agent ${endpoint}` },
       { label: 'Outro cliente', language: 'URL remota', code: endpoint },
     ] as const,
   }
