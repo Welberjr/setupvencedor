@@ -67,7 +67,7 @@ const navItems: Array<{ id: Page; label: string; icon: CommandIconName }> = [
 export function App({ session = null, visualMode = 'command-center', showLabBadge = false }: { session?: Session; visualMode?: VisualMode; showLabBadge?: boolean }) {
   if (window.location.pathname === '/ativar') return <ActivateInvitePage visualMode={visualMode} />
   if (window.location.pathname === '/redefinir-senha') return <ResetPasswordPage visualMode={visualMode} />
-  if (window.location.pathname === '/mcp/autorizar') return <McpAuthorizePage />
+  if (session && window.location.pathname === '/mcp/autorizar') return <McpAuthorizePage />
   if (!session && window.location.pathname === '/boas-vindas') {
     const callbackError = authCallbackErrorMessage(window.location.hash)
     return <main className={`app-shell auth-shell confirmation-shell ${visualMode}`}><section className="public-confirmation"><p className="eyebrow">SETUP VENCEDOR</p><h1>{callbackError ? 'Vamos resolver seu acesso.' : 'Seu acesso está confirmado.'}</h1><p>{callbackError ?? 'Agora você pode entrar no acervo e, se quiser acompanhar novidades e tirar dúvidas, participar da nossa comunidade.'}</p>{callbackError ? <a className="public-confirmation-login" href="/">Voltar para o acesso</a> : <><a href="https://chat.whatsapp.com/EoAKFGLW89h07VSXbzzrbr" rel="noreferrer" target="_blank">Entrar na comunidade do WhatsApp ↗</a><a className="public-confirmation-login" href="/">Entrar no acervo</a></>}</section></main>

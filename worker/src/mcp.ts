@@ -31,6 +31,7 @@ export async function mcpResponse(request: Request, env: Env): Promise<Response>
   let message: JsonRpc
   try { message = await request.json() as JsonRpc } catch { return jsonRpc(null, undefined, { code: -32700, message: 'parse_error' }) }
   if (message.jsonrpc !== '2.0' || !message.method) return jsonRpc(message.id, undefined, { code: -32600, message: 'invalid_request' })
+  if (message.id === undefined && message.method.startsWith('notifications/')) return new Response(null, { status: 202 })
   if (message.method === 'initialize') return jsonRpc(message.id, { protocolVersion: '2025-03-26', capabilities: { tools: {} }, serverInfo: { name: 'setup-agent', version: '1.0.0' } })
   if (message.method === 'tools/list') return jsonRpc(message.id, { tools: mcpToolDefinitions })
   if (message.method !== 'tools/call') return jsonRpc(message.id, undefined, { code: -32601, message: 'method_not_found' })
