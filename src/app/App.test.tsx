@@ -20,6 +20,17 @@ it('opens with a free access path when no session is supplied', () => {
   expect(screen.getByText(/100% gratuito/i)).toBeInTheDocument()
 })
 
+it('lets a signed-out MCP user log in or create an account without losing the authorization URL', () => {
+  const path = '/mcp/autorizar?client_id=test-client&state=opaque-state'
+  window.history.replaceState({}, '', path)
+  const { rerender } = render(<App />)
+  expect(screen.getByRole('button', { name: 'Criar meu acesso grátis' })).toBeInTheDocument()
+  expect(screen.queryByRole('button', { name: 'Autorizar acesso' })).not.toBeInTheDocument()
+  rerender(<App session={{ user: { id: 'member-test', email: 'member@example.com' }, roles: ['member'] }} />)
+  expect(screen.getByRole('button', { name: 'Autorizar acesso' })).toBeInTheDocument()
+  expect(window.location.pathname + window.location.search).toBe(path)
+})
+
 it('keeps the community invitation visible after email confirmation', () => {
   window.history.replaceState({}, '', '/boas-vindas')
   render(<App />)

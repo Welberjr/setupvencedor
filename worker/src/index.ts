@@ -5,7 +5,7 @@ import { renderInvitationEmail } from './email-template'
 import { mcpResponse } from './mcp'
 import { AssistantError, handleAssistantRequest } from './assistant'
 import { parsePeoplePagination, type PeoplePagination } from './admin-people'
-import { createMcpAccessToken, hashSecret, oauthMetadata, protectedResourceMetadata, publicOrigin, verifyPkce } from './oauth'
+import { authorizationUiOrigin, createMcpAccessToken, hashSecret, oauthMetadata, protectedResourceMetadata, publicOrigin, readTokenRequest, verifyPkce } from './oauth'
 
 type ActivateInput = { token: string; password: string; email?: string; recipientName?: string }
 type AdminContext = { supabase: SupabaseClient; userId: string }
@@ -84,8 +84,11 @@ async function approveMcpAuthorization(request: Request, env: Env): Promise<Resp
 }
 
 async function exchangeMcpToken(request: Request, env: Env): Promise<Response> {
-  const input = await readJson<{ grant_type?: string; code?: string; redirect_uri?: string; client_id?: string; code_verifier?: string }>(request)
-  if (input.grant_type !== 'authorization_code' || !input.code || !input.client_id || !input.redirect_uri || !input.code_verifier) return json({ error: 'invalid_request' }, request, { status: 400 })
+  let input: Awaited<ReturnType<typeof readTokenRequest>>
+  try { input = await readTokenRequest(request) } catch { return oauthError('invalid_request', request) }
+  if (!input.grant_type) return oauthError('invalid_request', request)
+  if (input.grant_type !== 'authorization_code') return oauthError('unsupported_grant_type', request)
+  if (!input.code || !input.client_id || !input.redirect_uri || !input.code_verifier) return oauthError('invalid_request', request)
   const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY)
   const { data: row } = await supabase.from('mcp_authorization_codes').select('id,client_id,user_id,redirect_uri,code_challenge,scope,resource,expires_at,consumed_at').eq('code_hash', await hashSecret(input.code)).maybeSingle()
   if (!row || row.client_id !== input.client_id || row.redirect_uri !== input.redirect_uri || row.consumed_at || new Date(row.expires_at).getTime() <= Date.now() || !await verifyPkce(input.code_verifier, row.code_challenge)) return json({ error: 'invalid_grant' }, request, { status: 400 })
@@ -231,7 +234,7 @@ export default {
       const redirectUri = url.searchParams.get('redirect_uri')
       const codeChallenge = url.searchParams.get('code_challenge')
       if (url.searchParams.get('response_type') !== 'code' || !clientId || !redirectUri || !codeChallenge || !validRedirectUri(redirectUri)) return oauthError('invalid_request', request)
-      const approval = new URL(`${publicOrigin(env)}/mcp/autorizar`)
+      const approval = new URL(`${authorizationUiOrigin(env)}/mcp/autorizar`)
       approval.search = url.search
       return Response.redirect(approval.toString(), 302)
     }

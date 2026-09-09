@@ -6,6 +6,38 @@ type OAuthEnv = {
 
 type AccessClaims = { sub: string; client_id: string; scope: string; aud: string; exp: number; iat: number }
 
+type TokenRequest = Partial<Record<'grant_type' | 'code' | 'redirect_uri' | 'client_id' | 'code_verifier', string>>
+
+export async function readTokenRequest(request: Request): Promise<TokenRequest> {
+  const contentType = request.headers.get('content-type')?.split(';')[0].trim().toLowerCase()
+  let value: unknown
+  if (contentType === 'application/x-www-form-urlencoded') {
+    const form = new URLSearchParams(await request.text())
+    for (const key of form.keys()) {
+      if (form.getAll(key).length !== 1) throw new Error('invalid_request')
+    }
+    value = Object.fromEntries(form)
+  } else if (contentType === 'application/json') {
+    value = await request.json()
+  } else {
+    throw new Error('invalid_request')
+  }
+  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('invalid_request')
+  const result: TokenRequest = {}
+  for (const key of ['grant_type', 'code', 'redirect_uri', 'client_id', 'code_verifier'] as const) {
+    const field = (value as Record<string, unknown>)[key]
+    if (field !== undefined && typeof field !== 'string') throw new Error('invalid_request')
+    result[key] = field
+  }
+  return result
+}
+
+export function authorizationUiOrigin(env: OAuthEnv): string {
+  const origin = publicOrigin(env)
+  // The production browser session lives on www; keep the API issuer and audience unchanged.
+  return origin === 'https://setupvencedor.com.br' ? 'https://www.setupvencedor.com.br' : origin
+}
+
 function base64Url(bytes: Uint8Array): string {
   let binary = ''
   for (const byte of bytes) binary += String.fromCharCode(byte)
