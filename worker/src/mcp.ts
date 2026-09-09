@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import type { Env } from './env'
 import { protectedResourceMetadata, validateMcpAccessToken } from './oauth'
+import { activeMcpGrant } from './mcp-refresh'
 
 type JsonRpc = { id?: string | number | null; method?: string; params?: Record<string, unknown>; jsonrpc?: string }
 
@@ -26,7 +27,11 @@ function toolResult(id: JsonRpc['id'], data: unknown): Response {
 export async function mcpResponse(request: Request, env: Env): Promise<Response> {
   const auth = request.headers.get('authorization')
   if (!auth?.startsWith('Bearer ')) return unauthorized(env)
-  try { await validateMcpAccessToken(auth.slice(7), env) } catch { return unauthorized(env) }
+  const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY)
+  try {
+    const grant = await validateMcpAccessToken(auth.slice(7), env)
+    if (!await activeMcpGrant(supabase, { user_id: grant.userId, client_id: grant.clientId, scope: grant.scopes.join(' '), resource: protectedResourceMetadata(env).resource })) return unauthorized(env)
+  } catch { return unauthorized(env) }
   if (request.method === 'GET') return new Response(null, { status: 405, headers: { allow: 'POST' } })
   let message: JsonRpc
   try { message = await request.json() as JsonRpc } catch { return jsonRpc(null, undefined, { code: -32700, message: 'parse_error' }) }
@@ -38,7 +43,6 @@ export async function mcpResponse(request: Request, env: Env): Promise<Response>
   const params = message.params ?? {}
   const name = params.name
   const arguments_ = (message.params?.arguments ?? {}) as Record<string, string>
-  const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY)
   const select = 'slug,title,summary,own_content,official_url,instructions,item_type'
   if (name === 'search_resources' || name === 'recommend_for_project') {
     const query = (arguments_[name === 'search_resources' ? 'query' : 'project'] ?? '').trim()
